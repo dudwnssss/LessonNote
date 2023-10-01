@@ -33,6 +33,7 @@
 		1016FB132AC9624B003E7612 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB122AC9624B003E7612 /* HomeView.swift */; };
 		1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB142AC96252003E7612 /* ScheduleView.swift */; };
 		1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB202AC969E6003E7612 /* LessonTimeView.swift */; };
+		1016FB232AC96D18003E7612 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1016FB222AC96D18003E7612 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		1016FB122AC9624B003E7612 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1016FB142AC96252003E7612 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		1016FB202AC969E6003E7612 /* LessonTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeView.swift; sourceTree = "<group>"; };
+		1016FB222AC96D18003E7612 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		1016FAB62AC93F45003E7612 = {
 			isa = PBXGroup;
 			children = (
+				1016FB222AC96D18003E7612 /* .gitignore */,
 				1016FAC12AC93F45003E7612 /* LessonNote */,
 				1016FAC02AC93F45003E7612 /* Products */,
 			);
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1016FACF2AC93F47003E7612 /* LaunchScreen.storyboard in Resources */,
+				1016FB232AC96D18003E7612 /* .gitignore in Resources */,
 				1016FACC2AC93F47003E7612 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
