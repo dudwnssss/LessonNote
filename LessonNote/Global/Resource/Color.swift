@@ -20,12 +20,15 @@ enum Color{
     static let lightRed = UIColor(hex: "#FFF0F0")
     static let blue = UIColor(hex: "#68AEFF")
     static let red = UIColor(hex: "#FF6868")
-    static let iconPink = UIColor(hex: "#FFCBCB")
-    static let iconOrange = UIColor(hex: "#FFDFAE")
-    static let iconYellow = UIColor(hex: "#FFF6AA")
-    static let iconGreen = UIColor(hex: "#C8FFA6")
-    static let iconSkyBlue = UIColor(hex: "#CAECFF")
-    static let iconBlue = UIColor(hex: "#BDD2F2")
-    static let iconViolet = UIColor(hex: "#D8C5F8")
-    static let iconMagenta = UIColor(hex: "#FFD3F0")
+    
+    enum Icon{
+        static let pink = UIColor(hex: "#FFCBCB")
+        static let orange = UIColor(hex: "#FFDFAE")
+        static let yellow = UIColor(hex: "#FFF6AA")
+        static let green = UIColor(hex: "#C8FFA6")
+        static let skyBlue = UIColor(hex: "#CAECFF")
+        static let blue = UIColor(hex: "#BDD2F2")
+        static let violet = UIColor(hex: "#D8C5F8")
+        static let magenta = UIColor(hex: "#FFD3F0")
+    }
 }

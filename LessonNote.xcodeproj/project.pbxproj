@@ -32,6 +32,7 @@
 		1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB102AC96244003E7612 /* ScheduleViewController.swift */; };
 		1016FB132AC9624B003E7612 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB122AC9624B003E7612 /* HomeView.swift */; };
 		1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB142AC96252003E7612 /* ScheduleView.swift */; };
+		1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB202AC969E6003E7612 /* LessonTimeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		1016FB102AC96244003E7612 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		1016FB122AC9624B003E7612 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1016FB142AC96252003E7612 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		1016FB202AC969E6003E7612 /* LessonTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,8 @@
 		1016FADD2AC9497B003E7612 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				1016FB1D2AC96868003E7612 /* Cell */,
+				1016FB1A2AC9685A003E7612 /* Custom */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -222,6 +226,21 @@
 				1016FB142AC96252003E7612 /* ScheduleView.swift */,
 			);
 			path = Schedule;
+			sourceTree = "<group>";
+		};
+		1016FB1A2AC9685A003E7612 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				1016FB202AC969E6003E7612 /* LessonTimeView.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		1016FB1D2AC96868003E7612 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +341,7 @@
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,
 				1016FAE72AC94A00003E7612 /* Tab.swift in Sources */,
 				1016FAEF2AC94A9F003E7612 /* UIStackView+.swift in Sources */,
+				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
 				1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */,
 			);
