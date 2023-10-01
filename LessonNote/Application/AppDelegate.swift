@@ -14,7 +14,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UILabel.appearance().textColor = Color.black
-        // Override point for customization after application launch.
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithDefaultBackground()
+            appearance.backgroundColor = Color.white
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.black!]
+            UINavigationBar.appearance().tintColor = Color.black
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UITabBarAppearance()
+            appearance.configureWithDefaultBackground()
+            appearance.backgroundColor = Color.white
+            UITabBar.appearance().standardAppearance = appearance
+            UITabBar.appearance().backgroundColor = Color.white
+        }
+        
         return true
     }
 

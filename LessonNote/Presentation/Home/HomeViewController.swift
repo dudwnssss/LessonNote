@@ -9,4 +9,13 @@ import UIKit
 
 class HomeViewController: BaseViewController{
     
+    
+    override func setNavigationBar() {
+        navigationItem.title = "홈"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = Color.gray1
+    }
 }

@@ -23,4 +23,5 @@ enum Image {
     static let phone = UIImage(named: "phone")!
     static let phoneFill = UIImage(named: "phone.fill")!
     static let studentAdd = UIImage(named: "student.add")!
+    static let notePunched = UIImage(named: "note.punched")!
 }
