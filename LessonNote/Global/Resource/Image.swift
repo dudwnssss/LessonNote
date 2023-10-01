@@ -16,7 +16,7 @@ enum Image {
     static let barChart = UIImage(named: "bar.chart")!
     static let edit = UIImage(named: "edit")!
     static let editLine = UIImage(named: "edit.line")!
-    static let calendar = UIImage(named: "calendar")
+    static let calendar = UIImage(named: "calendar")!
     static let calendarFill = UIImage(named: "calendar.fill")!
     static let home = UIImage(named: "home")!
     static let homeFill = UIImage(named: "home.fill")!

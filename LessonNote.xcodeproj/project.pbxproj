@@ -28,6 +28,10 @@
 		1016FB062AC95E1A003E7612 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 1016FB052AC95E1A003E7612 /* Then */; };
 		1016FB092AC95E3E003E7612 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 1016FB082AC95E3E003E7612 /* Realm */; };
 		1016FB0B2AC95E3E003E7612 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1016FB0A2AC95E3E003E7612 /* RealmSwift */; };
+		1016FB0F2AC96239003E7612 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB0E2AC96239003E7612 /* HomeViewController.swift */; };
+		1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB102AC96244003E7612 /* ScheduleViewController.swift */; };
+		1016FB132AC9624B003E7612 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB122AC9624B003E7612 /* HomeView.swift */; };
+		1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB142AC96252003E7612 /* ScheduleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,10 @@
 		1016FAFA2AC95AFB003E7612 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		1016FAFC2AC95D34003E7612 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		1016FAFE2AC95DC2003E7612 /* UICollectionView+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ReusableView.swift"; sourceTree = "<group>"; };
+		1016FB0E2AC96239003E7612 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		1016FB102AC96244003E7612 /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		1016FB122AC9624B003E7612 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1016FB142AC96252003E7612 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,8 +133,10 @@
 		1016FADB2AC94941003E7612 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				1016FAE12AC949C2003E7612 /* Tab */,
 				1016FAE02AC949BB003E7612 /* Base */,
+				1016FAE12AC949C2003E7612 /* Tab */,
+				1016FB0C2AC961E5003E7612 /* Home */,
+				1016FB0D2AC96204003E7612 /* Schedule */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -194,6 +204,24 @@
 				1016FAFC2AC95D34003E7612 /* ReusableView.swift */,
 			);
 			path = Reusable;
+			sourceTree = "<group>";
+		};
+		1016FB0C2AC961E5003E7612 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1016FB0E2AC96239003E7612 /* HomeViewController.swift */,
+				1016FB122AC9624B003E7612 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1016FB0D2AC96204003E7612 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				1016FB102AC96244003E7612 /* ScheduleViewController.swift */,
+				1016FB142AC96252003E7612 /* ScheduleView.swift */,
+			);
+			path = Schedule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,19 +307,23 @@
 			files = (
 				1016FAE92AC94A0C003E7612 /* BaseViewController.swift in Sources */,
 				1016FAFF2AC95DC2003E7612 /* UICollectionView+ReusableView.swift in Sources */,
+				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
 				1016FAED2AC94A96003E7612 /* UIVIew+.swift in Sources */,
 				1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */,
 				1016FAE52AC949F3003E7612 /* MainTabBarController.swift in Sources */,
 				1016FAFB2AC95AFB003E7612 /* Color.swift in Sources */,
 				1016FAFD2AC95D34003E7612 /* ReusableView.swift in Sources */,
 				1016FAEB2AC94A12003E7612 /* BaseView.swift in Sources */,
+				1016FB132AC9624B003E7612 /* HomeView.swift in Sources */,
 				1016FAF72AC957C6003E7612 /* Image.swift in Sources */,
 				1016FAF32AC94ABE003E7612 /* UIViewController+.swift in Sources */,
 				1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */,
+				1016FB0F2AC96239003E7612 /* HomeViewController.swift in Sources */,
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,
 				1016FAE72AC94A00003E7612 /* Tab.swift in Sources */,
 				1016FAEF2AC94A9F003E7612 /* UIStackView+.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
+				1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
