@@ -22,13 +22,13 @@ enum Color{
     static let red = UIColor(hex: "#FF6868")
     
     enum Icon{
-        static let pink = UIColor(hex: "#FFCBCB")
-        static let orange = UIColor(hex: "#FFDFAE")
-        static let yellow = UIColor(hex: "#FFF6AA")
-        static let green = UIColor(hex: "#C8FFA6")
-        static let skyBlue = UIColor(hex: "#CAECFF")
-        static let blue = UIColor(hex: "#BDD2F2")
-        static let violet = UIColor(hex: "#D8C5F8")
-        static let magenta = UIColor(hex: "#FFD3F0")
+        static let pink = UIColor(hex: "#FFCBCB")!
+        static let orange = UIColor(hex: "#FFDFAE")!
+        static let yellow = UIColor(hex: "#FFF6AA")!
+        static let green = UIColor(hex: "#C8FFA6")!
+        static let skyblue = UIColor(hex: "#CAECFF")!
+        static let blue = UIColor(hex: "#BDD2F2")!
+        static let violet = UIColor(hex: "#D8C5F8")!
+        static let magenta = UIColor(hex: "#FFD3F0")!
     }
 }

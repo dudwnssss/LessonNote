@@ -34,6 +34,12 @@
 		1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB142AC96252003E7612 /* ScheduleView.swift */; };
 		1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB202AC969E6003E7612 /* LessonTimeView.swift */; };
 		1016FB232AC96D18003E7612 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1016FB222AC96D18003E7612 /* .gitignore */; };
+		1016FB252AC97754003E7612 /* progressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB242AC97754003E7612 /* progressBarView.swift */; };
+		1016FB272AC97ABC003E7612 /* LessonTimeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB262AC97ABC003E7612 /* LessonTimeStackView.swift */; };
+		1016FB292AC97C2C003E7612 /* StudentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */; };
+		1016FB2D2AC9C6FB003E7612 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB2C2AC9C6FA003E7612 /* Student.swift */; };
+		1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB2E2AC9C892003E7612 /* StudentIcon.swift */; };
+		1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB302AC9CA50003E7612 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +68,12 @@
 		1016FB142AC96252003E7612 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		1016FB202AC969E6003E7612 /* LessonTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeView.swift; sourceTree = "<group>"; };
 		1016FB222AC96D18003E7612 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1016FB242AC97754003E7612 /* progressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBarView.swift; sourceTree = "<group>"; };
+		1016FB262AC97ABC003E7612 /* LessonTimeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeStackView.swift; sourceTree = "<group>"; };
+		1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCollectionViewCell.swift; sourceTree = "<group>"; };
+		1016FB2C2AC9C6FA003E7612 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		1016FB2E2AC9C892003E7612 /* StudentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIcon.swift; sourceTree = "<group>"; };
+		1016FB302AC9CA50003E7612 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +143,9 @@
 		1016FADA2AC9493A003E7612 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1016FB2B2AC9C6E9003E7612 /* Model */,
+				1016FB2A2AC9C6DF003E7612 /* Repository */,
+				1016FB2E2AC9C892003E7612 /* StudentIcon.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -218,6 +233,7 @@
 			children = (
 				1016FB0E2AC96239003E7612 /* HomeViewController.swift */,
 				1016FB122AC9624B003E7612 /* HomeView.swift */,
+				1016FB302AC9CA50003E7612 /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -235,6 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				1016FB202AC969E6003E7612 /* LessonTimeView.swift */,
+				1016FB242AC97754003E7612 /* progressBarView.swift */,
+				1016FB262AC97ABC003E7612 /* LessonTimeStackView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -242,8 +260,24 @@
 		1016FB1D2AC96868003E7612 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		1016FB2A2AC9C6DF003E7612 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1016FB2B2AC9C6E9003E7612 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1016FB2C2AC9C6FA003E7612 /* Student.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,9 +366,13 @@
 				1016FAFF2AC95DC2003E7612 /* UICollectionView+ReusableView.swift in Sources */,
 				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
 				1016FAED2AC94A96003E7612 /* UIVIew+.swift in Sources */,
+				1016FB272AC97ABC003E7612 /* LessonTimeStackView.swift in Sources */,
 				1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */,
 				1016FAE52AC949F3003E7612 /* MainTabBarController.swift in Sources */,
+				1016FB2D2AC9C6FB003E7612 /* Student.swift in Sources */,
 				1016FAFB2AC95AFB003E7612 /* Color.swift in Sources */,
+				1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */,
+				1016FB252AC97754003E7612 /* progressBarView.swift in Sources */,
 				1016FAFD2AC95D34003E7612 /* ReusableView.swift in Sources */,
 				1016FAEB2AC94A12003E7612 /* BaseView.swift in Sources */,
 				1016FB132AC9624B003E7612 /* HomeView.swift in Sources */,
@@ -345,8 +383,10 @@
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,
 				1016FAE72AC94A00003E7612 /* Tab.swift in Sources */,
 				1016FAEF2AC94A9F003E7612 /* UIStackView+.swift in Sources */,
+				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
+				1016FB292AC97C2C003E7612 /* StudentCollectionViewCell.swift in Sources */,
 				1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
