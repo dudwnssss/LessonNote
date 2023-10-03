@@ -20,6 +20,8 @@ class Student: Object{
     @Persisted var studentPhoneNumber: String?
     @Persisted var parentPhoneNumber: String?
     @Persisted var memo: String?
+    @Persisted var LessonSchedules: List<LessonSchedule>
+    
     
     convenience init(studentName: String, studentIcon: StudentIcon.RawValue, studentPhoneNumber: String? = nil, parentPhoneNumber: String? = nil, memo: String? = nil) {
         self.init()

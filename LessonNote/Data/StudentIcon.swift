@@ -37,4 +37,24 @@ enum StudentIcon: Int{
             return Color.Icon.magenta
         }
     }
+    var image: UIImage{
+        switch self {
+        case .pink:
+            return Image.Icon.studentPink
+        case .orange:
+            return Image.Icon.studentOrange
+        case .yellow:
+            return Image.Icon.studentYellow
+        case .green:
+            return Image.Icon.studentGreen
+        case .skyblue:
+            return Image.Icon.studentSkyblue
+        case .blue:
+            return Image.Icon.studentBlue
+        case .violet:
+            return Image.Icon.studentViolet
+        case .magenta:
+            return Image.Icon.studentMagenta
+        }
+    }
 }

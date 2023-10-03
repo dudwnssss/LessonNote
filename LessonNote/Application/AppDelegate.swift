@@ -13,13 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UILabel.appearance().textColor = Color.black
+        UILabel.appearance().do {
+            $0.textColor = Color.black
+            $0.font = Font.medium14
+        }
+
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.configureWithDefaultBackground()
+            appearance.configureWithTransparentBackground()
             appearance.backgroundColor = Color.white
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.black!]
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.black]
+            let backButtonAppearance = UIBarButtonItemAppearance()
+            backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear, .font: UIFont.systemFont(ofSize: 0)]
+            appearance.setBackIndicatorImage(Image.back, transitionMaskImage: Image.back)
+            appearance.backButtonAppearance = backButtonAppearance
             UINavigationBar.appearance().tintColor = Color.black
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
@@ -33,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UITabBar.appearance().backgroundColor = Color.white
         }
         
+        sleep(1)
         return true
     }
 

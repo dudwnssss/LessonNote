@@ -27,6 +27,13 @@ class HomeViewController: BaseViewController{
         view.backgroundColor = Color.gray1
         setDataSource()
         setSnapshot()
+        homeView.addStudentButton.addTarget(self, action: #selector(addStudentButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc func addStudentButtonDidTap(){
+        let vc = StudentInfoViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

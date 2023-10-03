@@ -30,7 +30,7 @@ class StudentCollectionViewCell: UICollectionViewCell {
             $0.image = Image.notePunched
             $0.contentMode = .scaleAspectFill
         }
-
+        
         nameLabel.do {
             $0.text = "안소은"
             $0.font = Font.bold16
@@ -62,6 +62,10 @@ class StudentCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(punchImageView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
+    }
+    
+    func configureCell(student: Student){
+        nameLabel.text = student.studentName
     }
     
     @available(*, unavailable)

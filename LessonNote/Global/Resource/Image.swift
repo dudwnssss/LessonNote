@@ -24,4 +24,15 @@ enum Image {
     static let phoneFill = UIImage(named: "phone.fill")!
     static let studentAdd = UIImage(named: "student.add")!
     static let notePunched = UIImage(named: "note.punched")!
+    
+    enum Icon{
+        static let studentPink = UIImage(named: "student.pink")!
+        static let studentOrange = UIImage(named: "student.orange")!
+        static let studentYellow = UIImage(named: "student.yellow")!
+        static let studentGreen = UIImage(named: "student.green")!
+        static let studentSkyblue = UIImage(named: "student.skyblue")!
+        static let studentBlue = UIImage(named: "student.blue")!
+        static let studentViolet = UIImage(named: "student.violet")!
+        static let studentMagenta = UIImage(named: "student.magenta")!
+    }
 }

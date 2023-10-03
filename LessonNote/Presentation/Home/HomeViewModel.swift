@@ -9,6 +9,6 @@ import Foundation
 
 class HomeViewModel{
     
-    var studentList: [Student] = [Student(studentName: "안소은", studentIcon: StudentIcon.yellow.rawValue)]
+    var studentList: [Student] = [Student(studentName: "안소은", studentIcon: StudentIcon.yellow.rawValue), Student(studentName: "임영준", studentIcon: StudentIcon.blue.rawValue)]
     
 }

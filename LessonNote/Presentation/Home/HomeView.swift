@@ -10,18 +10,28 @@ import UIKit
 class HomeView: BaseView{
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+    let addStudentButton = UIButton()
+    
     
     override func setProperties() {
         collectionView.do {
             $0.backgroundColor = .clear
         }
+        addStudentButton.do {
+            $0.setImage(Image.studentAdd, for: .normal)
+        }
+
 
     }
     
     override func setLayouts() {
-        addSubview(collectionView)
+        addSubviews(collectionView, addStudentButton)
         collectionView.snp.makeConstraints {
             $0.edges.equalTo(self.safeAreaLayoutGuide)
+        }
+        addStudentButton.snp.makeConstraints {
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-24)
+            $0.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
         }
     }
     
