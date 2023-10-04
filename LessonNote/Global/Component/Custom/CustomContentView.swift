@@ -35,5 +35,4 @@ class CustomContentView: BaseView{
             $0.bottom.equalToSuperview()
         }
     }
-    
 }

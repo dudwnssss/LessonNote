@@ -10,42 +10,44 @@ import UIKit
 class CustomTextFieldView: BaseView {
     
     var limitCount = 0
-    
-    let underLineView = UIView()
+    var placeholder = ""
+    let underLineView = SeparatorView()
     let textCountLabel = UILabel()
     let textField = UITextField()
     
     
     init(placeholder: String, limitCount: Int) {
         self.limitCount = limitCount
+        self.placeholder = placeholder
         super.init(frame: .zero)
         textCountLabel.text = "\(limitCount)"
-        textField.placeholder = placeholder
         setProperties()
         setLayouts()
     }
     
     override func setProperties() {
         textCountLabel.do {
-            $0.textColor = Color.gray4
+            $0.textColor = Color.gray3
             $0.font = Font.medium14
             $0.textAlignment = .right
         }
-        underLineView.do {
-            $0.backgroundColor = Color.gray2
+        
+        textField.do {
+            $0.font = Font.medium14
+            $0.textColor = Color.gray6
+            $0.delegate = self
+            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+            $0.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: Color.gray3])
         }
-
-        textField.delegate = self
-        textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         updateCountLabel()
     }
     
     override func setLayouts() {
         addSubviews(underLineView, textCountLabel, textField)
         underLineView.snp.makeConstraints {
-            
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
+            $0.size.equalTo(200)
         }
         textCountLabel.snp.makeConstraints {
             $0.width.equalTo(20)
@@ -54,9 +56,14 @@ class CustomTextFieldView: BaseView {
         }
         
         textField.snp.makeConstraints {
-            $0.leading.equalToSuperview()
+            $0.centerY.equalTo(textCountLabel)
+            $0.leading.equalTo(underLineView).offset(5)
             $0.trailing.equalTo(textCountLabel.snp.leading).offset(-4)
-            $0.top.equalToSuperview()
+        }
+        
+        snp.makeConstraints {
+            $0.height.equalTo(30)
+            $0.width.equalTo(228)
         }
     }
     

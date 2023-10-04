@@ -39,6 +39,10 @@ class StudentIconStackView: UIStackView{
             $0.axis = .horizontal
             $0.spacing = 8
         }
+        studentIconButtonList.forEach {
+            $0.addTarget(self, action: #selector(buttonDidTap(sender:)), for: .touchUpInside)
+        }
+        
         axis = .vertical
         spacing = 8
         distribution = .fillEqually
@@ -52,6 +56,13 @@ class StudentIconStackView: UIStackView{
             }
         addArrangedSubviews(horizontalStackView1, horizontalStackView2)
 
+    }
+    
+    @objc func buttonDidTap(sender: StudentIconButton){
+        for item in studentIconButtonList{
+            item.isTapped = false
+        }
+        sender.isTapped = true
     }
     
     

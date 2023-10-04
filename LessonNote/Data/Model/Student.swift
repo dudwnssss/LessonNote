@@ -20,7 +20,7 @@ class Student: Object{
     @Persisted var studentPhoneNumber: String?
     @Persisted var parentPhoneNumber: String?
     @Persisted var memo: String?
-    @Persisted var LessonSchedules: List<LessonSchedule>
+    @Persisted var lessonSchedules: List<LessonSchedule>
     
     
     convenience init(studentName: String, studentIcon: StudentIcon.RawValue, studentPhoneNumber: String? = nil, parentPhoneNumber: String? = nil, memo: String? = nil) {
@@ -34,7 +34,14 @@ class Student: Object{
 }
 
 class LessonSchedule: Object {
-    @Persisted var weekday: Int
+    @Persisted var weekday: Weekday.RawValue
     @Persisted var startTime: Date
     @Persisted var endTime: Date
+    
+    convenience init(weekday: Weekday.RawValue, startTime: Date, endTime: Date) {
+        self.init()
+        self.weekday = weekday
+        self.startTime = startTime
+        self.endTime = endTime
+    }
 }

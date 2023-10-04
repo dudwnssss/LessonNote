@@ -21,6 +21,7 @@ class HomeViewController: BaseViewController{
     
     override func setNavigationBar() {
         navigationItem.title = "홈"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: nil)
     }
     
     override func setProperties() {
@@ -51,6 +52,7 @@ extension HomeViewController{
         }
         dataSource = UICollectionViewDiffableDataSource(collectionView: homeView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            cell.configureCell(student: itemIdentifier)
             return cell
         })
     }

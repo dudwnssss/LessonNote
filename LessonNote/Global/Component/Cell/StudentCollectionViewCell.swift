@@ -14,7 +14,7 @@ class StudentCollectionViewCell: UICollectionViewCell {
     let iconImageView = UIImageView()
     let nameLabel = UILabel()
     let studentLabel = UILabel()
-    let separatorView = UIView()
+    let separatorView = SeparatorView(color: Color.gray1)
     let lessonTimeStackView = LessonTimeStackView()
     let punchImageView = UIImageView()
     let cellBackgroundView = UIView()
@@ -40,9 +40,6 @@ class StudentCollectionViewCell: UICollectionViewCell {
             $0.textColor = Color.gray4
             $0.font = Font.bold14
         }
-        separatorView.do {
-            $0.backgroundColor = Color.gray4
-        }
         
         cellBackgroundView.do {
             $0.backgroundColor = Color.white
@@ -62,10 +59,30 @@ class StudentCollectionViewCell: UICollectionViewCell {
             $0.top.equalTo(punchImageView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
+        cellBackgroundView.addSubviews(iconImageView, nameLabel, studentLabel, separatorView, lessonTimeStackView)
+        iconImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(12)
+            $0.leading.equalToSuperview().offset(18)
+            $0.size.equalTo(65)
+        }
+        nameLabel.snp.makeConstraints {
+            $0.top.equalTo(iconImageView)
+            $0.leading.equalTo(iconImageView.snp.trailing).offset(24)
+        }
+        studentLabel.snp.makeConstraints {
+            $0.centerY.equalTo(nameLabel)
+            $0.leading.equalTo(nameLabel.snp.trailing).offset(4)
+        }
+        separatorView.snp.makeConstraints {
+            $0.leading.equalTo(nameLabel)
+            $0.trailing.equalToSuperview().offset(-49)
+            $0.top.equalTo(nameLabel.snp.bottom).offset(4)
+        }
     }
     
     func configureCell(student: Student){
         nameLabel.text = student.studentName
+        iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.image
     }
     
     @available(*, unavailable)

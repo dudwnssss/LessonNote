@@ -5,7 +5,7 @@
 //  Created by 임영준 on 2023/10/02.
 //
 
-import Foundation
+import UIKit
 
 class StudentInfoViewController: BaseViewController {
     
@@ -18,4 +18,9 @@ class StudentInfoViewController: BaseViewController {
         navigationItem.title = "학생 추가"
     }
     
+    override func setProperties() {
+        hideKeyboardWhenTappedAround()
+    }
+    
+
 }

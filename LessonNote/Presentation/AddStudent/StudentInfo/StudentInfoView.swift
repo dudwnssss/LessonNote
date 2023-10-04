@@ -13,10 +13,10 @@ class StudentInfoView: BaseView {
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
     
-    let studentContentView = CustomContentView(title: "학생 이름*", contentView: UIView())
+    let studentContentView = CustomContentView(title: "학생 이름*", contentView: CustomTextFieldView(placeholder: "학생의 이름을 입력해 주세요", limitCount: 20))
     let iconContentView = CustomContentView(title: "아이콘", contentView: StudentIconStackView())
-    let studentPhoneNumberContentView = CustomContentView(title: "학생 전화번호", contentView: UIView())
-    let parentPhoneNumberContentView = CustomContentView(title: "학부모 전화번호", contentView: UIView())
+    let studentPhoneNumberContentView = CustomContentView(title: "학생 전화번호", contentView: CustomPhoneNumberView())
+    let parentPhoneNumberContentView = CustomContentView(title: "학부모 전화번호", contentView: CustomPhoneNumberView())
     let nextButton = CompleteButton(title: "다음으로")
     
     override func setProperties() {

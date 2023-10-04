@@ -14,7 +14,9 @@ enum Color{
     static let gray2 = UIColor(hex: "#E8E8E8")!
     static let gray3 = UIColor(hex: "#D3D4D5")!
     static let gray4 = UIColor(hex: "#B5B5B5")!
-    static let gray5 = UIColor(hex: "#898989")
+    static let gray5 = UIColor(hex: "#898989")!
+    static let gray6 = UIColor(hex: "#454545")!
+
     static let black = UIColor(hex: "#000000")!
     static let lightBlue = UIColor(hex: "#F0F8FF")!
     static let lightRed = UIColor(hex: "#FFF0F0")!

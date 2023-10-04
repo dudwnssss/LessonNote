@@ -52,6 +52,11 @@
 		1048F94A2ACAACD300A56C76 /* CustomContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9492ACAACD300A56C76 /* CustomContentView.swift */; };
 		1048F94C2ACAB54700A56C76 /* StudentIconStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F94B2ACAB54700A56C76 /* StudentIconStackView.swift */; };
 		1048F94F2ACAF9AE00A56C76 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F94E2ACAF9AE00A56C76 /* CustomTextFieldView.swift */; };
+		1048F9522ACC02E100A56C76 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9512ACC02E100A56C76 /* Weekday.swift */; };
+		1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9532ACC0DD700A56C76 /* StudentRepository.swift */; };
+		1048F9562ACC644600A56C76 /* CustomPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9552ACC644600A56C76 /* CustomPhoneNumberView.swift */; };
+		1048F9582ACC647900A56C76 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9572ACC647900A56C76 /* SeparatorView.swift */; };
+		1048F9A42ACD0E4E00A56C76 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +103,11 @@
 		1048F9492ACAACD300A56C76 /* CustomContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomContentView.swift; sourceTree = "<group>"; };
 		1048F94B2ACAB54700A56C76 /* StudentIconStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIconStackView.swift; sourceTree = "<group>"; };
 		1048F94E2ACAF9AE00A56C76 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		1048F9512ACC02E100A56C76 /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
+		1048F9532ACC0DD700A56C76 /* StudentRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentRepository.swift; sourceTree = "<group>"; };
+		1048F9552ACC644600A56C76 /* CustomPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPhoneNumberView.swift; sourceTree = "<group>"; };
+		1048F9572ACC647900A56C76 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +166,7 @@
 		1016FAD72AC94918003E7612 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				1048F9502ACC014000A56C76 /* Enum */,
 				1016FADF2AC94995003E7612 /* Resource */,
 				1016FADE2AC94983003E7612 /* Extension */,
 				1016FADD2AC9497B003E7612 /* Component */,
@@ -169,7 +180,6 @@
 			children = (
 				1016FB2B2AC9C6E9003E7612 /* Model */,
 				1016FB2A2AC9C6DF003E7612 /* Repository */,
-				1016FB2E2AC9C892003E7612 /* StudentIcon.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -282,7 +292,10 @@
 				1016FB382ACA920D003E7612 /* CustomTextField.swift */,
 				1048F9442ACA96C500A56C76 /* CompleteButton.swift */,
 				1048F9492ACAACD300A56C76 /* CustomContentView.swift */,
+				1048F9552ACC644600A56C76 /* CustomPhoneNumberView.swift */,
 				1048F94E2ACAF9AE00A56C76 /* CustomTextFieldView.swift */,
+				1048F9572ACC647900A56C76 /* SeparatorView.swift */,
+				1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -298,6 +311,7 @@
 		1016FB2A2AC9C6DF003E7612 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				1048F9532ACC0DD700A56C76 /* StudentRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -354,6 +368,15 @@
 				1016FB362ACA90D1003E7612 /* StudentIconButton.swift */,
 			);
 			path = StudentIcon;
+			sourceTree = "<group>";
+		};
+		1048F9502ACC014000A56C76 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				1016FB2E2AC9C892003E7612 /* StudentIcon.swift */,
+				1048F9512ACC02E100A56C76 /* Weekday.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -446,6 +469,8 @@
 				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
 				1016FAED2AC94A96003E7612 /* UIVIew+.swift in Sources */,
 				1016FB272AC97ABC003E7612 /* LessonTimeStackView.swift in Sources */,
+				1048F9522ACC02E100A56C76 /* Weekday.swift in Sources */,
+				1048F9562ACC644600A56C76 /* CustomPhoneNumberView.swift in Sources */,
 				1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */,
 				1016FAE52AC949F3003E7612 /* MainTabBarController.swift in Sources */,
 				1016FB2D2AC9C6FB003E7612 /* Student.swift in Sources */,
@@ -460,8 +485,10 @@
 				1016FAFD2AC95D34003E7612 /* ReusableView.swift in Sources */,
 				1016FAEB2AC94A12003E7612 /* BaseView.swift in Sources */,
 				1016FB132AC9624B003E7612 /* HomeView.swift in Sources */,
+				1048F9582ACC647900A56C76 /* SeparatorView.swift in Sources */,
 				1016FAF72AC957C6003E7612 /* Image.swift in Sources */,
 				1016FAF32AC94ABE003E7612 /* UIViewController+.swift in Sources */,
+				1048F9A42ACD0E4E00A56C76 /* CustomButton.swift in Sources */,
 				1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */,
 				1016FB0F2AC96239003E7612 /* HomeViewController.swift in Sources */,
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,
@@ -470,6 +497,7 @@
 				1048F94A2ACAACD300A56C76 /* CustomContentView.swift in Sources */,
 				1016FAEF2AC94A9F003E7612 /* UIStackView+.swift in Sources */,
 				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
+				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
 				1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
