@@ -26,7 +26,7 @@ class CustomContentView: BaseView{
     override func setLayouts() {
         addSubviews(titleLabel, contentView)
         titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(5)
+            $0.leading.equalToSuperview()
             $0.top.equalToSuperview()
         }
         contentView.snp.makeConstraints {

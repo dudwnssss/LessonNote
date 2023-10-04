@@ -8,10 +8,6 @@
 import Foundation
 import RealmSwift
 
-
-
-
-
 class Student: Object{
     
     @Persisted(primaryKey: true) var studentID: ObjectId

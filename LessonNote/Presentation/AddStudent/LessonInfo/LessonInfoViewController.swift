@@ -9,5 +9,14 @@ import UIKit
 
 class LessonInfoViewController: BaseViewController {
     
+    let lessonInfoView = LessonInfoView()
+    
+    override func loadView() {
+        self.view = lessonInfoView
+    }
+    
+    
+    
+    
     
 }

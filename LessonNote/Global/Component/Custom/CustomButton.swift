@@ -23,6 +23,7 @@ class CustomButton: UIButton {
     func setProperties(){
         cornerRadius = 10
         configureButton()
+        addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
     }
         
     func configureButton(){
@@ -37,6 +38,10 @@ class CustomButton: UIButton {
             borderColor = Color.gray6
             setTitleColor(Color.gray6, for: .normal)
         }
+    }
+    
+    @objc func buttonDidTap(){
+        isActivated.toggle()
     }
 
     @available(*, unavailable)

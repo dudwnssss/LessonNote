@@ -20,6 +20,12 @@ class StudentInfoViewController: BaseViewController {
     
     override func setProperties() {
         hideKeyboardWhenTappedAround()
+        studentInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc func nextButtonDidTap(){
+        let vc = LessonInfoViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 
