@@ -23,7 +23,17 @@ class LessonInfoViewController: BaseViewController {
             $0.dataSource = self
             $0.register(cell: LessonTimeCell.self)
         }
+        lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
 
+    }
+    
+    override func setNavigationBar() {
+        navigationItem.title = "학생 추가"
+    }
+    
+    @objc func nextButtonDidTap(){
+        let vc = StartDateInfoViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
