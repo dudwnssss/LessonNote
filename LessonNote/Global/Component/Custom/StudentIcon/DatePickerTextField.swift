@@ -10,6 +10,7 @@ import UIKit
 class DatePickerTextField: UITextField {
     
     let dateTimePicker = DateTimePicker()
+    let arrowImageView = UIImageView()
     
     var toolbar: UIToolbar {
         let toolbar = UIToolbar()
@@ -34,6 +35,10 @@ class DatePickerTextField: UITextField {
         dateTimePicker.do {
             $0.setup()
         }
+        arrowImageView.do {
+            $0.image = Image.arrowDown
+        }
+
         inputView = dateTimePicker.inputView
         inputAccessoryView = toolbar
         text = "09:00 - 10:00"
@@ -46,9 +51,14 @@ class DatePickerTextField: UITextField {
     }
     
     func setLayouts(){
+        addSubview(arrowImageView)
         snp.makeConstraints {
-            $0.width.equalTo(110)
-            $0.height.equalTo(20)
+            $0.width.equalTo(130)
+            $0.height.equalTo(30)
+        }
+        arrowImageView.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
         }
     }
     

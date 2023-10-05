@@ -9,18 +9,26 @@ import UIKit
 
 class CustomContentView: BaseView{
     
+    var title = ""
     let titleLabel = UILabel()
     var contentView = UIView()
     
     init(title: String, contentView: UIView) {
-        titleLabel.text = title
+        self.title = title
         self.contentView = contentView
         super.init(frame: .zero)
     }
     
     override func setProperties() {
+        contentView.backgroundColor = .systemTeal
         titleLabel.do {
             $0.font = Font.bold16
+            let fullString = title
+            let attrString = NSMutableAttributedString(string: fullString)
+            let range = (fullString as NSString).range(of: "*")
+            attrString.addAttribute(.foregroundColor, value: Color.blue, range: range)
+            titleLabel.textColor = Color.black
+            titleLabel.attributedText = attrString
         }
     }
     override func setLayouts() {

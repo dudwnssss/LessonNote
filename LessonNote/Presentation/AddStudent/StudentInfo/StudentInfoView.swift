@@ -13,8 +13,8 @@ class StudentInfoView: BaseView {
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
     
-    let studentContentView = CustomContentView(title: "학생 이름*", contentView: CustomTextFieldView(placeholder: "학생의 이름을 입력해 주세요", limitCount: 20))
-    let iconContentView = CustomContentView(title: "아이콘", contentView: StudentIconStackView())
+    let studentContentView = CustomContentView(title: "학생 이름 *", contentView: CustomTextFieldView(placeholder: "학생의 이름을 입력해 주세요", limitCount: 20))
+    let iconContentView = CustomContentView(title: "아이콘 *", contentView: StudentIconStackView())
     let studentPhoneNumberContentView = CustomContentView(title: "학생 전화번호", contentView: CustomPhoneNumberView())
     let parentPhoneNumberContentView = CustomContentView(title: "학부모 전화번호", contentView: CustomPhoneNumberView())
     let nextButton = CompleteButton(title: "다음으로")
@@ -51,6 +51,7 @@ class StudentInfoView: BaseView {
         studentContentView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(36.adjusted)
+            $0.width.equalTo(228.adjusted)
         }
         
         iconContentView.snp.makeConstraints {

@@ -47,8 +47,8 @@ class CustomTextFieldView: BaseView {
         underLineView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
-            $0.size.equalTo(200)
         }
+        
         textCountLabel.snp.makeConstraints {
             $0.width.equalTo(20)
             $0.trailing.equalToSuperview()
@@ -63,7 +63,6 @@ class CustomTextFieldView: BaseView {
         
         snp.makeConstraints {
             $0.height.equalTo(30)
-            $0.width.equalTo(228)
         }
     }
     

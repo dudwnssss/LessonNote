@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1010CBBB2ACDB2D400B40498 /* UIPickerView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */; };
+		1010CBBE2ACE4A7D00B40498 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1010CBBD2ACE4A7D00B40498 /* FSCalendar */; };
+		1010CBC12ACE774500B40498 /* LessonTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBC02ACE774500B40498 /* LessonTimeCell.swift */; };
+		1010CBC52ACE788500B40498 /* LessonTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBC42ACE788500B40498 /* LessonTime.swift */; };
+		1010CBC72ACE78CF00B40498 /* LessonInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBC62ACE78CF00B40498 /* LessonInfoViewModel.swift */; };
+		1010CBCA2ACE839B00B40498 /* StartDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBC92ACE839B00B40498 /* StartDateViewController.swift */; };
+		1010CBCC2ACE83A200B40498 /* StartInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBCB2ACE83A200B40498 /* StartInfoView.swift */; };
 		1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FAC22AC93F45003E7612 /* AppDelegate.swift */; };
 		1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FAC42AC93F45003E7612 /* SceneDelegate.swift */; };
 		1016FACC2AC93F47003E7612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1016FACB2AC93F47003E7612 /* Assets.xcassets */; };
@@ -40,7 +47,6 @@
 		1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB2E2AC9C892003E7612 /* StudentIcon.swift */; };
 		1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB302AC9CA50003E7612 /* HomeViewModel.swift */; };
 		1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB362ACA90D1003E7612 /* StudentIconButton.swift */; };
-		1016FB392ACA920D003E7612 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB382ACA920D003E7612 /* CustomTextField.swift */; };
 		1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9382ACA931C00A56C76 /* StudentInfoView.swift */; };
 		1048F93B2ACA932400A56C76 /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */; };
 		1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */; };
@@ -61,9 +67,18 @@
 		1048F9A82ACD2A2500A56C76 /* DatePickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9A72ACD2A2500A56C76 /* DatePickerVIew.swift */; };
 		1048F9AA2ACD2F0F00A56C76 /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9A92ACD2F0F00A56C76 /* DatePickerTextField.swift */; };
 		1048F9AC2ACD3E8E00A56C76 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AB2ACD3E8E00A56C76 /* Date+.swift */; };
+		1048F9AE2ACD599900A56C76 /* WeekCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AD2ACD599900A56C76 /* WeekCountView.swift */; };
+		1048F9B02ACD5E7000A56C76 /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */; };
+		1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+.swift"; sourceTree = "<group>"; };
+		1010CBC02ACE774500B40498 /* LessonTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeCell.swift; sourceTree = "<group>"; };
+		1010CBC42ACE788500B40498 /* LessonTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTime.swift; sourceTree = "<group>"; };
+		1010CBC62ACE78CF00B40498 /* LessonInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoViewModel.swift; sourceTree = "<group>"; };
+		1010CBC92ACE839B00B40498 /* StartDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDateViewController.swift; sourceTree = "<group>"; };
+		1010CBCB2ACE83A200B40498 /* StartInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInfoView.swift; sourceTree = "<group>"; };
 		1016FABF2AC93F45003E7612 /* LessonNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LessonNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1016FAC22AC93F45003E7612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1016FAC42AC93F45003E7612 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +110,6 @@
 		1016FB2E2AC9C892003E7612 /* StudentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIcon.swift; sourceTree = "<group>"; };
 		1016FB302AC9CA50003E7612 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1016FB362ACA90D1003E7612 /* StudentIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIconButton.swift; sourceTree = "<group>"; };
-		1016FB382ACA920D003E7612 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		1048F9382ACA931C00A56C76 /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoView.swift; sourceTree = "<group>"; };
 		1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
 		1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +130,9 @@
 		1048F9A72ACD2A2500A56C76 /* DatePickerVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerVIew.swift; sourceTree = "<group>"; };
 		1048F9A92ACD2F0F00A56C76 /* DatePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
 		1048F9AB2ACD3E8E00A56C76 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		1048F9AD2ACD599900A56C76 /* WeekCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCountView.swift; sourceTree = "<group>"; };
+		1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
+		1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +143,7 @@
 				1016FB0B2AC95E3E003E7612 /* RealmSwift in Frameworks */,
 				1016FB092AC95E3E003E7612 /* Realm in Frameworks */,
 				1016FB032AC95E10003E7612 /* SnapKit in Frameworks */,
+				1010CBBE2ACE4A7D00B40498 /* FSCalendar in Frameworks */,
 				1016FB062AC95E1A003E7612 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +151,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1010CBBF2ACE4A9800B40498 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1048F9572ACC647900A56C76 /* SeparatorView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1010CBC82ACE837E00B40498 /* StartDateInfo */ = {
+			isa = PBXGroup;
+			children = (
+				1010CBCB2ACE83A200B40498 /* StartInfoView.swift */,
+				1010CBC92ACE839B00B40498 /* StartDateViewController.swift */,
+			);
+			path = StartDateInfo;
+			sourceTree = "<group>";
+		};
 		1016FAB62AC93F45003E7612 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +265,7 @@
 				1016FAEE2AC94A9F003E7612 /* UIStackView+.swift */,
 				1048F9462ACAAC7E00A56C76 /* CGFloat+.swift */,
 				1048F9AB2ACD3E8E00A56C76 /* Date+.swift */,
+				1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -295,17 +331,18 @@
 		1016FB1A2AC9685A003E7612 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				1010CBBF2ACE4A9800B40498 /* Common */,
 				1048F94D2ACAB54B00A56C76 /* StudentIcon */,
 				1016FB202AC969E6003E7612 /* LessonTimeView.swift */,
 				1016FB262AC97ABC003E7612 /* LessonTimeStackView.swift */,
 				1048F9A52ACD210200A56C76 /* WeekdayStackView.swift */,
-				1016FB382ACA920D003E7612 /* CustomTextField.swift */,
 				1048F9442ACA96C500A56C76 /* CompleteButton.swift */,
 				1048F9492ACAACD300A56C76 /* CustomContentView.swift */,
 				1048F9552ACC644600A56C76 /* CustomPhoneNumberView.swift */,
 				1048F94E2ACAF9AE00A56C76 /* CustomTextFieldView.swift */,
-				1048F9572ACC647900A56C76 /* SeparatorView.swift */,
 				1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */,
+				1048F9AD2ACD599900A56C76 /* WeekCountView.swift */,
+				1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -314,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */,
+				1010CBC02ACE774500B40498 /* LessonTimeCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -330,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				1016FB2C2AC9C6FA003E7612 /* Student.swift */,
+				1010CBC42ACE788500B40498 /* LessonTime.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -339,6 +378,7 @@
 			children = (
 				1016FB332ACA9052003E7612 /* StudentInfo */,
 				1016FB342ACA9059003E7612 /* LessonInfo */,
+				1010CBC82ACE837E00B40498 /* StartDateInfo */,
 				1016FB352ACA907D003E7612 /* CheckInfo */,
 			);
 			path = AddStudent;
@@ -358,6 +398,7 @@
 			children = (
 				1048F93E2ACA936400A56C76 /* LessonInfoView.swift */,
 				1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */,
+				1010CBC62ACE78CF00B40498 /* LessonInfoViewModel.swift */,
 			);
 			path = LessonInfo;
 			sourceTree = "<group>";
@@ -378,6 +419,7 @@
 				1016FB362ACA90D1003E7612 /* StudentIconButton.swift */,
 				1048F9A72ACD2A2500A56C76 /* DatePickerVIew.swift */,
 				1048F9A92ACD2F0F00A56C76 /* DatePickerTextField.swift */,
+				1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */,
 			);
 			path = StudentIcon;
 			sourceTree = "<group>";
@@ -412,6 +454,7 @@
 				1016FB052AC95E1A003E7612 /* Then */,
 				1016FB082AC95E3E003E7612 /* Realm */,
 				1016FB0A2AC95E3E003E7612 /* RealmSwift */,
+				1010CBBD2ACE4A7D00B40498 /* FSCalendar */,
 			);
 			productName = LessonNote;
 			productReference = 1016FABF2AC93F45003E7612 /* LessonNote.app */;
@@ -445,6 +488,7 @@
 				1016FB012AC95E10003E7612 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				1016FB042AC95E19003E7612 /* XCRemoteSwiftPackageReference "Then" */,
 				1016FB072AC95E3E003E7612 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				1010CBBC2ACE4A7D00B40498 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = 1016FAC02AC93F45003E7612 /* Products */;
 			projectDirPath = "";
@@ -473,28 +517,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1016FB392ACA920D003E7612 /* CustomTextField.swift in Sources */,
 				1016FAE92AC94A0C003E7612 /* BaseViewController.swift in Sources */,
+				1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */,
 				1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */,
 				1016FAFF2AC95DC2003E7612 /* UICollectionView+ReusableView.swift in Sources */,
 				1048F9A62ACD210200A56C76 /* WeekdayStackView.swift in Sources */,
+				1010CBC12ACE774500B40498 /* LessonTimeCell.swift in Sources */,
 				1048F9472ACAAC7E00A56C76 /* CGFloat+.swift in Sources */,
 				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
 				1016FAED2AC94A96003E7612 /* UIVIew+.swift in Sources */,
 				1016FB272AC97ABC003E7612 /* LessonTimeStackView.swift in Sources */,
 				1048F9522ACC02E100A56C76 /* Weekday.swift in Sources */,
 				1048F9562ACC644600A56C76 /* CustomPhoneNumberView.swift in Sources */,
+				1048F9B02ACD5E7000A56C76 /* NumberPickerView.swift in Sources */,
 				1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */,
 				1016FAE52AC949F3003E7612 /* MainTabBarController.swift in Sources */,
 				1016FB2D2AC9C6FB003E7612 /* Student.swift in Sources */,
 				1048F94F2ACAF9AE00A56C76 /* CustomTextFieldView.swift in Sources */,
 				1048F9412ACA936E00A56C76 /* CheckInfoViewController.swift in Sources */,
 				1048F9432ACA937400A56C76 /* CheckInfoView.swift in Sources */,
+				1010CBBB2ACDB2D400B40498 /* UIPickerView+.swift in Sources */,
 				1048F93F2ACA936400A56C76 /* LessonInfoView.swift in Sources */,
 				1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */,
 				1048F9AA2ACD2F0F00A56C76 /* DatePickerTextField.swift in Sources */,
 				1016FAFB2AC95AFB003E7612 /* Color.swift in Sources */,
 				1048F94C2ACAB54700A56C76 /* StudentIconStackView.swift in Sources */,
+				1010CBCA2ACE839B00B40498 /* StartDateViewController.swift in Sources */,
 				1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */,
 				1016FAFD2AC95D34003E7612 /* ReusableView.swift in Sources */,
 				1016FAEB2AC94A12003E7612 /* BaseView.swift in Sources */,
@@ -512,13 +560,17 @@
 				1048F94A2ACAACD300A56C76 /* CustomContentView.swift in Sources */,
 				1048F9AC2ACD3E8E00A56C76 /* Date+.swift in Sources */,
 				1016FAEF2AC94A9F003E7612 /* UIStackView+.swift in Sources */,
+				1010CBC52ACE788500B40498 /* LessonTime.swift in Sources */,
 				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
 				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
 				1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */,
+				1010CBC72ACE78CF00B40498 /* LessonInfoViewModel.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
+				1010CBCC2ACE83A200B40498 /* StartInfoView.swift in Sources */,
 				1016FB292AC97C2C003E7612 /* StudentCollectionViewCell.swift in Sources */,
 				1048F9452ACA96C500A56C76 /* CompleteButton.swift in Sources */,
+				1048F9AE2ACD599900A56C76 /* WeekCountView.swift in Sources */,
 				1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,6 +781,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1010CBBC2ACE4A7D00B40498 /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		1016FB012AC95E10003E7612 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -756,6 +816,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1010CBBD2ACE4A7D00B40498 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1010CBBC2ACE4A7D00B40498 /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
 		1016FB022AC95E10003E7612 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1016FB012AC95E10003E7612 /* XCRemoteSwiftPackageReference "SnapKit" */;

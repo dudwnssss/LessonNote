@@ -10,6 +10,7 @@ import UIKit.UIImage
 enum Image {
     static let back = UIImage(named: "back")!
     static let dismiss = UIImage(named: "dismiss")!
+    static let dismissSmall = UIImage(named: "dismiss.small")!
     static let memo = UIImage(named: "memo")!
     static let notification = UIImage(named: "nofification")!
     static let setting = UIImage(named: "setting")!
@@ -24,6 +25,10 @@ enum Image {
     static let phoneFill = UIImage(named: "phone.fill")!
     static let studentAdd = UIImage(named: "student.add")!
     static let notePunched = UIImage(named: "note.punched")!
+    static let checkbox = UIImage(named: "checkbox")!
+    static let checkboxFill = UIImage(named: "checkbox.fill")!
+    static let arrowDown = UIImage(named: "arrow.down")!
+
     
     enum Icon{
         static let studentPink = UIImage(named: "student.pink")!

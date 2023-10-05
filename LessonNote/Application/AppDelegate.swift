@@ -41,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UITabBar.appearance().backgroundColor = Color.white
         }
         
-        sleep(1)
         return true
     }
 
