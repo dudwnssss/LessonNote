@@ -34,6 +34,7 @@ class CompleteButton: UIButton {
     
     func configureButton(){
         backgroundColor = isActivated ? Color.black : Color.gray4
+//        isUserInteractionEnabled = isActivated
     }
 
     @available(*, unavailable)

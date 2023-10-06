@@ -9,6 +9,29 @@ import Foundation
 
 class StudentInfoViewModel{
     
-    
-    
+    var isValid: Observable<Bool> = Observable(false)
+    var name: Observable<String?> = Observable(nil)
+    var studentIcon: Observable<StudentIcon.RawValue?> = Observable(nil)
+    var studentPhoneNumber: Observable<String?>  = Observable(nil)
+    var parentPhoneNumber: Observable<String?>  = Observable(nil)
+   
+
+    func checkValidation(){
+        guard let name = name.value else {
+            print("이름 공백")
+            isValid.value = false
+            return
+        }
+        guard let studentPhoneNumber = studentPhoneNumber.value else {
+            print("학생 전화번호 공백")
+            isValid.value = false
+            return
+        }
+        guard let parentPhoneNumber = parentPhoneNumber.value else {
+            print("학부모 전화번호 공백")
+            isValid.value = false
+            return
+        }
+        isValid.value = true
+    }
 }

@@ -17,4 +17,5 @@ class TempStudent {
     var studentPhoneNumber: String?
     var parentPhoneNumber: String?
     var lessonSchedules: LessonSchedule?
+    
 }

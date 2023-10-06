@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LessonTime{
+struct LessonTime {
     let weekday: Weekday
     let startTime: Date
     let endTime: Date

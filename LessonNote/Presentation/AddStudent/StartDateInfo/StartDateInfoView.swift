@@ -34,8 +34,6 @@ class StartDateInfoView: BaseView {
             $0.borderWidth = 5
             $0.borderColor = Color.gray1
         }
-
-
     }
     
     override func setLayouts() {
@@ -58,7 +56,7 @@ class StartDateInfoView: BaseView {
 
         nextButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().offset(-48)
+            $0.bottom.equalToSuperview().offset(-48.adjusted)
         }
     }
 }

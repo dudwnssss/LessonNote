@@ -7,9 +7,9 @@
 
 import UIKit
 
-class DatePickerTextField: UITextField {
+class LessonTimePickerTextField: UITextField {
     
-    let dateTimePicker = DateTimePicker()
+    let dateTimePicker = LessonTimePickerView()
     let arrowImageView = UIImageView()
     
     var toolbar: UIToolbar {
@@ -32,6 +32,7 @@ class DatePickerTextField: UITextField {
     }
     
     func setProperties(){
+//        backgroundColor = .systemPink
         dateTimePicker.do {
             $0.setup()
         }
@@ -54,7 +55,6 @@ class DatePickerTextField: UITextField {
         addSubview(arrowImageView)
         snp.makeConstraints {
             $0.width.equalTo(130)
-            $0.height.equalTo(30)
         }
         arrowImageView.snp.makeConstraints {
             $0.trailing.equalToSuperview()

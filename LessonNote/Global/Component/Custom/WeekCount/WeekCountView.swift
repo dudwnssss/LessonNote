@@ -17,6 +17,7 @@ class WeekCountView: BaseView{
     let descriptionLabel = UILabel()
     
     override func setProperties() {
+        backgroundColor = .systemPink
         titleLabel.do {
             $0.text = "격주로 수업해요"
         }
@@ -50,10 +51,14 @@ class WeekCountView: BaseView{
             $0.centerY.equalTo(textField)
             $0.leading.equalTo(textField.snp.trailing).offset(6)
         }
+        snp.makeConstraints {
+            $0.height.equalTo(60)
+        }
     }
     
     
     @objc func checkboxButtonDidTap(){
+        print(#fileID, #function, #line, "- ")
         checkboxButton.isTapped.toggle()
         configureView()
     }

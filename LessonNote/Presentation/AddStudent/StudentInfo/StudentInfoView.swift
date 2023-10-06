@@ -10,16 +10,19 @@ import SnapKit
 
 class StudentInfoView: BaseView {
     
+    let scrollView = UIScrollView()
+    let contentView = UIView()
+    
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
-    
-    let studentContentView = CustomContentView(title: "학생 이름 *", contentView: CustomTextFieldView(placeholder: "학생의 이름을 입력해 주세요", limitCount: 20))
-    let iconContentView = CustomContentView(title: "아이콘 *", contentView: StudentIconStackView())
-    let studentPhoneNumberContentView = CustomContentView(title: "학생 전화번호", contentView: CustomPhoneNumberView())
-    let parentPhoneNumberContentView = CustomContentView(title: "학부모 전화번호", contentView: CustomPhoneNumberView())
+    let studentNameView = CustomStudentNameView()
+    let studentIconView = CustomStudentIconView()
+    let studentPhoneNumberView = CustomStudentPhoneNumberView()
+    let parentPhoneNumberView = CustomParentPhoneNumberView()
     let nextButton = CompleteButton(title: "다음으로")
     
     override func setProperties() {
+    
         titleLabel.do {
             let fullString = "과외할 학생을\n소개해 주세요"
             let attrString = NSMutableAttributedString(string: fullString)
@@ -37,39 +40,53 @@ class StudentInfoView: BaseView {
     }
     
     override func setLayouts() {
-        addSubviews(titleLabel, descriptionLabel, studentContentView, iconContentView, studentPhoneNumberContentView, parentPhoneNumberContentView, nextButton)
+        addSubview(scrollView)
+        scrollView.snp.makeConstraints {
+            $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalToSuperview()
+        }
+        
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(scrollView.contentLayoutGuide)
+            $0.width.equalToSuperview()
+            $0.height.equalTo(712.adjusted)
+            print(UIScreen.main.bounds.width, "hi")
+        }
+        
+        contentView.addSubviews(titleLabel, descriptionLabel, studentNameView, studentIconView, studentPhoneNumberView, parentPhoneNumberView)
                 
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(25)
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            $0.top.equalToSuperview().offset(20)
         }
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(4)
             $0.leading.equalTo(titleLabel)
         }
         
-        studentContentView.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20)
+        studentNameView.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(25)
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(36.adjusted)
-            $0.width.equalTo(228.adjusted)
         }
         
-        iconContentView.snp.makeConstraints {
-            $0.leading.equalTo(studentContentView)
-            $0.top.equalTo(studentContentView.snp.bottom).offset(36.adjusted)
+        studentIconView.snp.makeConstraints {
+            $0.leading.equalTo(studentNameView)
+            $0.top.equalTo(studentNameView.snp.bottom).offset(36.adjusted)
         }
-        studentPhoneNumberContentView.snp.makeConstraints {
-            $0.leading.equalTo(studentContentView)
-            $0.top.equalTo(iconContentView.snp.bottom).offset(36.adjusted)
+        studentPhoneNumberView.snp.makeConstraints {
+            $0.leading.equalTo(studentNameView)
+            $0.top.equalTo(studentIconView.snp.bottom).offset(36.adjusted)
         }
-        parentPhoneNumberContentView.snp.makeConstraints {
-            $0.leading.equalTo(studentContentView)
-            $0.top.equalTo(studentPhoneNumberContentView.snp.bottom).offset(36.adjusted)
+        parentPhoneNumberView.snp.makeConstraints {
+            $0.leading.equalTo(studentNameView)
+            $0.top.equalTo(studentPhoneNumberView.snp.bottom).offset(36.adjusted)
         }
 
+        addSubview(nextButton)
         nextButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.bottom.equalToSuperview().offset(-48)
+            $0.bottom.equalToSuperview().offset(-48.adjusted)
         }
     }
 }

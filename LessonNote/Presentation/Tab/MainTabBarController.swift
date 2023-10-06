@@ -12,7 +12,7 @@ class MainTabBarContorller: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setViewContollers()
-        tabBar.tintColor = Color.black
+        setupTabbarUI()
     }
     
 }
@@ -38,4 +38,11 @@ extension MainTabBarContorller{
         ], animated: true)
     }
     
+}
+
+extension MainTabBarContorller {
+    private func setupTabbarUI() {
+        tabBar.tintColor = Color.black
+
+    }
 }

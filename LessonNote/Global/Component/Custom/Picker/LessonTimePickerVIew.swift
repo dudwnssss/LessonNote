@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DateTimePicker: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+class LessonTimePickerView: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var didSelectTimes: ((_ start: Date, _ end: Date) -> Void)?
     

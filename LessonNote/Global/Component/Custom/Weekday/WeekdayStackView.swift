@@ -27,13 +27,14 @@ class WeekdayStackView: UIStackView{
         }
         axis = .horizontal
         spacing = 4
+        distribution = .fillEqually
     }
     
     func setLayouts() {
         weekdayButtons.forEach {
             addArrangedSubviews($0)
             $0.snp.makeConstraints {
-                $0.width.equalTo(43.adjusted)
+//                $0.width.equalTo(43.adjusted)
                 $0.height.equalTo(33)
             }
         }
