@@ -11,7 +11,7 @@ class HomeView: BaseView{
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     let addStudentButton = UIButton()
-    
+
     
     override func setProperties() {
         collectionView.do {
@@ -20,7 +20,6 @@ class HomeView: BaseView{
         addStudentButton.do {
             $0.setImage(Image.studentAdd, for: .normal)
         }
-
 
     }
     
@@ -34,6 +33,9 @@ class HomeView: BaseView{
             $0.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
         }
     }
+    
+
+ 
     
     func createLayout() -> UICollectionViewLayout{
         
