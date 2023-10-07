@@ -13,7 +13,6 @@ final class CustomWeekCountView: BaseView{
     let weekCountView = WeekCountView()
     
     override func setLayouts() {
-        backgroundColor = .yellow
         addSubviews(title, weekCountView)
         title.snp.makeConstraints {
             $0.leading.top.equalToSuperview()

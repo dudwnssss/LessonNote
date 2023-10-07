@@ -8,7 +8,17 @@
 import UIKit
 
 class WeekdayStackView: UIStackView{
-
+    
+    var selectedWeekdays: [Weekday] {
+        var selectedDays: [Weekday] = []
+        for (index, button) in weekdayButtons.enumerated() {
+            if button.isActivated {
+                selectedDays.append(weekdays[index])
+            }
+        }
+        return selectedDays
+    }
+    
     let weekdays = Weekday.allCases
     var weekdayButtons: [CustomButton] = []
     

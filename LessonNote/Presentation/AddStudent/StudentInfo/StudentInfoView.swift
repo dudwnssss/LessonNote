@@ -51,7 +51,6 @@ class StudentInfoView: BaseView {
             $0.edges.equalTo(scrollView.contentLayoutGuide)
             $0.width.equalToSuperview()
             $0.height.equalTo(712.adjusted)
-            print(UIScreen.main.bounds.width, "hi")
         }
         
         contentView.addSubviews(titleLabel, descriptionLabel, studentNameView, studentIconView, studentPhoneNumberView, parentPhoneNumberView)

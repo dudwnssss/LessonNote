@@ -9,15 +9,20 @@ import UIKit
 
 class LessonTimePickerTextField: UITextField {
     
+    var selectedStartTime: Date?
+    var selectedEndTime: Date?
+    
     let dateTimePicker = LessonTimePickerView()
     let arrowImageView = UIImageView()
+    
+    var passLessonTime: ((Date, Date) -> Void)?
     
     var toolbar: UIToolbar {
         let toolbar = UIToolbar()
         toolbar.barStyle = .default
         toolbar.sizeToFit()
         
-        let doneButton = UIBarButtonItem(title: "추가", style: .done, target: self, action: #selector(doneButtonTapped))
+        let doneButton = UIBarButtonItem(title: "추가", style: .done, target: self, action: #selector(addButtonDidTap))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolbar.items = [flexibleSpace, doneButton]
@@ -32,7 +37,6 @@ class LessonTimePickerTextField: UITextField {
     }
     
     func setProperties(){
-//        backgroundColor = .systemPink
         dateTimePicker.do {
             $0.setup()
         }
@@ -45,8 +49,9 @@ class LessonTimePickerTextField: UITextField {
         text = "09:00 - 10:00"
         tintColor = .clear
         dateTimePicker.didSelectTimes = { [weak self] (startTime, endTime) in
+            self?.selectedStartTime = startTime
+            self?.selectedEndTime = endTime
             let timeRange = Date.buildTimeRangeString(startDate: startTime, endDate: endTime)
-            print(timeRange)
             self?.text = timeRange
         }
     }
@@ -62,9 +67,12 @@ class LessonTimePickerTextField: UITextField {
         }
     }
     
-    @objc func doneButtonTapped() {
+    @objc func addButtonDidTap() {
+            guard let selectedStartTime, let selectedEndTime else {return}
+            passLessonTime?(selectedStartTime, selectedEndTime)
             endEditing(true)
         }
+    
     
     @available(*, unavailable)
     required init(coder: NSCoder) {

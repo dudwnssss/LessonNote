@@ -30,6 +30,7 @@ class NumberPickerView: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         if let index = numbers.firstIndex(of: defaultNumber) {
             pickerView.selectRow(index, inComponent: 0, animated: false)
         }
+        didSelectNumber?(defaultNumber)
     }
     
     // MARK: - UIPickerViewDelegate & DataSource

@@ -17,8 +17,8 @@ final class LessonInfoView: BaseView {
     let weekCountView = CustomWeekCountView()
     let nextButton = CompleteButton(title: "다음으로")
     
+    
     override func setProperties() {
-
         titleLabel.do {
             let fullString = "수업 시간을\n알려주세요"
             let attrString = NSMutableAttributedString(string: fullString)

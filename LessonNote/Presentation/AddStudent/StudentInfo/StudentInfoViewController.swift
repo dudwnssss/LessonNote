@@ -7,8 +7,9 @@
 
 import UIKit
 
-class StudentInfoViewController: BaseViewController {
+class StudentInfoViewController: BaseViewController, KeyboardEvent {
     
+    var transformView: UIView {return self.view}
     let studentInfoView = StudentInfoView()
     let studentInfoViewModel = StudentInfoViewModel()
     
@@ -16,17 +17,18 @@ class StudentInfoViewController: BaseViewController {
         self.view = studentInfoView
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    
-    
     override func setNavigationBar() {
         navigationItem.title = "학생 추가"
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        removeKeyboardObserver()
+    }
+    
+    
     override func setProperties() {
+        setupKeyboardEvent()
         hideKeyboardWhenTappedAround()
         studentInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         studentInfoView.studentNameView.textFeildView.textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
@@ -37,6 +39,8 @@ class StudentInfoViewController: BaseViewController {
     @objc func nextButtonDidTap(){
         let vc = LessonInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
+        studentInfoViewModel.storeData()
+        TempStudent.shared.studentIcon = studentInfoView.studentIconView.iconStackView.selectedIcon
     }
     
     @objc func nameTextFieldDidChange(){
@@ -45,6 +49,7 @@ class StudentInfoViewController: BaseViewController {
             studentInfoViewModel.checkValidation()
         }
     }
+    
     @objc func studentNumberTextFieldDidChange(){
         if let text = studentInfoView.studentPhoneNumberView.textFeildView.textField.text {
             studentInfoViewModel.studentPhoneNumber.value = text
@@ -73,3 +78,4 @@ class StudentInfoViewController: BaseViewController {
         }
     }
 }
+

@@ -20,6 +20,7 @@ class CustomCheckInfoLabel: UILabel {
         infoTitle = title
         infoContent = content
         super.init(frame: .zero)
+        setProperties()
     }
     
     func setProperties(){

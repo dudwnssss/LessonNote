@@ -28,6 +28,10 @@
 		1010CBEE2ACFB47000B40498 /* CustomWeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBED2ACFB47000B40498 /* CustomWeekdayView.swift */; };
 		1010CBF02ACFB4E100B40498 /* CustomLessonTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */; };
 		1010CBF22ACFB5FF00B40498 /* CustomWeekCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */; };
+		1010CBF52ACFEA0800B40498 /* KeyboardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF42ACFEA0800B40498 /* KeyboardEvent.swift */; };
+		1010CBF72ACFEA3500B40498 /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF62ACFEA3500B40498 /* UIResponder+.swift */; };
+		1010CBF92AD0122A00B40498 /* StartDateInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF82AD0122A00B40498 /* StartDateInfoViewModel.swift */; };
+		1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBFB2AD12C1500B40498 /* DateManager.swift */; };
 		1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FAC22AC93F45003E7612 /* AppDelegate.swift */; };
 		1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FAC42AC93F45003E7612 /* SceneDelegate.swift */; };
 		1016FACC2AC93F47003E7612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1016FACB2AC93F47003E7612 /* Assets.xcassets */; };
@@ -106,6 +110,10 @@
 		1010CBED2ACFB47000B40498 /* CustomWeekdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeekdayView.swift; sourceTree = "<group>"; };
 		1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLessonTimeView.swift; sourceTree = "<group>"; };
 		1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeekCountView.swift; sourceTree = "<group>"; };
+		1010CBF42ACFEA0800B40498 /* KeyboardEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEvent.swift; sourceTree = "<group>"; };
+		1010CBF62ACFEA3500B40498 /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
+		1010CBF82AD0122A00B40498 /* StartDateInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDateInfoViewModel.swift; sourceTree = "<group>"; };
+		1010CBFB2AD12C1500B40498 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
 		1016FABF2AC93F45003E7612 /* LessonNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LessonNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1016FAC22AC93F45003E7612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1016FAC42AC93F45003E7612 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +203,7 @@
 			children = (
 				1010CBCB2ACE83A200B40498 /* StartDateInfoView.swift */,
 				1010CBC92ACE839B00B40498 /* StartDateInfoViewController.swift */,
+				1010CBF82AD0122A00B40498 /* StartDateInfoViewModel.swift */,
 			);
 			path = StartDateInfo;
 			sourceTree = "<group>";
@@ -273,6 +282,22 @@
 			path = AddStudent;
 			sourceTree = "<group>";
 		};
+		1010CBF32ACFE9F800B40498 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				1010CBF42ACFEA0800B40498 /* KeyboardEvent.swift */,
+			);
+			path = Keyboard;
+			sourceTree = "<group>";
+		};
+		1010CBFA2AD12C0100B40498 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				1010CBFB2AD12C1500B40498 /* DateManager.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 		1016FAB62AC93F45003E7612 = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +371,8 @@
 		1016FADC2AC94974003E7612 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				1010CBFA2AD12C0100B40498 /* Date */,
+				1010CBF32ACFE9F800B40498 /* Keyboard */,
 				1048F9502ACC014000A56C76 /* Enum */,
 				1010CBDA2ACEC64700B40498 /* Observable */,
 				1016FB002AC95DD1003E7612 /* Reusable */,
@@ -372,6 +399,7 @@
 				1048F9462ACAAC7E00A56C76 /* CGFloat+.swift */,
 				1048F9AB2ACD3E8E00A56C76 /* Date+.swift */,
 				1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */,
+				1010CBF62ACFEA3500B40498 /* UIResponder+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -658,7 +686,10 @@
 				1048F9582ACC647900A56C76 /* SeparatorView.swift in Sources */,
 				1016FAF72AC957C6003E7612 /* Image.swift in Sources */,
 				1016FAF32AC94ABE003E7612 /* UIViewController+.swift in Sources */,
+				1010CBF92AD0122A00B40498 /* StartDateInfoViewModel.swift in Sources */,
+				1010CBF52ACFEA0800B40498 /* KeyboardEvent.swift in Sources */,
 				1048F9A42ACD0E4E00A56C76 /* CustomButton.swift in Sources */,
+				1010CBF72ACFEA3500B40498 /* UIResponder+.swift in Sources */,
 				1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */,
 				1010CBE62ACFA45500B40498 /* CustomStudentNameView.swift in Sources */,
 				1010CBD92ACEC5FE00B40498 /* StudentInfoViewModel.swift in Sources */,
@@ -678,6 +709,7 @@
 				1010CBE82ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
 				1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */,
+				1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */,
 				1010CBD32ACEA4D700B40498 /* CustomCheckInfoView.swift in Sources */,
 				1010CBC72ACE78CF00B40498 /* LessonInfoViewModel.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,

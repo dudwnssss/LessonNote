@@ -17,11 +17,16 @@ class CustomCheckInfoView: BaseView {
     let studentPhoneNumberLabel = CustomCheckInfoLabel(title: "전화번호", content: TempStudent.shared.studentPhoneNumber!)
     let parentPhoneNumberLabel = CustomCheckInfoLabel(title: "학부모 전화번호", content: TempStudent.shared.parentPhoneNumber!)
     
-    let weekCountLabel = CustomCheckInfoLabel(title: "격주 여부", content: "2주마다 수업")
-    let startDateLabel = CustomCheckInfoLabel(title: "수업 시작일", content: "2023년 9월 25일 (월)")
+    let lessonTimeTitleLabel = UILabel()
+    let lessonTimeLabel = UILabel()
+    var lessonTimeLables: [UILabel] = []
+    let lessonTimeStackView = UIStackView()
+    
+    let weekCountLabel = CustomCheckInfoLabel(title: "격주 여부", content: "\(TempStudent.shared.weekCount!)주 마다 수업")
+    let startDateLabel = CustomCheckInfoLabel(title: "수업 시작일", content: DateManager.shared.formatFullDateToString(date: TempStudent.shared.lessonStartDate ?? Date()))
     let separator1 = SeparatorView(color: Color.gray1)
     let separator2 = SeparatorView(color: Color.gray1)
-
+    
     override func setProperties() {
         punchImageView.do {
             $0.image = Image.notePunched
@@ -36,7 +41,39 @@ class CustomCheckInfoView: BaseView {
         iconImageView.do {
             $0.image = TempStudent.shared.studentIcon?.image
         }
+        lessonTimeTitleLabel.do {
+            let fullString = "수업 시간 | "
+            let attrString = NSMutableAttributedString(string: fullString)
+            let range = (fullString as NSString).range(of: "수업 시간")
+            attrString.addAttribute(.font, value: Font.bold12, range: range)
+            $0.font = Font.medium12
+            $0.attributedText = attrString
+        }
+        lessonTimeLabel.do {
+            $0.font = Font.medium12
+        }
 
+        setLessonTimeStackView()
+        lessonTimeStackView.do {
+            $0.axis = .vertical
+            $0.spacing = 2
+            $0.alignment = .leading
+        }
+
+    }
+    
+    
+    func setLessonTimeStackView(){
+        TempStudent.shared.lessonTimes?.forEach({ lessonTime in
+            let lessonString = lessonTime.weekday.title+"요일 "+Date.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
+            lessonTimeLabel.text = lessonString
+            let label = UILabel()
+            label.do {
+                $0.text = lessonString
+                $0.font = Font.medium12
+            }
+            lessonTimeStackView.addArrangedSubview(label)
+        })
     }
     
     override func setLayouts() {
@@ -48,13 +85,49 @@ class CustomCheckInfoView: BaseView {
             $0.top.equalTo(punchImageView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
-        backgroundView.addSubviews(iconImageView, nameLabel, studentPhoneNumberLabel, parentPhoneNumberLabel, weekCountLabel, startDateLabel, separator1, separator2)
+        backgroundView.addSubviews(iconImageView, nameLabel, studentPhoneNumberLabel, parentPhoneNumberLabel, weekCountLabel, startDateLabel, separator1, separator2, lessonTimeTitleLabel, lessonTimeStackView, weekCountLabel, startDateLabel)
+        
         iconImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(16)
             $0.leading.equalToSuperview().offset(20)
             $0.size.equalTo(65)
         }
+        nameLabel.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView)
+            $0.top.equalTo(iconImageView.snp.bottom).offset(16)
+        }
+        studentPhoneNumberLabel.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView)
+            $0.top.equalTo(nameLabel.snp.bottom).offset(12)
+        }
+        parentPhoneNumberLabel.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView)
+            $0.top.equalTo(studentPhoneNumberLabel.snp.bottom).offset(12)
+        }
+        separator1.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(parentPhoneNumberLabel.snp.bottom).offset(16)
+        }
+        lessonTimeTitleLabel.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView)
+            $0.top.equalTo(separator1.snp.bottom).offset(16)
+        }
+        lessonTimeStackView.snp.makeConstraints {
+            $0.leading.equalTo(lessonTimeTitleLabel.snp.trailing)
+            $0.top.equalTo(lessonTimeTitleLabel)
+            $0.trailing.equalToSuperview().offset(-20)
+        }
+        weekCountLabel.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView)
+            $0.top.equalTo(lessonTimeStackView.snp.bottom).offset(12)
+        }
+        separator2.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.top.equalTo(weekCountLabel.snp.bottom).offset(16)
+        }
+        startDateLabel.snp.makeConstraints {
+            $0.leading.equalTo(iconImageView)
+            $0.top.equalTo(separator2.snp.bottom).offset(16)
+        }
     }
-    
-    
 }

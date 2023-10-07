@@ -8,7 +8,9 @@
 import UIKit
 
 class StudentIconStackView: UIStackView{
-        
+    
+    var selectedIcon : StudentIcon = .pink
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
@@ -42,6 +44,7 @@ class StudentIconStackView: UIStackView{
         studentIconButtonList.forEach {
             $0.addTarget(self, action: #selector(buttonDidTap(sender:)), for: .touchUpInside)
         }
+        studentIconButtonList.first?.isTapped = true
         
         axis = .vertical
         spacing = 8
@@ -55,7 +58,6 @@ class StudentIconStackView: UIStackView{
                 (index < studentIconButtonList.count / 2 ? horizontalStackView1 : horizontalStackView2).addArrangedSubview(button)
             }
         addArrangedSubviews(horizontalStackView1, horizontalStackView2)
-
     }
     
     @objc func buttonDidTap(sender: StudentIconButton){
@@ -63,8 +65,9 @@ class StudentIconStackView: UIStackView{
             item.isTapped = false
         }
         sender.isTapped = true
+        guard let icon = sender.studentIcon else {return}
+        selectedIcon = icon
     }
-    
     
     @available(*, unavailable)
     required init(coder: NSCoder) {

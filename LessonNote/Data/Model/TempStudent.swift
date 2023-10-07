@@ -13,9 +13,11 @@ class TempStudent {
     
     var studentName: String?
     var studentIcon: StudentIcon?
-    var weekCount: Int = 1
     var studentPhoneNumber: String?
     var parentPhoneNumber: String?
-    var lessonSchedules: LessonSchedule?
+    var lessonTimes: [LessonTime]?
+    var lessonStartDate: Date?
+    var weekCount: Int?
+
     
 }

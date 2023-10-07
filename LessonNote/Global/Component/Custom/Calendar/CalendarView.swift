@@ -62,9 +62,3 @@ class CalendarView: FSCalendar {
     
 }
 
-//extension CalendarView: FSCalendarDelegateAppearance {
-//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-//        let day = Calendar.current.component(.weekday, from: date) - 1
-//
-//    }
-//}

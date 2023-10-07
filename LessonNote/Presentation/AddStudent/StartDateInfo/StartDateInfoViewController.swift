@@ -6,10 +6,18 @@
 //
 
 import UIKit
+import FSCalendar
 
 class StartDateInfoViewController: BaseViewController{
     
+    var selectedDate: Date?{
+        didSet{
+            TempStudent.shared.lessonStartDate = selectedDate
+        }
+    }
+    
     let startDateInfoView = StartDateInfoView()
+    
     override func loadView() {
         self.view = startDateInfoView
     }
@@ -19,6 +27,7 @@ class StartDateInfoViewController: BaseViewController{
     }
     
     override func setProperties() {
+        startDateInfoView.calendar.delegate = self
         hideKeyboardWhenTappedAround()
         startDateInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
@@ -26,5 +35,12 @@ class StartDateInfoViewController: BaseViewController{
     @objc func nextButtonDidTap(){
         let vc = CheckInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension StartDateInfoViewController: FSCalendarDelegate{
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDate = date
+        print(selectedDate)
     }
 }

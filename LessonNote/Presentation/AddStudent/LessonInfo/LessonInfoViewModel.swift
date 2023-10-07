@@ -9,7 +9,7 @@ import Foundation
 
 class LessonInfoViewModel{
     
-    var lessonTimeList: [LessonTime] = [LessonTime(weekday: .monday , startTime: Date(), endTime: Date()), LessonTime(weekday: .tuesday, startTime: Date(), endTime: Date())]
+    var lessonTimeList: [LessonTime] = []
     
     
 }

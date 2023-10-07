@@ -9,6 +9,7 @@ import UIKit
 
 class LessonTimeCell: UICollectionViewCell{
     
+    var delete: (() -> Void)?
     let scheduleLabel = UILabel()
     let deleteButton = UIButton()
     
@@ -26,6 +27,7 @@ class LessonTimeCell: UICollectionViewCell{
         }
         deleteButton.do {
             $0.setImage(Image.dismissSmall, for: .normal)
+            $0.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
         }
         backgroundColor = Color.gray6
         cornerRadius = 15
@@ -41,6 +43,14 @@ class LessonTimeCell: UICollectionViewCell{
             $0.trailing.equalToSuperview().offset(-10)
             $0.centerY.equalTo(scheduleLabel)
         }
+    }
+    
+    func configureCell(lessonTime: LessonTime){
+        scheduleLabel.text = lessonTime.weekday.title + " " +  Date.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
+    }
+    
+    @objc func deleteButtonDidTap(){
+        delete?()
     }
     
     @available(*, unavailable)

@@ -9,6 +9,7 @@ import UIKit
 
 class StudentIconButton: UIButton {
     
+    var studentIcon : StudentIcon?
     var isTapped = false {
         didSet {
             configureButton()
@@ -16,10 +17,14 @@ class StudentIconButton: UIButton {
     }
     
     init(studentIcon: StudentIcon){
+        self.studentIcon = studentIcon
         super.init(frame: .zero)
-        setImage(studentIcon.image, for: .normal)
+        setProperties()
         setLayouts()
-        
+    }
+    
+    func setProperties(){
+        setImage(studentIcon?.image, for: .normal)
     }
     
     func setLayouts(){
