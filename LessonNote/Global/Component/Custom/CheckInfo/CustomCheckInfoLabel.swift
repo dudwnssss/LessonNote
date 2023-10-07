@@ -24,11 +24,11 @@ class CustomCheckInfoLabel: UILabel {
     }
     
     func setProperties(){
-        let fullString = infoTitle + " | " + infoContent
+        let fullString = infoTitle + "  |  " + infoContent
         let attrString = NSMutableAttributedString(string: fullString)
         let range = (fullString as NSString).range(of: "\(infoTitle)")
-        attrString.addAttribute(.font, value: Font.bold12, range: range)
-        font = Font.medium12
+        attrString.addAttribute(.font, value: Font.bold14, range: range)
+        font = Font.medium14
         attributedText = attrString
     }
     

@@ -27,17 +27,11 @@ class LessonTimeView: BaseView{
         lessonTimeLabel.do {
             $0.font = Font.medium14
         }
-        separatorView.do {
-            $0.backgroundColor = .systemPink
-        }
-
     }
+    
     override func setLayouts() {
         addSubviews(weekdayLabel, lessonTimeLabel, separatorView)
-        separatorView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalToSuperview()
-        }
+
         weekdayLabel.snp.makeConstraints {
             $0.leading.equalTo(separatorView)
             $0.bottom.equalTo(separatorView.snp.top).offset(-4)
@@ -46,6 +40,12 @@ class LessonTimeView: BaseView{
             $0.leading.equalTo(weekdayLabel.snp.trailing).offset(8)
             $0.centerY.equalTo(weekdayLabel)
         }
+        
+        separatorView.snp.makeConstraints {
+            $0.bottom.equalToSuperview()
+            $0.width.equalTo(190.adjusted)
+        }
+        
         snp.makeConstraints {
             $0.height.equalTo(30)
         }

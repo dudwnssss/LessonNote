@@ -42,21 +42,21 @@ class CustomCheckInfoView: BaseView {
             $0.image = TempStudent.shared.studentIcon?.image
         }
         lessonTimeTitleLabel.do {
-            let fullString = "수업 시간 | "
+            let fullString = "수업 시간  |  "
             let attrString = NSMutableAttributedString(string: fullString)
             let range = (fullString as NSString).range(of: "수업 시간")
-            attrString.addAttribute(.font, value: Font.bold12, range: range)
-            $0.font = Font.medium12
+            attrString.addAttribute(.font, value: Font.bold14, range: range)
+            $0.font = Font.medium14
             $0.attributedText = attrString
         }
         lessonTimeLabel.do {
-            $0.font = Font.medium12
+            $0.font = Font.medium14
         }
 
         setLessonTimeStackView()
         lessonTimeStackView.do {
             $0.axis = .vertical
-            $0.spacing = 2
+            $0.spacing = 4
             $0.alignment = .leading
         }
 
@@ -66,11 +66,10 @@ class CustomCheckInfoView: BaseView {
     func setLessonTimeStackView(){
         TempStudent.shared.lessonTimes?.forEach({ lessonTime in
             let lessonString = lessonTime.weekday.title+"요일 "+Date.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
-            lessonTimeLabel.text = lessonString
             let label = UILabel()
             label.do {
                 $0.text = lessonString
-                $0.font = Font.medium12
+                $0.font = Font.medium14
             }
             lessonTimeStackView.addArrangedSubview(label)
         })

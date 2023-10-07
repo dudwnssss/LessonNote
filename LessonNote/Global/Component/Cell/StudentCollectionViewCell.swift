@@ -81,11 +81,12 @@ class StudentCollectionViewCell: UICollectionViewCell {
         }
         separatorView.snp.makeConstraints {
             $0.leading.equalTo(nameLabel)
-            $0.trailing.equalToSuperview().offset(-49)
+            $0.width.equalTo(190.adjusted)
             $0.top.equalTo(nameLabel.snp.bottom).offset(4)
         }
         lessonTimeStackView.snp.makeConstraints {
             $0.top.equalTo(separatorView.snp.bottom)
+            $0.bottom.equalToSuperview().offset(-25)
             $0.horizontalEdges.equalTo(separatorView)
         }
     }
