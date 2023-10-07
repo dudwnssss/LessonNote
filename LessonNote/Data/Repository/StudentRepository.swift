@@ -12,11 +12,13 @@ class StudentRepository{
     
     private let realm = try! Realm()
     
+    //학생 전체 불러오기
     func fetch() -> RealmSwift.Results<Student> {
         let data = realm.objects(Student.self).sorted(byKeyPath: "studentName", ascending: false)
         return data
     }
     
+    //학생 추가
     func create(_ item: Student) {
         do {
             try! realm.write{
@@ -25,6 +27,7 @@ class StudentRepository{
         }
     }
     
+    //학생 삭제
     func delete(_ item: Student) {
         do {
             try! realm.write{
@@ -32,4 +35,20 @@ class StudentRepository{
             }
         }
     }
+    
+    //수업 추가
+    func addLesson(student: Student, lesson: LessonSchedule){
+        do {
+            try! realm.write{
+                student.lessonSchedules.append(lesson)
+            }
+        }
+    }
+    
+    //수업 삭제
+
+    
 }
+
+
+

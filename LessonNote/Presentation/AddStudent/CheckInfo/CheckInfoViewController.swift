@@ -9,6 +9,8 @@ import UIKit
 
 class CheckInfoViewController: BaseViewController{
     
+    let repository = StudentRepository()
+    
     let checkInfoView = CheckInfoView()
     override func loadView() {
         self.view = checkInfoView
@@ -25,5 +27,18 @@ class CheckInfoViewController: BaseViewController{
     
     @objc func completeButtonDidTap(){
         navigationController?.popToRootViewController(animated: true)
+        createTable()
+    }
+    
+    
+    
+    func createTable(){
+        let student = TempStudent.shared.createStudent()
+        repository.create(student!)
+        
+        let lessonTime = TempStudent.shared.lessonTimes?.forEach({
+            let lessonSchedule = $0.toLessonSchedule()
+            repository.addLesson(student: student!, lesson: lessonSchedule)
+        })
     }
 }

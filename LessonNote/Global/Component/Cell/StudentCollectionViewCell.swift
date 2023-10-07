@@ -15,7 +15,7 @@ class StudentCollectionViewCell: UICollectionViewCell {
     let nameLabel = UILabel()
     let studentLabel = UILabel()
     let separatorView = SeparatorView(color: Color.gray1)
-    let lessonTimeStackView = LessonTimeStackView()
+    let lessonTimeStackView = UIStackView()
     let punchImageView = UIImageView()
     let cellBackgroundView = UIView()
     
@@ -47,6 +47,12 @@ class StudentCollectionViewCell: UICollectionViewCell {
             $0.cornerRadius = 20
             $0.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         }
+        lessonTimeStackView.do {
+            $0.axis = .vertical
+            $0.spacing = 4
+            $0.alignment = .leading
+        }
+
 
     }
     
@@ -78,11 +84,19 @@ class StudentCollectionViewCell: UICollectionViewCell {
             $0.trailing.equalToSuperview().offset(-49)
             $0.top.equalTo(nameLabel.snp.bottom).offset(4)
         }
+        lessonTimeStackView.snp.makeConstraints {
+            $0.top.equalTo(separatorView.snp.bottom)
+            $0.horizontalEdges.equalTo(separatorView)
+        }
     }
     
     func configureCell(student: Student){
         nameLabel.text = student.studentName
         iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.image
+        student.lessonSchedules.forEach {
+            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.color)
+            lessonTimeStackView.addArrangedSubview(lessonTimeView)
+        }
     }
     
     @available(*, unavailable)

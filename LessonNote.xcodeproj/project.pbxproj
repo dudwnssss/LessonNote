@@ -59,7 +59,6 @@
 		1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB142AC96252003E7612 /* ScheduleView.swift */; };
 		1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB202AC969E6003E7612 /* LessonTimeView.swift */; };
 		1016FB232AC96D18003E7612 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1016FB222AC96D18003E7612 /* .gitignore */; };
-		1016FB272AC97ABC003E7612 /* LessonTimeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB262AC97ABC003E7612 /* LessonTimeStackView.swift */; };
 		1016FB292AC97C2C003E7612 /* StudentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */; };
 		1016FB2D2AC9C6FB003E7612 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB2C2AC9C6FA003E7612 /* Student.swift */; };
 		1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB2E2AC9C892003E7612 /* StudentIcon.swift */; };
@@ -139,7 +138,6 @@
 		1016FB142AC96252003E7612 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		1016FB202AC969E6003E7612 /* LessonTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeView.swift; sourceTree = "<group>"; };
 		1016FB222AC96D18003E7612 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		1016FB262AC97ABC003E7612 /* LessonTimeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeStackView.swift; sourceTree = "<group>"; };
 		1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentCollectionViewCell.swift; sourceTree = "<group>"; };
 		1016FB2C2AC9C6FA003E7612 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		1016FB2E2AC9C892003E7612 /* StudentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIcon.swift; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 		1010CBCF2ACE8DD100B40498 /* LessonTIme */ = {
 			isa = PBXGroup;
 			children = (
-				1016FB262AC97ABC003E7612 /* LessonTimeStackView.swift */,
 				1016FB202AC969E6003E7612 /* LessonTimeView.swift */,
 			);
 			path = LessonTIme;
@@ -659,7 +656,6 @@
 				1048F9472ACAAC7E00A56C76 /* CGFloat+.swift in Sources */,
 				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
 				1016FAED2AC94A96003E7612 /* UIVIew+.swift in Sources */,
-				1016FB272AC97ABC003E7612 /* LessonTimeStackView.swift in Sources */,
 				1048F9522ACC02E100A56C76 /* Weekday.swift in Sources */,
 				1048F9B02ACD5E7000A56C76 /* NumberPickerView.swift in Sources */,
 				1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */,

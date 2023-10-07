@@ -11,26 +11,30 @@ class LessonTimeView: BaseView{
     
     let weekdayLabel = UILabel()
     let lessonTimeLabel = UILabel()
-    let separatorView = UIView()
+    let separatorView = SeparatorView()
+    
+    init(lessonSchedule: LessonSchedule, color: UIColor){
+        weekdayLabel.text = Weekday(rawValue: lessonSchedule.weekday)?.title
+        weekdayLabel.textColor = color
+        lessonTimeLabel.text = Date.buildTimeRangeString(startDate: lessonSchedule.startTime, endDate: lessonSchedule.endTime)
+        super.init(frame: .zero)
+    }
     
     override func setProperties() {
         weekdayLabel.do {
-            $0.text = "화"
-            $0.textColor = Color.Icon.pink
             $0.font = Font.bold14
         }
         lessonTimeLabel.do {
-            $0.text = "18:30 - 19:30"
             $0.font = Font.medium14
         }
         separatorView.do {
-            $0.backgroundColor = Color.gray1
+            $0.backgroundColor = .systemPink
         }
+
     }
     override func setLayouts() {
         addSubviews(weekdayLabel, lessonTimeLabel, separatorView)
         separatorView.snp.makeConstraints {
-            $0.height.equalTo(1)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
@@ -42,7 +46,9 @@ class LessonTimeView: BaseView{
             $0.leading.equalTo(weekdayLabel.snp.trailing).offset(8)
             $0.centerY.equalTo(weekdayLabel)
         }
-        
+        snp.makeConstraints {
+            $0.height.equalTo(30)
+        }
     }
 }
 
