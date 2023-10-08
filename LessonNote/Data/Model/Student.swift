@@ -30,6 +30,21 @@ class Student: Object {
         self.lessonStartDate = lessonStartDate
         self.weekCount = weekCount
     }
+    
+    func toElliotEvent() -> [ElliottEvent] {
+        var events:[ElliottEvent] = []
+        for item in lessonSchedules{
+            let event = ElliottEvent(courseId: "123",
+                                     courseName: studentName,
+                                     roomName: "123",
+                                     courseDay: ElliotDay(rawValue: item.weekday+1)!,
+                                     startTime: DateManager.shared.formatTime(from: item.startTime),
+                                     endTime: DateManager.shared.formatTime(from: item.endTime),
+                                     backgroundColor: StudentIcon(rawValue: studentIcon)!.color, student: self)
+            events.append(event)
+        }
+        return events
+    }
 }
 
 class LessonSchedule: Object {

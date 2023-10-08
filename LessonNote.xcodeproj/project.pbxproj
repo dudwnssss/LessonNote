@@ -32,6 +32,14 @@
 		1010CBF72ACFEA3500B40498 /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF62ACFEA3500B40498 /* UIResponder+.swift */; };
 		1010CBF92AD0122A00B40498 /* StartDateInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF82AD0122A00B40498 /* StartDateInfoViewModel.swift */; };
 		1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBFB2AD12C1500B40498 /* DateManager.swift */; };
+		1010CC262AD2670500B40498 /* ElliotableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC202AD2670500B40498 /* ElliotableCell.swift */; };
+		1010CC272AD2670500B40498 /* ElliotableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC212AD2670500B40498 /* ElliotableError.swift */; };
+		1010CC282AD2670500B40498 /* ElliottEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC222AD2670500B40498 /* ElliottEvent.swift */; };
+		1010CC292AD2670500B40498 /* Elliotable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC232AD2670500B40498 /* Elliotable.swift */; };
+		1010CC2A2AD2670500B40498 /* ElliotableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC242AD2670500B40498 /* ElliotableController.swift */; };
+		1010CC2B2AD2670500B40498 /* ElliotDayOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC252AD2670500B40498 /* ElliotDayOption.swift */; };
+		1010CC2E2AD2673100B40498 /* TimetableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC2D2AD2673000B40498 /* TimetableCell.swift */; };
+		1010CC302AD2673900B40498 /* TimetableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CC2F2AD2673900B40498 /* TimetableHeader.swift */; };
 		1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FAC22AC93F45003E7612 /* AppDelegate.swift */; };
 		1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FAC42AC93F45003E7612 /* SceneDelegate.swift */; };
 		1016FACC2AC93F47003E7612 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1016FACB2AC93F47003E7612 /* Assets.xcassets */; };
@@ -113,6 +121,14 @@
 		1010CBF62ACFEA3500B40498 /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
 		1010CBF82AD0122A00B40498 /* StartDateInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDateInfoViewModel.swift; sourceTree = "<group>"; };
 		1010CBFB2AD12C1500B40498 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		1010CC202AD2670500B40498 /* ElliotableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotableCell.swift; sourceTree = "<group>"; };
+		1010CC212AD2670500B40498 /* ElliotableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotableError.swift; sourceTree = "<group>"; };
+		1010CC222AD2670500B40498 /* ElliottEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliottEvent.swift; sourceTree = "<group>"; };
+		1010CC232AD2670500B40498 /* Elliotable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elliotable.swift; sourceTree = "<group>"; };
+		1010CC242AD2670500B40498 /* ElliotableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotableController.swift; sourceTree = "<group>"; };
+		1010CC252AD2670500B40498 /* ElliotDayOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElliotDayOption.swift; sourceTree = "<group>"; };
+		1010CC2D2AD2673000B40498 /* TimetableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableCell.swift; sourceTree = "<group>"; };
+		1010CC2F2AD2673900B40498 /* TimetableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableHeader.swift; sourceTree = "<group>"; };
 		1016FABF2AC93F45003E7612 /* LessonNote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LessonNote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1016FAC22AC93F45003E7612 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1016FAC42AC93F45003E7612 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -295,6 +311,27 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
+		1010CC1F2AD2670500B40498 /* EllioTable */ = {
+			isa = PBXGroup;
+			children = (
+				1010CC202AD2670500B40498 /* ElliotableCell.swift */,
+				1010CC212AD2670500B40498 /* ElliotableError.swift */,
+				1010CC222AD2670500B40498 /* ElliottEvent.swift */,
+				1010CC232AD2670500B40498 /* Elliotable.swift */,
+				1010CC242AD2670500B40498 /* ElliotableController.swift */,
+				1010CC252AD2670500B40498 /* ElliotDayOption.swift */,
+			);
+			path = EllioTable;
+			sourceTree = "<group>";
+		};
+		1010CC2C2AD2672600B40498 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				1010CC2F2AD2673900B40498 /* TimetableHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		1016FAB62AC93F45003E7612 = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +417,7 @@
 		1016FADD2AC9497B003E7612 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				1010CC2C2AD2672600B40498 /* Header */,
 				1016FB1D2AC96868003E7612 /* Cell */,
 				1016FB1A2AC9685A003E7612 /* Custom */,
 			);
@@ -462,6 +500,7 @@
 		1016FB1A2AC9685A003E7612 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				1010CC1F2AD2670500B40498 /* EllioTable */,
 				1010CBE42ACFA3C800B40498 /* AddStudent */,
 				1010CBE12ACEE71F00B40498 /* Calendar */,
 				1010CBBF2ACE4A9800B40498 /* Common */,
@@ -478,6 +517,7 @@
 		1016FB1D2AC96868003E7612 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1010CC2D2AD2673000B40498 /* TimetableCell.swift */,
 				1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */,
 				1010CBC02ACE774500B40498 /* LessonTimeCell.swift */,
 			);
@@ -646,15 +686,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1016FAE92AC94A0C003E7612 /* BaseViewController.swift in Sources */,
+				1010CC292AD2670500B40498 /* Elliotable.swift in Sources */,
 				1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */,
 				1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */,
 				1016FAFF2AC95DC2003E7612 /* UICollectionView+ReusableView.swift in Sources */,
 				1010CBEE2ACFB47000B40498 /* CustomWeekdayView.swift in Sources */,
 				1048F9A62ACD210200A56C76 /* WeekdayStackView.swift in Sources */,
+				1010CC2E2AD2673100B40498 /* TimetableCell.swift in Sources */,
 				1010CBF02ACFB4E100B40498 /* CustomLessonTimeView.swift in Sources */,
 				1010CBC12ACE774500B40498 /* LessonTimeCell.swift in Sources */,
 				1048F9472ACAAC7E00A56C76 /* CGFloat+.swift in Sources */,
 				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
+				1010CC282AD2670500B40498 /* ElliottEvent.swift in Sources */,
 				1016FAED2AC94A96003E7612 /* UIVIew+.swift in Sources */,
 				1048F9522ACC02E100A56C76 /* Weekday.swift in Sources */,
 				1048F9B02ACD5E7000A56C76 /* NumberPickerView.swift in Sources */,
@@ -667,6 +710,7 @@
 				1048F9432ACA937400A56C76 /* CheckInfoView.swift in Sources */,
 				1010CBBB2ACDB2D400B40498 /* UIPickerView+.swift in Sources */,
 				1048F93F2ACA936400A56C76 /* LessonInfoView.swift in Sources */,
+				1010CC272AD2670500B40498 /* ElliotableError.swift in Sources */,
 				1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */,
 				1048F9AA2ACD2F0F00A56C76 /* LessonTImePickerTextField.swift in Sources */,
 				1016FAFB2AC95AFB003E7612 /* Color.swift in Sources */,
@@ -689,6 +733,8 @@
 				1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */,
 				1010CBE62ACFA45500B40498 /* CustomStudentNameView.swift in Sources */,
 				1010CBD92ACEC5FE00B40498 /* StudentInfoViewModel.swift in Sources */,
+				1010CC2B2AD2670500B40498 /* ElliotDayOption.swift in Sources */,
+				1010CC262AD2670500B40498 /* ElliotableCell.swift in Sources */,
 				1048F9A82ACD2A2500A56C76 /* LessonTimePickerVIew.swift in Sources */,
 				1016FB0F2AC96239003E7612 /* HomeViewController.swift in Sources */,
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,
@@ -703,6 +749,7 @@
 				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
 				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
 				1010CBE82ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift in Sources */,
+				1010CC302AD2673900B40498 /* TimetableHeader.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
 				1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */,
 				1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */,
@@ -711,6 +758,7 @@
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
 				1010CBD12ACE8E3700B40498 /* CalendarView.swift in Sources */,
 				1010CBCC2ACE83A200B40498 /* StartDateInfoView.swift in Sources */,
+				1010CC2A2AD2670500B40498 /* ElliotableController.swift in Sources */,
 				1016FB292AC97C2C003E7612 /* StudentCollectionViewCell.swift in Sources */,
 				1048F9452ACA96C500A56C76 /* CompleteButton.swift in Sources */,
 				1010CBEA2ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift in Sources */,
