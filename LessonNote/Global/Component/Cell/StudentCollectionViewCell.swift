@@ -79,6 +79,7 @@ class StudentCollectionViewCell: UICollectionViewCell {
             $0.top.equalToSuperview().offset(12)
             $0.leading.equalToSuperview().offset(18)
             $0.size.equalTo(65)
+            $0.bottom.lessThanOrEqualToSuperview().offset(-25)
         }
         nameLabel.snp.makeConstraints {
             $0.top.equalTo(iconImageView)
