@@ -30,15 +30,15 @@ class CheckInfoViewController: BaseViewController{
         createTable()
     }
     
-    
-    
-    func createTable(){
-        let student = TempStudent.shared.createStudent()
-        repository.create(student!)
-        
-        let lessonTime = TempStudent.shared.lessonTimes?.forEach({
-            let lessonSchedule = $0.toLessonSchedule()
-            repository.addLesson(student: student!, lesson: lessonSchedule)
-        })
+    func createTable() {
+        if let student = TempStudent.shared.createStudent() {
+            if let lessonTimes = TempStudent.shared.lessonTimes {
+                for lessonTime in lessonTimes {
+                    let lessonSchedule = lessonTime.toLessonSchedule()
+                    student.lessonSchedules.append(lessonSchedule)
+                }
+            }
+            repository.create(student)
+        }
     }
 }

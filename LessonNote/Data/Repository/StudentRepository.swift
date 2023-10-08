@@ -36,15 +36,6 @@ class StudentRepository{
         }
     }
     
-    //수업 추가
-    func addLesson(student: Student, lesson: LessonSchedule){
-        do {
-            try! realm.write{
-                student.lessonSchedules.append(lesson)
-            }
-        }
-    }
-    
     //수업 삭제
 
     

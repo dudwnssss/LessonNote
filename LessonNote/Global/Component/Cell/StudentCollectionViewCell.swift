@@ -25,6 +25,15 @@ class StudentCollectionViewCell: UICollectionViewCell {
         setLayouts()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        print("prepare reuse")
+        for arrangedSubview in lessonTimeStackView.arrangedSubviews {
+              lessonTimeStackView.removeArrangedSubview(arrangedSubview)
+              arrangedSubview.removeFromSuperview()
+          }
+    }
+    
     func setProperties() {
         punchImageView.do {
             $0.image = Image.notePunched
@@ -94,7 +103,10 @@ class StudentCollectionViewCell: UICollectionViewCell {
     func configureCell(student: Student){
         nameLabel.text = student.studentName
         iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.image
+        print("cell configure")
+        print(student.lessonSchedules)
         student.lessonSchedules.forEach {
+            print("cell configure")
             let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.color)
             lessonTimeStackView.addArrangedSubview(lessonTimeView)
         }
