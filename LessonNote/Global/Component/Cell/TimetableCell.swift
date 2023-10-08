@@ -6,25 +6,24 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TimetableCell: UICollectionViewCell{
     
     let timetable = Elliotable()
     var courseItems: [ElliottEvent] = []
+    private var notificationToken: NotificationToken?
     
-    let repository = StudentRepository()
-    lazy var students = repository.fetch(){
-        didSet{
-            print(#fileID, #function, #line, "- ")
-            setCourseItems()
-            timetable.reloadData()
-        }
-    }
+    private let repository = StudentRepository()
+    lazy var studentResults = repository.fetch()
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
         setLayouts()
+        update()
     }
     
     private lazy var daySymbol = DateManager.shared.getDatesStartingFromMonday()
@@ -44,9 +43,25 @@ class TimetableCell: UICollectionViewCell{
     }
     
     func setCourseItems(){
-        students.forEach { student in
+        studentResults.forEach { student in
             student.toElliotEvent().forEach { event in
                 courseItems.append(event)
+            }
+        }
+    }
+    
+    func update(){
+        notificationToken = studentResults.observe { [weak self] (changes: RealmCollectionChange) in
+            switch changes {
+            case .initial:
+                break
+            case .update(let collectionType, let deletions, let insertions, let modifications):
+                self?.setCourseItems()
+                self?.timetable.makeTimeTable()
+                break
+            case .error(let error):
+                print(error)
+                break
             }
         }
     }

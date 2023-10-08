@@ -222,7 +222,7 @@ enum roundOption: Int {
         makeTimeTable()
     }
     
-    private func makeTimeTable() {
+    func makeTimeTable() {
         var minStartTimeHour: Int = 24
         var maxEndTimeHour: Int = 0
         
