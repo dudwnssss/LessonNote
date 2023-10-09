@@ -41,13 +41,14 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return scheduleViewModel.weekSchedules.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TimetableCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
-        cell.courseItems = scheduleViewModel.courseItems.value
-        cell.daySymbol = DateManager.shared.formatDatesToENd(dates: scheduleViewModel.daysOfWeek)
+        cell.courseItems = scheduleViewModel.weekSchedules[indexPath.row].value                                                                          
+        let daysofWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: indexPath.item)
+        cell.daySymbol = DateManager.shared.formatDatesToENd(dates: daysofWeek)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

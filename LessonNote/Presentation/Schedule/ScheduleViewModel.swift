@@ -16,7 +16,7 @@ class ScheduleViewModel{
     
     var courseItems: Observable<[ElliottEvent]> = Observable([])
     var daysOfWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: 0)
-    
+    lazy var weekSchedules = [courseItems, courseItems, courseItems]
     
     //헤더에 표시용
     var dateRangeOfWeek = DateManager.shared.getDateRange(numberOfWeeksFromThisWeek: 0)
