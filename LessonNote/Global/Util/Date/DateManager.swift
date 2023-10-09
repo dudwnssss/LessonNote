@@ -57,24 +57,23 @@ class DateManager{
     }
     
 
-    func getThisWeekDateString() -> String {
+    func getDateRange(numberOfWeeksFromThisWeek: Int) -> String {
         let calendar = Calendar.current
         let currentDate = Date()
         
-        // 현재 날짜의 요일을 가져옵니다.
         let currentWeekday = calendar.component(.weekday, from: currentDate)
         
-        // 현재 날짜가 어떤 요일인지에 따라서 이번주의 시작일을 계산합니다.
-        // 주의: 일요일부터 시작하는 캘린더의 경우에는 요일 순서를 조정해야 할 수도 있습니다.
         let daysToSubtract = currentWeekday - 2 // 월요일은 2
         let startDate = calendar.date(byAdding: .day, value: -daysToSubtract, to: currentDate)!
         
-        // 이번주의 월요일과 일요일 날짜를 가져옵니다.
+        let startDateOfNthWeek = calendar.date(byAdding: .weekOfYear, value: numberOfWeeksFromThisWeek, to: startDate)!
+        let endDateOfNthWeek = calendar.date(byAdding: .day, value: 6, to: startDateOfNthWeek)!
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "M월 d일"
         
-        let monday = formatter.string(from: startDate)
-        let sunday = formatter.string(from: calendar.date(byAdding: .day, value: 6, to: startDate)!)
+        let monday = formatter.string(from: startDateOfNthWeek)
+        let sunday = formatter.string(from: endDateOfNthWeek)
         
         return "\(monday) - \(sunday)"
     }

@@ -28,7 +28,7 @@ class ScheduleViewController: BaseViewController{
         scheduleViewModel.courseItems.bind { _ in
             self.scheduleView.collectionView.reloadData()
         }
-
+        scheduleView.timetableHeader.dateLabel.text = scheduleViewModel.dateRangeOfWeek
     }
     
 }
@@ -41,7 +41,7 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,5 +53,14 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.reloadData()
     }
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let collectionView = scrollView as? UICollectionView {
+            let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
+            let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+            if let indexPath = collectionView.indexPathForItem(at: visiblePoint) {
+                scheduleView.timetableHeader.dateLabel.text = DateManager.shared.getDateRange(numberOfWeeksFromThisWeek: indexPath.item)
+            }
+        }
+    }
 }
+                                                  

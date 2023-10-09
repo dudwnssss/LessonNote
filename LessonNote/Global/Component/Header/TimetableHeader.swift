@@ -21,7 +21,6 @@ class TimetableHeader: UIView{
     
     func setProperties(){
         dateLabel.do {
-            $0.text = DateManager.shared.getThisWeekDateString()
             $0.font = Font.medium14
             $0.textColor = Color.gray5
         }
