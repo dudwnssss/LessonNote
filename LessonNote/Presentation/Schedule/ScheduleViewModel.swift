@@ -20,7 +20,7 @@ class ScheduleViewModel{
     
     //헤더에 표시용
     var dateRangeOfWeek = DateManager.shared.getDateRange(numberOfWeeksFromThisWeek: 0)
-    
+
     init(){
         studentResults = repository.fetch()
         setCourseItems()

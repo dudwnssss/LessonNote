@@ -62,6 +62,7 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
         cell.courseItems = scheduleViewModel.weekSchedules[indexPath.row].value                                                                                                                                         
         let daysofWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: indexPath.item)
         cell.daySymbol = DateManager.shared.formatDatesToENd(dates: daysofWeek)
+        cell.timetable.sundayDate = DateManager.shared.getSundayDate(forWeekOffset: indexPath.item)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

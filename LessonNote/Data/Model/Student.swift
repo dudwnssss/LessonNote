@@ -40,7 +40,8 @@ class Student: Object {
                                      courseDay: ElliotDay(rawValue: item.weekday+1)!,
                                      startTime: DateManager.shared.formatTime(from: item.startTime),
                                      endTime: DateManager.shared.formatTime(from: item.endTime),
-                                     backgroundColor: StudentIcon(rawValue: studentIcon)!.color, student: self)
+                                     backgroundColor: StudentIcon(rawValue: studentIcon)!.color,
+                                     student: self)
             events.append(event)
         }
         return events

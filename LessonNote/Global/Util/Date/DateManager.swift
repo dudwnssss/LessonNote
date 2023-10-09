@@ -106,4 +106,22 @@ class DateManager{
         let formattedDate = dateFormatter.string(from: currentDate)
         return formattedDate
     }
+    
+
+    func getSundayDate(forWeekOffset offset: Int) -> Date? {
+        var calendar = Calendar.current
+        calendar.locale = Locale.current
+
+        calendar.firstWeekday = 2
+
+        let currentDate = Date()
+
+        if let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate)),
+            let sundayDate = calendar.date(byAdding: .weekOfYear, value: offset, to: startOfWeek),
+            let nextSunday = calendar.date(byAdding: .day, value: 6, to: sundayDate) {
+            return nextSunday
+        }
+
+        return nil
+    }
 }
