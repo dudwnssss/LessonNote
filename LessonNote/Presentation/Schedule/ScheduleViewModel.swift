@@ -14,7 +14,8 @@ class ScheduleViewModel{
     private var studentResults: Results<Student>! // realm기반, 변경 시 list에 값 전달
     private var notificationToken: NotificationToken?
     
-    lazy var courseItems: Observable<[ElliottEvent]> = Observable([])
+    var courseItems: Observable<[ElliottEvent]> = Observable([])
+    var daysOfWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: 0)
     
     init(){
         studentResults = repository.fetch()

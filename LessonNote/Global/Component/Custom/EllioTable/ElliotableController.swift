@@ -112,14 +112,22 @@ extension ElliotableController: UICollectionViewDataSource {
             
             titleLabel.textColor = elliotable.symbolFontColor
             backgroundView.backgroundColor = elliotable.symbolBackgroundColor
-
-            if elliotable.daySymbols.count == 7 {
-                if indexPath.row == 6{
-                    backgroundView.backgroundColor = Color.lightBlue
-                } else if indexPath.row == 7{
-                    backgroundView.backgroundColor = Color.lightRed
-                }
+            
+            if elliotable.daySymbols[indexPath.row - 1].contains("토"){
+                backgroundView.backgroundColor = Color.lightBlue
+            } else if elliotable.daySymbols[indexPath.row - 1].contains("일"){
+                backgroundView.backgroundColor = Color.lightRed
             }
+            
+            //오늘과 요일과 날짜가 같은 다른 달이 표시되면 오늘 ui로 표기됨.
+            //daysymboltext대신, date를 가지고 있도록 변경 필요
+            if elliotable.daySymbols[indexPath.row - 1].contains(DateManager.shared.formatCurrentDate()){
+                backgroundView.backgroundColor = Color.gray5
+                titleLabel.textColor = Color.white
+            }
+            
+            
+
             
             
         } else if indexPath.row % (elliotable.daySymbols.count + 1) == 0 {

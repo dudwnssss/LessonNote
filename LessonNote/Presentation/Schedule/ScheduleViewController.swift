@@ -10,7 +10,7 @@ import UIKit
 class ScheduleViewController: BaseViewController{
     
     private let scheduleView = ScheduleView()
-    private let scheduleViewModel = ScheduleViewModel()
+    let scheduleViewModel = ScheduleViewModel()
     override func loadView() {
         self.view = scheduleView
     }
@@ -47,6 +47,7 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TimetableCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
         cell.courseItems = scheduleViewModel.courseItems.value
+        cell.daySymbol = DateManager.shared.formatDatesToENd(dates: scheduleViewModel.daysOfWeek)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

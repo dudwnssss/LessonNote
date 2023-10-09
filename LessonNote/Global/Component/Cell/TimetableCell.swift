@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class TimetableCell: UICollectionViewCell{
     
@@ -17,8 +16,8 @@ class TimetableCell: UICollectionViewCell{
         }
     }
     
-    private lazy var daySymbol = DateManager.shared.getDatesStartingFromMonday()
-
+    var daySymbol : [String] = [""]
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
@@ -26,7 +25,6 @@ class TimetableCell: UICollectionViewCell{
     }
     
     func setProperties(){
-        print("course items", courseItems)
         timetable.do {
             $0.delegate = self
             $0.dataSource = self
