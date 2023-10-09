@@ -94,6 +94,7 @@
 		1048F9AE2ACD599900A56C76 /* WeekCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AD2ACD599900A56C76 /* WeekCountView.swift */; };
 		1048F9B02ACD5E7000A56C76 /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */; };
 		1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */; };
+		104C88382AD3D73F00EC283C /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88372AD3D73F00EC283C /* ScheduleViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +182,7 @@
 		1048F9AD2ACD599900A56C76 /* WeekCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCountView.swift; sourceTree = "<group>"; };
 		1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
+		104C88372AD3D73F00EC283C /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -493,6 +495,7 @@
 			children = (
 				1016FB102AC96244003E7612 /* ScheduleViewController.swift */,
 				1016FB142AC96252003E7612 /* ScheduleView.swift */,
+				104C88372AD3D73F00EC283C /* ScheduleViewModel.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				1016FAF32AC94ABE003E7612 /* UIViewController+.swift in Sources */,
 				1010CBF92AD0122A00B40498 /* StartDateInfoViewModel.swift in Sources */,
 				1010CBF52ACFEA0800B40498 /* KeyboardEvent.swift in Sources */,
+				104C88382AD3D73F00EC283C /* ScheduleViewModel.swift in Sources */,
 				1048F9A42ACD0E4E00A56C76 /* CustomButton.swift in Sources */,
 				1010CBF72ACFEA3500B40498 /* UIResponder+.swift in Sources */,
 				1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */,

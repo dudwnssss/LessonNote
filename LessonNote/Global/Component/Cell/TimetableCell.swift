@@ -11,61 +11,41 @@ import RealmSwift
 class TimetableCell: UICollectionViewCell{
     
     let timetable = Elliotable()
-    var courseItems: [ElliottEvent] = []
-    private var notificationToken: NotificationToken?
+    var courseItems: [ElliottEvent] = []{
+        didSet{
+            timetable.reloadData()
+        }
+    }
     
-    private let repository = StudentRepository()
-    lazy var studentResults = repository.fetch()
-    
-    
-    
+    private lazy var daySymbol = DateManager.shared.getDatesStartingFromMonday()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
         setLayouts()
-        update()
     }
-    
-    private lazy var daySymbol = DateManager.shared.getDatesStartingFromMonday()
     
     func setProperties(){
-        timetable.delegate = self
-        timetable.dataSource = self
-        setCourseItems()
-        timetable.courseItems = courseItems
-        timetable.borderColor = Color.gray2
-        timetable.borderWidth = 0.5
-        timetable.symbolBackgroundColor = Color.gray0
-        timetable.courseItemTextSize = 11
-        timetable.roundCorner = .all
-        timetable.isFullBorder = true
-        timetable.elliotBackgroundColor = Color.white
-    }
-    
-    func setCourseItems(){
-        studentResults.forEach { student in
-            student.toElliotEvent().forEach { event in
-                courseItems.append(event)
-            }
+        print("course items", courseItems)
+        timetable.do {
+            $0.delegate = self
+            $0.dataSource = self
+            $0.courseItems = courseItems
+            $0.borderColor = Color.gray2
+            $0.borderWidth = 0.5
+            $0.symbolBackgroundColor = Color.gray0
+            $0.courseItemTextSize = 11
+            $0.roundCorner = .all
+            $0.isFullBorder = true
+            $0.elliotBackgroundColor = Color.white
         }
     }
     
-    func update(){
-        notificationToken = studentResults.observe { [weak self] (changes: RealmCollectionChange) in
-            switch changes {
-            case .initial:
-                break
-            case .update(let collectionType, let deletions, let insertions, let modifications):
-                self?.setCourseItems()
-                self?.timetable.makeTimeTable()
-                break
-            case .error(let error):
-                print(error)
-                break
-            }
-        }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        courseItems = []
     }
-
+    
     
     func setLayouts(){
         contentView.addSubview(timetable)
@@ -73,6 +53,7 @@ class TimetableCell: UICollectionViewCell{
             $0.edges.equalToSuperview()
         }
     }
+    
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -98,8 +79,7 @@ extension TimetableCell: ElliotableDelegate, ElliotableDataSource{
     }
     
     func courseItems(in elliotable: Elliotable) -> [ElliottEvent] {
-        return elliotable.courseItems
+        return courseItems
     }
-    
-    
 }
+ 

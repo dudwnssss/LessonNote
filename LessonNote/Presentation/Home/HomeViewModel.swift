@@ -40,12 +40,9 @@ class HomeViewModel{
                 lessonSchedule.observe { [weak self] (change: ObjectChange) in
                     switch change {
                     case .change, .deleted:
-                        print("하이하이요")
                         self?.studentList.value = Array((self?.studentResults)!)
                     case .error(let error):
                         print(error)
-                    default:
-                        break
                     }
                 }
             }

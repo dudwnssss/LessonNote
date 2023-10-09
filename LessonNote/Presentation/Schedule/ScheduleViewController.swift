@@ -9,7 +9,8 @@ import UIKit
 
 class ScheduleViewController: BaseViewController{
     
-    let scheduleView = ScheduleView()
+    private let scheduleView = ScheduleView()
+    private let scheduleViewModel = ScheduleViewModel()
     override func loadView() {
         self.view = scheduleView
     }
@@ -24,6 +25,9 @@ class ScheduleViewController: BaseViewController{
             $0.delegate = self
             $0.dataSource = self
         }
+        scheduleViewModel.courseItems.bind { _ in
+            self.scheduleView.collectionView.reloadData()
+        }
 
     }
     
@@ -36,15 +40,17 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
         return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
     }
 
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TimetableCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
+        cell.courseItems = scheduleViewModel.courseItems.value
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.reloadData()
     }
     
 }
