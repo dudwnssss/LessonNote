@@ -28,7 +28,20 @@ class ScheduleViewController: BaseViewController{
         scheduleViewModel.courseItems.bind { _ in
             self.scheduleView.collectionView.reloadData()
         }
-        scheduleView.timetableHeader.dateLabel.text = scheduleViewModel.dateRangeOfWeek
+        scheduleView.timetableHeader.do {
+            $0.dateLabel.text = scheduleViewModel.dateRangeOfWeek
+            $0.todayButton.addTarget(self, action: #selector(todayButtonDidTap), for: .touchUpInside)
+        }
+
+    }
+    
+    @objc func todayButtonDidTap(){
+        scrollToFirstPage()
+    }
+    
+    func scrollToFirstPage(){
+        let indexPath = IndexPath(item: 0, section: 0)
+        scheduleView.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
     }
     
 }
@@ -46,7 +59,7 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TimetableCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
-        cell.courseItems = scheduleViewModel.weekSchedules[indexPath.row].value                                                                          
+        cell.courseItems = scheduleViewModel.weekSchedules[indexPath.row].value                                                                                                                                         
         let daysofWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: indexPath.item)
         cell.daySymbol = DateManager.shared.formatDatesToENd(dates: daysofWeek)
         return cell
