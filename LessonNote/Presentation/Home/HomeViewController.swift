@@ -31,9 +31,9 @@ class HomeViewController: BaseViewController{
         homeView.addStudentButton.addTarget(self, action: #selector(addStudentButtonDidTap), for: .touchUpInside)
         homeViewModel.studentList.bind { _ in
             self.setSnapshot()
+            self.setEmptyView()
         }
         homeView.collectionView.delegate = self
-        
     }
     
     @objc func addStudentButtonDidTap(){
@@ -72,6 +72,14 @@ extension HomeViewController: UICollectionViewDelegate {
         snapshot.appendSections([0])
         snapshot.appendItems(homeViewModel.studentList.value)
         dataSource.apply(snapshot)
+    }
+    
+    private func setEmptyView(){
+        if homeViewModel.studentList.value.isEmpty{
+            homeView.emptyView.isHidden = false
+        } else {
+            homeView.emptyView.isHidden = true
+        }
     }
     
     private func setDataSource(){

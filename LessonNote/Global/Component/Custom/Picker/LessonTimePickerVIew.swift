@@ -41,9 +41,6 @@ final class LessonTimePickerView: NSObject, UIPickerViewDelegate, UIPickerViewDa
         
         pickerView.selectRow(startHours[9], inComponent: 0, animated: false)
         pickerView.selectRow(endHours[10], inComponent: 2, animated: false)
-        pickerView.setPickerLabelsWith(labels: ["시", "분", "시", "분"])
-
-
     }
     
     // MARK: - UIPickerViewDelegate & DateSource
