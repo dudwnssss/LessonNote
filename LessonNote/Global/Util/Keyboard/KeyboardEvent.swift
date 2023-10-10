@@ -31,24 +31,16 @@ extension KeyboardEvent where Self: UIViewController {
     }
     
     private func keyboardWillAppear(_ sender: Notification) {
-        // keyboardFrame: 현재 동작하고 있는 이벤트에서 키보드의 frame을 받아옴
-        // currentTextField: 현재 응답을 받고있는 UITextField를 알아냅니다.
         guard let keyboardFrame = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let currentTextField = UIResponder.currentResponder as? UITextField else { return }
         
-        // Y축으로 키보드의 상단 위치
         let keyboardTopY = keyboardFrame.cgRectValue.origin.y
-        // 현재 선택한 텍스트 필드의 Frame 값
-        let convertedTextFieldFrame = transformView.convert(currentTextField.frame,
-                                                  from: currentTextField.superview)
-        // Y축으로 현재 텍스트 필드의 하단 위치
+        let convertedTextFieldFrame = transformView.convert(currentTextField.frame, from: currentTextField.superview)
         let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
         
-        // Y축으로 텍스트필드 하단 위치가 키보드 상단 위치보다 클 때 (즉, 텍스트필드가 키보드에 가려질 때가 되겠죠!)
         if textFieldBottomY > keyboardTopY {
-            let textFieldTopY = convertedTextFieldFrame.origin.y
-            // 노가다를 통해서 모든 기종에 적절한 크기를 설정함.
-            let newFrame = textFieldTopY - keyboardTopY/1.6
+            // 이미 키보드가 올라간 높이만큼 빼고 다시 계산하여 화면을 올립니다.
+            let newFrame = textFieldBottomY - keyboardTopY + 10 // 여기서 10은 여백을 조절할 수 있는 값
             transformView.frame.origin.y -= newFrame
         }
     }

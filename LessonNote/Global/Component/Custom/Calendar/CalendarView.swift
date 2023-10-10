@@ -17,6 +17,7 @@ class CalendarView: FSCalendar {
     
     private func setProperties() {
         cornerRadius = 20
+        backgroundColor = Color.white
         locale = Locale(identifier: "ko_KR")
         headerHeight = 60
         firstWeekday = 2

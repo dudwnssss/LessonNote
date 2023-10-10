@@ -14,11 +14,20 @@ final class HomeViewModel{
     private var studentResults: Results<Student>! // realm기반, 변경 시 list에 값 전달
     private var notificationToken: NotificationToken?
     
+    //MARK: Input
+    
+    //MARK: Output
     lazy var studentList: Observable<[Student]> = Observable([])
     
     init(){
         studentResults = repository.fetch()
         studentList.value = Array(studentResults)
+        bind()
+    }
+    
+
+
+    private func bind() {
         notificationToken = studentResults.observe { [weak self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial:
@@ -34,6 +43,12 @@ final class HomeViewModel{
         observeLessonSchedules()
     }
     
+    deinit {
+           notificationToken?.invalidate()
+       }
+}
+
+extension HomeViewModel {
     private func observeLessonSchedules() {
         for student in studentResults {
             for lessonSchedule in student.lessonSchedules {
@@ -48,9 +63,4 @@ final class HomeViewModel{
             }
         }
     }
-
-    
-    deinit {
-           notificationToken?.invalidate()
-       }
 }

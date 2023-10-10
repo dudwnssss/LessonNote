@@ -32,6 +32,7 @@ class HomeViewController: BaseViewController{
         homeViewModel.studentList.bind { _ in
             self.setSnapshot()
         }
+        homeView.collectionView.delegate = self
         
     }
     
@@ -58,7 +59,13 @@ class HomeViewController: BaseViewController{
     }
 }
 
-extension HomeViewController{
+extension HomeViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = StudentViewController()
+        vc.student = homeViewModel.studentList.value[indexPath.item]
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     private func setSnapshot(){
         var snapshot = NSDiffableDataSourceSnapshot<Int, Student>()
@@ -77,3 +84,5 @@ extension HomeViewController{
         })
     }
 }
+
+

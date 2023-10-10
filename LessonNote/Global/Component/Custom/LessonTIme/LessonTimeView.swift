@@ -11,7 +11,7 @@ final class LessonTimeView: BaseView{
     
     let weekdayLabel = UILabel()
     let lessonTimeLabel = UILabel()
-    private let separatorView = SeparatorView()
+    let separatorView = SeparatorView()
     
     init(lessonSchedule: LessonSchedule, color: UIColor){
         weekdayLabel.text = Weekday(rawValue: lessonSchedule.weekday)?.title

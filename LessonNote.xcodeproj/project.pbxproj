@@ -95,6 +95,12 @@
 		1048F9B02ACD5E7000A56C76 /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */; };
 		1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */; };
 		104C88382AD3D73F00EC283C /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88372AD3D73F00EC283C /* ScheduleViewModel.swift */; };
+		104C883B2AD5135000EC283C /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C883A2AD5135000EC283C /* StudentViewController.swift */; };
+		104C883D2AD5135600EC283C /* StudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C883C2AD5135600EC283C /* StudentView.swift */; };
+		104C883F2AD5135C00EC283C /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C883E2AD5135C00EC283C /* StudentViewModel.swift */; };
+		104C88422AD513FA00EC283C /* CustomStudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88412AD513FA00EC283C /* CustomStudentView.swift */; };
+		104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88432AD5151C00EC283C /* PhoneNumberButton.swift */; };
+		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,6 +189,12 @@
 		1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		104C88372AD3D73F00EC283C /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		104C883A2AD5135000EC283C /* StudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewController.swift; sourceTree = "<group>"; };
+		104C883C2AD5135600EC283C /* StudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentView.swift; sourceTree = "<group>"; };
+		104C883E2AD5135C00EC283C /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
+		104C88412AD513FA00EC283C /* CustomStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudentView.swift; sourceTree = "<group>"; };
+		104C88432AD5151C00EC283C /* PhoneNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberButton.swift; sourceTree = "<group>"; };
+		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +222,7 @@
 				1048F9492ACAACD300A56C76 /* CustomTitleLabel.swift */,
 				1048F94E2ACAF9AE00A56C76 /* CustomTextFieldView.swift */,
 				1048F9572ACC647900A56C76 /* SeparatorView.swift */,
+				104C88432AD5151C00EC283C /* PhoneNumberButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -400,6 +413,7 @@
 				1016FB0C2AC961E5003E7612 /* Home */,
 				1016FB0D2AC96204003E7612 /* Schedule */,
 				1016FB322ACA9000003E7612 /* AddStudent */,
+				104C88392AD5133D00EC283C /* Student */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -437,6 +451,7 @@
 				1048F9AB2ACD3E8E00A56C76 /* Date+.swift */,
 				1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */,
 				1010CBF62ACFEA3500B40498 /* UIResponder+.swift */,
+				10DB31512AD5354800ADC8BA /* UIScrollView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -503,6 +518,7 @@
 		1016FB1A2AC9685A003E7612 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				104C88402AD513DE00EC283C /* Student */,
 				1010CC1F2AD2670500B40498 /* EllioTable */,
 				1010CBE42ACFA3C800B40498 /* AddStudent */,
 				1010CBE12ACEE71F00B40498 /* Calendar */,
@@ -602,6 +618,24 @@
 				1010CBDD2ACEE09B00B40498 /* ViewCase.swift */,
 			);
 			path = Enum;
+			sourceTree = "<group>";
+		};
+		104C88392AD5133D00EC283C /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				104C883A2AD5135000EC283C /* StudentViewController.swift */,
+				104C883C2AD5135600EC283C /* StudentView.swift */,
+				104C883E2AD5135C00EC283C /* StudentViewModel.swift */,
+			);
+			path = Student;
+			sourceTree = "<group>";
+		};
+		104C88402AD513DE00EC283C /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				104C88412AD513FA00EC283C /* CustomStudentView.swift */,
+			);
+			path = Student;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -715,6 +749,7 @@
 				1048F93F2ACA936400A56C76 /* LessonInfoView.swift in Sources */,
 				1010CC272AD2670500B40498 /* ElliotableError.swift in Sources */,
 				1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */,
+				10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */,
 				1048F9AA2ACD2F0F00A56C76 /* LessonTImePickerTextField.swift in Sources */,
 				1016FAFB2AC95AFB003E7612 /* Color.swift in Sources */,
 				1010CBDC2ACEC66600B40498 /* Observable.swift in Sources */,
@@ -739,9 +774,11 @@
 				1010CBD92ACEC5FE00B40498 /* StudentInfoViewModel.swift in Sources */,
 				1010CC2B2AD2670500B40498 /* ElliotDayOption.swift in Sources */,
 				1010CC262AD2670500B40498 /* ElliotableCell.swift in Sources */,
+				104C883B2AD5135000EC283C /* StudentViewController.swift in Sources */,
 				1048F9A82ACD2A2500A56C76 /* LessonTimePickerVIew.swift in Sources */,
 				1016FB0F2AC96239003E7612 /* HomeViewController.swift in Sources */,
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,
+				104C88422AD513FA00EC283C /* CustomStudentView.swift in Sources */,
 				1016FAE72AC94A00003E7612 /* Tab.swift in Sources */,
 				1010CBDE2ACEE09B00B40498 /* ViewCase.swift in Sources */,
 				1048F93B2ACA932400A56C76 /* StudentInfoViewController.swift in Sources */,
@@ -752,6 +789,7 @@
 				1010CBC52ACE788500B40498 /* LessonTime.swift in Sources */,
 				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
 				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
+				104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */,
 				1010CBE82ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift in Sources */,
 				1010CC302AD2673900B40498 /* TimetableHeader.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
@@ -759,6 +797,7 @@
 				1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */,
 				1010CBD32ACEA4D700B40498 /* CustomCheckInfoView.swift in Sources */,
 				1010CBC72ACE78CF00B40498 /* LessonInfoViewModel.swift in Sources */,
+				104C883D2AD5135600EC283C /* StudentView.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
 				1010CBD12ACE8E3700B40498 /* CalendarView.swift in Sources */,
 				1010CBCC2ACE83A200B40498 /* StartDateInfoView.swift in Sources */,
@@ -768,6 +807,7 @@
 				1010CBEA2ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift in Sources */,
 				1048F9AE2ACD599900A56C76 /* WeekCountView.swift in Sources */,
 				1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */,
+				104C883F2AD5135C00EC283C /* StudentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

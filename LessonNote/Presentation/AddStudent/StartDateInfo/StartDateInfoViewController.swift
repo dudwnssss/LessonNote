@@ -33,7 +33,7 @@ class StartDateInfoViewController: BaseViewController{
     }
     
     @objc func nextButtonDidTap(){
-        let vc = CheckInfoViewController()
+        let vc = CheckInfoViewController() 
         navigationController?.pushViewController(vc, animated: true)
     }
 }
