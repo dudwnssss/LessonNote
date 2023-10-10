@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+final class CustomButton: UIButton {
     var buttonTitle: String?
     var isActivated = false {
         didSet {
@@ -20,13 +20,13 @@ class CustomButton: UIButton {
         setProperties()
     }
     
-    func setProperties(){
+    private func setProperties(){
         cornerRadius = 10
         configureButton()
         addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
     }
         
-    func configureButton(){
+    private func configureButton(){
         switch isActivated{
         case true:
             backgroundColor = Color.gray6

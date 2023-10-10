@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TimetableCell: UICollectionViewCell{
+final class TimetableCell: UICollectionViewCell{
     
     let timetable = Elliotable()
     var courseItems: [ElliottEvent] = []{

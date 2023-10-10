@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomWeekCountView: BaseView{
     
-    let title = CustomTitleLabel(title: "격주 여부")
+    private let title = CustomTitleLabel(title: "격주 여부")
     let weekCountView = WeekCountView()
     
     override func setLayouts() {

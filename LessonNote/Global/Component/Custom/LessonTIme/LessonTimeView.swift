@@ -7,16 +7,16 @@
 
 import UIKit
 
-class LessonTimeView: BaseView{
+final class LessonTimeView: BaseView{
     
     let weekdayLabel = UILabel()
     let lessonTimeLabel = UILabel()
-    let separatorView = SeparatorView()
+    private let separatorView = SeparatorView()
     
     init(lessonSchedule: LessonSchedule, color: UIColor){
         weekdayLabel.text = Weekday(rawValue: lessonSchedule.weekday)?.title
         weekdayLabel.textColor = color
-        lessonTimeLabel.text = Date.buildTimeRangeString(startDate: lessonSchedule.startTime, endDate: lessonSchedule.endTime)
+        lessonTimeLabel.text = DateManager.shared.buildTimeRangeString(startDate: lessonSchedule.startTime, endDate: lessonSchedule.endTime)
         super.init(frame: .zero)
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StudentIconButton: UIButton {
+final class StudentIconButton: UIButton {
     
     var studentIcon : StudentIcon?
     var isTapped = false {
@@ -23,17 +23,17 @@ class StudentIconButton: UIButton {
         setLayouts()
     }
     
-    func setProperties(){
+    private func setProperties(){
         setImage(studentIcon?.image, for: .normal)
     }
     
-    func setLayouts(){
+    private func setLayouts(){
         snp.makeConstraints {
             $0.size.equalTo(65)
         }
     }
     
-    func configureButton(){
+    private func configureButton(){
         switch self.isTapped{
         case true:
             borderWidth = 2

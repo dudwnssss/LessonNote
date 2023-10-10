@@ -7,17 +7,15 @@
 
 import UIKit
 
-class StudentCollectionViewCell: UICollectionViewCell {
-    
-    //Studnet Table
-    
+final class StudentCollectionViewCell: UICollectionViewCell {
+        
     let iconImageView = UIImageView()
     let nameLabel = UILabel()
     let studentLabel = UILabel()
-    let separatorView = SeparatorView(color: Color.gray1)
-    let lessonTimeStackView = UIStackView()
-    let punchImageView = UIImageView()
-    let cellBackgroundView = UIView()
+    private let separatorView = SeparatorView(color: Color.gray1)
+    private let lessonTimeStackView = UIStackView()
+    private let punchImageView = UIImageView()
+    private let cellBackgroundView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,7 +32,7 @@ class StudentCollectionViewCell: UICollectionViewCell {
           }
     }
     
-    func setProperties() {
+    private func setProperties() {
         punchImageView.do {
             $0.image = Image.notePunched
             $0.contentMode = .scaleAspectFill
@@ -65,7 +63,7 @@ class StudentCollectionViewCell: UICollectionViewCell {
 
     }
     
-    func setLayouts() {
+    private func setLayouts() {
         addSubviews(punchImageView, cellBackgroundView)
         punchImageView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()

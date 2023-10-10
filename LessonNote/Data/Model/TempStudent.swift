@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TempStudent {
+final class TempStudent {
     private init(){}
     static let shared = TempStudent()
     

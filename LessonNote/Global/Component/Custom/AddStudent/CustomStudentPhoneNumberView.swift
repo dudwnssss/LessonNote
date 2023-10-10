@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomStudentPhoneNumberView: BaseView{
     
-    let title = CustomTitleLabel(title: "학생 전화번호")
+    private let title = CustomTitleLabel(title: "학생 전화번호")
     let textFeildView = CustomTextFieldView(placeholder: "01012341234", limitCount: 11)
     
     override func setProperties() {

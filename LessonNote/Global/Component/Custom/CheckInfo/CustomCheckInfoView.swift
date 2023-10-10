@@ -7,25 +7,24 @@
 
 import UIKit
 
-class CustomCheckInfoView: BaseView {
+final class CustomCheckInfoView: BaseView {
     
-    let punchImageView = UIImageView()
+    private let punchImageView = UIImageView()
     let iconImageView = UIImageView()
-    let backgroundView = UIView()
+    private let backgroundView = UIView()
     
-    let nameLabel = CustomCheckInfoLabel(title: "이름", content: TempStudent.shared.studentName!)
-    let studentPhoneNumberLabel = CustomCheckInfoLabel(title: "전화번호", content: TempStudent.shared.studentPhoneNumber!)
-    let parentPhoneNumberLabel = CustomCheckInfoLabel(title: "학부모 전화번호", content: TempStudent.shared.parentPhoneNumber!)
+    private let nameLabel = CustomCheckInfoLabel(title: "이름", content: TempStudent.shared.studentName!)
+    private let studentPhoneNumberLabel = CustomCheckInfoLabel(title: "전화번호", content: TempStudent.shared.studentPhoneNumber!)
+    private let parentPhoneNumberLabel = CustomCheckInfoLabel(title: "학부모 전화번호", content: TempStudent.shared.parentPhoneNumber!)
     
     let lessonTimeTitleLabel = UILabel()
-    let lessonTimeLabel = UILabel()
     var lessonTimeLables: [UILabel] = []
     let lessonTimeStackView = UIStackView()
     
-    let weekCountLabel = CustomCheckInfoLabel(title: "격주 여부", content: "\(TempStudent.shared.weekCount!)주 마다 수업")
-    let startDateLabel = CustomCheckInfoLabel(title: "수업 시작일", content: DateManager.shared.formatFullDateToString(date: TempStudent.shared.lessonStartDate ?? Date()))
-    let separator1 = SeparatorView(color: Color.gray1)
-    let separator2 = SeparatorView(color: Color.gray1)
+    private let weekCountLabel = CustomCheckInfoLabel(title: "격주 여부", content: "\(TempStudent.shared.weekCount!)주 마다 수업")
+    private let startDateLabel = CustomCheckInfoLabel(title: "수업 시작일", content: DateManager.shared.formatFullDateToString(date: TempStudent.shared.lessonStartDate ?? Date()))
+    private let separator1 = SeparatorView(color: Color.gray1)
+    private let separator2 = SeparatorView(color: Color.gray1)
     
     override func setProperties() {
         punchImageView.do {
@@ -49,10 +48,7 @@ class CustomCheckInfoView: BaseView {
             $0.font = Font.medium14
             $0.attributedText = attrString
         }
-        lessonTimeLabel.do {
-            $0.font = Font.medium14
-        }
-
+        
         setLessonTimeStackView()
         lessonTimeStackView.do {
             $0.axis = .vertical
@@ -63,9 +59,9 @@ class CustomCheckInfoView: BaseView {
     }
     
     
-    func setLessonTimeStackView(){
+    private func setLessonTimeStackView(){
         TempStudent.shared.lessonTimes?.forEach({ lessonTime in
-            let lessonString = lessonTime.weekday.title+"요일 "+Date.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
+            let lessonString = lessonTime.weekday.title+"요일 "+DateManager.shared.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
             let label = UILabel()
             label.do {
                 $0.text = lessonString

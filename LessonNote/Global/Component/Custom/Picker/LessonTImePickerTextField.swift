@@ -7,17 +7,15 @@
 
 import UIKit
 
-class LessonTimePickerTextField: UITextField {
+final class LessonTimePickerTextField: UITextField {
     
     var selectedStartTime: Date?
     var selectedEndTime: Date?
     
     let dateTimePicker = LessonTimePickerView()
-    let arrowImageView = UIImageView()
-    
+    private let arrowImageView = UIImageView()
     var passLessonTime: ((Date, Date) -> Void)?
-    
-    var toolbar: UIToolbar {
+    private var toolbar: UIToolbar {
         let toolbar = UIToolbar()
         toolbar.barStyle = .default
         toolbar.sizeToFit()
@@ -36,7 +34,7 @@ class LessonTimePickerTextField: UITextField {
         setLayouts()
     }
     
-    func setProperties(){
+    private func setProperties(){
         dateTimePicker.do {
             $0.setup()
         }
@@ -51,12 +49,12 @@ class LessonTimePickerTextField: UITextField {
         dateTimePicker.didSelectTimes = { [weak self] (startTime, endTime) in
             self?.selectedStartTime = startTime
             self?.selectedEndTime = endTime
-            let timeRange = Date.buildTimeRangeString(startDate: startTime, endDate: endTime)
+            let timeRange = DateManager.shared.buildTimeRangeString(startDate: startTime, endDate: endTime)
             self?.text = timeRange
         }
     }
     
-    func setLayouts(){
+    private func setLayouts(){
         addSubview(arrowImageView)
         snp.makeConstraints {
             $0.width.equalTo(130)

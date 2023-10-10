@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CheckBoxButton: UIButton {
+final class CheckBoxButton: UIButton {
     
     var isTapped = false {
         didSet {
@@ -20,7 +20,7 @@ class CheckBoxButton: UIButton {
         configureCheckbox()
     }
     
-    func configureCheckbox(){
+    private func configureCheckbox(){
         switch isTapped{
         case true:
             setImage(Image.checkboxFill, for: .normal)

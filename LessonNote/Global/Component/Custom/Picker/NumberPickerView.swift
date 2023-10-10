@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NumberPickerView: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+final class NumberPickerView: NSObject {
     
     var didSelectNumber: ((_ number: Int) -> Void)?
     
@@ -25,16 +25,17 @@ class NumberPickerView: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func setup() {
-        // 선택된 숫자가 디폴트 값으로 표시되도록 설정 (예: 2를 디폴트로 선택)
         let defaultNumber = 2
         if let index = numbers.firstIndex(of: defaultNumber) {
             pickerView.selectRow(index, inComponent: 0, animated: false)
         }
         didSelectNumber?(defaultNumber)
     }
-    
-    // MARK: - UIPickerViewDelegate & DataSource
-    
+        
+   
+}
+
+extension NumberPickerView: UIPickerViewDelegate, UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1 // 하나의 컴포넌트만 사용합니다.
     }

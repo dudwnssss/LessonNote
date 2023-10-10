@@ -7,11 +7,11 @@
 
 import UIKit
 
-class CustomTextFieldView: BaseView {
+final class CustomTextFieldView: BaseView {
     
     var limitCount = 0
     var placeholder = ""
-    let underLineView = SeparatorView()
+    private let underLineView = SeparatorView()
     let textCountLabel = UILabel()
     let textField = UITextField()
     

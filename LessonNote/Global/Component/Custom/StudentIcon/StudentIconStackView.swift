@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StudentIconStackView: UIStackView{
+final class StudentIconStackView: UIStackView{
     
     var selectedIcon : StudentIcon = .pink
     
@@ -17,7 +17,7 @@ class StudentIconStackView: UIStackView{
         setLayouts()
     }
     
-    let studentIconButtonList = [StudentIconButton(studentIcon: .pink),
+    private let studentIconButtonList = [StudentIconButton(studentIcon: .pink),
                                  StudentIconButton(studentIcon: .orange),
                                  StudentIconButton(studentIcon: .yellow),
                                  StudentIconButton(studentIcon: .green),
@@ -26,11 +26,11 @@ class StudentIconStackView: UIStackView{
                                  StudentIconButton(studentIcon: .violet),
                                  StudentIconButton(studentIcon: .magenta)]
     
-    let horizontalStackView1 = UIStackView()
-    let horizontalStackView2 = UIStackView()
+    private let horizontalStackView1 = UIStackView()
+    private let horizontalStackView2 = UIStackView()
     
     
-    func setProperties(){
+    private func setProperties(){
         horizontalStackView1.do {
             $0.distribution = .fillEqually
             $0.axis = .horizontal
@@ -52,7 +52,7 @@ class StudentIconStackView: UIStackView{
 
     }
     
-    func setLayouts(){
+    private func setLayouts(){
         addSubviews(horizontalStackView1, horizontalStackView2)
         for (index, button) in studentIconButtonList.enumerated() {
                 (index < studentIconButtonList.count / 2 ? horizontalStackView1 : horizontalStackView2).addArrangedSubview(button)

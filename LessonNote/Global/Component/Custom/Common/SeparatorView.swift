@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeparatorView: BaseView {
+final class SeparatorView: BaseView {
     
     var bgColor = Color.gray2
     

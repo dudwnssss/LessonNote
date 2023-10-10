@@ -10,14 +10,13 @@ import RealmSwift
 
 class HomeViewController: BaseViewController{
     
-    let homeView = HomeView()
-    let homeViewModel = HomeViewModel()
-    
+    private let homeView = HomeView()
+    private let homeViewModel = HomeViewModel()
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Student>!
+
     override func loadView() {
         self.view = homeView
     }
-    
-    var dataSource: UICollectionViewDiffableDataSource<Int, Student>!
     
     override func setNavigationBar() {
         navigationItem.title = "홈"

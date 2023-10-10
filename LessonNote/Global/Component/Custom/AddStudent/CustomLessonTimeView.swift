@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomLessonTimeView: BaseView{
     
-    let title = CustomTitleLabel(title: "시간 *")
+    private let title = CustomTitleLabel(title: "시간 *")
     let lessonTimePiker = LessonTimePickerTextField()
     
     override func setLayouts() {

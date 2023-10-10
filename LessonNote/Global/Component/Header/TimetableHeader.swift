@@ -7,11 +7,11 @@
 
 import UIKit
 
-class TimetableHeader: UIView{
+final class TimetableHeader: UIView{
     
     let dateLabel = UILabel()
     let todayButton = UIButton()
-    let backgroundView = UIView()
+    private let backgroundView = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

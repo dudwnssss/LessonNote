@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomWeekdayView: BaseView{
     
-    let title = CustomTitleLabel(title: "요일 *")
+    private let title = CustomTitleLabel(title: "요일 *")
     let weekdayStackView = WeekdayStackView()
     
     override func setLayouts() {

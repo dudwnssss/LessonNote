@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CheckInfoViewController: BaseViewController{
+final class CheckInfoViewController: BaseViewController{
     
-    let repository = StudentRepository()
+    private let repository = StudentRepository()
     
     let checkInfoView = CheckInfoView()
     override func loadView() {

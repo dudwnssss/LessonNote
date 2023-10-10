@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ScheduleView: BaseView {
+final class ScheduleView: BaseView {
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     let timetableHeader = TimetableHeader()
     
-    func createLayout() {
+    private func createLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.do {
             $0.scrollDirection = .horizontal

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomCheckInfoLabel: UILabel {
+final class CustomCheckInfoLabel: UILabel {
     
     var infoTitle = ""
     var infoContent = ""{
@@ -23,7 +23,7 @@ class CustomCheckInfoLabel: UILabel {
         setProperties()
     }
     
-    func setProperties(){
+    private func setProperties(){
         let fullString = infoTitle + "  |  " + infoContent
         let attrString = NSMutableAttributedString(string: fullString)
         let range = (fullString as NSString).range(of: "\(infoTitle)")

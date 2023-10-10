@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class HomeViewModel{
+final class HomeViewModel{
     
     private let repository = StudentRepository()
     private var studentResults: Results<Student>! // realm기반, 변경 시 list에 값 전달

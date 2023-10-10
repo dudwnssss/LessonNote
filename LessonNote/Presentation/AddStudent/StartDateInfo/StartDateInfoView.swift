@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class StartDateInfoView: BaseView {
+final class StartDateInfoView: BaseView {
     
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()

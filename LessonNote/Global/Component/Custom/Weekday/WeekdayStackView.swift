@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeekdayStackView: UIStackView{
+final class WeekdayStackView: UIStackView{
     
     var selectedWeekdays: [Weekday] {
         var selectedDays: [Weekday] = []
@@ -19,7 +19,7 @@ class WeekdayStackView: UIStackView{
         return selectedDays
     }
     
-    let weekdays = Weekday.allCases
+    private let weekdays = Weekday.allCases
     var weekdayButtons: [CustomButton] = []
     
     override init(frame: CGRect) {
@@ -28,7 +28,7 @@ class WeekdayStackView: UIStackView{
         setLayouts()
     }
     
-    func setProperties() {
+    private func setProperties() {
         weekdays.forEach {
             weekdayButtons.append(CustomButton(title: $0.title))
         }
@@ -40,11 +40,10 @@ class WeekdayStackView: UIStackView{
         distribution = .fillEqually
     }
     
-    func setLayouts() {
+    private func setLayouts() {
         weekdayButtons.forEach {
             addArrangedSubviews($0)
             $0.snp.makeConstraints {
-//                $0.width.equalTo(43.adjusted)
                 $0.height.equalTo(33)
             }
         }

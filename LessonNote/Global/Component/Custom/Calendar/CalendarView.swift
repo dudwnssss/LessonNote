@@ -13,15 +13,13 @@ class CalendarView: FSCalendar {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setProperties()
-        setLayouts()
     }
     
-    func setProperties() {
-        
+    private func setProperties() {
         cornerRadius = 20
         locale = Locale(identifier: "ko_KR")
         headerHeight = 60
-        
+        firstWeekday = 2
         appearance.do {
             $0.headerMinimumDissolvedAlpha = 0.0
             $0.headerDateFormat = "YYYY년 M월"
@@ -33,24 +31,12 @@ class CalendarView: FSCalendar {
             $0.titleDefaultColor = Color.black
             $0.titleFont = Font.medium12
             $0.selectionColor = .black
-            
         }
         setWeekendColor()
 
     }
     
-    func setLayouts() {
-        
-    }
-    
-    
-    
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setWeekendColor(){
+    private func setWeekendColor(){
         calendarWeekdayView.weekdayLabels.forEach {
             if $0.text == "토"{
                 $0.textColor = Color.blue
@@ -60,5 +46,9 @@ class CalendarView: FSCalendar {
         }
     }
     
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 

@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomStudentNameView: BaseView{
     
-    let title = CustomTitleLabel(title: "학생 이름 *")
+    private let title = CustomTitleLabel(title: "학생 이름 *")
     let textFeildView = CustomTextFieldView(placeholder: "학생의 이름을 입력해주세요", limitCount: 20)
     
     override func setLayouts() {

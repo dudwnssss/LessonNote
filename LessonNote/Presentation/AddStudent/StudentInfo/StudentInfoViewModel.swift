@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StudentInfoViewModel{
+final class StudentInfoViewModel{
     
     var isValid: Observable<Bool> = Observable(false)
     var name: Observable<String?> = Observable(nil)

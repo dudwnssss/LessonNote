@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LessonInfoViewModel{
+final class LessonInfoViewModel{
     
     var lessonTimeList: [LessonTime] = []
     

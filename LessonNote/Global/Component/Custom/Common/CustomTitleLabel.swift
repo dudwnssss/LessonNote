@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTitleLabel: UILabel{
+final class CustomTitleLabel: UILabel{
     
     var title = ""
     init(title: String) {
@@ -16,7 +16,7 @@ class CustomTitleLabel: UILabel{
         setProperties()
     }
     
-    func setProperties() {
+    private func setProperties() {
             font = Font.bold16
             let fullString = title
             let attrString = NSMutableAttributedString(string: fullString)

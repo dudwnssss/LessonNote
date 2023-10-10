@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-class StudentInfoView: BaseView {
+final class StudentInfoView: BaseView {
     
-    let scrollView = UIScrollView()
-    let contentView = UIView()
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
@@ -22,7 +22,6 @@ class StudentInfoView: BaseView {
     let nextButton = CompleteButton(title: "다음으로")
     
     override func setProperties() {
-    
         titleLabel.do {
             let fullString = "과외할 학생을\n소개해 주세요"
             let attrString = NSMutableAttributedString(string: fullString)

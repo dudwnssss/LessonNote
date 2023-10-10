@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CompleteButton: UIButton {
+final class CompleteButton: UIButton {
     var buttonTitle: String?
     var isActivated = false {
         didSet {
@@ -21,18 +21,18 @@ class CompleteButton: UIButton {
         setLayouts()
     }
     
-    func setProperties(){
+    private func setProperties(){
         cornerRadius = 10
         configureButton()
     }
     
-    func setLayouts(){
+    private func setLayouts(){
         snp.makeConstraints {
             $0.height.equalTo(48)
         }
     }
     
-    func configureButton(){
+    private func configureButton(){
         backgroundColor = isActivated ? Color.black : Color.gray4
 //        isUserInteractionEnabled = isActivated
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeView: BaseView{
+final class HomeView: BaseView{
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     let addStudentButton = UIButton()
@@ -37,7 +37,7 @@ class HomeView: BaseView{
 
  
     
-    func createLayout() -> UICollectionViewLayout{
+    private func createLayout() -> UICollectionViewLayout{
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(100))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)

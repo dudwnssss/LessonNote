@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WeekCountView: BaseView{
+final class WeekCountView: BaseView{
     
     var selectedWeekCount : Int {
         if checkboxButton.isTapped{
@@ -76,7 +76,7 @@ class WeekCountView: BaseView{
     }
     
     
-    func configureView(){
+    private func configureView(){
         switch checkboxButton.isTapped{
         case true:
             textField.isHidden = false

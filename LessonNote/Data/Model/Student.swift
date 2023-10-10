@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Student: Object {
+final class Student: Object {
     
     @Persisted(primaryKey: true) var studentId: ObjectId
     @Persisted var studentName: String
@@ -48,7 +48,7 @@ class Student: Object {
     }
 }
 
-class LessonSchedule: Object {
+final class LessonSchedule: Object {
     @Persisted var weekday: Weekday.RawValue
     @Persisted var startTime: Date
     @Persisted var endTime: Date

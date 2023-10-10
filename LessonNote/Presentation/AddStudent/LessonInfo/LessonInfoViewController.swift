@@ -7,11 +7,11 @@
 
 import UIKit
 
-class LessonInfoViewController: BaseViewController, KeyboardEvent {
+final class LessonInfoViewController: BaseViewController, KeyboardEvent {
     
     var transformView: UIView {return self.view}
-    let lessonInfoView = LessonInfoView()
-    let lessonInfoViewModel = LessonInfoViewModel()
+    private let lessonInfoView = LessonInfoView()
+    private let lessonInfoViewModel = LessonInfoViewModel()
     
     override func loadView() {
         self.view = lessonInfoView

@@ -35,27 +35,6 @@ class DateManager{
         
         return formattedDates
     }
-    
-    func getDatesStartingFromMonday() -> [String] {
-        var dates: [String] = []
-        let calendar = Calendar.current
-        let currentDate = Date()
-        
-        let currentWeekday = calendar.component(.weekday, from: currentDate)
-        
-        let daysToSubtract = currentWeekday - 2 // 월요일은 2
-        let startDate = calendar.date(byAdding: .day, value: -daysToSubtract, to: currentDate)!
-        
-        for i in 0..<7 {
-            if let date = calendar.date(byAdding: .day, value: i, to: startDate) {
-                dateFormatter.dateFormat = "E\nd"
-                let dateString = dateFormatter.string(from: date)
-                dates.append(dateString)
-            }
-        }
-        return dates
-    }
-    
 
     func getDateRange(numberOfWeeksFromThisWeek: Int) -> String {
         let calendar = Calendar.current
@@ -123,5 +102,16 @@ class DateManager{
         }
 
         return nil
+    }
+    
+    
+     func buildTimeRangeString(startDate: Date, endDate: Date) -> String {
+        
+        dateFormatter.dateFormat = "hh:mm"
+        
+        return String(format: "%@ - %@",
+                      dateFormatter.string(from: startDate),
+                      dateFormatter.string(from: endDate))
+        
     }
 }

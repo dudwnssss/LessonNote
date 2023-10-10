@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CheckInfoView: BaseView {
+final class CheckInfoView: BaseView {
     
     let titleLabel = UILabel()
     let customInfoView = CustomCheckInfoView()

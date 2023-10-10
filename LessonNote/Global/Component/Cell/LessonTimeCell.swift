@@ -7,11 +7,11 @@
 
 import UIKit
 
-class LessonTimeCell: UICollectionViewCell{
+final class LessonTimeCell: UICollectionViewCell{
     
     var delete: (() -> Void)?
     let scheduleLabel = UILabel()
-    let deleteButton = UIButton()
+    private let deleteButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,7 +46,7 @@ class LessonTimeCell: UICollectionViewCell{
     }
     
     func configureCell(lessonTime: LessonTime){
-        scheduleLabel.text = lessonTime.weekday.title + " " +  Date.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
+        scheduleLabel.text = lessonTime.weekday.title + " " +  DateManager.shared.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
     }
     
     @objc func deleteButtonDidTap(){

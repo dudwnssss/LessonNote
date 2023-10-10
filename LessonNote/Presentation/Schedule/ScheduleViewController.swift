@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ScheduleViewController: BaseViewController{
+final class ScheduleViewController: BaseViewController{
     
     private let scheduleView = ScheduleView()
-    let scheduleViewModel = ScheduleViewModel()
+    private let scheduleViewModel = ScheduleViewModel()
     override func loadView() {
         self.view = scheduleView
     }
