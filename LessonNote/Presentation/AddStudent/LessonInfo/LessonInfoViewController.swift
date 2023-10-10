@@ -40,8 +40,9 @@ final class LessonInfoViewController: BaseViewController, KeyboardEvent {
                 let lessonTime = LessonTime(weekday: $0, startTime: start, endTime: end)
                 self.lessonInfoViewModel.lessonTimeList.append(lessonTime)
                 self.lessonInfoView.collectionView.reloadData()
+                self.lessonInfoView.weekdayView.weekdayStackView.weekdayButtons[$0.rawValue].isHidden = true
             }
-            self.lessonInfoView.weekdayView.weekdayStackView.weekdayButtons.forEach {
+            self.lessonInfoView.weekdayView.weekdayStackView.weekdayButtons.forEach { //선택해제
                 $0.isActivated = false
             }
         }
@@ -67,12 +68,15 @@ extension LessonInfoViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: LessonTimeCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
-        cell.configureCell(lessonTime: lessonInfoViewModel.lessonTimeList[indexPath.item])
+        let lessonTime = lessonInfoViewModel.lessonTimeList[indexPath.item]
+        cell.configureCell(lessonTime: lessonTime)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = lessonInfoViewModel.lessonTimeList[indexPath.item].weekday.rawValue
         lessonInfoViewModel.lessonTimeList.remove(at: indexPath.item)
+        lessonInfoView.weekdayView.weekdayStackView.weekdayButtons[index].isHidden = false
         collectionView.reloadData()
     }
 }

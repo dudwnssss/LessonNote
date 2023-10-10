@@ -14,7 +14,7 @@ final class StudentRepository{
     
     //학생 전체 불러오기
     func fetch() -> RealmSwift.Results<Student> {
-        let data = realm.objects(Student.self).sorted(byKeyPath: "studentName", ascending: false)
+        let data = realm.objects(Student.self)
         return data
     }
     

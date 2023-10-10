@@ -114,4 +114,54 @@ class DateManager{
                       dateFormatter.string(from: endDate))
         
     }
+    
+    func weekdayFromDate(_ date: Date) -> Weekday? {
+        let calendar = Calendar.current
+        let weekdayNumber = calendar.component(.weekday, from: date)
+
+        switch weekdayNumber {
+        case 1:
+            return .sunday
+        case 2:
+            return .monday
+        case 3:
+            return .tuesday
+        case 4:
+            return .wednesday
+        case 5:
+            return .thursday
+        case 6:
+            return .friday
+        case 7:
+            return .saturday
+        default:
+            return nil
+        }
+    }
+    
+    func generateClassDates(startDate: Date, classDays: [Weekday], interval: Int) -> [Date] {
+        var classDates: [Date] = []
+        
+        // 시작일의 요일을 확인하여 수업 요일 중 가장 빠른 요일로 조정합니다.
+        let calendar = Calendar.current
+        let startWeekday = calendar.component(.weekday, from: startDate)
+        let earliestClassDay = classDays.min(by: { $0.rawValue < $1.rawValue }) ?? .monday
+        let daysUntilEarliestClassDay = (earliestClassDay.rawValue - startWeekday + 7) % 7
+        let adjustedStartDate = calendar.date(byAdding: .day, value: daysUntilEarliestClassDay, to: startDate)!
+        
+        // 수업 일자를 계산합니다.
+        var currentDate = adjustedStartDate
+        let endDate = calendar.date(byAdding: .year, value: 1, to: adjustedStartDate)!
+        
+        while currentDate <= endDate {
+            if let currentWeekday = Weekday(rawValue: calendar.component(.weekday, from: currentDate)),
+               classDays.contains(currentWeekday) {
+                classDates.append(currentDate)
+            }
+            currentDate = calendar.date(byAdding: .day, value: interval * 7, to: currentDate)!
+        }
+        
+        return classDates
+    }
+
 }

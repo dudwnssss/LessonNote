@@ -8,10 +8,17 @@
 import UIKit
 import FSCalendar
 
-class CalendarView: FSCalendar {
+final class CalendarView: FSCalendar {
+    
+    var studentIcon: StudentIcon = .blue{
+        didSet{
+            appearance.eventDefaultColor = studentIcon.color
+            appearance.selectionColor = studentIcon.color
+        }
+    }
     
     override init(frame: CGRect) {
-        super.init(frame: .zero)
+        super.init(frame: frame)
         setProperties()
     }
     
@@ -28,13 +35,11 @@ class CalendarView: FSCalendar {
             $0.headerTitleFont = Font.medium14
             $0.weekdayTextColor = Color.gray5
             $0.weekdayFont = Font.medium12
-            
+            $0.todayColor = Color.black
             $0.titleDefaultColor = Color.black
             $0.titleFont = Font.medium12
-            $0.selectionColor = .black
         }
         setWeekendColor()
-
     }
     
     private func setWeekendColor(){

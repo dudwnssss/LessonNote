@@ -21,7 +21,7 @@ final class HomeViewModel{
     
     init(){
         studentResults = repository.fetch()
-        studentList.value = Array(studentResults)
+        studentList.value = Array(studentResults).reversed()
         bind()
     }
     
@@ -33,7 +33,7 @@ final class HomeViewModel{
             case .initial:
                 break
             case .update(let collectionType, let deletions, let insertions, let modifications):
-                self?.studentList.value = Array((self?.studentResults)!)
+                self?.studentList.value = Array((self?.studentResults)!.reversed())
                 break
             case .error(let error):
                 print(error)

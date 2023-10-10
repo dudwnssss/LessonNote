@@ -9,7 +9,7 @@ import Foundation
 
 final class StartDateInfoViewModel{
     
-  
+    var isValid: Observable<Bool> = Observable(false)
     
     
 }

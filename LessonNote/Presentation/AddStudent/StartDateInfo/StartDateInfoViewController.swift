@@ -8,7 +8,7 @@
 import UIKit
 import FSCalendar
 
-class StartDateInfoViewController: BaseViewController{
+final class StartDateInfoViewController: BaseViewController{
     
     var selectedDate: Date?{
         didSet{
@@ -16,7 +16,8 @@ class StartDateInfoViewController: BaseViewController{
         }
     }
     
-    let startDateInfoView = StartDateInfoView()
+    private let startDateInfoView = StartDateInfoView()
+    private let startDateInfoViewModel = StartDateInfoViewModel()
     
     override func loadView() {
         self.view = startDateInfoView
@@ -27,9 +28,17 @@ class StartDateInfoViewController: BaseViewController{
     }
     
     override func setProperties() {
-        startDateInfoView.calendar.delegate = self
+        startDateInfoView.calendar.do {
+            $0.delegate = self
+            $0.dataSource = self
+            $0.studentIcon = TempStudent.shared.studentIcon!
+        }
+
         hideKeyboardWhenTappedAround()
         startDateInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
+        startDateInfoViewModel.isValid.bind { [weak self] value in
+            self?.startDateInfoView.nextButton.isActivated = value
+        }
     }
     
     @objc func nextButtonDidTap(){
@@ -38,9 +47,33 @@ class StartDateInfoViewController: BaseViewController{
     }
 }
 
-extension StartDateInfoViewController: FSCalendarDelegate{
+extension StartDateInfoViewController: FSCalendarDelegate, FSCalendarDataSource{
+    
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
+    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: date)
+        
+        if weekday == 2 || weekday == 4 || weekday == 6 {
+            return true
+        }
+        return false
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: date)
+        if weekday == 2 || weekday == 4 || weekday == 6 {
+            return nil
+        }
+        return .gray
+    }
+    
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         selectedDate = date
-        print(selectedDate)
+        startDateInfoViewModel.isValid.value = true
     }
 }

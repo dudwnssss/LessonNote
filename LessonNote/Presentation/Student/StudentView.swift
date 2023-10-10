@@ -17,7 +17,6 @@ class StudentView: BaseView {
         addSubview(scrollView)
         scrollView.snp.makeConstraints {
             $0.edges.equalTo(self.safeAreaLayoutGuide)
-//            $0.bottom.equalToSuperview()
         }
         
         scrollView.addSubview(contentView)
@@ -37,7 +36,6 @@ class StudentView: BaseView {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(calendarView.snp.width)
             $0.bottom.equalToSuperview().offset(-60)
-        
         }
     }
 }
