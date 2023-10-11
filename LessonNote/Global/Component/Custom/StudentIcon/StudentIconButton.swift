@@ -10,12 +10,12 @@ import UIKit
 final class StudentIconButton: UIButton {
     
     var studentIcon : StudentIcon?
-    var isTapped = false {
-        didSet {
-            configureButton()
-        }
-    }
-    
+//    var isTapped = false {
+//        didSet {
+//            configureButton()
+//        }
+//    }
+//
     init(studentIcon: StudentIcon){
         self.studentIcon = studentIcon
         super.init(frame: .zero)
@@ -33,8 +33,8 @@ final class StudentIconButton: UIButton {
         }
     }
     
-    private func configureButton(){
-        switch self.isTapped{
+    func configureButton(isSelected: Bool){
+        switch isSelected{
         case true:
             borderWidth = 2
             borderColor = .black

@@ -12,6 +12,7 @@ final class LessonInfoViewModel{
     var lessonTimeList: [LessonTime] = []
     var isChecked: Observable<Bool> = Observable(false)
     var weekCount: Observable<Int> = Observable(2)
+    var weekDay: Observable<[Weekday]?> = Observable(nil)
 }
 
 extension LessonInfoViewModel{

@@ -11,7 +11,6 @@ final class CheckBoxButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        configureCheckbox(check: false)
     }
     
     func configureCheckbox(check: Bool){
@@ -23,7 +22,6 @@ final class CheckBoxButton: UIButton {
             setImage(Image.checkbox, for: .normal)
         }
     }
-    
 
     @available(*, unavailable)
     required init(coder: NSCoder) {

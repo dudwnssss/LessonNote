@@ -31,13 +31,20 @@ final class StudentInfoViewController: BaseViewController {
         studentInfoView.studentNameView.textFeildView.textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
         studentInfoView.studentPhoneNumberView.textFeildView.textField.addTarget(self, action: #selector(studentNumberTextFieldDidChange), for: .editingChanged)
         studentInfoView.parentPhoneNumberView.textFeildView.textField.addTarget(self, action: #selector(parentNumberTextFieldDidChange), for: .editingChanged)
+        studentInfoView.studentIconView.iconStackView.studentIconButtonList.forEach {
+            $0.addTarget(self, action: #selector(studentIconButtonDidTap(sender:)), for: .touchUpInside)
+        }
+        
+    }
+    
+    @objc func studentIconButtonDidTap(sender: StudentIconButton){
+        studentInfoViewModel.studentIcon.value = sender.studentIcon
     }
     
     @objc func nextButtonDidTap(){
         let vc = LessonInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
         studentInfoViewModel.storeData()
-        TempStudent.shared.studentIcon = studentInfoView.studentIconView.iconStackView.selectedIcon
     }
     
     @objc func nameTextFieldDidChange(){
@@ -73,6 +80,12 @@ final class StudentInfoViewController: BaseViewController {
         studentInfoViewModel.parentPhoneNumber.bind { [weak self] value in
             self?.studentInfoView.parentPhoneNumberView.textFeildView.textField.text = value
         }
+        studentInfoViewModel.studentIcon.bind { value in
+            self.studentInfoView.studentIconView.iconStackView.studentIconButtonList.forEach({
+                $0.configureButton(isSelected: value == $0.studentIcon)
+            })
+        }
+        
     }
 }
 

@@ -11,10 +11,11 @@ final class StudentInfoViewModel{
     
     var isValid: Observable<Bool> = Observable(false)
     var name: Observable<String?> = Observable(nil)
-    var studentIcon: Observable<StudentIcon?> = Observable(nil)
+    var studentIcon: Observable<StudentIcon?> = Observable(.pink)
     var studentPhoneNumber: Observable<String?>  = Observable(nil)
     var parentPhoneNumber: Observable<String?>  = Observable(nil)
-
+  
+    
     func checkValidation(){
         guard let name = name.value else {
             print("이름 공백")
@@ -36,6 +37,7 @@ final class StudentInfoViewModel{
     
     func storeData(){
         TempStudent.shared.studentName = name.value
+        TempStudent.shared.studentIcon = studentIcon.value
         TempStudent.shared.studentPhoneNumber = studentPhoneNumber.value
         TempStudent.shared.parentPhoneNumber = parentPhoneNumber.value
     }
