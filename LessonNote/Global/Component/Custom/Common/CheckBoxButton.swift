@@ -9,19 +9,14 @@ import UIKit
 
 final class CheckBoxButton: UIButton {
     
-    var isTapped = false {
-        didSet {
-            configureCheckbox()
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureCheckbox()
+//        configureCheckbox(check: false)
     }
     
-    private func configureCheckbox(){
-        switch isTapped{
+    func configureCheckbox(check: Bool){
+        print(#fileID, #function, #line, "- ")
+        switch check{
         case true:
             setImage(Image.checkboxFill, for: .normal)
         case false:

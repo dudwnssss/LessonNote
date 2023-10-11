@@ -60,8 +60,11 @@ extension StudentViewController: FSCalendarDelegate, FSCalendarDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ko_KR")
         dateFormatter.dateFormat = "M월 d일 E요일"
-        let date = dateFormatter.string(from: date)
-        vc.navigationItem.title = date + " 수업"
+        let formattedDate = dateFormatter.string(from: date)
+        
+        vc.lessonViewModel.student = student
+        vc.lessonViewModel.date = date
+        vc.navigationItem.title = formattedDate + " 수업"
         navigationController?.pushViewController(vc, animated: true)
     }
 

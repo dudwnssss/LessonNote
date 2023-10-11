@@ -8,6 +8,7 @@
 import UIKit
 
 final class CustomButton: UIButton {
+    
     var buttonTitle: String?
     var isActivated = false {
         didSet {

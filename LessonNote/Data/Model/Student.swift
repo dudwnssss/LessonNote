@@ -19,6 +19,7 @@ final class Student: Object {
     @Persisted var lessonStartDate: Date?
     @Persisted var weekCount: Int?
     @Persisted var memo: String?
+    @Persisted var lessons: List<Lesson>
     
     
     convenience init(studentName: String, studentIcon: StudentIcon.RawValue, studentPhoneNumber: String? = nil, parentPhoneNumber: String? = nil, lessonStartDate: Date? = nil, weekCount: Int? = nil) {
@@ -60,5 +61,21 @@ final class LessonSchedule: Object {
         self.weekday = weekday
         self.startTime = startTime
         self.endTime = endTime
+    }
+}
+
+final class Lesson: Object {
+    @Persisted var date: Date?
+    @Persisted var lessonState: LessonState.RawValue?
+    @Persisted var assignmentState: AssignmentState.RawValue?
+    @Persisted var feedback: String?
+    @Persisted(originProperty: "lessons") var student: LinkingObjects<Student>
+    
+    convenience init(date: Date? = nil, lessonState: LessonState.RawValue? = nil, assignmentState: AssignmentState.RawValue? = nil, feedback: String? = nil) {
+        self.init()
+        self.date = date
+        self.lessonState = lessonState
+        self.assignmentState = assignmentState
+        self.feedback = feedback
     }
 }

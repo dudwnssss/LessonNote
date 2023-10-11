@@ -105,6 +105,7 @@
 		10A86DBC2AD6661A00817092 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DBB2AD6661A00817092 /* LessonViewModel.swift */; };
 		10A86DC02AD672FB00817092 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DBF2AD672FB00817092 /* CustomTextView.swift */; };
 		10A86DC32AD684B600817092 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */; };
+		10A86DC52AD69E8D00817092 /* LessonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DC42AD69E8D00817092 /* LessonState.swift */; };
 		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
 /* End PBXBuildFile section */
 
@@ -203,6 +204,7 @@
 		10A86DB92AD6661500817092 /* LessonVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonVIew.swift; sourceTree = "<group>"; };
 		10A86DBB2AD6661A00817092 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 		10A86DBF2AD672FB00817092 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		10A86DC42AD69E8D00817092 /* LessonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonState.swift; sourceTree = "<group>"; };
 		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -620,6 +622,7 @@
 				1016FB2E2AC9C892003E7612 /* StudentIcon.swift */,
 				1048F9512ACC02E100A56C76 /* Weekday.swift */,
 				1010CBDD2ACEE09B00B40498 /* ViewCase.swift */,
+				10A86DC42AD69E8D00817092 /* LessonState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				1010CC2B2AD2670500B40498 /* ElliotDayOption.swift in Sources */,
 				1010CC262AD2670500B40498 /* ElliotableCell.swift in Sources */,
 				104C883B2AD5135000EC283C /* StudentViewController.swift in Sources */,
+				10A86DC52AD69E8D00817092 /* LessonState.swift in Sources */,
 				1048F9A82ACD2A2500A56C76 /* LessonTimePickerVIew.swift in Sources */,
 				1016FB0F2AC96239003E7612 /* HomeViewController.swift in Sources */,
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,

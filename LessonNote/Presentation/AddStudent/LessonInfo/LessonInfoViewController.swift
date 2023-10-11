@@ -28,7 +28,7 @@ final class LessonInfoViewController: BaseViewController {
             $0.register(cell: LessonTimeCell.self)
         }
         lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-        
+
         lessonInfoView.lessonTimeView.lessonTimePiker.passLessonTime = { start, end in
             print(start, end)
             print("하이", self.lessonInfoView.weekdayView.weekdayStackView.selectedWeekdays)
@@ -43,9 +43,19 @@ final class LessonInfoViewController: BaseViewController {
                 $0.isActivated = false
             }
         }
+        self.lessonInfoView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(  checkboxButtonDidTap), for: .touchUpInside)
         
     }
     
+    override func bind() {
+        lessonInfoViewModel.isChecked.bind { value in
+            self.lessonInfoView.weekCountView.weekCountView.checkboxButton.configureCheckbox(check: value)
+            self.lessonInfoView.weekCountView.weekCountView.configureView(isChecked: value)
+        }
+        lessonInfoViewModel.weekCount.bind { value in
+            self.lessonInfoView.weekCountView.weekCountView.textField.textField.text = "\(value)"
+        }
+    }
     override func setNavigationBar() {
         navigationItem.title = "학생 추가"
     }
@@ -53,8 +63,12 @@ final class LessonInfoViewController: BaseViewController {
     @objc func nextButtonDidTap(){
         let vc = StartDateInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
-        TempStudent.shared.lessonTimes = lessonInfoViewModel.lessonTimeList
-        TempStudent.shared.weekCount = lessonInfoView.weekCountView.weekCountView.selectedWeekCount
+        lessonInfoViewModel.storeData()
+    }
+    
+    @objc func checkboxButtonDidTap(){
+        lessonInfoViewModel.isChecked.value.toggle()
+        lessonInfoViewModel.setWeekCount()
     }
 }
 

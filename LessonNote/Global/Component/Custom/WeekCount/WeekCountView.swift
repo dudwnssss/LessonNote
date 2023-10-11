@@ -9,14 +9,6 @@ import UIKit
 
 final class WeekCountView: BaseView{
     
-    var selectedWeekCount : Int {
-        if checkboxButton.isTapped{
-            guard let text = textField.textField.text, let intText = Int(text) else {return 1}
-            return intText
-        } else {
-            return 1
-        }
-    }
     let checkboxButton = CheckBoxButton()
     let titleLabel = UILabel()
     let textField = CustomTextFieldView(placeholder: "2", limitCount: 1)
@@ -35,14 +27,13 @@ final class WeekCountView: BaseView{
         descriptionLabel.do {
             $0.text = "주 마다"
         }
-        checkboxButton.addTarget(self, action: #selector(checkboxButtonDidTap), for: .touchUpInside)
         numberPickerView.do {
             $0.didSelectNumber = {number in
                 self.textField.textField.text = "\(number)"
             }
             $0.setup()
         }
-        configureView()
+        configureView(isChecked: false)
     }
     
     override func setLayouts() {
@@ -69,15 +60,8 @@ final class WeekCountView: BaseView{
         }
     }
     
-    
-    @objc func checkboxButtonDidTap(){
-        checkboxButton.isTapped.toggle()
-        configureView()
-    }
-    
-    
-    private func configureView(){
-        switch checkboxButton.isTapped{
+    func configureView(isChecked: Bool){
+        switch isChecked{
         case true:
             textField.isHidden = false
             descriptionLabel.isHidden = false
