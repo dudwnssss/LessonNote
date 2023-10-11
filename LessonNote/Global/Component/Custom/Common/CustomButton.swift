@@ -10,11 +10,7 @@ import UIKit
 final class CustomButton: UIButton {
     
     var buttonTitle: String?
-    var isActivated = false {
-        didSet {
-            configureButton()
-        }
-    }
+
     init(title: String) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
@@ -24,12 +20,10 @@ final class CustomButton: UIButton {
     private func setProperties(){
         titleLabel?.font = Font.medium14
         cornerRadius = 10
-        configureButton()
-        addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
     }
         
-    private func configureButton(){
-        switch isActivated{
+    func configureButton(activate: Bool){
+        switch activate{
         case true:
             backgroundColor = Color.gray6
             borderWidth = 0
@@ -40,10 +34,6 @@ final class CustomButton: UIButton {
             borderColor = Color.gray6
             setTitleColor(Color.gray6, for: .normal)
         }
-    }
-    
-    @objc func buttonDidTap(){
-        isActivated.toggle()
     }
 
     @available(*, unavailable)
