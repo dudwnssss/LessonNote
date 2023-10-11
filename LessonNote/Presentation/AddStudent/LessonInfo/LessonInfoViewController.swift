@@ -7,9 +7,8 @@
 
 import UIKit
 
-final class LessonInfoViewController: BaseViewController, KeyboardEvent {
+final class LessonInfoViewController: BaseViewController {
     
-    var transformView: UIView {return self.view}
     private let lessonInfoView = LessonInfoView()
     private let lessonInfoViewModel = LessonInfoViewModel()
     
@@ -19,11 +18,9 @@ final class LessonInfoViewController: BaseViewController, KeyboardEvent {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        removeKeyboardObserver()
     }
     
     override func setProperties() {
-        setupKeyboardEvent()
         hideKeyboardWhenTappedAround()
         lessonInfoView.collectionView.do {
             $0.delegate = self

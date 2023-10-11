@@ -55,6 +55,15 @@ extension StudentViewController: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
         return nil
     }
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let vc = LessonViewController()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "M월 d일 E요일"
+        let date = dateFormatter.string(from: date)
+        vc.navigationItem.title = date + " 수업"
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     
 }

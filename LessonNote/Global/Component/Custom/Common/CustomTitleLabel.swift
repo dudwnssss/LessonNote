@@ -14,6 +14,7 @@ final class CustomTitleLabel: UILabel{
         self.title = title
         super.init(frame: .zero)
         setProperties()
+        setLayouts()
     }
     
     private func setProperties() {
@@ -24,6 +25,12 @@ final class CustomTitleLabel: UILabel{
             attrString.addAttribute(.foregroundColor, value: Color.blue, range: range)
             textColor = Color.black
             attributedText = attrString
+    }
+    
+    private func setLayouts(){
+        snp.makeConstraints {
+            $0.height.equalTo(20)
+        }
     }
     
     @available(*, unavailable)

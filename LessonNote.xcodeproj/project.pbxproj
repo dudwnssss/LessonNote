@@ -29,7 +29,6 @@
 		1010CBEE2ACFB47000B40498 /* CustomWeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBED2ACFB47000B40498 /* CustomWeekdayView.swift */; };
 		1010CBF02ACFB4E100B40498 /* CustomLessonTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */; };
 		1010CBF22ACFB5FF00B40498 /* CustomWeekCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */; };
-		1010CBF52ACFEA0800B40498 /* KeyboardEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF42ACFEA0800B40498 /* KeyboardEvent.swift */; };
 		1010CBF72ACFEA3500B40498 /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF62ACFEA3500B40498 /* UIResponder+.swift */; };
 		1010CBF92AD0122A00B40498 /* StartDateInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF82AD0122A00B40498 /* StartDateInfoViewModel.swift */; };
 		1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBFB2AD12C1500B40498 /* DateManager.swift */; };
@@ -101,6 +100,11 @@
 		104C883F2AD5135C00EC283C /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C883E2AD5135C00EC283C /* StudentViewModel.swift */; };
 		104C88422AD513FA00EC283C /* CustomStudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88412AD513FA00EC283C /* CustomStudentView.swift */; };
 		104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88432AD5151C00EC283C /* PhoneNumberButton.swift */; };
+		10A86DB82AD6660E00817092 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DB72AD6660E00817092 /* LessonViewController.swift */; };
+		10A86DBA2AD6661500817092 /* LessonVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DB92AD6661500817092 /* LessonVIew.swift */; };
+		10A86DBC2AD6661A00817092 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DBB2AD6661A00817092 /* LessonViewModel.swift */; };
+		10A86DC02AD672FB00817092 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DBF2AD672FB00817092 /* CustomTextView.swift */; };
+		10A86DC32AD684B600817092 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */; };
 		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
 /* End PBXBuildFile section */
 
@@ -126,7 +130,6 @@
 		1010CBED2ACFB47000B40498 /* CustomWeekdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeekdayView.swift; sourceTree = "<group>"; };
 		1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLessonTimeView.swift; sourceTree = "<group>"; };
 		1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeekCountView.swift; sourceTree = "<group>"; };
-		1010CBF42ACFEA0800B40498 /* KeyboardEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardEvent.swift; sourceTree = "<group>"; };
 		1010CBF62ACFEA3500B40498 /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
 		1010CBF82AD0122A00B40498 /* StartDateInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartDateInfoViewModel.swift; sourceTree = "<group>"; };
 		1010CBFB2AD12C1500B40498 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
@@ -196,6 +199,10 @@
 		104C883E2AD5135C00EC283C /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
 		104C88412AD513FA00EC283C /* CustomStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudentView.swift; sourceTree = "<group>"; };
 		104C88432AD5151C00EC283C /* PhoneNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberButton.swift; sourceTree = "<group>"; };
+		10A86DB72AD6660E00817092 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
+		10A86DB92AD6661500817092 /* LessonVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonVIew.swift; sourceTree = "<group>"; };
+		10A86DBB2AD6661A00817092 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
+		10A86DBF2AD672FB00817092 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +216,7 @@
 				1016FB032AC95E10003E7612 /* SnapKit in Frameworks */,
 				1010CBBE2ACE4A7D00B40498 /* FSCalendar in Frameworks */,
 				1016FB062AC95E1A003E7612 /* Then in Frameworks */,
+				10A86DC32AD684B600817092 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +226,7 @@
 		1010CBBF2ACE4A9800B40498 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				10A86DBF2AD672FB00817092 /* CustomTextView.swift */,
 				1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */,
 				1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */,
 				1048F9442ACA96C500A56C76 /* CompleteButton.swift */,
@@ -311,14 +320,6 @@
 				1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */,
 			);
 			path = AddStudent;
-			sourceTree = "<group>";
-		};
-		1010CBF32ACFE9F800B40498 /* Keyboard */ = {
-			isa = PBXGroup;
-			children = (
-				1010CBF42ACFEA0800B40498 /* KeyboardEvent.swift */,
-			);
-			path = Keyboard;
 			sourceTree = "<group>";
 		};
 		1010CBFA2AD12C0100B40498 /* Date */ = {
@@ -417,6 +418,7 @@
 				1016FB0D2AC96204003E7612 /* Schedule */,
 				1016FB322ACA9000003E7612 /* AddStudent */,
 				104C88392AD5133D00EC283C /* Student */,
+				10A86DB62AD665E400817092 /* Lesson */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -425,7 +427,6 @@
 			isa = PBXGroup;
 			children = (
 				1010CBFA2AD12C0100B40498 /* Date */,
-				1010CBF32ACFE9F800B40498 /* Keyboard */,
 				1048F9502ACC014000A56C76 /* Enum */,
 				1010CBDA2ACEC64700B40498 /* Observable */,
 				1016FB002AC95DD1003E7612 /* Reusable */,
@@ -641,6 +642,16 @@
 			path = Student;
 			sourceTree = "<group>";
 		};
+		10A86DB62AD665E400817092 /* Lesson */ = {
+			isa = PBXGroup;
+			children = (
+				10A86DB72AD6660E00817092 /* LessonViewController.swift */,
+				10A86DB92AD6661500817092 /* LessonVIew.swift */,
+				10A86DBB2AD6661A00817092 /* LessonViewModel.swift */,
+			);
+			path = Lesson;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -663,6 +674,7 @@
 				1016FB082AC95E3E003E7612 /* Realm */,
 				1016FB0A2AC95E3E003E7612 /* RealmSwift */,
 				1010CBBD2ACE4A7D00B40498 /* FSCalendar */,
+				10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */,
 			);
 			productName = LessonNote;
 			productReference = 1016FABF2AC93F45003E7612 /* LessonNote.app */;
@@ -697,6 +709,7 @@
 				1016FB042AC95E19003E7612 /* XCRemoteSwiftPackageReference "Then" */,
 				1016FB072AC95E3E003E7612 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				1010CBBC2ACE4A7D00B40498 /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				10A86DC12AD684B600817092 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 1016FAC02AC93F45003E7612 /* Products */;
 			projectDirPath = "";
@@ -757,6 +770,7 @@
 				1016FAFB2AC95AFB003E7612 /* Color.swift in Sources */,
 				1010CBDC2ACEC66600B40498 /* Observable.swift in Sources */,
 				1010CBF22ACFB5FF00B40498 /* CustomWeekCountView.swift in Sources */,
+				10A86DBC2AD6661A00817092 /* LessonViewModel.swift in Sources */,
 				1048F94C2ACAB54700A56C76 /* StudentIconStackView.swift in Sources */,
 				1010CBCA2ACE839B00B40498 /* StartDateInfoViewController.swift in Sources */,
 				1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */,
@@ -768,11 +782,11 @@
 				1016FAF72AC957C6003E7612 /* Image.swift in Sources */,
 				1016FAF32AC94ABE003E7612 /* UIViewController+.swift in Sources */,
 				1010CBF92AD0122A00B40498 /* StartDateInfoViewModel.swift in Sources */,
-				1010CBF52ACFEA0800B40498 /* KeyboardEvent.swift in Sources */,
 				104C88382AD3D73F00EC283C /* ScheduleViewModel.swift in Sources */,
 				1048F9A42ACD0E4E00A56C76 /* CustomButton.swift in Sources */,
 				1010CBF72ACFEA3500B40498 /* UIResponder+.swift in Sources */,
 				1016FAC52AC93F45003E7612 /* SceneDelegate.swift in Sources */,
+				10A86DB82AD6660E00817092 /* LessonViewController.swift in Sources */,
 				1010CBE62ACFA45500B40498 /* CustomStudentNameView.swift in Sources */,
 				1010CBD92ACEC5FE00B40498 /* StudentInfoViewModel.swift in Sources */,
 				1010CC2B2AD2670500B40498 /* ElliotDayOption.swift in Sources */,
@@ -788,11 +802,13 @@
 				1010CBD52ACEA63A00B40498 /* CustomCheckInfoLabel.swift in Sources */,
 				1048F94A2ACAACD300A56C76 /* CustomTitleLabel.swift in Sources */,
 				1048F9AC2ACD3E8E00A56C76 /* Date+.swift in Sources */,
+				10A86DC02AD672FB00817092 /* CustomTextView.swift in Sources */,
 				1016FAEF2AC94A9F003E7612 /* UIStackView+.swift in Sources */,
 				10033CDE2AD581D900379DA0 /* EmptyView.swift in Sources */,
 				1010CBC52ACE788500B40498 /* LessonTime.swift in Sources */,
 				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
 				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
+				10A86DBA2AD6661500817092 /* LessonVIew.swift in Sources */,
 				104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */,
 				1010CBE82ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift in Sources */,
 				1010CC302AD2673900B40498 /* TimetableHeader.swift in Sources */,
@@ -1053,6 +1069,14 @@
 				kind = branch;
 			};
 		};
+		10A86DC12AD684B600817092 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1080,6 +1104,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1016FB072AC95E3E003E7612 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10A86DC12AD684B600817092 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

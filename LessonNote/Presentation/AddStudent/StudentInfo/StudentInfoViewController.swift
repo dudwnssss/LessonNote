@@ -7,9 +7,8 @@
 
 import UIKit
 
-final class StudentInfoViewController: BaseViewController, KeyboardEvent {
+final class StudentInfoViewController: BaseViewController {
     
-    var transformView: UIView {return self.view}
     private let studentInfoView = StudentInfoView()
     private let studentInfoViewModel = StudentInfoViewModel()
     
@@ -23,12 +22,10 @@ final class StudentInfoViewController: BaseViewController, KeyboardEvent {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        removeKeyboardObserver()
     }
     
     
     override func setProperties() {
-        setupKeyboardEvent()
         hideKeyboardWhenTappedAround()
         studentInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         studentInfoView.studentNameView.textFeildView.textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)

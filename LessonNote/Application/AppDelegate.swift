@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithTransparentBackground()
             appearance.backgroundColor = Color.white
-            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: Color.black]
+            appearance.titleTextAttributes = [.foregroundColor: Color.black, .font: Font.medium16]
             let backButtonAppearance = UIBarButtonItemAppearance()
             backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear, .font: UIFont.systemFont(ofSize: 0)]
             appearance.setBackIndicatorImage(Image.back, transitionMaskImage: Image.back)
@@ -41,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UITabBar.appearance().backgroundColor = Color.white
         }
         
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.enableAutoToolbar = false
         return true
     }
 
