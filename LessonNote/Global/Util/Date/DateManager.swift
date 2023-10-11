@@ -139,29 +139,30 @@ class DateManager{
         }
     }
     
-    func generateClassDates(startDate: Date, classDays: [Weekday], interval: Int) -> [Date] {
-        var classDates: [Date] = []
+    func generateYearlyLessonSchedule(weekday: [Weekday.RawValue], weekCount: Int, startWeekday: Weekday.RawValue, startDate: Date) -> [Date] {
+        var lessonDates: [Date] = []
         
-        // 시작일의 요일을 확인하여 수업 요일 중 가장 빠른 요일로 조정합니다.
+        // Calendar 객체를 생성합니다.
         let calendar = Calendar.current
-        let startWeekday = calendar.component(.weekday, from: startDate)
-        let earliestClassDay = classDays.min(by: { $0.rawValue < $1.rawValue }) ?? .monday
-        let daysUntilEarliestClassDay = (earliestClassDay.rawValue - startWeekday + 7) % 7
-        let adjustedStartDate = calendar.date(byAdding: .day, value: daysUntilEarliestClassDay, to: startDate)!
         
-        // 수업 일자를 계산합니다.
-        var currentDate = adjustedStartDate
-        let endDate = calendar.date(byAdding: .year, value: 1, to: adjustedStartDate)!
+        // 현재 날짜를 가져옵니다.
+        var currentDate = startDate
         
-        while currentDate <= endDate {
-            if let currentWeekday = Weekday(rawValue: calendar.component(.weekday, from: currentDate)),
-               classDays.contains(currentWeekday) {
-                classDates.append(currentDate)
+        for _ in 1...52 { // 1년치(52주)를 계산합니다.
+            for day in weekday {
+                // 현재 요일을 기준으로 수업 시작 날짜를 찾습니다.
+                let weekdayDifference = (day - startWeekday + 7) % 7
+                let nextLessonDate = calendar.date(byAdding: .day, value: weekdayDifference, to: currentDate)!
+                
+                // 수업 날짜를 추가합니다.
+                lessonDates.append(nextLessonDate)
             }
-            currentDate = calendar.date(byAdding: .day, value: interval * 7, to: currentDate)!
+            
+            // 주차를 늘립니다.
+            currentDate = calendar.date(byAdding: .weekOfYear, value: weekCount, to: currentDate)!
         }
         
-        return classDates
+        return lessonDates
     }
 
 }

@@ -59,6 +59,7 @@ final class CustomTextFieldView: BaseView {
             $0.centerY.equalTo(textCountLabel)
             $0.leading.equalTo(underLineView).offset(5)
             $0.trailing.equalTo(textCountLabel.snp.leading).offset(-4)
+            $0.height.equalTo(30)
         }
         
         snp.makeConstraints {

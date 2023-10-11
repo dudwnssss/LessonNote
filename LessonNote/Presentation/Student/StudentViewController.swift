@@ -29,8 +29,10 @@ final class StudentViewController: BaseViewController {
             $0.dataSource = self
             $0.studentIcon = StudentIcon(rawValue: student!.studentIcon)!
         }
-        studentViewModel.scheduledLessonDates.bind { _ in
+        studentViewModel.scheduledLessonDates.bind { lessons in
+            print(lessons)
             self.studentView.calendarView.reloadData()
+            
         }
 
     }
