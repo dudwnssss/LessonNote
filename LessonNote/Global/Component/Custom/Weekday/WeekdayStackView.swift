@@ -9,17 +9,6 @@ import UIKit
 
 final class WeekdayStackView: UIStackView{
     
-    
-//    var selectedWeekdays: [Weekday] {
-//        var selectedDays: [Weekday] = []
-//        for (index, button) in weekdayButtons.enumerated() {
-//            if button.isActivated {
-//                selectedDays.append(weekdays[index])
-//            }
-//        }
-//        return selectedDays
-//    }
-    
     private let weekdays = Weekday.allCases
     var weekdayButtons: [CustomButton] = []
     
@@ -32,7 +21,7 @@ final class WeekdayStackView: UIStackView{
     private func setProperties() {
         weekdays.forEach {
             let button = CustomButton(title: $0.title)
-            button.tag = $0.rawValue //태그 쓰자
+            button.tag = $0.rawValue
             weekdayButtons.append(button)
         }
         weekdayButtons.forEach {

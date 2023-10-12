@@ -14,17 +14,11 @@ final class LessonView: BaseView {
     private let lessonStatusLabel = CustomTitleLabel(title: "수업 상태")
     private let assignmentStatusLabel = CustomTitleLabel(title: "과제 상태")
     
-    let completedLessonButton = CustomButton(title: "정상 수업")
-    let supplementedLessonButton = CustomButton(title: "보강")
-    let canceledLessonButton = CustomButton(title: "휴강")
-    let noneLessonButton = CustomButton(title: "수업 없음")
+    private let lessonSates = LessonState.allCases
+    private let assignmentStates = AssignmentState.allCases
     
-    let goodAssignmentButton = CustomButton(title: "O 완료")
-    let sosoAssignmentButton = CustomButton(title: "△ 미흡")
-    let badAssginmentButton = CustomButton(title: "X 미수행")
-    
-    lazy var LessonButtons = [completedLessonButton, supplementedLessonButton, canceledLessonButton, noneLessonButton]
-    lazy var AssignmentButtons = [goodAssignmentButton, sosoAssignmentButton, badAssginmentButton]
+    var lessonStateButtons: [CustomButton] = []
+    var assignmentStateButtons: [CustomButton] = []
     
     private let feedbackLabel = CustomTitleLabel(title: "피드백")
     private let lessonStackView = UIStackView()
@@ -38,18 +32,21 @@ final class LessonView: BaseView {
             $0.spacing = 8
             $0.distribution = .fillEqually
         }
-        
         assignmentStackView.do {
             $0.axis = .horizontal
             $0.spacing = 8
             $0.distribution = .fillEqually
         }
-        
-        LessonButtons.forEach {
-            lessonStackView.addArrangedSubview($0)
+        lessonSates.forEach {
+            let button = CustomButton(title: $0.title)
+            button.tag = $0.rawValue
+            lessonStateButtons.append(button)
         }
-        AssignmentButtons.forEach {
-            assignmentStackView.addArrangedSubview($0)
+        
+        assignmentStates.forEach {
+            let button = CustomButton(title: $0.title)
+            button.tag = $0.rawValue
+            assignmentStateButtons.append(button)
         }
     }
     override func setLayouts() {
@@ -65,6 +62,13 @@ final class LessonView: BaseView {
         }
         
         contentView.addSubviews(lessonStatusLabel, lessonStackView, assignmentStatusLabel, assignmentStackView, feedbackLabel, feedbackTextView)
+        
+        lessonStateButtons.forEach {
+            lessonStackView.addArrangedSubview($0)
+        }
+        assignmentStateButtons.forEach {
+            assignmentStackView.addArrangedSubview($0)
+        }
         
         lessonStatusLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)

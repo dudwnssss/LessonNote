@@ -65,6 +65,7 @@ final class LessonSchedule: Object {
 }
 
 final class Lesson: Object {
+    @Persisted var id: UUID
     @Persisted var date: Date?
     @Persisted var lessonState: LessonState.RawValue?
     @Persisted var assignmentState: AssignmentState.RawValue?

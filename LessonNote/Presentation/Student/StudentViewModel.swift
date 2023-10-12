@@ -10,7 +10,6 @@ import Foundation
 final class StudentViewModel {
     
     var scheduledLessonDates: Observable<[Date]> = Observable([]) //event 사용 studentIcon.color
-    
     var completedLessonDates: Observable<[Date]> = Observable([]) //text 사용 studentIcon.color
     var canceledLessonDates: Observable<[Date]> = Observable([]) //text 사용 Color.gray5
     var supplementedLessonDates: Observable<[Date]> = Observable([]) //text 사용 studentIcont.color

@@ -36,7 +36,31 @@ final class StudentRepository{
         }
     }
     
-    //수업 삭제
+    //수업 추가-갱신 (Upsert)
+    func appendLesson(student: Student, lesson: Lesson) {
+        do {
+            try! realm.write{
+                student.lessons.append(lesson)
+            }
+        }
+    }
+    
+    func upsertLesson(student: Student, lesson: Lesson) {
+        do {
+            try! realm.write{
+                for item in student.lessons{
+                    if item.date == lesson.date{
+                        item.feedback = lesson.feedback
+                        item.lessonState = lesson.lessonState
+                        item.assignmentState = lesson.assignmentState
+                        return
+                    }
+                }
+                //append
+                student.lessons.append(lesson)
+            }
+        }
+    }
 
     
 }
