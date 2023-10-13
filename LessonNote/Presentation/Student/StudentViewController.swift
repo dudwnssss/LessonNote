@@ -46,7 +46,15 @@ final class StudentViewController: BaseViewController {
     }
 }
 
-extension StudentViewController: FSCalendarDelegate, FSCalendarDataSource {
+extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
+    
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calendar.snp.updateConstraints { (make) in
+            make.height.equalTo(bounds.height)
+        }
+        self.view.layoutIfNeeded()
+    }
+    
     func minimumDate(for calendar: FSCalendar) -> Date {
         guard let student, let startDate = student.lessonStartDate else {
             return Date()
@@ -61,7 +69,7 @@ extension StudentViewController: FSCalendarDelegate, FSCalendarDataSource {
             return 0
         }
     }
-    
+        
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
         guard let lessons = studentViewModel.student.value?.lessons else { return nil }
         for item in lessons {
@@ -70,6 +78,24 @@ extension StudentViewController: FSCalendarDelegate, FSCalendarDataSource {
                       let stateString = LessonState(rawValue: state)?.calendarTitle else { return nil}
                 return stateString
             }
+        }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleDefaultColorFor date: Date) -> UIColor? {
+        guard let lessons = studentViewModel.student.value?.lessons else { return nil }
+        for item in lessons {
+            if date == item.date{
+                guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
+                switch state {
+                case .completed, .supplemented:
+                    guard let icon = student?.studentIcon, let color = StudentIcon(rawValue: icon)?.color else {return nil}
+                    return color
+                    
+                case .canceled, .none:
+                    return Color.gray4
+                }
+                }
         }
         return nil
     }
@@ -97,7 +123,6 @@ extension StudentViewController: FSCalendarDelegate, FSCalendarDataSource {
             return nil
         }
     }
-    
 }
 
 extension StudentViewController: PassData {

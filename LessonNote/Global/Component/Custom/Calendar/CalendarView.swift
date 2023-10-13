@@ -32,14 +32,17 @@ final class CalendarView: FSCalendar {
             $0.titleDefaultColor = Color.black
             $0.subtitleDefaultColor = Color.gray4
             $0.titleFont = Font.medium12
+            $0.subtitleOffset = CGPoint(x: 0, y: 2)
+            $0.eventOffset = CGPoint(x: 0, y: -2)
         }
-        setWeekendColor()
     }
     
     private func setWeekendColor(){
+        print(#fileID, #function, #line, "- ")
         calendarWeekdayView.weekdayLabels.forEach {
             if $0.text == "토"{
                 $0.textColor = Color.blue
+                print(#fileID, #function, #line, "- ")
             } else if $0.text == "일"{
                 $0.textColor = Color.red
             }
@@ -48,16 +51,17 @@ final class CalendarView: FSCalendar {
     
     func configureCalendar(studentIcon: StudentIcon){
         appearance.selectionColor = studentIcon.color
+        print(#fileID, #function, #line, "- ")
     }
     
     func configureStudentCalendar(studentIcon: StudentIcon){
+        today = nil
         appearance.eventDefaultColor = studentIcon.color
         appearance.selectionColor = .clear
         appearance.titleSelectionColor = Color.black
         appearance.eventSelectionColor = studentIcon.color
         appearance.subtitleSelectionColor = Color.gray4
-        appearance.todayColor = .clear
-        appearance.titleTodayColor = Color.black
+        setWeekendColor()
     }
     
     @available(*, unavailable)

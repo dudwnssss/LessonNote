@@ -9,17 +9,17 @@ import Foundation
 
 enum LessonState: Int, CaseIterable {
     case completed
-    case supplemented
     case canceled
+    case supplemented
     case none
     
     var title: String {
         switch self {
         case .completed:
             return "정상 수업"
-        case .supplemented:
-            return "휴강"
         case .canceled:
+            return "휴강"
+        case .supplemented:
             return "보강"
         case .none:
             return "수업 없음"
@@ -30,9 +30,9 @@ enum LessonState: Int, CaseIterable {
         switch self {
         case .completed:
             return "완료"
-        case .supplemented:
-            return "휴강"
         case .canceled:
+            return "휴강"
+        case .supplemented:
             return "보강"
         case .none:
             return nil
