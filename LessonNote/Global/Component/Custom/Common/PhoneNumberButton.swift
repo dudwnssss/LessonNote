@@ -21,6 +21,7 @@ final class PhoneNumberButton: UIButton {
     private func setProperties(){
         setTitle(buttonTitle, for: .normal)
         setImage(Image.phoneWhite, for: .normal)
+        setImage(Image.phoneWhite, for: .highlighted)
         titleLabel?.font = Font.medium12
         titleLabel?.textColor = Color.white
         titleLabel?.numberOfLines = 1

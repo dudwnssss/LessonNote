@@ -18,7 +18,7 @@ final class StudentViewController: BaseViewController {
     override func loadView() {
         self.view = studentView
     }
-    
+
     override func setNavigationBar() {
         navigationItem.title = "학생 정보"
     }
@@ -33,16 +33,45 @@ final class StudentViewController: BaseViewController {
             $0.dataSource = self
             $0.configureStudentCalendar(studentIcon: StudentIcon(rawValue: student!.studentIcon)!)
         }
+        
         studentViewModel.scheduledLessonDates.bind { lessons in
             print(lessons)
             self.studentView.calendarView.reloadData()
             
         }
+        guard let studentPhoneNumber = studentViewModel.student.value?.studentPhoneNumber else {return}
+        let studentButton = studentView.customStudentView.studentPhoneNumberButton
+        
+        setupMenu(phoneNumber: studentPhoneNumber, button: studentButton)
+        
+        guard let parentPhoneNumber = studentViewModel.student.value?.parentPhoneNumber else {return}
+        let parentButton = studentView.customStudentView.parentPhoneNumberButton
+        
+        setupMenu(phoneNumber: parentPhoneNumber, button: parentButton)
     }
+    
     override func bind() {
         studentViewModel.student.bind { _ in
             self.studentView.calendarView.reloadData()
         }
+    }
+    
+    func setupMenu(phoneNumber: String, button: UIButton) {
+        let call = UIAction(title: "전화걸기", image: Image.phoneFill) { _ in
+            if let url = NSURL(string: "tel://" + phoneNumber),
+               UIApplication.shared.canOpenURL(url as URL) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            }
+        }
+        let message = UIAction(title: "피드백 문자 보내기", image: Image.memo) { _ in
+            print("bi")
+        }
+        let menuItems = [call, message]
+        let menu = UIMenu(title: phoneNumber, children: menuItems)
+        menu.preferredElementSize = .medium
+        button.menu = menu
+        button.showsMenuAsPrimaryAction = true
+        
     }
 }
 
