@@ -32,6 +32,7 @@ final class CalendarView: FSCalendar {
             $0.titleDefaultColor = Color.black
             $0.subtitleDefaultColor = Color.gray4
             $0.titleFont = Font.medium12
+            $0.subtitleFont = Font.bold10
             $0.subtitleOffset = CGPoint(x: 0, y: 2)
             $0.eventOffset = CGPoint(x: 0, y: -2)
         }
