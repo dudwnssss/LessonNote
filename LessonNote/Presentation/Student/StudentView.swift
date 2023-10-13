@@ -13,6 +13,12 @@ class StudentView: BaseView {
     let customStudentView = CustomStudentView()
     let calendarView = CalendarView()
     
+    override func setProperties() {
+        calendarView.appearance.do {
+            $0.selectionColor = .clear
+            $0.eventDefaultColor = .clear
+        }
+    }
     override func setLayouts() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints {

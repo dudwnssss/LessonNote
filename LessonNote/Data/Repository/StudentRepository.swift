@@ -17,6 +17,11 @@ final class StudentRepository{
         let data = realm.objects(Student.self)
         return data
     }
+    //학생 한명 불러오기
+    func fetchStudentById(_ studentId: ObjectId) -> Student? {
+        let student = realm.object(ofType: Student.self, forPrimaryKey: studentId)
+        return student
+    }
     
     //학생 추가
     func create(_ item: Student) {

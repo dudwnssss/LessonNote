@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithTransparentBackground()
             appearance.backgroundColor = Color.white
-            appearance.titleTextAttributes = [.foregroundColor: Color.black, .font: Font.medium16]
+            appearance.titleTextAttributes = [.foregroundColor: Color.black, .font: Font.bold16]
             let backButtonAppearance = UIBarButtonItemAppearance()
             backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear, .font: UIFont.systemFont(ofSize: 0)]
             appearance.setBackIndicatorImage(Image.back, transitionMaskImage: Image.back)

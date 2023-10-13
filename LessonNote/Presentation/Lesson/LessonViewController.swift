@@ -7,10 +7,17 @@
 
 import UIKit
 
-final class LessonViewController: BaseViewController {    
+protocol PassData{
+    func passData()
+}
+
+final class LessonViewController: BaseViewController {
     
     private let lessonView = LessonView()
     let lessonViewModel = LessonViewModel()
+    
+    var delegate: PassData?
+    
     override func loadView() {
         self.view = lessonView
     }
@@ -52,6 +59,7 @@ final class LessonViewController: BaseViewController {
     @objc func compeleteButtonDidTap(){
         navigationController?.popViewController(animated: true)
         lessonViewModel.upsertLesson()
+        delegate?.passData()
     }
 
 }

@@ -25,6 +25,19 @@ enum LessonState: Int, CaseIterable {
             return "수업 없음"
         }
     }
+    
+    var calendarTitle: String? {
+        switch self {
+        case .completed:
+            return "완료"
+        case .supplemented:
+            return "휴강"
+        case .canceled:
+            return "보강"
+        case .none:
+            return nil
+        }
+    }
 }
 
 enum AssignmentState: Int, CaseIterable {

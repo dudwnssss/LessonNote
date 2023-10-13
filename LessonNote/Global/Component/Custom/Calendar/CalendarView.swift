@@ -10,13 +10,6 @@ import FSCalendar
 
 final class CalendarView: FSCalendar {
     
-    var studentIcon: StudentIcon = .blue{
-        didSet{
-            appearance.eventDefaultColor = studentIcon.color
-            appearance.selectionColor = studentIcon.color
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
@@ -37,6 +30,7 @@ final class CalendarView: FSCalendar {
             $0.weekdayFont = Font.medium12
             $0.todayColor = Color.black
             $0.titleDefaultColor = Color.black
+            $0.subtitleDefaultColor = Color.gray4
             $0.titleFont = Font.medium12
         }
         setWeekendColor()
@@ -50,6 +44,20 @@ final class CalendarView: FSCalendar {
                 $0.textColor = Color.red
             }
         }
+    }
+    
+    func configureCalendar(studentIcon: StudentIcon){
+        appearance.selectionColor = studentIcon.color
+    }
+    
+    func configureStudentCalendar(studentIcon: StudentIcon){
+        appearance.eventDefaultColor = studentIcon.color
+        appearance.selectionColor = .clear
+        appearance.titleSelectionColor = Color.black
+        appearance.eventSelectionColor = studentIcon.color
+        appearance.subtitleSelectionColor = Color.gray4
+        appearance.todayColor = .clear
+        appearance.titleTodayColor = Color.black
     }
     
     @available(*, unavailable)

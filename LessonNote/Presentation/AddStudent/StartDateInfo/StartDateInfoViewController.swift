@@ -31,7 +31,7 @@ final class StartDateInfoViewController: BaseViewController{
         startDateInfoView.calendar.do {
             $0.delegate = self
             $0.dataSource = self
-            $0.studentIcon = TempStudent.shared.studentIcon!
+            $0.configureCalendar(studentIcon: TempStudent.shared.studentIcon!)
         }
 
         hideKeyboardWhenTappedAround()
