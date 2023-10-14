@@ -9,14 +9,14 @@ import Foundation
 
 final class LessonInfoViewModel{
     
-    var lessonTimeList: [LessonTime] = []
+    var lessonTimeList: Observable<[LessonTime]> = Observable([])
     var isChecked: Observable<Bool> = Observable(false)
     var weekCount: Observable<Int> = Observable(2)
 }
 
 extension LessonInfoViewModel{
     func storeData(){
-        TempStudent.shared.lessonTimes = lessonTimeList
+        TempStudent.shared.lessonTimes = lessonTimeList.value
         TempStudent.shared.weekCount = weekCount.value
     }
     func setWeekCount(){

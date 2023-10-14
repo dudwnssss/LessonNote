@@ -29,11 +29,14 @@ class HomeViewController: BaseViewController{
         setDataSource()
         setSnapshot()
         homeView.addStudentButton.addTarget(self, action: #selector(addStudentButtonDidTap), for: .touchUpInside)
+        homeView.collectionView.delegate = self
+    }
+    
+    override func bind() {
         homeViewModel.studentList.bind { _ in
             self.setSnapshot()
             self.setEmptyView()
         }
-        homeView.collectionView.delegate = self
     }
     
     @objc func addStudentButtonDidTap(){

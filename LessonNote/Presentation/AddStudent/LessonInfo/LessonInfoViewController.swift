@@ -11,6 +11,7 @@ final class LessonInfoViewController: BaseViewController {
     
     private let lessonInfoView = LessonInfoView()
     private let lessonInfoViewModel = LessonInfoViewModel()
+    private var dataSource: UICollectionViewDiffableDataSource<Int, LessonTime>!
     
     override func loadView() {
         self.view = lessonInfoView
@@ -24,12 +25,12 @@ final class LessonInfoViewController: BaseViewController {
         hideKeyboardWhenTappedAround()
         lessonInfoView.collectionView.do {
             $0.delegate = self
-            $0.dataSource = self
-            $0.register(cell: LessonTimeCell.self)
         }
         lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         lessonInfoView.lessonTimeView.textfeild.delegate = self
         lessonInfoView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(  checkboxButtonDidTap), for: .touchUpInside)
+        setDataSource()
+        setSnapshot()
     }
     
     override func bind() {
@@ -40,7 +41,11 @@ final class LessonInfoViewController: BaseViewController {
         lessonInfoViewModel.weekCount.bind { value in
             self.lessonInfoView.weekCountView.weekCountView.textField.textField.text = "\(value)"
         }
+        lessonInfoViewModel.lessonTimeList.bind { _ in
+            self.setSnapshot()
+        }
     }
+    
     override func setNavigationBar() {
         navigationItem.title = "학생 추가"
     }
@@ -57,22 +62,27 @@ final class LessonInfoViewController: BaseViewController {
     }
 }
 
-extension LessonInfoViewController: UICollectionViewDataSource, UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lessonInfoViewModel.lessonTimeList.count
+extension LessonInfoViewController: UICollectionViewDelegate{
+    
+    private func setSnapshot(){
+        var snapshot = NSDiffableDataSourceSnapshot<Int, LessonTime>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(lessonInfoViewModel.lessonTimeList.value)
+        dataSource.apply(snapshot)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: LessonTimeCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
-        let lessonTime = lessonInfoViewModel.lessonTimeList[indexPath.item]
-        cell.configureCell(lessonTime: lessonTime)
-        return cell
+    private func setDataSource(){
+        let cellRegistration = UICollectionView.CellRegistration<LessonTimeCell, LessonTime> { cell, indexPath, itemIdentifier in
+        }
+        dataSource = UICollectionViewDiffableDataSource(collectionView: lessonInfoView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            cell.configureCell(lessonTime: itemIdentifier)
+            return cell
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let index = lessonInfoViewModel.lessonTimeList[indexPath.item].weekday.rawValue
-        lessonInfoViewModel.lessonTimeList.remove(at: indexPath.item)
-        collectionView.reloadData()
+        lessonInfoViewModel.lessonTimeList.value.remove(at: indexPath.item)
     }
 }
 
@@ -80,7 +90,7 @@ extension LessonInfoViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let vc = LessonBottomSheetViewController()
         vc.delegate = self
-        lessonInfoViewModel.lessonTimeList.forEach { lessons in
+        lessonInfoViewModel.lessonTimeList.value.forEach { lessons in
             vc.lessonBottomSheetViewModel.existWeekdays.append(lessons.weekday)
         }
         let bottomVC = BottomSheetViewController(contentViewController: vc)
@@ -91,8 +101,6 @@ extension LessonInfoViewController: UITextFieldDelegate {
 
 extension LessonInfoViewController: PassLessonTimes {
     func passLessonTimes(lessons: [LessonTime]) {
-        lessonInfoViewModel.lessonTimeList.append(contentsOf: lessons)
-        lessonInfoView.collectionView.reloadData()
-        
+        lessonInfoViewModel.lessonTimeList.value.append(contentsOf: lessons)
     }
 }
