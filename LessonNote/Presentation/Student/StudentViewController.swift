@@ -57,13 +57,13 @@ final class StudentViewController: BaseViewController {
     }
     
     func setupMenu(phoneNumber: String, button: UIButton) {
-        let call = UIAction(title: "전화걸기", image: Image.phoneFill) { _ in
+        let call = UIAction(title: "전화걸기", image: Image.phoneLong) { _ in
             if let url = NSURL(string: "tel://" + phoneNumber),
                UIApplication.shared.canOpenURL(url as URL) {
                 UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
             }
         }
-        let message = UIAction(title: "피드백 문자 보내기", image: Image.memo) { _ in
+        let message = UIAction(title: "피드백 문자 보내기", image: Image.messageLong) { _ in
             print("bi")
         }
         let menuItems = [call, message]

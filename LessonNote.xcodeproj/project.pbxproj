@@ -109,6 +109,8 @@
 		10CE4FCD2AD9721300FF3E3F /* LessonBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FCC2AD9721300FF3E3F /* LessonBottomSheetViewController.swift */; };
 		10CE4FCF2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FCE2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift */; };
 		10CE4FD12AD9722800FF3E3F /* LessonBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FD02AD9722800FF3E3F /* LessonBottomSheetView.swift */; };
+		10CE4FD32ADAC6F600FF3E3F /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FD22ADAC6F500FF3E3F /* BottomSheetViewController.swift */; };
+		10CE4FD62ADAC71400FF3E3F /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 10CE4FD52ADAC71400FF3E3F /* FloatingPanel */; };
 		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
 /* End PBXBuildFile section */
 
@@ -211,6 +213,7 @@
 		10CE4FCC2AD9721300FF3E3F /* LessonBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetViewController.swift; sourceTree = "<group>"; };
 		10CE4FCE2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		10CE4FD02AD9722800FF3E3F /* LessonBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetView.swift; sourceTree = "<group>"; };
+		10CE4FD22ADAC6F500FF3E3F /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
 		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +227,7 @@
 				1016FB032AC95E10003E7612 /* SnapKit in Frameworks */,
 				1010CBBE2ACE4A7D00B40498 /* FSCalendar in Frameworks */,
 				1016FB062AC95E1A003E7612 /* Then in Frameworks */,
+				10CE4FD62ADAC71400FF3E3F /* FloatingPanel in Frameworks */,
 				10A86DC32AD684B600817092 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +241,7 @@
 				10A86DBF2AD672FB00817092 /* CustomTextView.swift */,
 				1048F9B12ACD6B6E00A56C76 /* CheckBoxButton.swift */,
 				1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */,
+				10CE4FD22ADAC6F500FF3E3F /* BottomSheetViewController.swift */,
 				1048F9442ACA96C500A56C76 /* CompleteButton.swift */,
 				1048F9492ACAACD300A56C76 /* CustomTitleLabel.swift */,
 				1048F94E2ACAF9AE00A56C76 /* CustomTextFieldView.swift */,
@@ -598,8 +603,8 @@
 			isa = PBXGroup;
 			children = (
 				10CE4FCB2AD9720100FF3E3F /* Popup */,
-				1048F93E2ACA936400A56C76 /* LessonInfoView.swift */,
 				1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */,
+				1048F93E2ACA936400A56C76 /* LessonInfoView.swift */,
 				1010CBC62ACE78CF00B40498 /* LessonInfoViewModel.swift */,
 			);
 			path = LessonInfo;
@@ -695,6 +700,7 @@
 				1016FB0A2AC95E3E003E7612 /* RealmSwift */,
 				1010CBBD2ACE4A7D00B40498 /* FSCalendar */,
 				10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */,
+				10CE4FD52ADAC71400FF3E3F /* FloatingPanel */,
 			);
 			productName = LessonNote;
 			productReference = 1016FABF2AC93F45003E7612 /* LessonNote.app */;
@@ -730,6 +736,7 @@
 				1016FB072AC95E3E003E7612 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				1010CBBC2ACE4A7D00B40498 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				10A86DC12AD684B600817092 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				10CE4FD42ADAC71400FF3E3F /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 1016FAC02AC93F45003E7612 /* Products */;
 			projectDirPath = "";
@@ -771,6 +778,7 @@
 				1010CBC12ACE774500B40498 /* LessonTimeCell.swift in Sources */,
 				1048F9472ACAAC7E00A56C76 /* CGFloat+.swift in Sources */,
 				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
+				10CE4FD32ADAC6F600FF3E3F /* BottomSheetViewController.swift in Sources */,
 				1010CC282AD2670500B40498 /* ElliottEvent.swift in Sources */,
 				1016FAED2AC94A96003E7612 /* UIVIew+.swift in Sources */,
 				1048F9522ACC02E100A56C76 /* Weekday.swift in Sources */,
@@ -1101,6 +1109,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		10CE4FD42ADAC71400FF3E3F /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1133,6 +1149,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 10A86DC12AD684B600817092 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		10CE4FD52ADAC71400FF3E3F /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10CE4FD42ADAC71400FF3E3F /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

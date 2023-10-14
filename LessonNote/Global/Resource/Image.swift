@@ -23,7 +23,9 @@ enum Image {
     static let homeFill = UIImage(named: "home.fill")!
     static let phone = UIImage(named: "phone")!
     static let phoneFill = UIImage(named: "phone.fill")!
+    static let phoneLong = UIImage(named: "phone.long")!
     static let phoneWhite = UIImage(named: "phone.white")!
+    static let messageLong = UIImage(named: "message.long")!
 
     static let studentAdd = UIImage(named: "student.add")!
     static let studentEmpty = UIImage(named: "student.empty")!

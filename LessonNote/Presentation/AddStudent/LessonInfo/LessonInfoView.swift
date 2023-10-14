@@ -33,11 +33,10 @@ final class LessonInfoView: BaseView {
             $0.font = Font.medium12
             $0.textColor = Color.gray4
         }
-
     }
     
     override func setLayouts() {
-        addSubviews(titleLabel, descriptionLabel, weekdayView, lessonTimeView, collectionView, weekCountView, nextButton)
+        addSubviews(titleLabel, descriptionLabel, lessonTimeView, collectionView, weekCountView, nextButton)
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(25)
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
@@ -46,14 +45,10 @@ final class LessonInfoView: BaseView {
             $0.top.equalTo(titleLabel.snp.bottom).offset(4)
             $0.leading.equalTo(titleLabel)
         }
-        weekdayView.snp.makeConstraints {
+        lessonTimeView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(25)
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(36.adjusted)
             $0.height.equalTo(70)
-        }
-        lessonTimeView.snp.makeConstraints {
-            $0.leading.equalTo(weekdayView)
-            $0.top.equalTo(weekdayView.snp.bottom).offset(36.adjusted)
         }
         collectionView.snp.makeConstraints {
             $0.top.equalTo(lessonTimeView.snp.bottom).offset(12)

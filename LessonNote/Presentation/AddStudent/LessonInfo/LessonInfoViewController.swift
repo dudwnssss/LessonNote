@@ -28,19 +28,22 @@ final class LessonInfoViewController: BaseViewController {
             $0.register(cell: LessonTimeCell.self)
         }
         lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-
-        lessonInfoView.lessonTimeView.lessonTimePiker.passLessonTime = { start, end in
-            self.lessonInfoViewModel.weekDays.value.forEach {
-                let lessonTime = LessonTime(weekday: $0, startTime: start, endTime: end)
-                self.lessonInfoViewModel.lessonTimeList.append(lessonTime)
-                self.lessonInfoView.collectionView.reloadData()
-                self.lessonInfoView.weekdayView.weekdayStackView.weekdayButtons[$0.rawValue].isHidden = true
-            }
-        }
+        lessonInfoView.lessonTimeView.textfeild.delegate = self
+//        lessonInfoView.lessonTimeView.lessonTimePiker.passLessonTime = { start, end in
+//            self.lessonInfoViewModel.weekDays.value.forEach {
+//                let lessonTime = LessonTime(weekday: $0, startTime: start, endTime: end)
+//                self.lessonInfoViewModel.lessonTimeList.append(lessonTime)
+//                self.lessonInfoView.collectionView.reloadData()
+//                self.lessonInfoView.weekdayView.weekdayStackView.weekdayButtons[$0.rawValue].isHidden = true
+//            }
+//        }
+        
+        
         lessonInfoView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(  checkboxButtonDidTap), for: .touchUpInside)
         lessonInfoView.weekdayView.weekdayStackView.weekdayButtons.forEach {
             $0.addTarget(self, action: #selector(weekdayButtonDidTap(sender:)), for: .touchUpInside)
         }
+        
     }
     
     override func bind() {
@@ -94,5 +97,14 @@ extension LessonInfoViewController: UICollectionViewDataSource, UICollectionView
         lessonInfoViewModel.lessonTimeList.remove(at: indexPath.item)
         lessonInfoView.weekdayView.weekdayStackView.weekdayButtons[index].isHidden = false
         collectionView.reloadData()
+    }
+}
+
+extension LessonInfoViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let vc = BottomSheetViewController(contentViewController: LessonBottomSheetViewController())
+       
+        present(vc, animated: true)
+        return false
     }
 }
