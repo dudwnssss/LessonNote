@@ -29,23 +29,7 @@ final class LessonInfoViewController: BaseViewController {
         }
         lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         lessonInfoView.lessonTimeView.textfeild.delegate = self
-        
-        
-//        lessonInfoView.lessonTimeView.lessonTimePiker.passLessonTime = { start, end in
-//            self.lessonInfoViewModel.weekDays.value.forEach {
-//                let lessonTime = LessonTime(weekday: $0, startTime: start, endTime: end)
-//                self.lessonInfoViewModel.lessonTimeList.append(lessonTime)
-//                self.lessonInfoView.collectionView.reloadData()
-//                self.lessonInfoView.weekdayView.weekdayStackView.weekdayButtons[$0.rawValue].isHidden = true
-//            }
-//        }
-        
-        
         lessonInfoView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(  checkboxButtonDidTap), for: .touchUpInside)
-        lessonInfoView.weekdayView.weekdayStackView.weekdayButtons.forEach {
-            $0.addTarget(self, action: #selector(weekdayButtonDidTap(sender:)), for: .touchUpInside)
-        }
-        
     }
     
     override func bind() {
@@ -55,12 +39,6 @@ final class LessonInfoViewController: BaseViewController {
         }
         lessonInfoViewModel.weekCount.bind { value in
             self.lessonInfoView.weekCountView.weekCountView.textField.textField.text = "\(value)"
-        }
-        lessonInfoViewModel.weekDays.bind { weekdays in
-            self.lessonInfoView.weekdayView.weekdayStackView.weekdayButtons.forEach {
-                guard let weekday = Weekday(rawValue: $0.tag) else {return}
-                $0.configureButton(activate: (weekdays.contains(weekday)))
-            }
         }
     }
     override func setNavigationBar() {
@@ -76,9 +54,6 @@ final class LessonInfoViewController: BaseViewController {
     @objc func checkboxButtonDidTap(){
         lessonInfoViewModel.isChecked.value.toggle()
         lessonInfoViewModel.setWeekCount()
-    }
-    @objc func weekdayButtonDidTap(sender: CustomButton){
-        lessonInfoViewModel.appendWeekday(tag: sender.tag)
     }
 }
 
@@ -97,7 +72,6 @@ extension LessonInfoViewController: UICollectionViewDataSource, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = lessonInfoViewModel.lessonTimeList[indexPath.item].weekday.rawValue
         lessonInfoViewModel.lessonTimeList.remove(at: indexPath.item)
-        lessonInfoView.weekdayView.weekdayStackView.weekdayButtons[index].isHidden = false
         collectionView.reloadData()
     }
 }

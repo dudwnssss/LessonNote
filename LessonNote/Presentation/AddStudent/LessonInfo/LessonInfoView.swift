@@ -12,7 +12,6 @@ final class LessonInfoView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
-    let weekdayView = CustomWeekdayView()
     let lessonTimeView = CustomLessonTimeView()
     let weekCountView = CustomWeekCountView()
     let nextButton = CompleteButton(title: "다음으로")
@@ -33,6 +32,10 @@ final class LessonInfoView: BaseView {
             $0.font = Font.medium12
             $0.textColor = Color.gray4
         }
+        collectionView.do {
+            $0.backgroundColor = .clear
+        }
+
     }
     
     override func setLayouts() {

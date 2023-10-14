@@ -47,7 +47,8 @@ class LessonBottomSheetView: BaseView {
             $0.datePickerMode = .time
             $0.backgroundColor = Color.gray1
             $0.cornerRadius = 20
-
+            $0.setDefaultTime(hour: 9)
+            
         }
         endTimePickerView.do {
             $0.preferredDatePickerStyle = .wheels
@@ -55,7 +56,9 @@ class LessonBottomSheetView: BaseView {
             $0.locale = Locale(identifier: "ko_KR")
             $0.backgroundColor = Color.gray1
             $0.cornerRadius = 20
+            $0.setDefaultTime(hour: 10)
         }
+        
     }
     
     override func setLayouts() {
@@ -96,6 +99,18 @@ class LessonBottomSheetView: BaseView {
             $0.top.equalTo(startTimeLabel.snp.bottom).offset(16)
             $0.width.equalTo(160)
             $0.height.equalTo(124)
+        }
+    }
+}
+
+extension UIDatePicker {
+    func setDefaultTime(hour: Int){
+        let calendar = Calendar.current
+        var components = DateComponents()
+        components.hour = hour
+        components.minute = 0
+        if let defaultDate = calendar.date(from: components) {
+            date = defaultDate
         }
     }
 }

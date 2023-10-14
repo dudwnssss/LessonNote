@@ -26,7 +26,6 @@
 		1010CBE82ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBE72ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift */; };
 		1010CBEA2ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBE92ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift */; };
 		1010CBEC2ACFB42100B40498 /* CustomStudentIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBEB2ACFB42100B40498 /* CustomStudentIconView.swift */; };
-		1010CBEE2ACFB47000B40498 /* CustomWeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBED2ACFB47000B40498 /* CustomWeekdayView.swift */; };
 		1010CBF02ACFB4E100B40498 /* CustomLessonTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */; };
 		1010CBF22ACFB5FF00B40498 /* CustomWeekCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */; };
 		1010CBF72ACFEA3500B40498 /* UIResponder+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBF62ACFEA3500B40498 /* UIResponder+.swift */; };
@@ -133,7 +132,6 @@
 		1010CBE72ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudentPhoneNumberView.swift; sourceTree = "<group>"; };
 		1010CBE92ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomParentPhoneNumberView.swift; sourceTree = "<group>"; };
 		1010CBEB2ACFB42100B40498 /* CustomStudentIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudentIconView.swift; sourceTree = "<group>"; };
-		1010CBED2ACFB47000B40498 /* CustomWeekdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeekdayView.swift; sourceTree = "<group>"; };
 		1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLessonTimeView.swift; sourceTree = "<group>"; };
 		1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomWeekCountView.swift; sourceTree = "<group>"; };
 		1010CBF62ACFEA3500B40498 /* UIResponder+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+.swift"; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 				1010CBEB2ACFB42100B40498 /* CustomStudentIconView.swift */,
 				1010CBE72ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift */,
 				1010CBE92ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift */,
-				1010CBED2ACFB47000B40498 /* CustomWeekdayView.swift */,
 				1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */,
 				1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */,
 			);
@@ -770,7 +767,6 @@
 				1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */,
 				1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */,
 				1016FAFF2AC95DC2003E7612 /* UICollectionView+ReusableView.swift in Sources */,
-				1010CBEE2ACFB47000B40498 /* CustomWeekdayView.swift in Sources */,
 				1048F9A62ACD210200A56C76 /* WeekdayStackView.swift in Sources */,
 				1010CC2E2AD2673100B40498 /* TimetableCell.swift in Sources */,
 				1010CBF02ACFB4E100B40498 /* CustomLessonTimeView.swift in Sources */,
@@ -1003,8 +999,9 @@
 				INFOPLIST_FILE = LessonNote/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1012,6 +1009,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.LessonNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1030,8 +1030,9 @@
 				INFOPLIST_FILE = LessonNote/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1039,6 +1040,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.LessonNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

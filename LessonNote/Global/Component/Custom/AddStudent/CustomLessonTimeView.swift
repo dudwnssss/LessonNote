@@ -15,6 +15,7 @@ final class CustomLessonTimeView: BaseView{
 
     override func setProperties() {
         textfeild.do {
+            $0.textColor = Color.gray6
             $0.tintColor = .clear
             $0.text = "월 09:00 - 10:00"
         }
