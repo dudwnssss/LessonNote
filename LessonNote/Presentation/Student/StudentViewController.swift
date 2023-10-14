@@ -118,7 +118,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
                 guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
                 switch state {
                 case .completed, .supplemented:
-                    guard let icon = student?.studentIcon, let color = StudentIcon(rawValue: icon)?.color else {return nil}
+                    guard let icon = student?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
                     return color
                     
                 case .canceled, .none:

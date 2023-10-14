@@ -99,7 +99,7 @@ class CustomStudentView: BaseView{
         iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.image
         print(student.lessonSchedules)
         student.lessonSchedules.forEach {
-            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.color)
+            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.textColor)
             lessonTimeStackView.addArrangedSubview(lessonTimeView)
             lessonTimeView.separatorView.snp.makeConstraints {
                 $0.width.equalTo(stackView)

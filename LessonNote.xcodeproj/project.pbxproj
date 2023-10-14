@@ -106,6 +106,9 @@
 		10A86DC02AD672FB00817092 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DBF2AD672FB00817092 /* CustomTextView.swift */; };
 		10A86DC32AD684B600817092 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */; };
 		10A86DC52AD69E8D00817092 /* LessonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DC42AD69E8D00817092 /* LessonState.swift */; };
+		10CE4FCD2AD9721300FF3E3F /* LessonBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FCC2AD9721300FF3E3F /* LessonBottomSheetViewController.swift */; };
+		10CE4FCF2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FCE2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift */; };
+		10CE4FD12AD9722800FF3E3F /* LessonBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FD02AD9722800FF3E3F /* LessonBottomSheetView.swift */; };
 		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +208,9 @@
 		10A86DBB2AD6661A00817092 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
 		10A86DBF2AD672FB00817092 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		10A86DC42AD69E8D00817092 /* LessonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonState.swift; sourceTree = "<group>"; };
+		10CE4FCC2AD9721300FF3E3F /* LessonBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetViewController.swift; sourceTree = "<group>"; };
+		10CE4FCE2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetViewModel.swift; sourceTree = "<group>"; };
+		10CE4FD02AD9722800FF3E3F /* LessonBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetView.swift; sourceTree = "<group>"; };
 		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -591,6 +597,7 @@
 		1016FB342ACA9059003E7612 /* LessonInfo */ = {
 			isa = PBXGroup;
 			children = (
+				10CE4FCB2AD9720100FF3E3F /* Popup */,
 				1048F93E2ACA936400A56C76 /* LessonInfoView.swift */,
 				1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */,
 				1010CBC62ACE78CF00B40498 /* LessonInfoViewModel.swift */,
@@ -653,6 +660,16 @@
 				10A86DBB2AD6661A00817092 /* LessonViewModel.swift */,
 			);
 			path = Lesson;
+			sourceTree = "<group>";
+		};
+		10CE4FCB2AD9720100FF3E3F /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				10CE4FCC2AD9721300FF3E3F /* LessonBottomSheetViewController.swift */,
+				10CE4FCE2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift */,
+				10CE4FD02AD9722800FF3E3F /* LessonBottomSheetView.swift */,
+			);
+			path = Popup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -750,6 +767,7 @@
 				1048F9A62ACD210200A56C76 /* WeekdayStackView.swift in Sources */,
 				1010CC2E2AD2673100B40498 /* TimetableCell.swift in Sources */,
 				1010CBF02ACFB4E100B40498 /* CustomLessonTimeView.swift in Sources */,
+				10CE4FCD2AD9721300FF3E3F /* LessonBottomSheetViewController.swift in Sources */,
 				1010CBC12ACE774500B40498 /* LessonTimeCell.swift in Sources */,
 				1048F9472ACAAC7E00A56C76 /* CGFloat+.swift in Sources */,
 				1016FB112AC96244003E7612 /* ScheduleViewController.swift in Sources */,
@@ -760,6 +778,7 @@
 				1016FAC32AC93F45003E7612 /* AppDelegate.swift in Sources */,
 				1016FAE52AC949F3003E7612 /* MainTabBarController.swift in Sources */,
 				1010CBEC2ACFB42100B40498 /* CustomStudentIconView.swift in Sources */,
+				10CE4FCF2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift in Sources */,
 				1016FB2D2AC9C6FB003E7612 /* Student.swift in Sources */,
 				1048F94F2ACAF9AE00A56C76 /* CustomTextFieldView.swift in Sources */,
 				1048F9412ACA936E00A56C76 /* CheckInfoViewController.swift in Sources */,
@@ -818,6 +837,7 @@
 				1010CC302AD2673900B40498 /* TimetableHeader.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
 				1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */,
+				10CE4FD12AD9722800FF3E3F /* LessonBottomSheetView.swift in Sources */,
 				1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */,
 				1010CBD32ACEA4D700B40498 /* CustomCheckInfoView.swift in Sources */,
 				1010CBC72ACE78CF00B40498 /* LessonInfoViewModel.swift in Sources */,

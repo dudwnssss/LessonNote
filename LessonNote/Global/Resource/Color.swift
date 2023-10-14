@@ -27,8 +27,10 @@ enum Color{
         static let pink = UIColor(hex: "#FFB2B2")!
         static let orange = UIColor(hex: "#FFCB7D")!
         static let yellow = UIColor(hex: "#FEDD6A")!
+        static let yellowText = UIColor(hex: "#FFC700")!
         static let green = UIColor(hex: "#95CE72")!
         static let skyblue = UIColor(hex: "#9CD3F2")!
+        static let skyblueText = UIColor(hex: "#76C9F8")!
         static let blue = UIColor(hex: "#9FBBE7")!
         static let violet = UIColor(hex: "#C6ACF1")!
         static let magenta = UIColor(hex: "#F6BEE3")!

@@ -106,7 +106,7 @@ final class StudentCollectionViewCell: UICollectionViewCell {
         print(student.lessonSchedules)
         student.lessonSchedules.forEach {
             print("cell configure")
-            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.color)
+            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.textColor)
             lessonTimeStackView.addArrangedSubview(lessonTimeView)
         }
     }
