@@ -8,6 +8,8 @@
 import Foundation
 
 final class LessonBottomSheetViewModel {
+    
+    var existWeekdays: [Weekday] = []
     var weekDays: Observable<[Weekday]> = Observable([])
 
 }
@@ -22,5 +24,13 @@ extension LessonBottomSheetViewModel {
         } else {
             weekDays.value.append(weekday)
         }
+    }
+    func createLessonTime(startTime: Date, endTime: Date) -> [LessonTime]{
+        var lessonTimes: [LessonTime] = []
+        weekDays.value.forEach { weekday in
+            let lessonTime = LessonTime(weekday: weekday, startTime: startTime, endTime: endTime)
+            lessonTimes.append(lessonTime)
+        }
+        return lessonTimes
     }
 }

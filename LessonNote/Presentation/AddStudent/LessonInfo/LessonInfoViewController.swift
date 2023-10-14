@@ -29,6 +29,8 @@ final class LessonInfoViewController: BaseViewController {
         }
         lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         lessonInfoView.lessonTimeView.textfeild.delegate = self
+        
+        
 //        lessonInfoView.lessonTimeView.lessonTimePiker.passLessonTime = { start, end in
 //            self.lessonInfoViewModel.weekDays.value.forEach {
 //                let lessonTime = LessonTime(weekday: $0, startTime: start, endTime: end)
@@ -102,9 +104,21 @@ extension LessonInfoViewController: UICollectionViewDataSource, UICollectionView
 
 extension LessonInfoViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        let vc = BottomSheetViewController(contentViewController: LessonBottomSheetViewController())
-       
-        present(vc, animated: true)
+        let vc = LessonBottomSheetViewController()
+        vc.delegate = self
+        lessonInfoViewModel.lessonTimeList.forEach { lessons in
+            vc.lessonBottomSheetViewModel.existWeekdays.append(lessons.weekday)
+        }
+        let bottomVC = BottomSheetViewController(contentViewController: vc)
+        present(bottomVC, animated: true)
         return false
+    }
+}
+
+extension LessonInfoViewController: PassLessonTimes {
+    func passLessonTimes(lessons: [LessonTime]) {
+        lessonInfoViewModel.lessonTimeList.append(contentsOf: lessons)
+        lessonInfoView.collectionView.reloadData()
+        
     }
 }
