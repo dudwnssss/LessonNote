@@ -684,11 +684,19 @@
 		10CE4FD72ADB8D5800FF3E3F /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				10CE4FDE2ADBF4D100FF3E3F /* MessagePreview */,
 				10CE4FD82ADB8DEF00FF3E3F /* MessageVIewController.swift */,
 				10CE4FDA2ADB8DF900FF3E3F /* MessageView.swift */,
 				10CE4FDC2ADB8E0000FF3E3F /* MessageViewModel.swift */,
 			);
 			path = Message;
+			sourceTree = "<group>";
+		};
+		10CE4FDE2ADBF4D100FF3E3F /* MessagePreview */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MessagePreview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

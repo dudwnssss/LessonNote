@@ -34,6 +34,7 @@ final class MessageView: BaseView {
         calendarView.do {
             $0.borderWidth = 5
             $0.borderColor = Color.gray1
+            $0.allowsMultipleSelection = true
         }
         assignmentButton.do {
             $0.cornerRadius = 8
@@ -96,6 +97,7 @@ final class MessageView: BaseView {
         commentTextView.snp.makeConstraints {
             $0.top.equalTo(commentLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.greaterThanOrEqualTo(126)
             $0.bottom.equalToSuperview().offset(-133)
         }
         nextButton.snp.makeConstraints {
@@ -116,14 +118,14 @@ final class MessageView: BaseView {
             phoneNumberLabel.infoContent = phoneNumber
         }
     }
-    func configureButton(add: Bool){
-        switch add {
+    func configureButton(isSelected: Bool){
+        switch isSelected {
         case true:
-            assignmentButton.setTitle("과제 내역 추가", for: .normal)
-            assignmentButton.backgroundColor = Color.gray6
-        case false:
             assignmentButton.setTitle("과제 내역 해제", for: .normal)
             assignmentButton.backgroundColor = Color.gray4
+        case false:
+            assignmentButton.setTitle("과제 내역 추가", for: .normal)
+            assignmentButton.backgroundColor = Color.gray6
         }
     }
 }

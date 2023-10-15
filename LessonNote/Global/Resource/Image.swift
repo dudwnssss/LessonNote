@@ -34,8 +34,11 @@ enum Image {
     static let checkbox = UIImage(named: "checkbox")!
     static let checkboxFill = UIImage(named: "checkbox.fill")!
     static let arrowDown = UIImage(named: "arrow.down")!
-
     
+    static let assignmentGood = UIImage(named: "assignment.good")!
+    static let assignmentSoso = UIImage(named: "assignment.soso")!
+    static let assignmentBad = UIImage(named: "assignment.bad")!
+
     enum Icon{
         static let studentPink = UIImage(named: "student.pink")!
         static let studentOrange = UIImage(named: "student.orange")!

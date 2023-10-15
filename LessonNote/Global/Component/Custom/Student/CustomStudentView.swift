@@ -96,7 +96,7 @@ class CustomStudentView: BaseView{
     
     func configureView(student: Student){
         nameLabel.text = student.studentName
-        iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.image
+        iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.selectedImage
         print(student.lessonSchedules)
         student.lessonSchedules.forEach {
             let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.textColor)

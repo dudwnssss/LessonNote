@@ -10,4 +10,6 @@ import Foundation
 class MessageViewModel {
     var personType: PersonType = .student
     var student: Student?
+    var selectedList: [Date] = []
+    var showAssignment: Observable<Bool> = Observable(false)
 }

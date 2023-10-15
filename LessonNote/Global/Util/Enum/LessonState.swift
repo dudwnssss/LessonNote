@@ -5,7 +5,7 @@
 //  Created by 임영준 on 2023/10/11.
 //
 
-import Foundation
+import UIKit
 
 enum LessonState: Int, CaseIterable {
     case completed
@@ -53,6 +53,17 @@ enum AssignmentState: Int, CaseIterable {
             return "△ 미흡"
         case .bad:
             return "X 미수행"
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .good:
+            return Image.assignmentGood
+        case .soso:
+            return Image.assignmentSoso
+        case .bad:
+            return Image.assignmentBad
         }
     }
 }
