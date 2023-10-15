@@ -45,5 +45,14 @@ enum Image {
         static let studentBlue = UIImage(named: "student.blue")!
         static let studentViolet = UIImage(named: "student.violet")!
         static let studentMagenta = UIImage(named: "student.magenta")!
+        
+        static let studentPinkSelected = UIImage(named: "student.pink.selected")!
+        static let studentOrangeSelected = UIImage(named: "student.orange.selected")!
+        static let studentYellowSelected = UIImage(named: "student.yellow.selected")!
+        static let studentGreenSelected = UIImage(named: "student.green.selected")!
+        static let studentSkyblueSelected = UIImage(named: "student.skyblue.selected")!
+        static let studentBlueSelected = UIImage(named: "student.blue.selected")!
+        static let studentVioletSelected = UIImage(named: "student.violet.selected")!
+        static let studentMagentaSelected = UIImage(named: "student.magenta.selected")!
     }
 }

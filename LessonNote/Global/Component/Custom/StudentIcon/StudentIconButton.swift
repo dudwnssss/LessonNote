@@ -10,12 +10,12 @@ import UIKit
 final class StudentIconButton: UIButton {
     
     var studentIcon : StudentIcon?
-//    var isTapped = false {
-//        didSet {
-//            configureButton()
-//        }
-//    }
-//
+    //    var isTapped = false {
+    //        didSet {
+    //            configureButton()
+    //        }
+    //    }
+    //
     init(studentIcon: StudentIcon){
         self.studentIcon = studentIcon
         super.init(frame: .zero)
@@ -36,9 +36,40 @@ final class StudentIconButton: UIButton {
     func configureButton(isSelected: Bool){
         switch isSelected{
         case true:
-            borderWidth = 2
-            borderColor = .black
+            UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                self.setImage(self.studentIcon?.selectedImage, for: .normal)
+                self.borderWidth = 2
+                self.borderColor = .black
+            }) { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    UIView.transition(with: self, duration: 0.15, options: .transitionCrossDissolve, animations: {
+                        self.setImage(self.studentIcon?.image, for: .normal)
+                    }) { _ in
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                            UIView.transition(with: self, duration: 0.2, options: .transitionCrossDissolve, animations: {
+                                self.setImage(self.studentIcon?.selectedImage, for: .normal)
+                            }, completion: nil)
+                        }
+                    }
+                }
+            }
+            //            UIView.animate(withDuration: 0.3, animations: {
+            //                      self.setImage(self.studentIcon?.selectedImage, for: .normal)
+            //                  }, completion: { _ in
+            //                      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            //                          UIView.animate(withDuration: 0.3, animations: {
+            //                              self.setImage(self.studentIcon?.image, for: .normal)
+            //                          }, completion: { _ in
+            //                              DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            //                                  UIView.animate(withDuration: 0.3) {
+            //                                      self.setImage(self.studentIcon?.selectedImage, for: .normal)
+            //                                  }
+            //                              }
+            //                          })
+            //                      }
+            //                  })
         case false:
+            setImage(studentIcon?.image, for: .normal)
             borderWidth = 0
         }
     }
@@ -48,7 +79,7 @@ final class StudentIconButton: UIButton {
         cornerRadius = frame.width / 2
     }
     
-
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -79,4 +79,25 @@ enum StudentIcon: Int{
             return Image.Icon.studentMagenta
         }
     }
+    
+    var selectedImage: UIImage{
+        switch self {
+        case .pink:
+            return Image.Icon.studentPinkSelected
+        case .orange:
+            return Image.Icon.studentOrangeSelected
+        case .yellow:
+            return Image.Icon.studentYellowSelected
+        case .green:
+            return Image.Icon.studentGreenSelected
+        case .skyblue:
+            return Image.Icon.studentSkyblueSelected
+        case .blue:
+            return Image.Icon.studentBlueSelected
+        case .violet:
+            return Image.Icon.studentVioletSelected
+        case .magenta:
+            return Image.Icon.studentMagentaSelected
+        }
+    }
 }
