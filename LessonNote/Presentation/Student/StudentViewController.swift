@@ -8,6 +8,20 @@
 import UIKit
 import FSCalendar
 
+enum PersonType {
+    case student
+    case parent
+    
+    var title: String {
+        switch self {
+        case .student:
+            return "학생"
+        case .parent:
+            return "학부모"
+        }
+    }
+}
+
 final class StudentViewController: BaseViewController {
     
     var student: Student?
@@ -39,16 +53,9 @@ final class StudentViewController: BaseViewController {
             self.studentView.calendarView.reloadData()
             
         }
-        guard let studentPhoneNumber = studentViewModel.student.value?.studentPhoneNumber else {return}
-        let studentButton = studentView.customStudentView.studentPhoneNumberButton
-        
-        setupMenu(phoneNumber: studentPhoneNumber, button: studentButton)
-        
-        guard let parentPhoneNumber = studentViewModel.student.value?.parentPhoneNumber else {return}
-        let parentButton = studentView.customStudentView.parentPhoneNumberButton
-        
-        setupMenu(phoneNumber: parentPhoneNumber, button: parentButton)
-    }
+        setupMenu(type: .student)
+        setupMenu(type: .parent)
+        }
     
     override func bind() {
         studentViewModel.student.bind { _ in
@@ -56,7 +63,23 @@ final class StudentViewController: BaseViewController {
         }
     }
     
-    func setupMenu(phoneNumber: String, button: UIButton) {
+    func setupMenu(type: PersonType) {
+        var phoneNumber = ""
+        var button = UIButton()
+        
+        switch type {
+        case .student:
+            guard let studentPhoneNumber = studentViewModel.student.value?.studentPhoneNumber else {return}
+            let studentButton = studentView.customStudentView.studentPhoneNumberButton
+            phoneNumber = studentPhoneNumber
+            button = studentButton
+        case .parent:
+            guard let parentPhoneNumber = studentViewModel.student.value?.parentPhoneNumber else {return}
+            let parentButton = studentView.customStudentView.parentPhoneNumberButton
+            phoneNumber = parentPhoneNumber
+            button = parentButton
+        }
+        
         let call = UIAction(title: "전화걸기", image: Image.phoneLong) { _ in
             if let url = NSURL(string: "tel://" + phoneNumber),
                UIApplication.shared.canOpenURL(url as URL) {
@@ -64,7 +87,10 @@ final class StudentViewController: BaseViewController {
             }
         }
         let message = UIAction(title: "피드백 문자 보내기", image: Image.messageLong) { _ in
-            print("bi")
+            let vc = MessageViewController()
+            vc.messageViewModel.personType = type
+            vc.messageViewModel.student = self.studentViewModel.student.value
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         let menuItems = [call, message]
         let menu = UIMenu(title: phoneNumber, children: menuItems)

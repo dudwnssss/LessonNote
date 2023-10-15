@@ -110,6 +110,9 @@
 		10CE4FD12AD9722800FF3E3F /* LessonBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FD02AD9722800FF3E3F /* LessonBottomSheetView.swift */; };
 		10CE4FD32ADAC6F600FF3E3F /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FD22ADAC6F500FF3E3F /* BottomSheetViewController.swift */; };
 		10CE4FD62ADAC71400FF3E3F /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 10CE4FD52ADAC71400FF3E3F /* FloatingPanel */; };
+		10CE4FD92ADB8DEF00FF3E3F /* MessageVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FD82ADB8DEF00FF3E3F /* MessageVIewController.swift */; };
+		10CE4FDB2ADB8DF900FF3E3F /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FDA2ADB8DF900FF3E3F /* MessageView.swift */; };
+		10CE4FDD2ADB8E0000FF3E3F /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FDC2ADB8E0000FF3E3F /* MessageViewModel.swift */; };
 		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
 /* End PBXBuildFile section */
 
@@ -212,6 +215,9 @@
 		10CE4FCE2AD9721F00FF3E3F /* LessonBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		10CE4FD02AD9722800FF3E3F /* LessonBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonBottomSheetView.swift; sourceTree = "<group>"; };
 		10CE4FD22ADAC6F500FF3E3F /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		10CE4FD82ADB8DEF00FF3E3F /* MessageVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageVIewController.swift; sourceTree = "<group>"; };
+		10CE4FDA2ADB8DF900FF3E3F /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		10CE4FDC2ADB8E0000FF3E3F /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -422,13 +428,14 @@
 		1016FADB2AC94941003E7612 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				1016FAE02AC949BB003E7612 /* Base */,
 				1016FAE12AC949C2003E7612 /* Tab */,
+				1016FAE02AC949BB003E7612 /* Base */,
+				1016FB322ACA9000003E7612 /* AddStudent */,
 				1016FB0C2AC961E5003E7612 /* Home */,
 				1016FB0D2AC96204003E7612 /* Schedule */,
-				1016FB322ACA9000003E7612 /* AddStudent */,
 				104C88392AD5133D00EC283C /* Student */,
 				10A86DB62AD665E400817092 /* Lesson */,
+				10CE4FD72ADB8D5800FF3E3F /* Message */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -674,6 +681,16 @@
 			path = Popup;
 			sourceTree = "<group>";
 		};
+		10CE4FD72ADB8D5800FF3E3F /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				10CE4FD82ADB8DEF00FF3E3F /* MessageVIewController.swift */,
+				10CE4FDA2ADB8DF900FF3E3F /* MessageView.swift */,
+				10CE4FDC2ADB8E0000FF3E3F /* MessageViewModel.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -829,6 +846,7 @@
 				1010CBD52ACEA63A00B40498 /* CustomCheckInfoLabel.swift in Sources */,
 				1048F94A2ACAACD300A56C76 /* CustomTitleLabel.swift in Sources */,
 				1048F9AC2ACD3E8E00A56C76 /* Date+.swift in Sources */,
+				10CE4FD92ADB8DEF00FF3E3F /* MessageVIewController.swift in Sources */,
 				10A86DC02AD672FB00817092 /* CustomTextView.swift in Sources */,
 				1016FAEF2AC94A9F003E7612 /* UIStackView+.swift in Sources */,
 				10033CDE2AD581D900379DA0 /* EmptyView.swift in Sources */,
@@ -837,6 +855,7 @@
 				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
 				10A86DBA2AD6661500817092 /* LessonVIew.swift in Sources */,
 				104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */,
+				10CE4FDB2ADB8DF900FF3E3F /* MessageView.swift in Sources */,
 				1010CBE82ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift in Sources */,
 				1010CC302AD2673900B40498 /* TimetableHeader.swift in Sources */,
 				1016FB212AC969E6003E7612 /* LessonTimeView.swift in Sources */,
@@ -845,6 +864,7 @@
 				1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */,
 				1010CBD32ACEA4D700B40498 /* CustomCheckInfoView.swift in Sources */,
 				1010CBC72ACE78CF00B40498 /* LessonInfoViewModel.swift in Sources */,
+				10CE4FDD2ADB8E0000FF3E3F /* MessageViewModel.swift in Sources */,
 				104C883D2AD5135600EC283C /* StudentView.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
 				1010CBD12ACE8E3700B40498 /* CalendarView.swift in Sources */,
