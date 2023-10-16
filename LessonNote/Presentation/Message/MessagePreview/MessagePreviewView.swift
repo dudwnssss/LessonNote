@@ -35,21 +35,22 @@ class MessagePreviewView: BaseView {
         }
         
         messageTitleLabel.do {
-            $0.text = "안녕하세요, 소은 학부모님! 국어 과외 선생님 입니다."
             $0.numberOfLines = 0
             $0.font = Font.medium14
             $0.textColor = Color.gray6
         }
         commentLabel.do {
-            $0.text = "소은이가 수업시간에 많이 졸던데 체력을 평소에 많이 많이 보충할 수 있었으면 좋겠습니다. 감사합니다."
             $0.numberOfLines = 0
             $0.font = Font.medium14
             $0.textColor = Color.gray6
         }
         calendarView.do {
             $0.pagingEnabled = false
-            $0.allowsSelection = false
             $0.headerHeight = 30
+            $0.isUserInteractionEnabled = false
+            $0.allowsMultipleSelection = true
+            $0.today = nil
+            $0.appearance.selectionColor = Color.black
         }
         
         logoImageView.do {

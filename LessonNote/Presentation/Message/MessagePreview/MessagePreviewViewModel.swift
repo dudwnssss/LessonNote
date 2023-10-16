@@ -8,5 +8,6 @@
 import Foundation
 
 class MessagePreviewViewModel {
-    var dateList: [Date] = []
+    var student: Student?
+    var lessonMessage: LessonMessage!
 }

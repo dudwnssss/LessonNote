@@ -117,6 +117,7 @@
 		10CE4FE22ADBF90E00FF3E3F /* MessagePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FE12ADBF90E00FF3E3F /* MessagePreviewViewModel.swift */; };
 		10CE4FE42ADBF92000FF3E3F /* MessagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FE32ADBF92000FF3E3F /* MessagePreviewViewController.swift */; };
 		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
+		10EB68E52ADD547200EB108B /* LessonMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB68E42ADD547200EB108B /* LessonMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -225,6 +226,7 @@
 		10CE4FE12ADBF90E00FF3E3F /* MessagePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePreviewViewModel.swift; sourceTree = "<group>"; };
 		10CE4FE32ADBF92000FF3E3F /* MessagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePreviewViewController.swift; sourceTree = "<group>"; };
 		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
+		10EB68E42ADD547200EB108B /* LessonMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,6 +586,7 @@
 				1016FB2C2AC9C6FA003E7612 /* Student.swift */,
 				1010CBC42ACE788500B40498 /* LessonTime.swift */,
 				1010CBD62ACEC30700B40498 /* TempStudent.swift */,
+				10EB68E42ADD547200EB108B /* LessonMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				10CE4FE22ADBF90E00FF3E3F /* MessagePreviewViewModel.swift in Sources */,
 				10CE4FDD2ADB8E0000FF3E3F /* MessageViewModel.swift in Sources */,
 				104C883D2AD5135600EC283C /* StudentView.swift in Sources */,
+				10EB68E52ADD547200EB108B /* LessonMessage.swift in Sources */,
 				1016FAF52AC94AD3003E7612 /* UIColor+.swift in Sources */,
 				1010CBD12ACE8E3700B40498 /* CalendarView.swift in Sources */,
 				10CE4FE42ADBF92000FF3E3F /* MessagePreviewViewController.swift in Sources */,

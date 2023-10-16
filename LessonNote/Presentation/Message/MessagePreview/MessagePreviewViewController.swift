@@ -10,20 +10,23 @@ import FSCalendar
 import MessageUI
 
 
-class MessagePreviewViewController: BaseViewController, MFMessageComposeViewControllerDelegate {
-    
-    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        navigationController?.popViewController(animated: true)
-    }
-    
+class MessagePreviewViewController: BaseViewController {
     
     private let messagePreviewView = MessagePreviewView()
     let messagePreviewViewModel = MessagePreviewViewModel()
     
     override func setProperties() {
-        messagePreviewView.calendarView.dataSource = self
-        messagePreviewView.calendarView.delegate = self
-        messagePreviewView.sendButton.addTarget(self, action: #selector(sendButtonDidTap), for: .touchUpInside)
+        messagePreviewViewModel.lessonMessage.dates.forEach { date in
+            messagePreviewView.calendarView.select(date)
+        }
+        messagePreviewView.do {
+            $0.messageTitleLabel.text = messagePreviewViewModel.lessonMessage.title
+            $0.commentLabel.text = messagePreviewViewModel.lessonMessage.comment
+            $0.calendarView.dataSource = self
+            $0.calendarView.delegate = self
+            $0.sendButton.addTarget(self, action: #selector(sendButtonDidTap), for: .touchUpInside)
+        }
+        
     }
     
     override func loadView() {
@@ -42,28 +45,11 @@ class MessagePreviewViewController: BaseViewController, MFMessageComposeViewCont
         return image
     }
     
-    func sendMessage(){
-        if MFMessageComposeViewController.canSendText() {
-            let messageComposer = MFMessageComposeViewController()
-            messageComposer.messageComposeDelegate = self
-            messageComposer.recipients = ["+1234567890"] // 전화번호를 미리 설정, 국제 전화번호 형식 사용
-            
-            messageComposer.body = nil // 메시지 본문
-            
-            if let imageData = render().pngData() {
-                messageComposer.addAttachmentData(imageData, typeIdentifier: "public.data", filename: "attachment.png")
-            }
-            
-            self.present(messageComposer, animated: true, completion: nil)
-        } else {
-            // 문자 메시지를 보낼 수 없는 경우에 대한 처리
-        }
-        
-    }
+    
     
     override func setLayouts() {
         messagePreviewView.calendarView.snp.makeConstraints {
-            $0.height.equalTo(300 * DateManager.shared.countUniqueMonths(dates: messagePreviewViewModel.dateList))
+            $0.height.equalTo(300 * DateManager.shared.countUniqueMonths(dates: messagePreviewViewModel.lessonMessage.dates))
         }
     }
     
@@ -73,18 +59,92 @@ class MessagePreviewViewController: BaseViewController, MFMessageComposeViewCont
 }
 
 extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        calendar.snp.updateConstraints { (make) in
+            make.height.equalTo(bounds.height)
+        }
+        self.view.layoutIfNeeded()
+    }
     func minimumDate(for calendar: FSCalendar) -> Date {
-        if let minDate = messagePreviewViewModel.dateList.min() {
+        if let minDate = messagePreviewViewModel.lessonMessage.dates.min() {
             return minDate
         } else {
             return Date()
         }
     }
     func maximumDate(for calendar: FSCalendar) -> Date {
-        if let maxDate = messagePreviewViewModel.dateList.max() {
+        if let maxDate = messagePreviewViewModel.lessonMessage.dates.max() {
             return maxDate
         } else {
             return Date()
         }
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
+        guard let lessons = messagePreviewViewModel.student?.lessons else { return nil }
+        for item in lessons {
+            if date == item.date{
+                guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
+                switch state {
+                case .canceled:
+                    return Color.gray4
+                default:
+                    return Color.black
+                }
+            }
+        }
+        return nil
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        guard let lessons = messagePreviewViewModel.student?.lessons else { return nil }
+        for item in lessons {
+            if date == item.date && messagePreviewViewModel.lessonMessage.dates.contains(date) {
+                guard let state = item.lessonState,
+                      let stateString = LessonState(rawValue: state)?.calendarTitle else { return nil}
+                return stateString
+            }
+        }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
+        if messagePreviewViewModel.lessonMessage.assignment {
+            guard let lessons = messagePreviewViewModel.student?.lessons else { return nil }
+            for item in lessons {
+                if date == item.date && messagePreviewViewModel.lessonMessage.dates.contains(date) {
+                    guard let stateRawValue = item.assignmentState, let state = AssignmentState(rawValue: stateRawValue) else {return nil}
+                    return state.image
+                }
+            }
+            return nil
+        } else {
+            return nil
+        }
+    }
+}
+
+extension MessagePreviewViewController: MFMessageComposeViewControllerDelegate {
+    
+    func sendMessage(){
+        if MFMessageComposeViewController.canSendText() {
+            let messageComposer = MFMessageComposeViewController()
+            messageComposer.messageComposeDelegate = self
+            messageComposer.recipients = ["01037550191"]
+            messageComposer.body = nil // 메시지 본문
+            
+            if let imageData = render().pngData() {
+                messageComposer.addAttachmentData(imageData, typeIdentifier: "public.data", filename: "attachment.png")
+            }
+            
+            self.present(messageComposer, animated: true, completion: nil)
+        } else {
+            print("메시지를 보낼 수 없습니다.")
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        dismiss(animated: true)
     }
 }

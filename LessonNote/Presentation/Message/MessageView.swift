@@ -34,6 +34,7 @@ final class MessageView: BaseView {
         calendarView.do {
             $0.borderWidth = 5
             $0.borderColor = Color.gray1
+            $0.today = nil
             $0.allowsMultipleSelection = true
         }
         assignmentButton.do {
