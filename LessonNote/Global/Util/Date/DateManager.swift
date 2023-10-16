@@ -164,5 +164,15 @@ class DateManager{
         
         return lessonDates
     }
-
+    
+    func countUniqueMonths(dates: [Date]) -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-yyyy"
+        var uniqueMonths = Set<String>()
+        for date in dates {
+            let monthYear = dateFormatter.string(from: date)
+            uniqueMonths.insert(monthYear)
+        }
+        return uniqueMonths.count
+    }
 }

@@ -26,7 +26,7 @@ enum Image {
     static let phoneLong = UIImage(named: "phone.long")!
     static let phoneWhite = UIImage(named: "phone.white")!
     static let messageLong = UIImage(named: "message.long")!
-
+    static let logoText = UIImage(named: "logo.text")!
     static let studentAdd = UIImage(named: "student.add")!
     static let studentEmpty = UIImage(named: "student.empty")!
 

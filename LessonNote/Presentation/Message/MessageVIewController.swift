@@ -21,6 +21,7 @@ class MessageViewController: BaseViewController {
         messageView.calendarView.delegate = self
         messageView.calendarView.dataSource = self
         messageView.assignmentButton.addTarget(self, action: #selector(assignmentButtonDidTap), for: .touchUpInside)
+        messageView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
     
     override func setNavigationBar() {
@@ -33,10 +34,16 @@ class MessageViewController: BaseViewController {
             self.messageView.calendarView.reloadData()
         }
     }
-    
+
     @objc func assignmentButtonDidTap(){
         messageViewModel.showAssignment.value.toggle()
     }
+    @objc func nextButtonDidTap(){
+        let vc = MessagePreviewViewController()
+        vc.messagePreviewViewModel.dateList = messageViewModel.selectedList
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension MessageViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
