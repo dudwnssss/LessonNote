@@ -114,12 +114,13 @@ final class MessageView: BaseView {
         switch type {
         case .student:
             guard let phoneNumber = student.studentPhoneNumber else {return}
-            phoneNumberLabel.infoContent = phoneNumber
+            phoneNumberLabel.infoContent = phoneNumber.withHypen
         case .parent:
             guard let phoneNumber = student.parentPhoneNumber else {return}
-            phoneNumberLabel.infoContent = phoneNumber
+            phoneNumberLabel.infoContent = phoneNumber.withHypen
         }
     }
+    
     func configureButton(isSelected: Bool){
         switch isSelected {
         case true:

@@ -90,7 +90,7 @@ final class StudentViewController: BaseViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         let menuItems = [call, message]
-        let menu = UIMenu(title: phoneNumber, children: menuItems)
+        let menu = UIMenu(title: phoneNumber.withHypen, children: menuItems)
         menu.preferredElementSize = .medium
         button.menu = menu
         button.showsMenuAsPrimaryAction = true

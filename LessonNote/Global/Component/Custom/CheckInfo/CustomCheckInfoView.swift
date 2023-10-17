@@ -14,8 +14,8 @@ final class CustomCheckInfoView: BaseView {
     private let backgroundView = UIView()
     
     private let nameLabel = CustomCheckInfoLabel(title: "이름", content: TempStudent.shared.studentName!)
-    private let studentPhoneNumberLabel = CustomCheckInfoLabel(title: "전화번호", content: TempStudent.shared.studentPhoneNumber!)
-    private let parentPhoneNumberLabel = CustomCheckInfoLabel(title: "학부모 전화번호", content: TempStudent.shared.parentPhoneNumber!)
+    private let studentPhoneNumberLabel = CustomCheckInfoLabel(title: "전화번호", content: TempStudent.shared.studentPhoneNumber!.withHypen)
+    private let parentPhoneNumberLabel = CustomCheckInfoLabel(title: "학부모 전화번호", content: TempStudent.shared.parentPhoneNumber!.withHypen)
     
     let lessonTimeTitleLabel = UILabel()
     var lessonTimeLables: [UILabel] = []
