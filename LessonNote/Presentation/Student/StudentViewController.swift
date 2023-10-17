@@ -98,6 +98,7 @@ final class StudentViewController: BaseViewController {
     
     @objc func settingButtonDidTap(){
         let vc = StudentEditViewController()
+        vc.viewModel.student.value = studentViewModel.student.value
         navigationController?.pushViewController(vc, animated: true)
     }
 }

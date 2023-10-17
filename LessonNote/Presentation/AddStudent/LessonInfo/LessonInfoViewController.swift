@@ -34,15 +34,15 @@ final class LessonInfoViewController: BaseViewController {
     }
     
     override func bind() {
-        lessonInfoViewModel.isChecked.bind { value in
-            self.lessonInfoView.weekCountView.weekCountView.checkboxButton.configureCheckbox(check: value)
-            self.lessonInfoView.weekCountView.weekCountView.configureView(isChecked: value)
+        lessonInfoViewModel.isChecked.bind {[weak self] value in
+            self?.lessonInfoView.weekCountView.weekCountView.checkboxButton.configureCheckbox(check: value)
+            self?.lessonInfoView.weekCountView.weekCountView.configureView(isChecked: value)
         }
-        lessonInfoViewModel.weekCount.bind { value in
-            self.lessonInfoView.weekCountView.weekCountView.textField.textField.text = "\(value)"
+        lessonInfoViewModel.weekCount.bind {[weak self] value in
+            self?.lessonInfoView.weekCountView.weekCountView.textField.textField.text = "\(value)"
         }
-        lessonInfoViewModel.lessonTimeList.bind { _ in
-            self.setSnapshot()
+        lessonInfoViewModel.lessonTimeList.bind {[weak self] _ in
+            self?.setSnapshot()
         }
     }
     

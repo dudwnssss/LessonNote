@@ -38,9 +38,9 @@ final class StartDateInfoViewController: BaseViewController{
         startDateInfoViewModel.isValid.bind { [weak self] value in
             self?.startDateInfoView.nextButton.isActivated = value
         }
-        startDateInfoViewModel.weekday.bind { weekday in
-            self.startDateInfoView.startWeekdayView.descriptionLabel.text = weekday.title+"요일을 기준으로 주차가 반복됩니다."
-            self.startDateInfoView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
+        startDateInfoViewModel.weekday.bind {[weak self] weekday in
+            self?.startDateInfoView.startWeekdayView.descriptionLabel.text = weekday.title+"요일을 기준으로 주차가 반복됩니다."
+            self?.startDateInfoView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
                 print(button)
                 button.configureButton(activate: button.tag == weekday.rawValue)
             }
