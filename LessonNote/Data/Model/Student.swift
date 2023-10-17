@@ -20,9 +20,10 @@ final class Student: Object {
     @Persisted var weekCount: Int
     @Persisted var memo: String?
     @Persisted var lessons: List<Lesson>
+    @Persisted var startWeekday: Weekday.RawValue
     
     
-    convenience init(studentName: String, studentIcon: StudentIcon.RawValue, studentPhoneNumber: String? = nil, parentPhoneNumber: String? = nil, lessonStartDate: Date? = nil, weekCount: Int = 1) {
+    convenience init(studentName: String, studentIcon: StudentIcon.RawValue, studentPhoneNumber: String? = nil, parentPhoneNumber: String? = nil, lessonStartDate: Date? = nil, weekCount: Int = 1, startWeekday: Weekday.RawValue) {
         self.init()
         self.studentName = studentName
         self.studentIcon = studentIcon
@@ -30,6 +31,7 @@ final class Student: Object {
         self.parentPhoneNumber = parentPhoneNumber
         self.lessonStartDate = lessonStartDate
         self.weekCount = weekCount
+        self.startWeekday = startWeekday
     }
     
     func toElliotEvent() -> [ElliottEvent] {

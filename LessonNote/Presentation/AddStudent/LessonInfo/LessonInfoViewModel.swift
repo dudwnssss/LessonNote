@@ -26,4 +26,12 @@ extension LessonInfoViewModel{
             weekCount.value = 1
         }
     }
+    func sortLessonTime() {
+        if lessonTimeList.value.count >= 2 {
+            lessonTimeList.value.sort { lhs, rhs in
+                lhs.weekday.rawValue < rhs.weekday.rawValue
+            }
+        }
+    }
+
 }

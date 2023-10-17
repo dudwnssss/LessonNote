@@ -22,6 +22,10 @@ class HomeViewController: BaseViewController{
         super.viewDidAppear(animated)
         navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .systemThinMaterial)
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.standardAppearance.backgroundEffect = nil
+    }
     
     override func setNavigationBar() {
         navigationItem.title = "홈"

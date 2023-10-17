@@ -40,7 +40,7 @@ final class CheckInfoView: BaseView {
         customInfoView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.top.equalTo(titleLabel.snp.bottom).offset(36)
-            $0.height.equalTo(400)
+            $0.height.greaterThanOrEqualTo(400)
         }
 
         completeButton.snp.makeConstraints {

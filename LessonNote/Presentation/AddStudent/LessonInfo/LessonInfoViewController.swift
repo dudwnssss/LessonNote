@@ -51,9 +51,9 @@ final class LessonInfoViewController: BaseViewController {
     }
     
     @objc func nextButtonDidTap(){
+        lessonInfoViewModel.storeData()
         let vc = StartDateInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
-        lessonInfoViewModel.storeData()
     }
     
     @objc func checkboxButtonDidTap(){
@@ -102,5 +102,6 @@ extension LessonInfoViewController: UITextFieldDelegate {
 extension LessonInfoViewController: PassLessonTimes {
     func passLessonTimes(lessons: [LessonTime]) {
         lessonInfoViewModel.lessonTimeList.value.append(contentsOf: lessons)
+        lessonInfoViewModel.sortLessonTime()
     }
 }

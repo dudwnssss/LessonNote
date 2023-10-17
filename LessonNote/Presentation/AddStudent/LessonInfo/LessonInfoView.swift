@@ -50,7 +50,7 @@ final class LessonInfoView: BaseView {
         }
         lessonTimeView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(25)
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(36.adjusted)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(36)
             $0.height.equalTo(70)
         }
         collectionView.snp.makeConstraints {
@@ -61,7 +61,7 @@ final class LessonInfoView: BaseView {
         
         weekCountView.snp.makeConstraints {
             $0.leading.equalTo(lessonTimeView)
-            $0.top.equalTo(collectionView.snp.bottom).offset(36.adjusted)
+            $0.top.equalTo(collectionView.snp.bottom).offset(36)
         }
         
         nextButton.snp.makeConstraints {

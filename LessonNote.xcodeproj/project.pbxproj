@@ -11,6 +11,7 @@
 		100209452ADE54E100571959 /* StudentEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100209442ADE54E100571959 /* StudentEditView.swift */; };
 		100209472ADE54E900571959 /* StudentEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100209462ADE54E900571959 /* StudentEditViewModel.swift */; };
 		100209492ADE710F00571959 /* UIString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100209482ADE710F00571959 /* UIString+.swift */; };
+		1002094B2ADE78F600571959 /* CustomStartWeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002094A2ADE78F600571959 /* CustomStartWeekdayView.swift */; };
 		10033CDE2AD581D900379DA0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10033CDD2AD581D900379DA0 /* EmptyView.swift */; };
 		1010CBBB2ACDB2D400B40498 /* UIPickerView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */; };
 		1010CBBE2ACE4A7D00B40498 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1010CBBD2ACE4A7D00B40498 /* FSCalendar */; };
@@ -129,6 +130,7 @@
 		100209442ADE54E100571959 /* StudentEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentEditView.swift; sourceTree = "<group>"; };
 		100209462ADE54E900571959 /* StudentEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentEditViewModel.swift; sourceTree = "<group>"; };
 		100209482ADE710F00571959 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
+		1002094A2ADE78F600571959 /* CustomStartWeekdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStartWeekdayView.swift; sourceTree = "<group>"; };
 		10033CDD2AD581D900379DA0 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+.swift"; sourceTree = "<group>"; };
 		1010CBC02ACE774500B40498 /* LessonTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeCell.swift; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 				1010CBE92ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift */,
 				1010CBEF2ACFB4E100B40498 /* CustomLessonTimeView.swift */,
 				1010CBF12ACFB5FF00B40498 /* CustomWeekCountView.swift */,
+				1002094A2ADE78F600571959 /* CustomStartWeekdayView.swift */,
 			);
 			path = AddStudent;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				1010CBC52ACE788500B40498 /* LessonTime.swift in Sources */,
 				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
 				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
+				1002094B2ADE78F600571959 /* CustomStartWeekdayView.swift in Sources */,
 				10A86DBA2AD6661500817092 /* LessonVIew.swift in Sources */,
 				104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */,
 				10CE4FDB2ADB8DF900FF3E3F /* MessageView.swift in Sources */,

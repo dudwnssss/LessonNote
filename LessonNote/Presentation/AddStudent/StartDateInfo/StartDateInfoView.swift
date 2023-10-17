@@ -10,10 +10,11 @@ import FSCalendar
 
 final class StartDateInfoView: BaseView {
     
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let descriptionLabel = UILabel()
     let calendar = CalendarView()
     let nextButton = CompleteButton(title: "다음으로")
+    let startWeekdayView = CustomStartWeekdayView()
     
     override func setProperties() {
         titleLabel.do {
@@ -34,11 +35,12 @@ final class StartDateInfoView: BaseView {
             $0.borderWidth = 5
             $0.borderColor = Color.gray1
         }
+      
     }
     
     override func setLayouts() {
-        addSubviews(titleLabel, descriptionLabel, calendar, nextButton)
-                
+        addSubviews(titleLabel, descriptionLabel, calendar, startWeekdayView, nextButton)
+        
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(25)
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
@@ -51,9 +53,15 @@ final class StartDateInfoView: BaseView {
         calendar.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(calendar.snp.width)
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(36)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(16)
         }
-
+        
+        startWeekdayView.snp.makeConstraints {
+            $0.top.equalTo(calendar.snp.bottom).offset(36)
+            $0.horizontalEdges.equalToSuperview().inset(25)
+            $0.height.equalTo(80)
+        }
+        
         nextButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-48.adjusted)

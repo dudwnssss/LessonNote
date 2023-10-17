@@ -16,7 +16,6 @@ final class HomeView: BaseView{
     override func setProperties() {
         collectionView.do {
             $0.backgroundColor = .clear
-            $0.showsVerticalScrollIndicator = false
         }
         addStudentButton.do {
             $0.setImage(Image.studentAdd, for: .normal)

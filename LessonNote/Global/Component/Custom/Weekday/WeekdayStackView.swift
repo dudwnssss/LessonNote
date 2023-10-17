@@ -11,7 +11,6 @@ final class WeekdayStackView: UIStackView{
     
     private let weekdays = Weekday.allCases
     var weekdayButtons: [CustomButton] = []
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
@@ -22,14 +21,17 @@ final class WeekdayStackView: UIStackView{
         weekdays.forEach {
             let button = CustomButton(title: $0.title)
             button.tag = $0.rawValue
+            button.snp.makeConstraints {
+                $0.width.equalTo(44)
+            }
             weekdayButtons.append(button)
         }
         weekdayButtons.forEach {
             $0.titleLabel?.font = Font.medium14
         }
         axis = .horizontal
-        spacing = 4
         distribution = .fillEqually
+        spacing = 4
     }
     
     private func setLayouts() {
@@ -37,6 +39,21 @@ final class WeekdayStackView: UIStackView{
             addArrangedSubviews($0)
             $0.snp.makeConstraints {
                 $0.height.equalTo(33)
+            }
+        }
+    }
+    
+    func configureStackView(weekdays: [Weekday], hide: Bool){
+        if hide {
+            weekdays.forEach { weekday in
+                weekdayButtons[weekday.rawValue].isHidden = true
+            }
+        } else {
+            weekdayButtons.forEach { button in
+                button.isHidden = true
+            }
+            weekdays.forEach { weekday in
+                weekdayButtons[weekday.rawValue].isHidden = false
             }
         }
     }

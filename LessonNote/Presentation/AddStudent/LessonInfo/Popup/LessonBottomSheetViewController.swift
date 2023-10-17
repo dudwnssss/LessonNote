@@ -22,9 +22,7 @@ final class LessonBottomSheetViewController: BaseViewController {
     }
     
     override func setProperties() {
-        lessonBottomSheetViewModel.existWeekdays.forEach { weekday in
-            lessonBottomSheetView.weekdayStackView.weekdayButtons[weekday.rawValue].isHidden = true
-        }
+        lessonBottomSheetView.weekdayStackView.configureStackView(weekdays: lessonBottomSheetViewModel.existWeekdays, hide: true)
         lessonBottomSheetView.addButton.addTarget(self, action: #selector(addButtonDidTap), for: .touchUpInside)
         lessonBottomSheetView.weekdayStackView.weekdayButtons.forEach {
             $0.addTarget(self, action: #selector(weekdayButtonDidTap(sender:)), for: .touchUpInside)

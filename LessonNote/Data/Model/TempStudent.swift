@@ -18,10 +18,12 @@ final class TempStudent {
     var lessonTimes: [LessonTime]?
     var lessonStartDate: Date?
     var weekCount: Int = 1
+    var startWeekday: Weekday?
     
     func createStudent() -> Student? {
         guard let studentName = self.studentName,
-              let studentIcon = self.studentIcon else {
+              let studentIcon = self.studentIcon,
+              let startWeekday = self.startWeekday else {
             return nil
         }
         let student = Student(studentName: studentName,
@@ -29,7 +31,8 @@ final class TempStudent {
                               studentPhoneNumber: self.studentPhoneNumber,
                               parentPhoneNumber: self.parentPhoneNumber,
                               lessonStartDate: self.lessonStartDate,
-                              weekCount: self.weekCount)
+                              weekCount: self.weekCount,
+                              startWeekday: startWeekday.rawValue)
         return student
     }
 }
