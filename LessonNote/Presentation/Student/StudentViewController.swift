@@ -33,6 +33,7 @@ final class StudentViewController: BaseViewController {
 
     override func setNavigationBar() {
         navigationItem.title = "학생 정보"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(settingButtonDidTap))
     }
     
     override func setProperties() {
@@ -93,7 +94,11 @@ final class StudentViewController: BaseViewController {
         menu.preferredElementSize = .medium
         button.menu = menu
         button.showsMenuAsPrimaryAction = true
-        
+    }
+    
+    @objc func settingButtonDidTap(){
+        let vc = StudentEditViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

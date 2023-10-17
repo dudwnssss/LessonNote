@@ -18,6 +18,11 @@ class HomeViewController: BaseViewController{
         self.view = homeView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .systemThinMaterial)
+    }
+    
     override func setNavigationBar() {
         navigationItem.title = "홈"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: nil)

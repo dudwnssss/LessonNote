@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithTransparentBackground()
-            appearance.backgroundColor = Color.white
             appearance.titleTextAttributes = [.foregroundColor: Color.black, .font: Font.bold16]
+            appearance.shadowColor = .clear
             let backButtonAppearance = UIBarButtonItemAppearance()
             backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear, .font: UIFont.systemFont(ofSize: 0)]
             appearance.setBackIndicatorImage(Image.back, transitionMaskImage: Image.back)
@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let appearance = UITabBarAppearance()
             appearance.configureWithDefaultBackground()
             appearance.backgroundColor = Color.white
+            appearance.shadowColor = .clear
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().backgroundColor = Color.white
         }

@@ -16,6 +16,7 @@ final class HomeView: BaseView{
     override func setProperties() {
         collectionView.do {
             $0.backgroundColor = .clear
+            $0.showsVerticalScrollIndicator = false
         }
         addStudentButton.do {
             $0.setImage(Image.studentAdd, for: .normal)
@@ -25,7 +26,8 @@ final class HomeView: BaseView{
     override func setLayouts() {
         addSubviews(collectionView, addStudentButton, emptyView)
         collectionView.snp.makeConstraints {
-            $0.edges.equalTo(self.safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
         addStudentButton.snp.makeConstraints {
             $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-24)
