@@ -21,7 +21,7 @@ extension MessageViewModel {
         let message = LessonMessage(title: title.value,
                                     dates: selectedDates,
                                     comment: comment,
-                                    assignment: showAssignment.value)
+                                    assignment: showAssignment.value, personType: personType)
         return message
     }
 }

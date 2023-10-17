@@ -51,7 +51,7 @@ final class StartDateInfoView: BaseView {
         calendar.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(calendar.snp.width)
-            $0.centerY.equalToSuperview().offset(-4)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(36)
         }
 
         nextButton.snp.makeConstraints {

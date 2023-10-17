@@ -17,7 +17,7 @@ final class TempStudent {
     var parentPhoneNumber: String?
     var lessonTimes: [LessonTime]?
     var lessonStartDate: Date?
-    var weekCount: Int?
+    var weekCount: Int = 1
     
     func createStudent() -> Student? {
         guard let studentName = self.studentName,

@@ -12,4 +12,5 @@ struct LessonMessage {
     let dates: [Date]
     let comment: String?
     let assignment: Bool
+    let personType: PersonType
 }

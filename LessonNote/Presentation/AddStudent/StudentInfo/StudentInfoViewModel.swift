@@ -41,4 +41,7 @@ final class StudentInfoViewModel{
         TempStudent.shared.studentPhoneNumber = studentPhoneNumber.value
         TempStudent.shared.parentPhoneNumber = parentPhoneNumber.value
     }
+    
+    
+
 }

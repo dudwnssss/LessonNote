@@ -131,11 +131,22 @@ extension MessagePreviewViewController: MFMessageComposeViewControllerDelegate {
         if MFMessageComposeViewController.canSendText() {
             let messageComposer = MFMessageComposeViewController()
             messageComposer.messageComposeDelegate = self
-            messageComposer.recipients = ["01037550191"]
-            messageComposer.body = nil // 메시지 본문
+            
+            var phoneNumber = ""
+            guard let student = messagePreviewViewModel.student else { return }
+            switch messagePreviewViewModel.lessonMessage.personType {
+            case .student:
+                guard let studentPhoneNumber = student.studentPhoneNumber else { return }
+                phoneNumber = studentPhoneNumber
+            case .parent:
+                guard let parentPhoneNumber = student.parentPhoneNumber else { return }
+                phoneNumber = parentPhoneNumber
+            }
+            messageComposer.recipients = [phoneNumber]
+            messageComposer.body = nil
             
             if let imageData = render().pngData() {
-                messageComposer.addAttachmentData(imageData, typeIdentifier: "public.data", filename: "attachment.png")
+                messageComposer.addAttachmentData(imageData, typeIdentifier: "lesson.data", filename: "attachment.png")
             }
             
             self.present(messageComposer, animated: true, completion: nil)

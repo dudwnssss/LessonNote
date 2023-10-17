@@ -17,12 +17,12 @@ final class Student: Object {
     @Persisted var parentPhoneNumber: String?
     @Persisted var lessonSchedules: List<LessonSchedule>
     @Persisted var lessonStartDate: Date?
-    @Persisted var weekCount: Int?
+    @Persisted var weekCount: Int
     @Persisted var memo: String?
     @Persisted var lessons: List<Lesson>
     
     
-    convenience init(studentName: String, studentIcon: StudentIcon.RawValue, studentPhoneNumber: String? = nil, parentPhoneNumber: String? = nil, lessonStartDate: Date? = nil, weekCount: Int? = nil) {
+    convenience init(studentName: String, studentIcon: StudentIcon.RawValue, studentPhoneNumber: String? = nil, parentPhoneNumber: String? = nil, lessonStartDate: Date? = nil, weekCount: Int = 1) {
         self.init()
         self.studentName = studentName
         self.studentIcon = studentIcon

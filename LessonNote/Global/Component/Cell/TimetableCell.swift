@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PassStudent {
+    func passStudent(student: Student)
+}
+
 final class TimetableCell: UICollectionViewCell{
     
     let timetable = Elliotable()
@@ -15,6 +19,8 @@ final class TimetableCell: UICollectionViewCell{
             timetable.reloadData()
         }
     }
+    
+    var delegate: PassStudent?
     
     var daySymbol : [String] = [""]
     
@@ -61,8 +67,9 @@ final class TimetableCell: UICollectionViewCell{
 }
 
 extension TimetableCell: ElliotableDelegate, ElliotableDataSource{
+   
     func elliotable(elliotable: Elliotable, didSelectCourse selectedCourse: ElliottEvent) {
-        dump(selectedCourse.student)
+        delegate?.passStudent(student: selectedCourse.student)
     }
     
     func elliotable(elliotable: Elliotable, didLongSelectCourse longSelectedCourse: ElliottEvent) {

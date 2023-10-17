@@ -21,7 +21,7 @@ final class CustomCheckInfoView: BaseView {
     var lessonTimeLables: [UILabel] = []
     let lessonTimeStackView = UIStackView()
     
-    private let weekCountLabel = CustomCheckInfoLabel(title: "격주 여부", content: "\(TempStudent.shared.weekCount!)주 마다 수업")
+    private let weekCountLabel = CustomCheckInfoLabel(title: "격주 여부", content: "\(TempStudent.shared.weekCount)주 마다 수업")
     private let startDateLabel = CustomCheckInfoLabel(title: "수업 시작일", content: DateManager.shared.formatFullDateToString(date: TempStudent.shared.lessonStartDate ?? Date()))
     private let separator1 = SeparatorView(color: Color.gray1)
     private let separator2 = SeparatorView(color: Color.gray1)

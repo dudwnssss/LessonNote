@@ -53,21 +53,6 @@ final class StudentIconButton: UIButton {
                     }
                 }
             }
-            //            UIView.animate(withDuration: 0.3, animations: {
-            //                      self.setImage(self.studentIcon?.selectedImage, for: .normal)
-            //                  }, completion: { _ in
-            //                      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            //                          UIView.animate(withDuration: 0.3, animations: {
-            //                              self.setImage(self.studentIcon?.image, for: .normal)
-            //                          }, completion: { _ in
-            //                              DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            //                                  UIView.animate(withDuration: 0.3) {
-            //                                      self.setImage(self.studentIcon?.selectedImage, for: .normal)
-            //                                  }
-            //                              }
-            //                          })
-            //                      }
-            //                  })
         case false:
             setImage(studentIcon?.image, for: .normal)
             borderWidth = 0

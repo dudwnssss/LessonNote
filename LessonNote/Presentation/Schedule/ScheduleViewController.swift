@@ -59,7 +59,8 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TimetableCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
-        cell.courseItems = scheduleViewModel.weekSchedules[indexPath.row].value                                                                                                                                         
+        cell.delegate = self
+        cell.courseItems = scheduleViewModel.weekSchedules[indexPath.row].value
         let daysofWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: indexPath.item)
         cell.daySymbol = DateManager.shared.formatDatesToENd(dates: daysofWeek)
         cell.timetable.sundayDate = DateManager.shared.getSundayDate(forWeekOffset: indexPath.item)
@@ -79,3 +80,12 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     }
 }
                                                   
+extension ScheduleViewController: PassStudent {
+    func passStudent(student: Student) {
+        let vc = StudentViewController()
+        vc.studentViewModel.student.value = student
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+}

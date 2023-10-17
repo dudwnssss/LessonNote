@@ -65,20 +65,20 @@ final class StudentInfoView: BaseView {
         
         studentNameView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(25)
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(36.adjusted)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(36)
         }
         
         studentIconView.snp.makeConstraints {
             $0.leading.equalTo(studentNameView)
-            $0.top.equalTo(studentNameView.snp.bottom).offset(36.adjusted)
+            $0.top.equalTo(studentNameView.snp.bottom).offset(36)
         }
         studentPhoneNumberView.snp.makeConstraints {
             $0.leading.equalTo(studentNameView)
-            $0.top.equalTo(studentIconView.snp.bottom).offset(36.adjusted)
+            $0.top.equalTo(studentIconView.snp.bottom).offset(36)
         }
         parentPhoneNumberView.snp.makeConstraints {
             $0.leading.equalTo(studentNameView)
-            $0.top.equalTo(studentPhoneNumberView.snp.bottom).offset(36.adjusted)
+            $0.top.equalTo(studentPhoneNumberView.snp.bottom).offset(36)
         }
 
         addSubview(nextButton)

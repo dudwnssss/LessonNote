@@ -11,6 +11,7 @@ class CustomStudentView: BaseView{
     let iconImageView = UIImageView()
     let nameLabel = UILabel()
     let studentLabel = UILabel()
+    let weekCountLabel = UILabel()
     private let separatorView = SeparatorView(color: Color.gray1)
     private let lessonTimeStackView = UIStackView()
     private let punchImageView = UIImageView()
@@ -23,7 +24,9 @@ class CustomStudentView: BaseView{
             $0.image = Image.notePunched
             $0.contentMode = .scaleAspectFill
         }
-        
+        weekCountLabel.do {
+            $0.font = Font.bold12
+        }
         nameLabel.do {
             $0.text = "안소은"
             $0.font = Font.bold16
@@ -33,7 +36,6 @@ class CustomStudentView: BaseView{
             $0.textColor = Color.gray4
             $0.font = Font.bold14
         }
-        
         cellBackgroundView.do {
             $0.backgroundColor = Color.white
             $0.clipsToBounds = true
@@ -61,7 +63,7 @@ class CustomStudentView: BaseView{
             $0.top.equalTo(punchImageView.snp.bottom)
             $0.horizontalEdges.bottom.equalToSuperview()
         }
-        cellBackgroundView.addSubviews(iconImageView, nameLabel, studentLabel, separatorView, lessonTimeStackView, studentPhoneNumberButton, parentPhoneNumberButton, stackView)
+        cellBackgroundView.addSubviews(iconImageView, nameLabel, studentLabel, separatorView, lessonTimeStackView, studentPhoneNumberButton, parentPhoneNumberButton, stackView, weekCountLabel)
         iconImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(12)
             $0.leading.equalToSuperview().offset(18)
@@ -81,6 +83,10 @@ class CustomStudentView: BaseView{
             $0.width.equalTo(stackView)
             $0.top.equalTo(nameLabel.snp.bottom).offset(4)
         }
+        weekCountLabel.snp.makeConstraints {
+            $0.trailing.equalTo(separatorView)
+            $0.bottom.equalTo(nameLabel)
+        }
         lessonTimeStackView.snp.makeConstraints {
             $0.top.equalTo(separatorView.snp.bottom)
             $0.horizontalEdges.equalTo(separatorView)
@@ -96,10 +102,16 @@ class CustomStudentView: BaseView{
     
     func configureView(student: Student){
         nameLabel.text = student.studentName
+        guard let color = StudentIcon(rawValue: student.studentIcon)?.textColor else { return }
+        weekCountLabel.textColor = color
+        if student.weekCount == 1 {
+            weekCountLabel.text = "매주"
+        } else {
+            weekCountLabel.text = "\(student.weekCount)주 마다"
+        }
         iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.selectedImage
-        print(student.lessonSchedules)
         student.lessonSchedules.forEach {
-            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: StudentIcon(rawValue: student.studentIcon)!.textColor)
+            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: color)
             lessonTimeStackView.addArrangedSubview(lessonTimeView)
             lessonTimeView.separatorView.snp.makeConstraints {
                 $0.width.equalTo(stackView)

@@ -11,9 +11,12 @@ final class WeekCountView: BaseView{
     
     let checkboxButton = CheckBoxButton()
     let titleLabel = UILabel()
+    
     let textField = CustomTextFieldView(placeholder: "2", limitCount: 1)
     let numberPickerView = NumberPickerView()
     let descriptionLabel = UILabel()
+    let stackView = UIStackView()
+    let contentView = UIView()
     
     override func setProperties() {
         titleLabel.do {
@@ -34,10 +37,15 @@ final class WeekCountView: BaseView{
             $0.setup()
         }
         configureView(isChecked: false)
+        stackView.do {
+            $0.axis = .vertical
+            $0.spacing = 8
+        }
+
     }
     
     override func setLayouts() {
-        addSubviews(checkboxButton, titleLabel, textField, descriptionLabel)
+        addSubviews(checkboxButton, titleLabel, stackView)
         
         checkboxButton.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
@@ -46,15 +54,24 @@ final class WeekCountView: BaseView{
             $0.centerY.equalTo(checkboxButton)
             $0.leading.equalTo(checkboxButton.snp.trailing).offset(8)
         }
-        textField.snp.makeConstraints {
+        
+        stackView.addArrangedSubview(contentView)
+        contentView.addSubviews(textField, descriptionLabel)
+        
+        stackView.snp.makeConstraints {
             $0.leading.equalTo(titleLabel)
             $0.top.equalTo(titleLabel.snp.bottom).offset(8)
+            $0.width.equalTo(140)
+        }
+        textField.snp.makeConstraints {
+            $0.leading.height.equalToSuperview()
             $0.width.equalTo(91.adjusted)
         }
         descriptionLabel.snp.makeConstraints {
             $0.centerY.equalTo(textField)
             $0.leading.equalTo(textField.snp.trailing).offset(6)
         }
+        
         snp.makeConstraints {
             $0.height.equalTo(60)
         }
@@ -63,11 +80,12 @@ final class WeekCountView: BaseView{
     func configureView(isChecked: Bool){
         switch isChecked{
         case true:
-            textField.isHidden = false
-            descriptionLabel.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.contentView.isHidden = false
+            }
         case false:
-            textField.isHidden = true
-            descriptionLabel.isHidden = true
+                self.contentView.isHidden = true
+            
         }
     }
 }

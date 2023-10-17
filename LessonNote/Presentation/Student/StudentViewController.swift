@@ -23,11 +23,9 @@ enum PersonType {
 }
 
 final class StudentViewController: BaseViewController {
-    
-    var student: Student?
-    
+        
     private let studentView = StudentView()
-    private lazy var studentViewModel = StudentViewModel(student: student!)
+    var studentViewModel = StudentViewModel()
     
     override func loadView() {
         self.view = studentView
@@ -39,22 +37,20 @@ final class StudentViewController: BaseViewController {
     
     override func setProperties() {
         view.backgroundColor = Color.gray1
-        if let student {
-            studentView.customStudentView.configureView(student: student)
-        }
+        guard let student = studentViewModel.student.value else { return }
+        studentView.customStudentView.configureView(student: student)
         studentView.calendarView.do {
             $0.delegate = self
             $0.dataSource = self
-            $0.configureStudentCalendar(studentIcon: StudentIcon(rawValue: student!.studentIcon)!)
+            $0.configureStudentCalendar(studentIcon: StudentIcon(rawValue: student.studentIcon)!)
         }
-        
         studentViewModel.scheduledLessonDates.bind { lessons in
             print(lessons)
             self.studentView.calendarView.reloadData()
-            
         }
         setupMenu(type: .student)
         setupMenu(type: .parent)
+        studentViewModel.setSchedule(student: student)
         }
     
     override func bind() {
@@ -111,7 +107,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        guard let student, let startDate = student.lessonStartDate else {
+        guard let student = studentViewModel.student.value, let startDate = student.lessonStartDate else {
             return Date()
         }
         return startDate
@@ -144,7 +140,25 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
                 guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
                 switch state {
                 case .completed, .supplemented:
-                    guard let icon = student?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
+                    guard let icon = studentViewModel.student.value?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
+                    return color
+                    
+                case .canceled, .none:
+                    return Color.gray4
+                }
+                }
+        }
+        return nil
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleSelectionColorFor date: Date) -> UIColor? {
+        guard let lessons = studentViewModel.student.value?.lessons else { return nil }
+        for item in lessons {
+            if date == item.date{
+                guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
+                switch state {
+                case .completed, .supplemented:
+                    guard let icon = studentViewModel.student.value?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
                     return color
                     
                 case .canceled, .none:
@@ -162,7 +176,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
         dateFormatter.dateFormat = "M월 d일 E요일"
         let formattedDate = dateFormatter.string(from: date)
         
-        vc.lessonViewModel.student = student
+        vc.lessonViewModel.student = studentViewModel.student.value
         vc.lessonViewModel.date = date
         vc.navigationItem.title = formattedDate + " 수업"
         vc.delegate = self
