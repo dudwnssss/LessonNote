@@ -55,9 +55,11 @@ final class LessonViewController: BaseViewController {
     @objc func assignmentStateButtonDidtap(sender: CustomButton){
         lessonViewModel.assignmentState.value = AssignmentState(rawValue: sender.tag)
     }
+
     
     @objc func compeleteButtonDidTap(){
         navigationController?.popViewController(animated: true)
+        lessonViewModel.feedback.value =  lessonView.feedbackTextView.textView.text
         lessonViewModel.upsertLesson()
         delegate?.passData()
     }

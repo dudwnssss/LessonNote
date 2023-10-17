@@ -113,6 +113,23 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
         return startDate
     }
     
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+        let currentDate = Calendar.current.startOfDay(for: Date())
+           if date < currentDate {
+               return [Color.gray3]
+           } else {
+               return nil
+           }
+    }
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
+        let currentDate = Calendar.current.startOfDay(for: Date())
+           if date < currentDate {
+               return [Color.gray3]
+           } else {
+               return nil
+           }
+    }
+    
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         if studentViewModel.scheduledLessonDates.value.contains(date){
             return 1

@@ -58,9 +58,9 @@ final class CalendarView: FSCalendar {
     func configureStudentCalendar(studentIcon: StudentIcon){
         today = nil
         appearance.eventDefaultColor = studentIcon.color
+        appearance.eventSelectionColor = studentIcon.color
         appearance.selectionColor = .clear
         appearance.titleSelectionColor = Color.black
-        appearance.eventSelectionColor = studentIcon.color
         appearance.subtitleSelectionColor = Color.gray4
         setWeekendColor()
     }

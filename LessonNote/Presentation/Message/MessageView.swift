@@ -26,6 +26,7 @@ final class MessageView: BaseView {
     
     
     override func setProperties() {
+
         lessonDescriptionLabel.do {
             $0.text = "추가할 수업일을 선택해주세요"
             $0.font = Font.medium14
