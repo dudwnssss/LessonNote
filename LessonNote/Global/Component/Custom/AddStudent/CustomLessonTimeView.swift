@@ -10,11 +10,11 @@ import UIKit
 final class CustomLessonTimeView: BaseView{
     
     private let title = CustomTitleLabel(title: "요일 및 시간 *")
-    let textfeild = UITextField()
+    let textfield = UITextField()
     private let arrowImageView = UIImageView()
 
     override func setProperties() {
-        textfeild.do {
+        textfield.do {
             $0.textColor = Color.gray6
             $0.tintColor = .clear
             $0.text = "월 09:00 - 10:00"
@@ -26,16 +26,16 @@ final class CustomLessonTimeView: BaseView{
     }
     
     override func setLayouts() {
-        addSubviews(title, textfeild)
+        addSubviews(title, textfield)
         title.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
         }
-        textfeild.snp.makeConstraints {
+        textfield.snp.makeConstraints {
             $0.top.equalTo(title.snp.bottom).offset(16)
             $0.leading.equalToSuperview()
             $0.width.equalTo(150)
         }
-        textfeild.addSubview(arrowImageView)
+        textfield.addSubview(arrowImageView)
         arrowImageView.snp.makeConstraints {
             $0.trailing.equalToSuperview()
             $0.centerY.equalToSuperview()

@@ -8,5 +8,6 @@
 import Foundation
 
 final class StudentEditViewModel {
+    var student: Student!
     
 }

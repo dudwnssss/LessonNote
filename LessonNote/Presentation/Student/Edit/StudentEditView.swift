@@ -18,11 +18,32 @@ final class StudentEditView: BaseView {
     let parentPhoneNumberView = CustomParentPhoneNumberView()
     let lessonTimeView = CustomLessonTimeView()
     let weekCountView = CustomWeekCountView()
+    private let startDateLabel = CustomTitleLabel(title: "수업 시작일")
+    let startWeekdayView = CustomStartWeekdayView()
+    let startDateTextField = UITextField()
+    private let arrowImageView = UIImageView()
+    let deleteStudentButton = UIButton()
+    let underlineView = UIView()
+    
     let completeButton = CompleteButton(title: "편집 완료")
     
     
     override func setProperties() {
-        
+        startDateTextField.do {
+            $0.textColor = Color.gray6
+            $0.tintColor = .clear
+            $0.text = "월 09:00 - 10:00"
+        }
+        arrowImageView.do {
+            $0.image = Image.arrowDown
+        }
+        deleteStudentButton.do {
+            $0.setTitle("학생 삭제하기", for: .normal)
+            $0.setTitleColor(Color.gray4, for: .normal)
+            $0.titleLabel?.font = Font.bold14
+            $0.setUnderline()
+        }
+
     }
     
     override func setLayouts() {
@@ -39,7 +60,7 @@ final class StudentEditView: BaseView {
         }
         
         contentView.addSubviews(studentNameView, studentIconView, studentPhoneNumberView, parentPhoneNumberView, lessonTimeView
-        , collectionView, weekCountView)
+        , collectionView, weekCountView, startDateLabel, startDateTextField, startWeekdayView, deleteStudentButton)
         
         studentNameView.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)
@@ -69,14 +90,34 @@ final class StudentEditView: BaseView {
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(30)
         }
-        
         weekCountView.snp.makeConstraints {
             $0.leading.equalTo(lessonTimeView)
             $0.top.equalTo(collectionView.snp.bottom).offset(36.adjusted)
         }
-
-        
-        
+        startDateLabel.snp.makeConstraints {
+            $0.leading.equalTo(studentNameView)
+            $0.top.equalTo(weekCountView.snp.bottom).offset(36)
+        }
+        startDateTextField.snp.makeConstraints {
+            $0.top.equalTo(startDateLabel.snp.bottom).offset(16)
+            $0.leading.equalTo(studentNameView)
+            $0.width.equalTo(150)
+        }
+        startDateTextField.addSubview(arrowImageView)
+        arrowImageView.snp.makeConstraints {
+            $0.trailing.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        startWeekdayView.snp.makeConstraints {
+            $0.leading.equalTo(studentNameView)
+            $0.top.equalTo(startDateTextField.snp.bottom).offset(36)
+            $0.height.equalTo(80)
+        }
+        deleteStudentButton.snp.makeConstraints {
+            $0.leading.equalTo(studentNameView)
+            $0.top.equalTo(startWeekdayView.snp.bottom).offset(36)
+            $0.bottom.equalToSuperview().offset(-150)
+        }
         
         completeButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)

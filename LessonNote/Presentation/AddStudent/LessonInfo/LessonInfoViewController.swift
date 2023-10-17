@@ -27,7 +27,7 @@ final class LessonInfoViewController: BaseViewController {
             $0.delegate = self
         }
         lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-        lessonInfoView.lessonTimeView.textfeild.delegate = self
+        lessonInfoView.lessonTimeView.textfield.delegate = self
         lessonInfoView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(  checkboxButtonDidTap), for: .touchUpInside)
         setDataSource()
         setSnapshot()

@@ -28,9 +28,9 @@ final class StudentInfoViewController: BaseViewController {
     override func setProperties() {
         hideKeyboardWhenTappedAround()
         studentInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
-        studentInfoView.studentNameView.textFeildView.textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
-        studentInfoView.studentPhoneNumberView.textFeildView.textField.addTarget(self, action: #selector(studentNumberTextFieldDidChange), for: .editingChanged)
-        studentInfoView.parentPhoneNumberView.textFeildView.textField.addTarget(self, action: #selector(parentNumberTextFieldDidChange), for: .editingChanged)
+        studentInfoView.studentNameView.textfieldView.textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
+        studentInfoView.studentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(studentNumberTextFieldDidChange), for: .editingChanged)
+        studentInfoView.parentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(parentNumberTextFieldDidChange), for: .editingChanged)
         studentInfoView.studentIconView.iconStackView.studentIconButtonList.forEach {
             $0.addTarget(self, action: #selector(studentIconButtonDidTap(sender:)), for: .touchUpInside)
         }
@@ -48,20 +48,20 @@ final class StudentInfoViewController: BaseViewController {
     }
     
     @objc func nameTextFieldDidChange(){
-        if let text = studentInfoView.studentNameView.textFeildView.textField.text {
+        if let text = studentInfoView.studentNameView.textfieldView.textField.text {
             studentInfoViewModel.name.value = text
             studentInfoViewModel.checkValidation()
         }
     }
     
     @objc func studentNumberTextFieldDidChange(){
-        if let text = studentInfoView.studentPhoneNumberView.textFeildView.textField.text {
+        if let text = studentInfoView.studentPhoneNumberView.textfieldView.textField.text {
             studentInfoViewModel.studentPhoneNumber.value = text
             studentInfoViewModel.checkValidation()
         }
     }
     @objc func parentNumberTextFieldDidChange(){
-        if let text = studentInfoView.parentPhoneNumberView.textFeildView.textField.text {
+        if let text = studentInfoView.parentPhoneNumberView.textfieldView.textField.text {
             studentInfoViewModel.parentPhoneNumber.value = text
             studentInfoViewModel.checkValidation()
         }
@@ -72,13 +72,13 @@ final class StudentInfoViewController: BaseViewController {
             self?.studentInfoView.nextButton.isActivated = value
         }
         studentInfoViewModel.name.bind { [weak self] value in
-            self?.studentInfoView.studentNameView.textFeildView.textField.text = value
+            self?.studentInfoView.studentNameView.textfieldView.textField.text = value
         }
         studentInfoViewModel.studentPhoneNumber.bind { [weak self] value in
-            self?.studentInfoView.studentPhoneNumberView.textFeildView.textField.text = value
+            self?.studentInfoView.studentPhoneNumberView.textfieldView.textField.text = value
         }
         studentInfoViewModel.parentPhoneNumber.bind { [weak self] value in
-            self?.studentInfoView.parentPhoneNumberView.textFeildView.textField.text = value
+            self?.studentInfoView.parentPhoneNumberView.textfieldView.textField.text = value
         }
         studentInfoViewModel.studentIcon.bind { value in
             self.studentInfoView.studentIconView.iconStackView.studentIconButtonList.forEach({

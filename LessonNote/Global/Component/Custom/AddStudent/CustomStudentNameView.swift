@@ -10,14 +10,14 @@ import UIKit
 final class CustomStudentNameView: BaseView{
     
     private let title = CustomTitleLabel(title: "학생 이름 *")
-    let textFeildView = CustomTextFieldView(placeholder: "학생의 이름을 입력해주세요", limitCount: 20)
+    let textfieldView = CustomTextFieldView(placeholder: "학생의 이름을 입력해주세요", limitCount: 20)
     
     override func setLayouts() {
-        addSubviews(title, textFeildView)
+        addSubviews(title, textfieldView)
         title.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
         }
-        textFeildView.snp.makeConstraints {
+        textfieldView.snp.makeConstraints {
             $0.top.equalTo(title.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview()
         }

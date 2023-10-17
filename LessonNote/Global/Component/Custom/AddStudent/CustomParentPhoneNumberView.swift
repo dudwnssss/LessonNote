@@ -10,21 +10,21 @@ import UIKit
 final class CustomParentPhoneNumberView: BaseView{
     
     private let title = CustomTitleLabel(title: "학부모 전화번호")
-    let textFeildView = CustomTextFieldView(placeholder: "01012341234", limitCount: 11)
+    let textfieldView = CustomTextFieldView(placeholder: "01012341234", limitCount: 11)
     
     override func setProperties() {
-        textFeildView.do {
+        textfieldView.do {
             $0.textCountLabel.isHidden = true
             $0.textField.keyboardType = .numberPad
         }
     }
     
     override func setLayouts() {
-        addSubviews(title, textFeildView)
+        addSubviews(title, textfieldView)
         title.snp.makeConstraints {
             $0.leading.top.equalToSuperview()
         }
-        textFeildView.snp.makeConstraints {
+        textfieldView.snp.makeConstraints {
             $0.top.equalTo(title.snp.bottom).offset(16)
             $0.leading.equalToSuperview()
         }
