@@ -26,7 +26,11 @@ class MessageViewController: BaseViewController {
             $0.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
             $0.messageTitleTextField.textField.addTarget(self, action: #selector(titleTextFieldDidChange), for: .editingChanged)
         }
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .extraLight)
     }
     
     override func setNavigationBar() {

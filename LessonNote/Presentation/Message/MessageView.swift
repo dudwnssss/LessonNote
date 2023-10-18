@@ -23,7 +23,7 @@ final class MessageView: BaseView {
     private let commentLabel = CustomTitleLabel(title: "추가 코멘트")
     let commentTextView = CustomTextView(placeholder: "추가로 남길 코멘트가 있으시다면\n자유롭게 남겨주세요.", limitCount: 300)
     let nextButton = CompleteButton(title: "다음으로")
-    
+//    let blurView = UIVisualEffectView()
     
     override func setProperties() {
 
@@ -43,6 +43,10 @@ final class MessageView: BaseView {
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = Font.bold14
         }
+//        blurView.do {
+//            $0.effect = UIBlurEffect(style: .systemUltraThinMaterialLight)
+//        }
+
 
     }
     override func setLayouts() {
@@ -106,6 +110,11 @@ final class MessageView: BaseView {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-48)
         }
+//        blurView.snp.makeConstraints {
+//            $0.horizontalEdges.equalToSuperview()
+//            $0.bottom.equalToSuperview()
+//            $0.top.equalTo(nextButton.snp.bottom)
+//        }
     }
     
     func configureView(student: Student, type: PersonType){

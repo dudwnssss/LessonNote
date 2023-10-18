@@ -41,4 +41,20 @@ extension StudentEditViewModel {
         weekdays.value = lessonTimeList.value.map{$0.weekday}
         weekday.value = Weekday(rawValue: student.startWeekday)!
     }
+    
+    func setWeekCount(){
+        if isChecked.value {
+            weekCount.value = 2
+        } else {
+            weekCount.value = 1
+        }
+    }
+    
+    func sortLessonTime() {
+        if lessonTimeList.value.count >= 2 {
+            lessonTimeList.value.sort { lhs, rhs in
+                lhs.weekday.rawValue < rhs.weekday.rawValue
+            }
+        }
+    }
 }

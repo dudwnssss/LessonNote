@@ -19,6 +19,20 @@ final class StudentEditViewController: BaseViewController {
     private var dataSource: UICollectionViewDiffableDataSource<Int, LessonTime>!
 
     override func setProperties() {
+        studentEditView.studentNameView.textfieldView.textField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
+        studentEditView.studentIconView.iconStackView.studentIconButtonList.forEach { button in
+            button.addTarget(self, action: #selector(studentIconButtonDidTap(sender:)), for: .touchUpInside)
+        }
+        studentEditView.studentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(studentNumberTextFieldDidChange), for: .editingChanged)
+        studentEditView.parentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(parentNumberTextFieldDidChange), for: .editingChanged)
+        studentEditView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(checkboxButtonDidTap), for: .touchUpInside)
+        
+        studentEditView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
+            button.addTarget(self, action: #selector(weekdayButtonDidTap(sender:)), for: .touchUpInside)
+        }
+        studentEditView.datePickerView.addTarget(self, action: #selector(datePickerDidChange), for: .valueChanged)
+        studentEditView.lessonTimeView.textfield.delegate = self
+        studentEditView.collectionView.delegate = self
         setDataSource()
         setSnapshot()
     }
@@ -53,12 +67,15 @@ final class StudentEditViewController: BaseViewController {
         viewModel.weekCount.bind {[weak self] value in
             self?.studentEditView.weekCountView.weekCountView.textField.textField.text = "\(value)"
         }
-        viewModel.lessonTimeList.bind {[weak self] _ in
+        viewModel.lessonTimeList.bind {[weak self] lessons in
             self?.setSnapshot()
+            self?.studentEditView.startWeekdayView.weekdayStackView.configureStackView(weekdays: lessons.map{$0.weekday}, hide: false)
         }
 
         viewModel.startDate.bind {[weak self] date in
-            self?.studentEditView.startDateTextField.text = DateManager.shared.formatFullDateToString(date: date!)
+            guard let date else {return}
+            self?.studentEditView.startDateTextField.text = DateManager.shared.formatFullDateToString(date: date)
+            self?.studentEditView.datePickerView.date = date
         }
         viewModel.weekday.bind {[weak self] weekday in
             self?.studentEditView.startWeekdayView.descriptionLabel.text = weekday.title+"요일을 기준으로 주차가 반복됩니다."
@@ -68,6 +85,36 @@ final class StudentEditViewController: BaseViewController {
             }
         }
     }
+    
+    @objc func nameTextFieldDidChange(){
+        if let text = studentEditView.studentNameView.textfieldView.textField.text {
+            viewModel.name.value = text
+        }
+    }
+    @objc func studentIconButtonDidTap(sender: StudentIconButton){
+        viewModel.studentIcon.value = sender.studentIcon
+    }
+    @objc func studentNumberTextFieldDidChange(){
+        if let text = studentEditView.studentPhoneNumberView.textfieldView.textField.text {
+            viewModel.studentPhoneNumber.value = text
+        }
+    }
+    @objc func parentNumberTextFieldDidChange(){
+        if let text = studentEditView.parentPhoneNumberView.textfieldView.textField.text {
+            viewModel.parentPhoneNumber.value = text
+        }
+    }
+    @objc func checkboxButtonDidTap(){
+        viewModel.isChecked.value.toggle()
+        viewModel.setWeekCount()
+    }
+    @objc func weekdayButtonDidTap(sender: CustomButton) {
+        viewModel.weekday.value = Weekday(rawValue: sender.tag)!
+    }
+    @objc func datePickerDidChange(){
+        viewModel.startDate.value = studentEditView.datePickerView.date
+    }
+    
 }
 
 extension StudentEditViewController: UICollectionViewDelegate{
@@ -91,5 +138,24 @@ extension StudentEditViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.lessonTimeList.value.remove(at: indexPath.item)
+    }
+}
+
+extension StudentEditViewController: UITextFieldDelegate {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let vc = LessonBottomSheetViewController()
+        vc.delegate = self
+        let weekdays = viewModel.lessonTimeList.value.map{$0.weekday}
+        vc.lessonBottomSheetViewModel.existWeekdays.append(contentsOf: weekdays)
+        let bottomVC = BottomSheetViewController(contentViewController: vc)
+        present(bottomVC, animated: true)
+        return false
+    }
+}
+
+extension StudentEditViewController: PassLessonTimes {
+    func passLessonTimes(lessons: [LessonTime]) {
+        viewModel.lessonTimeList.value.append(contentsOf: lessons)
+        viewModel.sortLessonTime()
     }
 }

@@ -48,7 +48,6 @@ final class StartDateInfoViewController: BaseViewController{
     }
     
     @objc func weekdayButtonDidTap(sender: CustomButton) {
-        print(#fileID, #function, #line, "- ") 
         startDateInfoViewModel.weekday.value = Weekday(rawValue: sender.tag)!
     }
     

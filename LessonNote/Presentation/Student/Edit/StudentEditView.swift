@@ -18,9 +18,10 @@ final class StudentEditView: BaseView {
     let parentPhoneNumberView = CustomParentPhoneNumberView()
     let lessonTimeView = CustomLessonTimeView()
     let weekCountView = CustomWeekCountView()
-    private let startDateLabel = CustomTitleLabel(title: "수업 시작일")
+    private let startDateLabel = CustomTitleLabel(title: "수업 시작일 *")
     let startWeekdayView = CustomStartWeekdayView()
     let startDateTextField = UITextField()
+    let datePickerView = UIDatePicker()
     private let arrowImageView = UIImageView()
     let deleteStudentButton = UIButton()
     let underlineView = UIView()
@@ -43,9 +44,16 @@ final class StudentEditView: BaseView {
             $0.titleLabel?.font = Font.bold14
             $0.setUnderline()
         }
+        datePickerView.do {
+            $0.locale = Locale(identifier: "ko_KR")
+            $0.datePickerMode = .date
+            $0.preferredDatePickerStyle = .wheels
+        }
+
         startDateTextField.do {
             $0.textColor = Color.gray6
             $0.font = Font.medium14
+            $0.inputView = datePickerView
         }
 
 
@@ -54,8 +62,7 @@ final class StudentEditView: BaseView {
     override func setLayouts() {
         addSubviews(scrollView, completeButton)
         scrollView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         scrollView.addSubview(contentView)
         

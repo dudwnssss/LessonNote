@@ -23,12 +23,12 @@ final class LessonInfoViewController: BaseViewController {
     
     override func setProperties() {
         hideKeyboardWhenTappedAround()
-        lessonInfoView.collectionView.do {
-            $0.delegate = self
-        }
         lessonInfoView.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
         lessonInfoView.lessonTimeView.textfield.delegate = self
         lessonInfoView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(  checkboxButtonDidTap), for: .touchUpInside)
+        lessonInfoView.collectionView.do {
+            $0.delegate = self
+        }
         setDataSource()
         setSnapshot()
     }
@@ -90,9 +90,8 @@ extension LessonInfoViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let vc = LessonBottomSheetViewController()
         vc.delegate = self
-        lessonInfoViewModel.lessonTimeList.value.forEach { lessons in
-            vc.lessonBottomSheetViewModel.existWeekdays.append(lessons.weekday)
-        }
+        let weekdays = lessonInfoViewModel.lessonTimeList.value.map{$0.weekday}
+        vc.lessonBottomSheetViewModel.existWeekdays.append(contentsOf: weekdays)
         let bottomVC = BottomSheetViewController(contentViewController: vc)
         present(bottomVC, animated: true)
         return false
