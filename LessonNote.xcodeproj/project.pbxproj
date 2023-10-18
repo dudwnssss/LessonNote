@@ -27,7 +27,6 @@
 		1010CBD72ACEC30700B40498 /* TempStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBD62ACEC30700B40498 /* TempStudent.swift */; };
 		1010CBD92ACEC5FE00B40498 /* StudentInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBD82ACEC5FE00B40498 /* StudentInfoViewModel.swift */; };
 		1010CBDC2ACEC66600B40498 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBDB2ACEC66600B40498 /* Observable.swift */; };
-		1010CBDE2ACEE09B00B40498 /* ViewCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBDD2ACEE09B00B40498 /* ViewCase.swift */; };
 		1010CBE62ACFA45500B40498 /* CustomStudentNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBE52ACFA45500B40498 /* CustomStudentNameView.swift */; };
 		1010CBE82ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBE72ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift */; };
 		1010CBEA2ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBE92ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift */; };
@@ -94,7 +93,6 @@
 		1048F9A42ACD0E4E00A56C76 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */; };
 		1048F9A62ACD210200A56C76 /* WeekdayStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9A52ACD210200A56C76 /* WeekdayStackView.swift */; };
 		1048F9A82ACD2A2500A56C76 /* LessonTimePickerVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9A72ACD2A2500A56C76 /* LessonTimePickerVIew.swift */; };
-		1048F9AA2ACD2F0F00A56C76 /* LessonTImePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9A92ACD2F0F00A56C76 /* LessonTImePickerTextField.swift */; };
 		1048F9AC2ACD3E8E00A56C76 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AB2ACD3E8E00A56C76 /* Date+.swift */; };
 		1048F9AE2ACD599900A56C76 /* WeekCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AD2ACD599900A56C76 /* WeekCountView.swift */; };
 		1048F9B02ACD5E7000A56C76 /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */; };
@@ -146,7 +144,6 @@
 		1010CBD62ACEC30700B40498 /* TempStudent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempStudent.swift; sourceTree = "<group>"; };
 		1010CBD82ACEC5FE00B40498 /* StudentInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoViewModel.swift; sourceTree = "<group>"; };
 		1010CBDB2ACEC66600B40498 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
-		1010CBDD2ACEE09B00B40498 /* ViewCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCase.swift; sourceTree = "<group>"; };
 		1010CBE52ACFA45500B40498 /* CustomStudentNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudentNameView.swift; sourceTree = "<group>"; };
 		1010CBE72ACFB0A100B40498 /* CustomStudentPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudentPhoneNumberView.swift; sourceTree = "<group>"; };
 		1010CBE92ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomParentPhoneNumberView.swift; sourceTree = "<group>"; };
@@ -211,7 +208,6 @@
 		1048F9A32ACD0E4E00A56C76 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		1048F9A52ACD210200A56C76 /* WeekdayStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayStackView.swift; sourceTree = "<group>"; };
 		1048F9A72ACD2A2500A56C76 /* LessonTimePickerVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimePickerVIew.swift; sourceTree = "<group>"; };
-		1048F9A92ACD2F0F00A56C76 /* LessonTImePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTImePickerTextField.swift; sourceTree = "<group>"; };
 		1048F9AB2ACD3E8E00A56C76 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		1048F9AD2ACD599900A56C76 /* WeekCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekCountView.swift; sourceTree = "<group>"; };
 		1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
@@ -300,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				1048F9AF2ACD5E7000A56C76 /* NumberPickerView.swift */,
-				1048F9A92ACD2F0F00A56C76 /* LessonTImePickerTextField.swift */,
 				1048F9A72ACD2A2500A56C76 /* LessonTimePickerVIew.swift */,
 			);
 			path = Picker;
@@ -671,7 +666,6 @@
 			children = (
 				1016FB2E2AC9C892003E7612 /* StudentIcon.swift */,
 				1048F9512ACC02E100A56C76 /* Weekday.swift */,
-				1010CBDD2ACEE09B00B40498 /* ViewCase.swift */,
 				10A86DC42AD69E8D00817092 /* LessonState.swift */,
 			);
 			path = Enum;
@@ -857,7 +851,6 @@
 				1010CC272AD2670500B40498 /* ElliotableError.swift in Sources */,
 				1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */,
 				10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */,
-				1048F9AA2ACD2F0F00A56C76 /* LessonTImePickerTextField.swift in Sources */,
 				1016FAFB2AC95AFB003E7612 /* Color.swift in Sources */,
 				1010CBDC2ACEC66600B40498 /* Observable.swift in Sources */,
 				1010CBF22ACFB5FF00B40498 /* CustomWeekCountView.swift in Sources */,
@@ -892,7 +885,6 @@
 				1016FAF92AC959C4003E7612 /* Font.swift in Sources */,
 				104C88422AD513FA00EC283C /* CustomStudentView.swift in Sources */,
 				1016FAE72AC94A00003E7612 /* Tab.swift in Sources */,
-				1010CBDE2ACEE09B00B40498 /* ViewCase.swift in Sources */,
 				1048F93B2ACA932400A56C76 /* StudentInfoViewController.swift in Sources */,
 				1010CBD52ACEA63A00B40498 /* CustomCheckInfoLabel.swift in Sources */,
 				1048F94A2ACAACD300A56C76 /* CustomTitleLabel.swift in Sources */,

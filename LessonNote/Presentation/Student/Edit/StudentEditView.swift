@@ -43,6 +43,11 @@ final class StudentEditView: BaseView {
             $0.titleLabel?.font = Font.bold14
             $0.setUnderline()
         }
+        startDateTextField.do {
+            $0.textColor = Color.gray6
+            $0.font = Font.medium14
+        }
+
 
     }
     
@@ -101,7 +106,7 @@ final class StudentEditView: BaseView {
         startDateTextField.snp.makeConstraints {
             $0.top.equalTo(startDateLabel.snp.bottom).offset(16)
             $0.leading.equalTo(studentNameView)
-            $0.width.equalTo(150)
+            $0.width.equalTo(156)
         }
         startDateTextField.addSubview(arrowImageView)
         arrowImageView.snp.makeConstraints {

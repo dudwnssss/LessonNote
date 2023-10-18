@@ -22,9 +22,9 @@ final class StudentEditViewModel {
     var weekCount: Observable<Int> = Observable(2)
     
     //startDate
-    var date: Observable<Date?> = Observable(nil)
+    var startDate: Observable<Date?> = Observable(nil)
     var weekday: Observable<Weekday> = Observable(.monday)
-    var weekdays: [Weekday] = []
+    var weekdays: Observable<[Weekday]> = Observable([])
 }
 
 extension StudentEditViewModel {
@@ -34,5 +34,11 @@ extension StudentEditViewModel {
         studentIcon.value = StudentIcon(rawValue: student.studentIcon)
         studentPhoneNumber.value = student.studentPhoneNumber
         parentPhoneNumber.value = student.parentPhoneNumber
+        lessonTimeList.value = student.lessonSchedules.map{$0.toLessonTime()}
+        isChecked.value = student.weekCount > 1
+        weekCount.value = student.weekCount
+        startDate.value = student.lessonStartDate
+        weekdays.value = lessonTimeList.value.map{$0.weekday}
+        weekday.value = Weekday(rawValue: student.startWeekday)!
     }
 }

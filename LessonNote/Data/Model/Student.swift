@@ -66,6 +66,13 @@ final class LessonSchedule: Object {
     }
 }
 
+extension LessonSchedule {
+    func toLessonTime() -> LessonTime {
+        let lessonTime = LessonTime(weekday: Weekday(rawValue: self.weekday)!, startTime: startTime, endTime: endTime)
+        return lessonTime
+    }
+}
+
 final class Lesson: Object {
     @Persisted var id: UUID
     @Persisted var date: Date?

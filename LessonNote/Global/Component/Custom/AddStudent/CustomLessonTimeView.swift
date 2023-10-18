@@ -16,6 +16,7 @@ final class CustomLessonTimeView: BaseView{
     override func setProperties() {
         textfield.do {
             $0.textColor = Color.gray6
+            $0.font = Font.medium14
             $0.tintColor = .clear
             $0.text = "월 09:00 - 10:00"
         }
@@ -33,7 +34,7 @@ final class CustomLessonTimeView: BaseView{
         textfield.snp.makeConstraints {
             $0.top.equalTo(title.snp.bottom).offset(16)
             $0.leading.equalToSuperview()
-            $0.width.equalTo(150)
+            $0.width.equalTo(126)
         }
         textfield.addSubview(arrowImageView)
         arrowImageView.snp.makeConstraints {
@@ -41,7 +42,7 @@ final class CustomLessonTimeView: BaseView{
             $0.centerY.equalToSuperview()
         }
         snp.makeConstraints {
-            $0.width.equalTo(130)
+            $0.width.equalTo(132)
             $0.height.equalTo(53)
         }
     }
