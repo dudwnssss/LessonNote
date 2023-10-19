@@ -22,6 +22,8 @@ class MessageViewController: BaseViewController {
             $0.configureView(student: student, type: messageViewModel.personType)
             $0.calendarView.delegate = self
             $0.calendarView.dataSource = self
+            $0.calendarView.leftButton.isHidden = true
+            $0.calendarView.rightButton.isHidden = true
             $0.assignmentButton.addTarget(self, action: #selector(assignmentButtonDidTap), for: .touchUpInside)
             $0.nextButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
             $0.messageTitleTextField.textField.addTarget(self, action: #selector(titleTextFieldDidChange), for: .editingChanged)

@@ -38,7 +38,9 @@ enum Image {
     static let assignmentGood = UIImage(named: "assignment.good")!
     static let assignmentSoso = UIImage(named: "assignment.soso")!
     static let assignmentBad = UIImage(named: "assignment.bad")!
-
+    static let calendarLeft = UIImage(named: "calendar.left")!
+    static let calendarRight = UIImage(named: "calendar.right")!
+    
     enum Icon{
         static let studentPink = UIImage(named: "student.pink")!
         static let studentOrange = UIImage(named: "student.orange")!

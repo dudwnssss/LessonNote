@@ -13,9 +13,21 @@ final class CalendarView: FSCalendar {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setProperties()
+        setLayouts()
     }
     
+    let leftButton = UIButton()
+    let rightButton = UIButton()
+    
     private func setProperties() {
+        leftButton.do {
+            $0.setImage(Image.calendarLeft, for: .normal)
+        }
+        rightButton.do {
+            $0.setImage(Image.calendarRight, for: .normal)
+        }
+        //        bringSubviewToFront(leftButton)
+        //        bringSubviewToFront(rightButton)
         cornerRadius = 20
         backgroundColor = Color.white
         locale = Locale(identifier: "ko_KR")
@@ -36,6 +48,37 @@ final class CalendarView: FSCalendar {
             $0.subtitleOffset = CGPoint(x: 0, y: 2)
             $0.eventOffset = CGPoint(x: 0, y: -2)
         }
+        leftButton.addTarget(self, action: #selector(tapBeforeMonth), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(tapNextMonth), for: .touchUpInside)
+        
+    }
+    
+    private func setLayouts(){
+        addSubviews(leftButton, rightButton)
+        leftButton.snp.makeConstraints {
+            $0.leading.equalToSuperview().offset(18)
+            $0.centerY.equalTo(self.calendarHeaderView).offset(4)
+        }
+        rightButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-18)
+            $0.centerY.equalTo(self.calendarHeaderView).offset(4)
+        }
+    }
+    
+    func getNextMonth(date: Date) -> Date {
+        return  Calendar.current.date(byAdding: .month, value: 1, to: date)!
+    }
+    
+    func getPreviousMonth(date: Date) -> Date {
+        return  Calendar.current.date(byAdding: .month, value: -1, to: date)!
+    }
+    
+    @objc func tapNextMonth() {
+        self.setCurrentPage(getNextMonth(date: currentPage), animated: true)
+    }
+    
+    @objc func tapBeforeMonth() {
+        self.setCurrentPage(getPreviousMonth(date: currentPage), animated: true)
     }
     
     private func setWeekendColor(){
