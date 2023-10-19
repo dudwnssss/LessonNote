@@ -25,14 +25,13 @@ final class HomeViewModel{
         bind()
     }
     
-
-
     private func bind() {
         notificationToken = studentResults.observe { [weak self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial:
                 break
-            case .update(let collectionType, let deletions, let insertions, let modifications):
+            case .update(_, _, _, _):
+                print(#fileID, #function, #line, "- ")
                 self?.studentList.value = Array((self?.studentResults)!.reversed())
                 break
             case .error(let error):

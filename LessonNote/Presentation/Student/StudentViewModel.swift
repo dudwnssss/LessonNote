@@ -12,7 +12,6 @@ final class StudentViewModel {
     private let repository = StudentRepository()
     var scheduledLessonDates: Observable<[Date]> = Observable([]) //event 사용
     var student: Observable<Student?> = Observable(nil)
-    
 }
 
 extension StudentViewModel{
@@ -30,5 +29,6 @@ extension StudentViewModel{
         guard let studentId = student.value?.studentId else {return}
         student.value = repository.fetchStudentById(studentId)
     }
+    
 }
 

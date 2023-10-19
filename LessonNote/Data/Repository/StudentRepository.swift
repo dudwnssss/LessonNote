@@ -17,6 +17,7 @@ final class StudentRepository{
         let data = realm.objects(Student.self)
         return data
     }
+    
     //학생 한명 불러오기
     func fetchStudentById(_ studentId: ObjectId) -> Student? {
         let student = realm.object(ofType: Student.self, forPrimaryKey: studentId)
@@ -41,14 +42,35 @@ final class StudentRepository{
         }
     }
     
-    //수업 추가-갱신 (Upsert)
-    func appendLesson(student: Student, lesson: Lesson) {
+    //학생 업데이트
+    func update( item: Student,
+                 studentName: String,
+                 studentIcon: StudentIcon,
+                 studentPhoneNumber: String?,
+                 parentPhoneNumber: String?,
+                 lessonTimes: [LessonTime]?,
+                 weekCount: Int,
+                 lessonStartDate: Date,
+                 startWeekday: Weekday
+    ) {
         do {
             try! realm.write{
-                student.lessons.append(lesson)
+                item.studentName = studentName
+                item.studentIcon = studentIcon.rawValue
+                item.studentPhoneNumber = studentPhoneNumber
+                item.parentPhoneNumber = parentPhoneNumber
+                item.lessonSchedules.removeAll()
+                lessonTimes?.forEach({ lessonTime in
+                    item.lessonSchedules.append(lessonTime.toLessonSchedule())
+                })
+                item.weekCount = weekCount
+                item.lessonStartDate = lessonStartDate
+                item.startWeekday = startWeekday.rawValue
             }
         }
     }
+    
+    //수업 추가-갱신 (Upsert)
     
     func upsertLesson(student: Student, lesson: Lesson) {
         do {
@@ -66,8 +88,6 @@ final class StudentRepository{
             }
         }
     }
-
-    
 }
 
 

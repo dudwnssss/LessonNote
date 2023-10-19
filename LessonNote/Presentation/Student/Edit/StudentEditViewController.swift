@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 final class StudentEditViewController: BaseViewController {
     
     private let studentEditView = StudentEditView()
@@ -15,6 +16,8 @@ final class StudentEditViewController: BaseViewController {
     override func loadView() {
         self.view = studentEditView
     }
+    
+    var delegate: PassData?
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, LessonTime>!
 
@@ -25,11 +28,20 @@ final class StudentEditViewController: BaseViewController {
         }
         studentEditView.studentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(studentNumberTextFieldDidChange), for: .editingChanged)
         studentEditView.parentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(parentNumberTextFieldDidChange), for: .editingChanged)
+        
         studentEditView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(checkboxButtonDidTap), for: .touchUpInside)
         
         studentEditView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
             button.addTarget(self, action: #selector(weekdayButtonDidTap(sender:)), for: .touchUpInside)
         }
+        studentEditView.completeButton.addTarget(self, action: #selector(completeButtonDidTap), for: .touchUpInside)
+        
+        studentEditView.weekCountView.weekCountView.numberPickerView.didSelectNumber = {
+            number in
+            self.viewModel.weekCount.value = number
+        }
+        studentEditView.deleteStudentButton.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
+        studentEditView.datePickerView.minimumDate = viewModel.startDate.value
         studentEditView.datePickerView.addTarget(self, action: #selector(datePickerDidChange), for: .valueChanged)
         studentEditView.lessonTimeView.textfield.delegate = self
         studentEditView.collectionView.delegate = self
@@ -59,7 +71,6 @@ final class StudentEditViewController: BaseViewController {
         viewModel.parentPhoneNumber.bind { [weak self] value in
             self?.studentEditView.parentPhoneNumberView.textfieldView.textField.text = value
         }
-        
         viewModel.isChecked.bind {[weak self] value in
             self?.studentEditView.weekCountView.weekCountView.checkboxButton.configureCheckbox(check: value)
             self?.studentEditView.weekCountView.weekCountView.configureView(isChecked: value)
@@ -70,17 +81,15 @@ final class StudentEditViewController: BaseViewController {
         viewModel.lessonTimeList.bind {[weak self] lessons in
             self?.setSnapshot()
             self?.studentEditView.startWeekdayView.weekdayStackView.configureStackView(weekdays: lessons.map{$0.weekday}, hide: false)
+            self?.viewModel.setInitialWeekdays()
         }
-
         viewModel.startDate.bind {[weak self] date in
-            guard let date else {return}
             self?.studentEditView.startDateTextField.text = DateManager.shared.formatFullDateToString(date: date)
             self?.studentEditView.datePickerView.date = date
         }
         viewModel.weekday.bind {[weak self] weekday in
             self?.studentEditView.startWeekdayView.descriptionLabel.text = weekday.title+"요일을 기준으로 주차가 반복됩니다."
             self?.studentEditView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
-                print(button)
                 button.configureButton(activate: button.tag == weekday.rawValue)
             }
         }
@@ -92,7 +101,8 @@ final class StudentEditViewController: BaseViewController {
         }
     }
     @objc func studentIconButtonDidTap(sender: StudentIconButton){
-        viewModel.studentIcon.value = sender.studentIcon
+        guard let icon = sender.studentIcon else {return}
+        viewModel.studentIcon.value = icon
     }
     @objc func studentNumberTextFieldDidChange(){
         if let text = studentEditView.studentPhoneNumberView.textfieldView.textField.text {
@@ -113,6 +123,16 @@ final class StudentEditViewController: BaseViewController {
     }
     @objc func datePickerDidChange(){
         viewModel.startDate.value = studentEditView.datePickerView.date
+    }
+    @objc func deleteButtonDidTap(){
+        viewModel.delete()
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    @objc func completeButtonDidTap(){
+        viewModel.update()
+        delegate?.passData()
+        navigationController?.popViewController(animated: true)
     }
     
 }
@@ -145,8 +165,7 @@ extension StudentEditViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         let vc = LessonBottomSheetViewController()
         vc.delegate = self
-        let weekdays = viewModel.lessonTimeList.value.map{$0.weekday}
-        vc.lessonBottomSheetViewModel.existWeekdays.append(contentsOf: weekdays)
+        vc.lessonBottomSheetViewModel.existWeekdays.append(contentsOf: viewModel.weekdays.value)
         let bottomVC = BottomSheetViewController(contentViewController: vc)
         present(bottomVC, animated: true)
         return false

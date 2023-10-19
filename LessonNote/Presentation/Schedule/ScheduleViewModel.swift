@@ -29,6 +29,7 @@ final class ScheduleViewModel{
             case .initial:
                 break
             case .update(_, _, _, _):
+                print("업데이트됨")
                 self?.setCourseItems()
                 break
             case .error(let error):
@@ -39,6 +40,7 @@ final class ScheduleViewModel{
     }
     
     func setCourseItems(){
+        courseItems.value = []
         studentResults.forEach { student in
             student.toElliotEvent().forEach { event in
                 courseItems.value.append(event)

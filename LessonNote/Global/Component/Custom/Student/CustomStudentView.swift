@@ -110,6 +110,9 @@ class CustomStudentView: BaseView{
             weekCountLabel.text = "\(student.weekCount)주 마다"
         }
         iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.selectedImage
+        
+        lessonTimeStackView.subviews.forEach { $0.removeFromSuperview() }
+        
         student.lessonSchedules.forEach {
             let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: color)
             lessonTimeStackView.addArrangedSubview(lessonTimeView)

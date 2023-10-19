@@ -43,6 +43,7 @@ class HomeViewController: BaseViewController{
     
     override func bind() {
         homeViewModel.studentList.bind { _ in
+            self.setDataSource()
             self.setSnapshot()
             self.setEmptyView()
         }

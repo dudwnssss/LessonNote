@@ -88,7 +88,6 @@ final class CustomTextFieldView: BaseView {
 
 extension CustomTextFieldView: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("hihi")
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -30,7 +30,7 @@ final class StudentViewController: BaseViewController {
     override func loadView() {
         self.view = studentView
     }
-
+    
     override func setNavigationBar() {
         navigationItem.title = "학생 정보"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(settingButtonDidTap))
@@ -55,8 +55,14 @@ final class StudentViewController: BaseViewController {
         }
     
     override func bind() {
-        studentViewModel.student.bind { _ in
-            self.studentView.calendarView.reloadData()
+        studentViewModel.student.bind { [weak self] student in
+            guard let student, let icon = StudentIcon(rawValue: student.studentIcon) else {return}
+            self?.setupMenu(type: .student)
+            self?.setupMenu(type: .parent)
+            self?.studentView.configureStudentView(student: student)
+            self?.studentViewModel.setSchedule(student: student)
+            self?.studentView.calendarView.configureStudentCalendar(studentIcon: icon)
+            self?.studentView.calendarView.reloadData()
         }
     }
     
@@ -99,6 +105,7 @@ final class StudentViewController: BaseViewController {
     @objc func settingButtonDidTap(){
         let vc = StudentEditViewController()
         vc.viewModel.student.value = studentViewModel.student.value
+        vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -219,7 +226,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
 
 extension StudentViewController: PassData {
     func passData() {
-        print(#fileID, #function, #line, "- ")
         studentViewModel.updateStudent()
+        print(#fileID, #function, #line, "- ")
     }
 }

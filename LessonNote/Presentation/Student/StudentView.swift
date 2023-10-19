@@ -45,4 +45,9 @@ class StudentView: BaseView {
             $0.bottom.equalToSuperview().offset(-60)
         }
     }
+    
+    func configureStudentView(student: Student){
+        guard let studentIcon = StudentIcon(rawValue: student.studentIcon) else {return}
+        customStudentView.configureView(student: student)
+    }
 }

@@ -15,7 +15,7 @@ final class EmptyView: BaseView {
     override func setProperties() {
         imageView.image = Image.studentEmpty
         label.do {
-            $0.text = "아직 등록된 수업이 없어요\n학생을 추가해 보세요"
+            $0.text = "아직 등록된 학생이 없어요\n학생을 추가해 보세요"
             $0.textAlignment = .center
             $0.numberOfLines = 0
             $0.font = Font.medium14
