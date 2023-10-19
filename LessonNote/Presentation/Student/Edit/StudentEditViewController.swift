@@ -27,6 +27,7 @@ final class StudentEditViewController: BaseViewController {
             button.addTarget(self, action: #selector(studentIconButtonDidTap(sender:)), for: .touchUpInside)
         }
         studentEditView.studentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(studentNumberTextFieldDidChange), for: .editingChanged)
+        
         studentEditView.parentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(parentNumberTextFieldDidChange), for: .editingChanged)
         
         studentEditView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(checkboxButtonDidTap), for: .touchUpInside)

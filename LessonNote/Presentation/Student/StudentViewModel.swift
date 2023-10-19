@@ -17,12 +17,15 @@ final class StudentViewModel {
 extension StudentViewModel{
     
     func setSchedule(student: Student){
+        print(#fileID, #function, #line, "- ")
         let weekdays = student.lessonSchedules.map { $0.weekday }
         let weekCount = student.weekCount
-        let startWeekday = weekdays.first
+        let startWeekday = student.startWeekday
         let startDate = student.lessonStartDate
         let weekdaysArray = Array(weekdays)
-        scheduledLessonDates.value = DateManager.shared.generateYearlyLessonSchedule(weekday: weekdaysArray, weekCount: weekCount, startWeekday: startWeekday!, startDate: startDate!)
+        let dates = DateManager.shared.generateYearlyLessonSchedule(weekday: weekdaysArray, weekCount: weekCount, startWeekday: startWeekday, startDate: startDate!)
+        print(dates)
+        scheduledLessonDates.value = dates
     }
     
     func updateStudent(){

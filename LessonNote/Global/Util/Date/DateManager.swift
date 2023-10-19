@@ -15,7 +15,8 @@ class DateManager{
     let dateFormatter = DateFormatter().then{
         $0.locale = Locale(identifier: "ko_KR")
     }
-    
+
+
     func formatFullDateToString(date: Date) -> String {
         dateFormatter.dateFormat = "yyyy년 M월 d일 (E)"
         return dateFormatter.string(from: date)
@@ -142,27 +143,84 @@ class DateManager{
     func generateYearlyLessonSchedule(weekday: [Weekday.RawValue], weekCount: Int, startWeekday: Weekday.RawValue, startDate: Date) -> [Date] {
         var lessonDates: [Date] = []
         
-        // Calendar 객체를 생성합니다.
         let calendar = Calendar.current
         
         // 현재 날짜를 가져옵니다.
         var currentDate = startDate
-        
-        for _ in 1...52 { // 1년치(52주)를 계산합니다.
-            for day in weekday {
-                // 현재 요일을 기준으로 수업 시작 날짜를 찾습니다.
-                let weekdayDifference = (day - startWeekday + 7) % 7
-                let nextLessonDate = calendar.date(byAdding: .day, value: weekdayDifference, to: currentDate)!
-                
-                // 수업 날짜를 추가합니다.
-                lessonDates.append(nextLessonDate)
+       
+        //월1, 화2, 수3, 목4, 금5, 토6, 일7
+        //ravalue기반으로 수업요일 중 기준요일보다 앞선 요일이 있으면 + 7
+        var newWeekday: [Int] = []
+        weekday.forEach { value in
+            if value < startWeekday {
+                newWeekday.append(value + 7)
+            } else {
+                newWeekday.append(value)
             }
-            
-            // 주차를 늘립니다.
-            currentDate = calendar.date(byAdding: .weekOfYear, value: weekCount, to: currentDate)!
+        }
+        newWeekday.sort() //3 5 6 8
+        var firstWeek: [Date] = []
+        
+        for day in newWeekday {
+            let difference = day - weekdayNumber(from: startDate)
+            let nextLessonDate = calendar.date(byAdding: .day, value: difference, to: currentDate)!
+            firstWeek.append(nextLessonDate)
         }
         
-        return lessonDates
+        //startDate를 요일로 변환한것의 ravalue와 차이를 기반으로 1주치 날짜 계산
+        //1주치날짜를 기준으로 격주주차*7을 더하면서 1년치 날짜 계산
+        
+        firstWeek.forEach { date in
+            print(DateManager.shared.formatFullDateToString(date: date))
+        }
+        return generateYearlyDates(from: firstWeek, withInterval: weekCount)
+    }
+    
+    
+    func generateYearlyDates(from dates: [Date], withInterval interval: Int) -> [Date] {
+        var yearlyDates: [Date] = []
+        
+        let calendar = Calendar.current
+        let oneYearInSeconds: TimeInterval = 31536000 // 초 단위로 1년을 나타냅니다
+
+        for date in dates {
+            var currentDate = date
+
+            for _ in 1...52 {
+
+                yearlyDates.append(currentDate)
+
+                // 현재 날짜에 interval 주기만큼 더합니다
+                if let nextDate = calendar.date(byAdding: .day, value: 7 * interval, to: currentDate) {
+                    currentDate = nextDate
+                }
+
+                // 1년을 더한 시점에서 반복을 멈춥니다
+                if currentDate.timeIntervalSince(date) >= oneYearInSeconds {
+                    break
+                }
+            }
+        }
+
+        return yearlyDates
+    }
+
+    
+    
+    func weekdayNumber(from date: Date) -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.weekday], from: date)
+        
+        if var weekday = components.weekday {
+            // 요일 숫자를 월요일부터 1부터 7까지로 변경
+            weekday -= 1
+            if weekday == 0 {
+                weekday = 7
+            }
+            return weekday
+        } else {
+            return 0  // 요일을 찾을 수 없을 때 0을 반환
+        }
     }
     
     func countUniqueMonths(dates: [Date]) -> Int {
@@ -174,5 +232,12 @@ class DateManager{
             uniqueMonths.insert(monthYear)
         }
         return uniqueMonths.count
+    }
+    
+    func areDatesEqualIgnoringTime(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+        let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
+        let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
+        return components1 == components2
     }
 }

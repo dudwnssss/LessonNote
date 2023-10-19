@@ -46,7 +46,6 @@ final class StudentViewController: BaseViewController {
             $0.configureStudentCalendar(studentIcon: StudentIcon(rawValue: student.studentIcon)!)
         }
         studentViewModel.scheduledLessonDates.bind { lessons in
-            print(lessons)
             self.studentView.calendarView.reloadData()
         }
         setupMenu(type: .student)
@@ -144,11 +143,11 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if studentViewModel.scheduledLessonDates.value.contains(date){
-            return 1
-        } else {
-            return 0
-        }
+        if studentViewModel.scheduledLessonDates.value.contains(where: { DateManager.shared.areDatesEqualIgnoringTime(date1: $0, date2: date) }) {
+               return 1
+           } else {
+               return 0
+           }
     }
         
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {

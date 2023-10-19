@@ -40,7 +40,7 @@ final class Student: Object {
             let event = ElliottEvent(courseId: "123",
                                      courseName: studentName,
                                      roomName: "123",
-                                     courseDay: ElliotDay(rawValue: item.weekday+1)!,
+                                     courseDay: ElliotDay(rawValue: item.weekday)!,
                                      startTime: DateManager.shared.formatTime(from: item.startTime),
                                      endTime: DateManager.shared.formatTime(from: item.endTime),
                                      backgroundColor: StudentIcon(rawValue: studentIcon)!.color,

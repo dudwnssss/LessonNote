@@ -46,14 +46,14 @@ final class WeekdayStackView: UIStackView{
     func configureStackView(weekdays: [Weekday], hide: Bool){
         if hide {
             weekdays.forEach { weekday in
-                weekdayButtons[weekday.rawValue].isHidden = true
+                weekdayButtons[weekday.rawValue-1].isHidden = true
             }
         } else {
             weekdayButtons.forEach { button in
                 button.isHidden = true
             }
             weekdays.forEach { weekday in
-                weekdayButtons[weekday.rawValue].isHidden = false
+                weekdayButtons[weekday.rawValue-1].isHidden = false
             }
         }
     }
