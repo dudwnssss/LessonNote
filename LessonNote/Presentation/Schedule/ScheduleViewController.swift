@@ -25,7 +25,7 @@ final class ScheduleViewController: BaseViewController{
             $0.delegate = self
             $0.dataSource = self
         }
-        scheduleViewModel.courseItems.bind { _ in
+        scheduleViewModel.weekSchedules.bind { _ in
             self.scheduleView.collectionView.reloadData()
         }
         scheduleView.timetableHeader.do {
@@ -54,21 +54,18 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return scheduleViewModel.weekSchedules.count
+        return scheduleViewModel.weekSchedules.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TimetableCell = collectionView.dequeReusableCell(forIndexPath: indexPath)
         cell.delegate = self
-        cell.courseItems = scheduleViewModel.weekSchedules[indexPath.row].value
+        cell.courseItems = scheduleViewModel.weekSchedules.value[indexPath.row]
         let daysofWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: indexPath.item)
         cell.daySymbol = DateManager.shared.formatDatesToENd(dates: daysofWeek)
-        cell.timetable.sundayDate = DateManager.shared.getSundayDate(forWeekOffset: indexPath.item)
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.reloadData()
-    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let collectionView = scrollView as? UICollectionView {
             let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)

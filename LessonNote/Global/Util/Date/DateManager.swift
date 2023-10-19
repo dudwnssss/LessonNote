@@ -240,4 +240,47 @@ class DateManager{
         let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
         return components1 == components2
     }
+    
+    func generateWeeksArray(from dates: [Date]) -> [[Bool]] {
+        var calendar = Calendar(identifier: .iso8601)
+        calendar.firstWeekday = 2 // 월요일을 첫 번째 요일로 설정
+        var weeksArray: [[Bool]] = []
+
+        // 오늘이 포함된 이번 주의 시작 날짜 계산
+        let currentDate = Date()
+        var startDate = Date()
+        var interval: TimeInterval = 0
+
+        calendar.dateInterval(of: .weekOfYear, start: &startDate, interval: &interval, for: currentDate)
+        
+        var currentIndex = 0
+
+        while startDate <= dates.last! {
+            let date = startDate
+            let weekStartDate = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date))!
+            let firstDayOfWeek = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: weekStartDate)!
+            var weekArray = Array(repeating: false, count: 7)
+
+            for i in 0..<7 {
+                let day = calendar.date(byAdding: .day, value: i, to: firstDayOfWeek)!
+                if dates.contains(where: { calendar.isDate($0, inSameDayAs: day) }) {
+                    weekArray[i] = true
+                }
+            }
+
+            weeksArray.append(weekArray)
+
+            // 다음 주로 이동
+            startDate = calendar.date(byAdding: .weekOfYear, value: 1, to: date)!
+            currentIndex += 1
+        }
+
+        // 빈 주차 처리: 빈 주차에 해당하는 배열을 추가
+        while currentIndex < dates.count {
+            weeksArray.append(Array(repeating: false, count: 7))
+            currentIndex += 1
+        }
+
+        return weeksArray
+    }
 }

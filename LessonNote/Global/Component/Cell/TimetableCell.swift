@@ -21,7 +21,6 @@ final class TimetableCell: UICollectionViewCell{
     }
     
     var delegate: PassStudent?
-    
     var daySymbol : [String] = [""]
     
     override init(frame: CGRect) {

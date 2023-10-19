@@ -34,7 +34,7 @@ final class Student: Object {
         self.startWeekday = startWeekday
     }
     
-    func toElliotEvent() -> [ElliottEvent] {
+    func toElliotEvent(visibiliyList: [Bool]) -> [ElliottEvent] {
         var events:[ElliottEvent] = []
         for item in lessonSchedules{
             let event = ElliottEvent(courseId: "123",
@@ -44,7 +44,8 @@ final class Student: Object {
                                      startTime: DateManager.shared.formatTime(from: item.startTime),
                                      endTime: DateManager.shared.formatTime(from: item.endTime),
                                      backgroundColor: StudentIcon(rawValue: studentIcon)!.color,
-                                     student: self)
+                                     isVisible: visibiliyList[item.weekday-1],
+            student: self)
             events.append(event)
         }
         return events

@@ -75,8 +75,6 @@ enum roundOption: Int {
         }
     }
     
-    var sundayDate = DateManager.shared.getSundayDate(forWeekOffset: 0)
-    
      var roundCorner: roundOption = roundOption.none {
         didSet {
             makeTimeTable()
@@ -299,13 +297,7 @@ enum roundOption: Int {
             let view = UIView(frame: CGRect(x: position_x, y: position_y, width: width, height: height))
             view.backgroundColor = courseItem.backgroundColor
             
-            
-            if let startDate = courseItem.student.lessonStartDate, let sundayDate  {
-                print("start, end", startDate, sundayDate)
-                if startDate > sundayDate {
-                    view.isHidden = true
-                }
-            }
+            view.isHidden = !courseItem.isVisible!
             
             switch(self.roundCorner) {
             case roundOption.none:

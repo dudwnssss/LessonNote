@@ -24,14 +24,18 @@ extension StudentViewModel{
         let startDate = student.lessonStartDate
         let weekdaysArray = Array(weekdays)
         let dates = DateManager.shared.generateYearlyLessonSchedule(weekday: weekdaysArray, weekCount: weekCount, startWeekday: startWeekday, startDate: startDate!)
-        print(dates)
+        //이중배여롤 관리하기
         scheduledLessonDates.value = dates
+        print(DateManager.shared.generateWeeksArray(from: dates))
     }
     
     func updateStudent(){
         guard let studentId = student.value?.studentId else {return}
         student.value = repository.fetchStudentById(studentId)
     }
+    
+
+
     
 }
 

@@ -26,8 +26,6 @@ final class CalendarView: FSCalendar {
         rightButton.do {
             $0.setImage(Image.calendarRight, for: .normal)
         }
-        //        bringSubviewToFront(leftButton)
-        //        bringSubviewToFront(rightButton)
         cornerRadius = 20
         backgroundColor = Color.white
         locale = Locale(identifier: "ko_KR")

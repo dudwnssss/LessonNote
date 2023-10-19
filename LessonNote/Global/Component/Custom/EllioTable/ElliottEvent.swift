@@ -18,9 +18,10 @@ import UIKit
      let endTime   : String
      let textColor      : UIColor?
      let backgroundColor: UIColor
+     let isVisible: Bool?
      let student: Student
     
-     init(courseId: String, courseName: String, roomName: String, courseDay: ElliotDay,startTime: String, endTime: String, textColor: UIColor? = .white, backgroundColor: UIColor, student: Student) {
+     init(courseId: String, courseName: String, roomName: String, courseDay: ElliotDay,startTime: String, endTime: String, textColor: UIColor? = .white, backgroundColor: UIColor, isVisible: Bool = true, student: Student) {
         self.courseId        = courseId
         self.studentName      = courseName
         self.roomName        = roomName
@@ -29,6 +30,7 @@ import UIKit
         self.endTime         = endTime
         self.textColor       = textColor
         self.backgroundColor = backgroundColor
+        self.isVisible = isVisible
         self.student = student
     }
     
