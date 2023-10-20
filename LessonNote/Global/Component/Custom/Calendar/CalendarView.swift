@@ -30,7 +30,7 @@ final class CalendarView: FSCalendar {
         backgroundColor = Color.white
         locale = Locale(identifier: "ko_KR")
         headerHeight = 60
-        firstWeekday = 2
+        firstWeekday = 1
         appearance.do {
             $0.headerMinimumDissolvedAlpha = 0.0
             $0.headerDateFormat = "YYYY년 M월"

@@ -24,7 +24,6 @@ extension StudentViewModel{
         let startDate = student.lessonStartDate
         let weekdaysArray = Array(weekdays)
         let dates = DateManager.shared.generateYearlyLessonSchedule(weekday: weekdaysArray, weekCount: weekCount, startWeekday: startWeekday, startDate: startDate!)
-        //이중배여롤 관리하기
         scheduledLessonDates.value = dates
         print(DateManager.shared.generateWeeksArray(from: dates))
     }

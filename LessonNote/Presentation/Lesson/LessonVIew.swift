@@ -23,6 +23,7 @@ final class LessonView: BaseView {
     private let feedbackLabel = CustomTitleLabel(title: "피드백")
     private let lessonStackView = UIStackView()
     private let assignmentStackView = UIStackView()
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let completeButton = CompleteButton(title: "작성완료")
     let feedbackTextView = CustomTextView(placeholder: "오늘 수업은 어떠셨나요?\n자유롭게 수업에 대한 기록을 남길 수 있어요.", limitCount: 500)
     
@@ -40,20 +41,23 @@ final class LessonView: BaseView {
         lessonSates.forEach {
             let button = CustomButton(title: $0.title)
             button.tag = $0.rawValue
+            button.titleLabel?.font = Font.bold14
+            button.borderWidth = 2
             lessonStateButtons.append(button)
         }
         
         assignmentStates.forEach {
             let button = CustomButton(title: $0.title)
             button.tag = $0.rawValue
+            button.titleLabel?.font = Font.bold14
+            button.borderWidth = 2
             assignmentStateButtons.append(button)
         }
     }
     override func setLayouts() {
-        addSubviews(scrollView, completeButton)
+        addSubviews(scrollView, blurView, completeButton)
         scrollView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints {
@@ -97,6 +101,12 @@ final class LessonView: BaseView {
             $0.top.equalTo(feedbackLabel.snp.bottom).offset(16)
             $0.height.equalTo(feedbackTextView.snp.width)
             $0.bottom.equalToSuperview().offset(-130)
+        }
+        
+        blurView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(completeButton.snp.centerY)
         }
         
         completeButton.snp.makeConstraints {

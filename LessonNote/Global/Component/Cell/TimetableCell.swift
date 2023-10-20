@@ -37,7 +37,7 @@ final class TimetableCell: UICollectionViewCell{
             $0.borderColor = Color.gray2
             $0.borderWidth = 0.5
             $0.symbolBackgroundColor = Color.gray0
-            $0.courseItemTextSize = 11
+            $0.courseItemTextSize = 10
             $0.roundCorner = .all
             $0.isFullBorder = true
             $0.elliotBackgroundColor = Color.white

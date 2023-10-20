@@ -20,11 +20,7 @@ class HomeViewController: BaseViewController{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .systemThinMaterial)
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        navigationController?.navigationBar.standardAppearance.backgroundEffect = nil
+        navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .light)
     }
     
     override func setNavigationBar() {
@@ -43,7 +39,7 @@ class HomeViewController: BaseViewController{
     
     override func bind() {
         homeViewModel.studentList.bind { _ in
-            self.setDataSource()
+//            self.setDataSource()
             self.setSnapshot()
             self.setEmptyView()
         }

@@ -19,6 +19,7 @@ final class StudentInfoView: BaseView {
     let studentIconView = CustomStudentIconView()
     let studentPhoneNumberView = CustomStudentPhoneNumberView()
     let parentPhoneNumberView = CustomParentPhoneNumberView()
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let nextButton = CompleteButton(title: "다음으로")
     
     override func setProperties() {
@@ -39,10 +40,9 @@ final class StudentInfoView: BaseView {
     }
     
     override func setLayouts() {
-        addSubview(scrollView)
+        addSubviews(scrollView, blurView, nextButton)
         scrollView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         
         scrollView.addSubview(contentView)
@@ -80,8 +80,11 @@ final class StudentInfoView: BaseView {
             $0.leading.equalTo(studentNameView)
             $0.top.equalTo(studentPhoneNumberView.snp.bottom).offset(36)
         }
-
-        addSubview(nextButton)
+        blurView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(nextButton.snp.centerY)
+        }
         nextButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-48.adjusted)

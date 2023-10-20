@@ -10,7 +10,7 @@ import UIKit.UIColor
 enum Color{
     static let white = UIColor(hex: "#FFFFFF")!
     static let gray0 = UIColor(hex: "#F9F9F9")!
-    static let gray1 = UIColor(hex: "#F0F0F0")!
+    static let gray1 = UIColor(hex: "#F2F4F6")!
     static let gray2 = UIColor(hex: "#E8E8E8")!
     static let gray3 = UIColor(hex: "#D3D4D5")!
     static let gray4 = UIColor(hex: "#B5B5B5")!

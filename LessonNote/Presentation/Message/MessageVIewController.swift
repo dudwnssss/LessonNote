@@ -30,11 +30,6 @@ class MessageViewController: BaseViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .extraLight)
-    }
-    
     override func setNavigationBar() {
         navigationItem.title = "수업 문자 보내기"
     }

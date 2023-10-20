@@ -90,6 +90,8 @@ final class StudentCollectionViewCell: UICollectionViewCell {
         studentLabel.snp.makeConstraints {
             $0.centerY.equalTo(nameLabel)
             $0.leading.equalTo(nameLabel.snp.trailing).offset(4)
+            $0.width.equalTo(25)
+            $0.trailing.lessThanOrEqualTo(weekCountLabel.snp.leading).offset(-4)
         }
         separatorView.snp.makeConstraints {
             $0.leading.equalTo(nameLabel)

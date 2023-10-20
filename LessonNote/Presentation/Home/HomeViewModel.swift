@@ -13,10 +13,6 @@ final class HomeViewModel{
     private let repository = StudentRepository()
     private var studentResults: Results<Student>! // realm기반, 변경 시 list에 값 전달
     private var notificationToken: NotificationToken?
-    
-    //MARK: Input
-    
-    //MARK: Output
     lazy var studentList: Observable<[Student]> = Observable([])
     
     init(){
@@ -31,8 +27,8 @@ final class HomeViewModel{
             case .initial:
                 break
             case .update(_, _, _, _):
-                print(#fileID, #function, #line, "- ")
-                self?.studentList.value = Array((self?.studentResults)!.reversed())
+                print(Array((self?.studentResults)!).reversed(), "업데이트트트트트트")
+                self?.studentList.value = Array((self?.studentResults)!).reversed()
                 break
             case .error(let error):
                 print(error)

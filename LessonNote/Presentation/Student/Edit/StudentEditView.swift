@@ -18,14 +18,14 @@ final class StudentEditView: BaseView {
     let parentPhoneNumberView = CustomParentPhoneNumberView()
     let lessonTimeView = CustomLessonTimeView()
     let weekCountView = CustomWeekCountView()
-    private let startDateLabel = CustomTitleLabel(title: "수업 시작일 *")
+    private let startDateLabel = CustomTitleLabel(title: "수업 시작일")
     let startWeekdayView = CustomStartWeekdayView()
     let startDateTextField = UITextField()
     let datePickerView = UIDatePicker()
     private let arrowImageView = UIImageView()
     let deleteStudentButton = UIButton()
     let underlineView = UIView()
-    
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let completeButton = CompleteButton(title: "편집 완료")
     
     
@@ -60,7 +60,7 @@ final class StudentEditView: BaseView {
     }
     
     override func setLayouts() {
-        addSubviews(scrollView, completeButton)
+        addSubviews(scrollView, blurView, completeButton)
         scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -129,6 +129,12 @@ final class StudentEditView: BaseView {
             $0.leading.equalTo(studentNameView)
             $0.top.equalTo(startWeekdayView.snp.bottom).offset(36)
             $0.bottom.equalToSuperview().offset(-150)
+        }
+        
+        blurView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(completeButton.snp.centerY)
         }
         
         completeButton.snp.makeConstraints {

@@ -9,6 +9,7 @@ import UIKit
 
 final class CompleteButton: UIButton {
     var buttonTitle: String?
+    
     var isActivated = false {
         didSet {
             configureButton()

@@ -37,9 +37,9 @@ final class Student: Object {
     func toElliotEvent(visibiliyList: [Bool]) -> [ElliottEvent] {
         var events:[ElliottEvent] = []
         for item in lessonSchedules{
-            let event = ElliottEvent(courseId: "123",
+            let event = ElliottEvent(courseId: "",
                                      courseName: studentName,
-                                     roomName: "123",
+                                     roomName: "",
                                      courseDay: ElliotDay(rawValue: item.weekday)!,
                                      startTime: DateManager.shared.formatTime(from: item.startTime),
                                      endTime: DateManager.shared.formatTime(from: item.endTime),

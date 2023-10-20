@@ -10,7 +10,7 @@ import UIKit
 final class CustomButton: UIButton {
     
     var buttonTitle: String?
-
+    
     init(title: String) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)

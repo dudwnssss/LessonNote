@@ -18,7 +18,7 @@ class MessagePreviewView: BaseView {
     let calendarView = CalendarView()
     let commentLabel = UILabel()
     private let logoImageView = UIImageView()
-    
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     let sendButton = CompleteButton(title: "문자 전송하기")
     
     
@@ -61,10 +61,9 @@ class MessagePreviewView: BaseView {
     
     override func setLayouts() {
         
-        addSubviews(scrollView, sendButton)
+        addSubviews(scrollView, blurView, sendButton)
         scrollView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            $0.bottom.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
         scrollView.addSubview(contentView)
         
@@ -96,6 +95,13 @@ class MessagePreviewView: BaseView {
         calendarView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(12)
         }
+        
+        blurView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(sendButton.snp.centerY)
+        }
+        
         sendButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-48)

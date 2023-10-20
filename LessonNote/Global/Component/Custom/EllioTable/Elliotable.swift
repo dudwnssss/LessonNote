@@ -147,7 +147,7 @@ enum roundOption: Int {
         }
     }
     
-    @IBInspectable var courseItemTextSize = CGFloat(11) {
+    @IBInspectable var courseItemTextSize = CGFloat(10) {
         didSet {
             self.makeTimeTable()
         }
@@ -296,9 +296,8 @@ enum roundOption: Int {
             // MARK: Elliotable Course Item Cell
             let view = UIView(frame: CGRect(x: position_x, y: position_y, width: width, height: height))
             view.backgroundColor = courseItem.backgroundColor
-            
             view.isHidden = !courseItem.isVisible!
-            
+
             switch(self.roundCorner) {
             case roundOption.none:
                 
@@ -338,6 +337,7 @@ enum roundOption: Int {
             label.attributedText = attrStr
             label.textColor      = courseItem.textColor ?? UIColor.white
             label.numberOfLines  = 0
+            label.font = Font.bold12
             label.tag            = index
             view.tag             = index
             

@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let appearance = UITabBarAppearance()
             appearance.configureWithDefaultBackground()
             appearance.backgroundColor = Color.white
-            appearance.shadowColor = .clear
             UITabBar.appearance().standardAppearance = appearance
             UITabBar.appearance().backgroundColor = Color.white
         }
