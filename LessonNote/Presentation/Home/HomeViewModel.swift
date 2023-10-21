@@ -27,7 +27,6 @@ final class HomeViewModel{
             case .initial:
                 break
             case .update(_, _, _, _):
-                print(Array((self?.studentResults)!).reversed(), "업데이트트트트트트")
                 self?.studentList.value = Array((self?.studentResults)!).reversed()
                 break
             case .error(let error):

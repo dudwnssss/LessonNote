@@ -108,8 +108,7 @@ class DateManager{
     
      func buildTimeRangeString(startDate: Date, endDate: Date) -> String {
         
-        dateFormatter.dateFormat = "hh:mm"
-        
+        dateFormatter.dateFormat = "HH:mm"
         return String(format: "%@ - %@",
                       dateFormatter.string(from: startDate),
                       dateFormatter.string(from: endDate))
@@ -169,10 +168,6 @@ class DateManager{
         
         //startDate를 요일로 변환한것의 ravalue와 차이를 기반으로 1주치 날짜 계산
         //1주치날짜를 기준으로 격주주차*7을 더하면서 1년치 날짜 계산
-        
-        firstWeek.forEach { date in
-            print(DateManager.shared.formatFullDateToString(date: date))
-        }
         return generateYearlyDates(from: firstWeek, withInterval: weekCount)
     }
     

@@ -53,6 +53,8 @@ final class ScheduleViewModel{
         return dates
     }
     
+    
+    
     func setCourseItems(week: Int){
         var weekSchedule: [ElliottEvent] = []
 //        weekSchedules.value.removeAll()

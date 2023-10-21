@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 final class Student: Object {
-    
     @Persisted(primaryKey: true) var studentId: ObjectId
     @Persisted var studentName: String
     @Persisted var studentIcon: StudentIcon.RawValue

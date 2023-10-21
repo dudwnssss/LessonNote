@@ -37,13 +37,14 @@ final class ScheduleView: BaseView {
         addSubview(timetableHeader)
         timetableHeader.snp.makeConstraints {
             $0.top.equalTo(self.safeAreaLayoutGuide).offset(22)
-            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
+            $0.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-52)
         }
         timetableHeader.addSubview(collectionView)
         collectionView.snp.makeConstraints {
             $0.top.equalTo(timetableHeader).offset(50)
             $0.width.equalTo(timetableHeader)
-            $0.bottom.equalTo(self.safeAreaLayoutGuide)
+            $0.bottom.equalTo(self.safeAreaLayoutGuide).offset(-52)
         }
     }
 }

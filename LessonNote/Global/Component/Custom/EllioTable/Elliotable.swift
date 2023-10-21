@@ -35,7 +35,7 @@ enum roundOption: Int {
     private let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
      let defaultMinHour: Int = 9
-     let defaultMaxEnd : Int = 17
+     let defaultMaxEnd : Int = 20
     
      var userDaySymbol: [String]?
      var delegate: ElliotableDelegate?

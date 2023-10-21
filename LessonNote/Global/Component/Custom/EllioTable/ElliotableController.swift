@@ -25,7 +25,7 @@ class ElliotableController: UIViewController {
 extension ElliotableController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var minStartTimeHour: Int = 09
-        var maxEndTimeHour: Int = 17
+        var maxEndTimeHour: Int = 21
         
         if elliotable.courseItems.count < 1 {
             minStartTimeHour = elliotable.defaultMinHour

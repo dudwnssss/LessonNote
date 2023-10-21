@@ -40,6 +40,8 @@ enum Image {
     static let assignmentBad = UIImage(named: "assignment.bad")!
     static let calendarLeft = UIImage(named: "calendar.left")!
     static let calendarRight = UIImage(named: "calendar.right")!
+    static let privacy = UIImage(named: "privacy")!
+    static let inquiry = UIImage(named: "instagram")!
     
     enum Icon{
         static let studentPink = UIImage(named: "student.pink")!

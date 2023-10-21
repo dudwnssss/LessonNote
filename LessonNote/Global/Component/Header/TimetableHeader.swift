@@ -50,7 +50,7 @@ final class TimetableHeader: UIView{
         backgroundView.addSubview(todayButton)
         todayButton.snp.makeConstraints {
             $0.centerY.equalTo(dateLabel)
-            $0.trailing.equalToSuperview().offset(-8)
+            $0.trailing.equalToSuperview().offset(-16)
             $0.width.equalTo(36)
             $0.height.equalTo(22)
         }

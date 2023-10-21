@@ -125,9 +125,17 @@ final class StudentEditViewController: BaseViewController {
     @objc func datePickerDidChange(){
         viewModel.startDate.value = studentEditView.datePickerView.date
     }
+    
     @objc func deleteButtonDidTap(){
-        viewModel.delete()
-        navigationController?.popToRootViewController(animated: true)
+        let alert = UIAlertController(title: "학생 삭제하기", message: "학생을 삭제하시면, 수업기록이 모두 삭제되고 학생목록에서도 삭제됩니다.", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let delete = UIAlertAction(title: "삭제하기", style: .destructive) { _ in
+            self.viewModel.delete()
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        alert.addAction(cancel)
+        alert.addAction(delete)
+        present(alert, animated: true)
     }
     
     @objc func completeButtonDidTap(){

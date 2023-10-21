@@ -25,7 +25,6 @@ extension StudentViewModel{
         let weekdaysArray = Array(weekdays)
         let dates = DateManager.shared.generateYearlyLessonSchedule(weekday: weekdaysArray, weekCount: weekCount, startWeekday: startWeekday, startDate: startDate!)
         scheduledLessonDates.value = dates
-        print(DateManager.shared.generateWeeksArray(from: dates))
     }
     
     func updateStudent(){

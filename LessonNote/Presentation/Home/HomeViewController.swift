@@ -21,11 +21,13 @@ class HomeViewController: BaseViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .light)
+        let date = DateManager.shared.buildTimeRangeString(startDate: Date(), endDate: Date())
+        print(date)
     }
     
     override func setNavigationBar() {
         navigationItem.title = "홈"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(settingButtonDidTap))
     }
     
     override func setProperties() {
@@ -38,8 +40,9 @@ class HomeViewController: BaseViewController{
     }
     
     override func bind() {
-        homeViewModel.studentList.bind { _ in
+        homeViewModel.studentList.bind {
 //            self.setDataSource()
+            print("***", $0)
             self.setSnapshot()
             self.setEmptyView()
         }
@@ -66,6 +69,12 @@ class HomeViewController: BaseViewController{
             homeView.collectionView.cancelInteractiveMovement()
         }
     }
+    
+    @objc func settingButtonDidTap(){
+        let vc = SettingViewController()
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -81,7 +90,7 @@ extension HomeViewController: UICollectionViewDelegate {
         var snapshot = NSDiffableDataSourceSnapshot<Int, Student>()
         snapshot.appendSections([0])
         snapshot.appendItems(homeViewModel.studentList.value)
-        dataSource.apply(snapshot)
+        dataSource.applySnapshotUsingReloadData(snapshot)
     }
     
     private func setEmptyView(){

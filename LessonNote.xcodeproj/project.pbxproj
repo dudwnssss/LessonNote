@@ -13,6 +13,8 @@
 		100209492ADE710F00571959 /* UIString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100209482ADE710F00571959 /* UIString+.swift */; };
 		1002094B2ADE78F600571959 /* CustomStartWeekdayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002094A2ADE78F600571959 /* CustomStartWeekdayView.swift */; };
 		1002094D2ADEB9DC00571959 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1002094C2ADEB9DC00571959 /* UIButton+.swift */; };
+		100209572AE370C100571959 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100209562AE370C100571959 /* SettingViewController.swift */; };
+		100209592AE37A0400571959 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100209582AE37A0400571959 /* WebViewController.swift */; };
 		10033CDE2AD581D900379DA0 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10033CDD2AD581D900379DA0 /* EmptyView.swift */; };
 		1010CBBB2ACDB2D400B40498 /* UIPickerView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */; };
 		1010CBBE2ACE4A7D00B40498 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = 1010CBBD2ACE4A7D00B40498 /* FSCalendar */; };
@@ -131,6 +133,8 @@
 		100209482ADE710F00571959 /* UIString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString+.swift"; sourceTree = "<group>"; };
 		1002094A2ADE78F600571959 /* CustomStartWeekdayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStartWeekdayView.swift; sourceTree = "<group>"; };
 		1002094C2ADEB9DC00571959 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		100209562AE370C100571959 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		100209582AE37A0400571959 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		10033CDD2AD581D900379DA0 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+.swift"; sourceTree = "<group>"; };
 		1010CBC02ACE774500B40498 /* LessonTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeCell.swift; sourceTree = "<group>"; };
@@ -263,6 +267,15 @@
 				100209462ADE54E900571959 /* StudentEditViewModel.swift */,
 			);
 			path = Edit;
+			sourceTree = "<group>";
+		};
+		100209542AE3709800571959 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				100209562AE370C100571959 /* SettingViewController.swift */,
+				100209582AE37A0400571959 /* WebViewController.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		1010CBBF2ACE4A9800B40498 /* Common */ = {
@@ -462,6 +475,7 @@
 				104C88392AD5133D00EC283C /* Student */,
 				10A86DB62AD665E400817092 /* Lesson */,
 				10CE4FD72ADB8D5800FF3E3F /* Message */,
+				100209542AE3709800571959 /* Setting */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -860,6 +874,7 @@
 				1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */,
 				1016FAFD2AC95D34003E7612 /* ReusableView.swift in Sources */,
 				1016FAEB2AC94A12003E7612 /* BaseView.swift in Sources */,
+				100209572AE370C100571959 /* SettingViewController.swift in Sources */,
 				1010CBD72ACEC30700B40498 /* TempStudent.swift in Sources */,
 				1016FB132AC9624B003E7612 /* HomeView.swift in Sources */,
 				1048F9582ACC647900A56C76 /* SeparatorView.swift in Sources */,
@@ -909,6 +924,7 @@
 				1010CBFC2AD12C1500B40498 /* DateManager.swift in Sources */,
 				1010CBD32ACEA4D700B40498 /* CustomCheckInfoView.swift in Sources */,
 				1010CBC72ACE78CF00B40498 /* LessonInfoViewModel.swift in Sources */,
+				100209592AE37A0400571959 /* WebViewController.swift in Sources */,
 				10CE4FE22ADBF90E00FF3E3F /* MessagePreviewViewModel.swift in Sources */,
 				10CE4FDD2ADB8E0000FF3E3F /* MessageViewModel.swift in Sources */,
 				104C883D2AD5135600EC283C /* StudentView.swift in Sources */,

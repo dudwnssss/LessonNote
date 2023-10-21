@@ -46,6 +46,15 @@ final class LessonViewController: BaseViewController {
                 button.configureButton(activate: state?.rawValue == button.tag)
             }
         }
+        lessonViewModel.feedback.bind { text in
+            if let text {
+                self.lessonView.feedbackTextView.textView.do {
+                    $0.text = text
+                    $0.textColor = Color.gray6
+                }
+
+            }
+        }
     }
     
     @objc func lessonStateButtonDidTap(sender: CustomButton){
