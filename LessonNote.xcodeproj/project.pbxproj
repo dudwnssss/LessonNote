@@ -135,6 +135,7 @@
 		1002094C2ADEB9DC00571959 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 		100209562AE370C100571959 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		100209582AE37A0400571959 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		1002095B2AE3A1D800571959 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		10033CDD2AD581D900379DA0 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		1010CBBA2ACDB2D400B40498 /* UIPickerView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+.swift"; sourceTree = "<group>"; };
 		1010CBC02ACE774500B40498 /* LessonTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonTimeCell.swift; sourceTree = "<group>"; };
@@ -278,6 +279,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		1002095A2AE3A1D800571959 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1002095B2AE3A1D800571959 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1010CBBF2ACE4A9800B40498 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +421,7 @@
 				1016FB222AC96D18003E7612 /* .gitignore */,
 				1016FAC12AC93F45003E7612 /* LessonNote */,
 				1016FAC02AC93F45003E7612 /* Products */,
+				1002095A2AE3A1D800571959 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

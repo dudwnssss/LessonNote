@@ -103,7 +103,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         } else {
             let vc = WebViewController()
             vc.settingType = SettingType(rawValue: indexPath.row)
-            present(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

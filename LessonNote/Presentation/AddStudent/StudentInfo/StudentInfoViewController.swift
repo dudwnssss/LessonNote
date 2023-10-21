@@ -69,7 +69,7 @@ final class StudentInfoViewController: BaseViewController {
     
     override func bind() {
         studentInfoViewModel.isValid.bind {[weak self] value in
-            self?.studentInfoView.nextButton.isActivated = value
+            self?.studentInfoView.nextButton.configureButton(isValid: value)
         }
         studentInfoViewModel.name.bind { [weak self] value in
             self?.studentInfoView.studentNameView.textfieldView.textField.text = value

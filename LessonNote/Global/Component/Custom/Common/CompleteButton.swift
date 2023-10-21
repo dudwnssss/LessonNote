@@ -9,12 +9,7 @@ import UIKit
 
 final class CompleteButton: UIButton {
     var buttonTitle: String?
-    
-    var isActivated = false {
-        didSet {
-            configureButton()
-        }
-    }
+
     init(title: String) {
         super.init(frame: .zero)
         setTitle(title, for: .normal)
@@ -24,7 +19,7 @@ final class CompleteButton: UIButton {
     
     private func setProperties(){
         cornerRadius = 10
-        configureButton()
+        configureButton(isValid: false)
     }
     
     private func setLayouts(){
@@ -33,9 +28,9 @@ final class CompleteButton: UIButton {
         }
     }
     
-    private func configureButton(){
-        backgroundColor = isActivated ? Color.black : Color.gray4
-//        isUserInteractionEnabled = isActivated
+    func configureButton(isValid: Bool){
+        backgroundColor = isValid ? Color.black : Color.gray4
+        isUserInteractionEnabled = isValid
     }
 
     @available(*, unavailable)

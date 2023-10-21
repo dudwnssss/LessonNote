@@ -24,7 +24,7 @@ final class CheckInfoView: BaseView {
             $0.attributedText = attrString
         }
         completeButton.do {
-            $0.isActivated = true
+            $0.configureButton(isValid: true)
         }
 
     }

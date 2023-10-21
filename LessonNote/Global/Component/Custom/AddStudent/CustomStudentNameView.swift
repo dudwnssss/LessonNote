@@ -23,7 +23,7 @@ final class CustomStudentNameView: BaseView{
         }
         snp.makeConstraints {
             $0.width.equalTo(230.adjusted)
-            $0.height.equalTo(52)
+            $0.height.equalTo(66)
         }
     }
 }

@@ -27,6 +27,7 @@ final class StudentEditViewModel {
     var startDate: Observable<Date> = Observable(Date())
     var weekday: Observable<Weekday> = Observable(.monday)
     var weekdays: Observable<[Weekday]> = Observable([])
+    var isValid: Observable<Bool> = Observable(false)
 }
 
 extension StudentEditViewModel {
@@ -69,12 +70,40 @@ extension StudentEditViewModel {
     
     func update(){
         guard let student = student.value else { return }
-        repository.update(item: student, studentName: name.value, studentIcon: studentIcon.value, studentPhoneNumber: studentPhoneNumber.value, parentPhoneNumber: parentPhoneNumber.value, lessonTimes: lessonTimeList.value, weekCount: weekCount.value, lessonStartDate: startDate.value, startWeekday: weekday.value)
+        repository.update(item: student,
+                          studentName: name.value, studentIcon: studentIcon.value,
+                          studentPhoneNumber: studentPhoneNumber.value,
+                          parentPhoneNumber: parentPhoneNumber.value,
+                          lessonTimes: lessonTimeList.value,
+                          weekCount: weekCount.value,
+                          lessonStartDate: startDate.value,
+                          startWeekday: weekday.value)
     }
     
     func delete(){
         guard let student = student.value else {return}
         repository.delete(student)
+    }
+    
+    func checkValidation(){
+        if name.value == ""{
+            isValid.value = false
+            return
+        }
+        
+        if studentPhoneNumber.value == nil || studentPhoneNumber.value == ""{
+            isValid.value = true
+        } else {
+         
+        }
+        
+        if parentPhoneNumber.value == nil || parentPhoneNumber.value == ""{
+            isValid.value = true
+        } else {
+            
+        }
+        
+        isValid.value = true
     }
     
 }

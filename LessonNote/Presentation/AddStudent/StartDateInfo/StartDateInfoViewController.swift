@@ -36,7 +36,7 @@ final class StartDateInfoViewController: BaseViewController{
     
     override func bind() {
         startDateInfoViewModel.isValid.bind { [weak self] value in
-            self?.startDateInfoView.nextButton.isActivated = value
+            self?.startDateInfoView.nextButton.configureButton(isValid: value)
         }
         startDateInfoViewModel.weekday.bind {[weak self] weekday in
             self?.startDateInfoView.startWeekdayView.descriptionLabel.text = weekday.title+"요일을 기준으로 주차가 반복됩니다."

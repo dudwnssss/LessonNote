@@ -16,10 +16,7 @@ class WebViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let settingType else {return}
-        if let url = URL(string: settingType.path){
-            let myRequest = URLRequest(url: url)
-            webView.load(myRequest)
-        }
+        openWebPage(to: settingType.path)
     }
     
     override func setLayouts() {
@@ -29,27 +26,16 @@ class WebViewController: BaseViewController {
         }
     }
     
-    
-    override func setNavigationBar(){
+    override func setNavigationBar() {
         navigationItem.title = settingType?.settingTitle
     }
     
-}
-
-extension WebViewController: WKUIDelegate {
-    func reloadButtonClicked() {
-        webView.reload()
-    }
-    
-    func goBackButtonClicked(){
-        if webView.canGoBack {
-            webView.goBack()
+    func openWebPage(to urlStr: String) {
+        guard let url = URL(string: urlStr) else {
+            print("invalid url")
+            return
         }
-    }
-    
-    func goForwardButtonClicked(){
-        if webView.canGoForward{
-            webView.goForward()
-        }
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
 }

@@ -60,6 +60,7 @@ final class StudentEditViewController: BaseViewController {
         }
         viewModel.name.bind {[weak self] name in
             self?.studentEditView.studentNameView.textfieldView.textField.text = name
+            self?.viewModel.checkValidation()
         }
         viewModel.studentIcon.bind { value in
             self.studentEditView.studentIconView.iconStackView.studentIconButtonList.forEach({
@@ -93,6 +94,9 @@ final class StudentEditViewController: BaseViewController {
             self?.studentEditView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
                 button.configureButton(activate: button.tag == weekday.rawValue)
             }
+        }
+        viewModel.isValid.bind { [weak self] value in
+            self?.studentEditView.completeButton.configureButton(isValid: value)
         }
     }
     

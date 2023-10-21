@@ -30,7 +30,7 @@ final class CustomParentPhoneNumberView: BaseView{
         }
         snp.makeConstraints {
             $0.width.equalTo(228)
-            $0.height.equalTo(52)
+            $0.height.equalTo(66)
         }
     }
 }
