@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import Toast
 
 class MessageViewController: BaseViewController {
     
@@ -41,6 +42,10 @@ class MessageViewController: BaseViewController {
         }
         messageViewModel.title.bind { text in
             self.messageView.messageTitleTextField.textField.text = text
+            self.messageViewModel.checkValidation()
+        }
+        messageViewModel.isValid.bind { [weak self] value in
+            self?.messageView.nextButton.configureButton(isValid: value)
         }
     }
     
@@ -52,7 +57,7 @@ class MessageViewController: BaseViewController {
     }
     
     @objc func nextButtonDidTap(){
-        messageViewModel.selectedDates = messageView.calendarView.selectedDates
+        messageViewModel.selectedDates.value = messageView.calendarView.selectedDates
         if messageView.commentTextView.textView.text == messageView.commentTextView.placeholder {
             messageViewModel.comment = nil
         } else {

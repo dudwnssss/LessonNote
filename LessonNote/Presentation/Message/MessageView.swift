@@ -14,7 +14,7 @@ final class MessageView: BaseView {
     private let contentView = UIView()
     private let infoLabel = CustomTitleLabel(title: "")
     let phoneNumberLabel = CustomCheckInfoLabel(title: "", content: "")
-    private let messageLabel = CustomTitleLabel(title: "문자 제목 *")
+    private let messageLabel = CustomTitleLabel(title: "문자 제목")
     let messageTitleTextField = CustomTextFieldView(placeholder: "ex) 안녕하세요, 월간 과외 내역 전송드립니다.", limitCount: 30)
     private let lessonHistoryLabel = CustomTitleLabel(title: "수업 내역 추가")
     private let lessonDescriptionLabel = UILabel()

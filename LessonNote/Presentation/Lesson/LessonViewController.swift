@@ -61,11 +61,19 @@ final class LessonViewController: BaseViewController {
     }
     
     @objc func lessonStateButtonDidTap(sender: CustomButton){
-        lessonViewModel.lessonState.value = LessonState(rawValue: sender.tag)
+        if lessonViewModel.lessonState.value?.rawValue == sender.tag {
+            lessonViewModel.lessonState.value = nil
+        } else {
+            lessonViewModel.lessonState.value = LessonState(rawValue: sender.tag)
+        }
     }
     
     @objc func assignmentStateButtonDidtap(sender: CustomButton){
-        lessonViewModel.assignmentState.value = AssignmentState(rawValue: sender.tag)
+        if lessonViewModel.assignmentState.value?.rawValue == sender.tag {
+            lessonViewModel.assignmentState.value = nil
+        } else {
+            lessonViewModel.assignmentState.value = AssignmentState(rawValue: sender.tag)
+        }
     }
 
     

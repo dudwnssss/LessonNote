@@ -268,7 +268,6 @@ enum roundOption: Int {
             maxEndTimeHour += 1
         }
         minimumCourseStartTime = minStartTimeHour
-        print("minimum:", minimumCourseStartTime )
         
         for (index, courseItem) in courseItems.enumerated() {
             let dayCount = dataSource?.numberOfDays(in: self) ?? 6

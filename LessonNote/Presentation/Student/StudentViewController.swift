@@ -65,21 +65,35 @@ final class StudentViewController: BaseViewController {
         }
     }
     
+    @objc func presentAlert(){
+        let alert = UIAlertController(title: "", message: "등록된 연락처가 없습니다\n'설정'에서 전화번호를 추가해주세요", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "확인", style: .cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true)
+    }
+    
     func setupMenu(type: PersonType) {
         var phoneNumber = ""
         var button = UIButton()
         
         switch type {
         case .student:
-            guard let studentPhoneNumber = studentViewModel.student.value?.studentPhoneNumber else {return}
-            if studentPhoneNumber == "" {return}
             let studentButton = studentView.customStudentView.studentPhoneNumberButton
+            guard let studentPhoneNumber = studentViewModel.student.value?.studentPhoneNumber else { studentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
+                return}
+            if studentPhoneNumber == "" {
+                studentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
+                return}
             phoneNumber = studentPhoneNumber
             button = studentButton
         case .parent:
-            guard let parentPhoneNumber = studentViewModel.student.value?.parentPhoneNumber else {return}
-            if parentPhoneNumber == "" {return}
             let parentButton = studentView.customStudentView.parentPhoneNumberButton
+            guard let parentPhoneNumber = studentViewModel.student.value?.parentPhoneNumber else {
+                parentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
+                return}
+            if parentPhoneNumber == "" {
+                parentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
+                return}
             phoneNumber = parentPhoneNumber
             button = parentButton
         }
@@ -145,6 +159,13 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        
+        guard let startDate = studentViewModel.student.value?.lessonStartDate else {return 0}
+        
+        if date < startDate {
+            return 0
+        }
+        
         if studentViewModel.scheduledLessonDates.value.contains(where: { DateManager.shared.areDatesEqualIgnoringTime(date1: $0, date2: date) }) {
                return 1
            } else {
