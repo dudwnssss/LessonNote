@@ -44,7 +44,6 @@ class CustomStudentView: BaseView{
         }
         lessonTimeStackView.do {
             $0.axis = .vertical
-            $0.spacing = 4
             $0.alignment = .leading
         }
         stackView.do {

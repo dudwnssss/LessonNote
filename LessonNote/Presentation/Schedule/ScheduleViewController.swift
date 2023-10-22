@@ -15,6 +15,10 @@ final class ScheduleViewController: BaseViewController{
         self.view = scheduleView
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .light)
+    }
     override func setNavigationBar() {
         navigationItem.title = "일정표"
     }

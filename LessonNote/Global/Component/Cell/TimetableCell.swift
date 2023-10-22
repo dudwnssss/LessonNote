@@ -47,6 +47,7 @@ final class TimetableCell: UICollectionViewCell{
     override func prepareForReuse() {
         super.prepareForReuse()
         courseItems = []
+        timetable.collectionView.setContentOffset(.zero, animated: false)
     }
     
     

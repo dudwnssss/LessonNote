@@ -32,7 +32,7 @@ enum roundOption: Int {
 
 @IBDesignable class Elliotable: UIView {
     private let controller     = ElliotableController()
-    private let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
+     let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
     
      let defaultMinHour: Int = 9
      let defaultMaxEnd : Int = 20
@@ -141,7 +141,7 @@ enum roundOption: Int {
         }
     }
     
-    @IBInspectable var textEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) {
+    @IBInspectable var textEdgeInsets = UIEdgeInsets(top: 6, left: 0, bottom: 0, right: 0) {
         didSet {
             self.makeTimeTable()
         }
@@ -268,6 +268,7 @@ enum roundOption: Int {
             maxEndTimeHour += 1
         }
         minimumCourseStartTime = minStartTimeHour
+        print("minimum:", minimumCourseStartTime )
         
         for (index, courseItem) in courseItems.enumerated() {
             let dayCount = dataSource?.numberOfDays(in: self) ?? 6

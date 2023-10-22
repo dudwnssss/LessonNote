@@ -14,8 +14,8 @@ final class CustomCheckInfoView: BaseView {
     private let backgroundView = UIView()
     
     private let nameLabel = CustomCheckInfoLabel(title: "이름", content: TempStudent.shared.studentName!)
-    private let studentPhoneNumberLabel = CustomCheckInfoLabel(title: "전화번호", content: TempStudent.shared.studentPhoneNumber!.withHypen)
-    private let parentPhoneNumberLabel = CustomCheckInfoLabel(title: "학부모 전화번호", content: TempStudent.shared.parentPhoneNumber!.withHypen)
+    private let studentPhoneNumberLabel = CustomCheckInfoLabel(title: "전화번호", content: "")
+    private let parentPhoneNumberLabel = CustomCheckInfoLabel(title: "학부모 전화번호", content: "")
     
     let lessonTimeTitleLabel = UILabel()
     var lessonTimeLables: [UILabel] = []
@@ -28,6 +28,23 @@ final class CustomCheckInfoView: BaseView {
     private let separator2 = SeparatorView(color: Color.gray1)
     
     override func setProperties() {
+        if TempStudent.shared.weekCount == 1{
+            weekCountLabel.infoContent = "매주 수업"
+        }
+        
+        if TempStudent.shared.studentPhoneNumber == nil || TempStudent.shared.studentPhoneNumber == "" {
+            studentPhoneNumberLabel.infoContent = "미등록"
+        } else {
+            studentPhoneNumberLabel.infoContent = TempStudent.shared.studentPhoneNumber!
+        }
+        
+        if TempStudent.shared.parentPhoneNumber == nil || TempStudent.shared.parentPhoneNumber == "" {
+            parentPhoneNumberLabel.infoContent = "미등록"
+        } else {
+            parentPhoneNumberLabel.infoContent = TempStudent.shared.parentPhoneNumber!
+        }
+        
+        
         punchImageView.do {
             $0.image = Image.notePunched
             $0.contentMode = .scaleAspectFill

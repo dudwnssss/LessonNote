@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class LessonInfoViewController: BaseViewController {
     
@@ -43,6 +44,10 @@ final class LessonInfoViewController: BaseViewController {
         }
         lessonInfoViewModel.lessonTimeList.bind {[weak self] _ in
             self?.setSnapshot()
+            self?.lessonInfoViewModel.checkValidation()
+        }
+        lessonInfoViewModel.isValid.bind { [weak self] value in
+            self?.lessonInfoView.nextButton.configureButton(isValid: value)
         }
     }
     
@@ -51,6 +56,12 @@ final class LessonInfoViewController: BaseViewController {
     }
     
     @objc func nextButtonDidTap(){
+        if let message = lessonInfoViewModel.message {
+            var style = ToastStyle()
+            style.messageFont = Font.medium14
+            self.view.makeToast(message, duration: 1, position: .top, style: style)
+            return
+        }
         lessonInfoViewModel.storeData()
         let vc = StartDateInfoViewController()
         navigationController?.pushViewController(vc, animated: true)

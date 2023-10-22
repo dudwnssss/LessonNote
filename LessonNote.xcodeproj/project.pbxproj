@@ -78,6 +78,7 @@
 		1016FB2F2AC9C892003E7612 /* StudentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB2E2AC9C892003E7612 /* StudentIcon.swift */; };
 		1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB302AC9CA50003E7612 /* HomeViewModel.swift */; };
 		1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB362ACA90D1003E7612 /* StudentIconButton.swift */; };
+		101E39342AE4F2B1001F4534 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 101E39332AE4F2B1001F4534 /* Toast */; };
 		1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9382ACA931C00A56C76 /* StudentInfoView.swift */; };
 		1048F93B2ACA932400A56C76 /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */; };
 		1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */; };
@@ -247,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				101E39342AE4F2B1001F4534 /* Toast in Frameworks */,
 				1016FB0B2AC95E3E003E7612 /* RealmSwift in Frameworks */,
 				1016FB092AC95E3E003E7612 /* Realm in Frameworks */,
 				1016FB032AC95E10003E7612 /* SnapKit in Frameworks */,
@@ -779,6 +781,7 @@
 				1010CBBD2ACE4A7D00B40498 /* FSCalendar */,
 				10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */,
 				10CE4FD52ADAC71400FF3E3F /* FloatingPanel */,
+				101E39332AE4F2B1001F4534 /* Toast */,
 			);
 			productName = LessonNote;
 			productReference = 1016FABF2AC93F45003E7612 /* LessonNote.app */;
@@ -815,6 +818,7 @@
 				1010CBBC2ACE4A7D00B40498 /* XCRemoteSwiftPackageReference "FSCalendar" */,
 				10A86DC12AD684B600817092 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				10CE4FD42ADAC71400FF3E3F /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				101E39322AE4F2B1001F4534 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 1016FAC02AC93F45003E7612 /* Products */;
 			projectDirPath = "";
@@ -1091,10 +1095,12 @@
 				DEVELOPMENT_TEAM = 6UJYJPDXP4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LessonNote/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "레슨노트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1122,10 +1128,12 @@
 				DEVELOPMENT_TEAM = 6UJYJPDXP4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LessonNote/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "레슨노트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1199,6 +1207,14 @@
 				kind = branch;
 			};
 		};
+		101E39322AE4F2B1001F4534 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		10A86DC12AD684B600817092 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
@@ -1242,6 +1258,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1016FB072AC95E3E003E7612 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		101E39332AE4F2B1001F4534 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 101E39322AE4F2B1001F4534 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		10A86DC22AD684B600817092 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;

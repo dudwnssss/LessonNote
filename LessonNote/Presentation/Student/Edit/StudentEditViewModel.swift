@@ -28,6 +28,7 @@ final class StudentEditViewModel {
     var weekday: Observable<Weekday> = Observable(.monday)
     var weekdays: Observable<[Weekday]> = Observable([])
     var isValid: Observable<Bool> = Observable(false)
+    var message: String?
 }
 
 extension StudentEditViewModel {
@@ -65,6 +66,7 @@ extension StudentEditViewModel {
     
     func setInitialWeekdays(){
         weekdays.value = lessonTimeList.value.map{$0.weekday}
+        if weekdays.value.contains(weekday.value) { return }
         weekday.value = weekdays.value.first ?? .monday
     }
     
@@ -86,23 +88,47 @@ extension StudentEditViewModel {
     }
     
     func checkValidation(){
-        if name.value == ""{
+        if name.value.isEmpty {
             isValid.value = false
+            message = "학생 이름을 입력해주세요"
             return
         }
         
         if studentPhoneNumber.value == nil || studentPhoneNumber.value == ""{
             isValid.value = true
         } else {
-         
+            guard let phoneNumber = studentPhoneNumber.value else {return}
+            switch phoneNumber.validatePhone() {
+            case true:
+                isValid.value = true
+            case false:
+                isValid.value = false
+                message = "전화번호 형식이 올바르지 않습니다"
+                return
+            }
         }
         
         if parentPhoneNumber.value == nil || parentPhoneNumber.value == ""{
             isValid.value = true
         } else {
-            
+            guard let phoneNumber = parentPhoneNumber.value else {return}
+            switch phoneNumber.validatePhone() {
+            case true:
+                isValid.value = true
+            case false:
+                isValid.value = false
+                message = "전화번호 형식이 올바르지 않습니다"
+                return
+            }
         }
         
+        if lessonTimeList.value.isEmpty {
+            isValid.value = false
+            message = "최소 한 개 이상의 수업을 등록해주세요"
+            return
+        }
+        
+        message = nil
         isValid.value = true
     }
     

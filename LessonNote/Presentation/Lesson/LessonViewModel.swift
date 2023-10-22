@@ -16,6 +16,7 @@ final class LessonViewModel {
     var lessonState: Observable<LessonState?> = Observable(nil)
     var assignmentState: Observable<AssignmentState?> = Observable(nil)
     var feedback: Observable<String?> = Observable(nil)
+    var isValid: Observable<Bool> = Observable(true)
     
 }
 

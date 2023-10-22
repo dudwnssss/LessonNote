@@ -30,7 +30,6 @@ final class CompleteButton: UIButton {
     
     func configureButton(isValid: Bool){
         backgroundColor = isValid ? Color.black : Color.gray4
-        isUserInteractionEnabled = isValid
     }
 
     @available(*, unavailable)

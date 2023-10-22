@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Toast
+
 
 final class StudentInfoViewController: BaseViewController {
     
@@ -42,6 +44,12 @@ final class StudentInfoViewController: BaseViewController {
     }
     
     @objc func nextButtonDidTap(){
+        if let message = studentInfoViewModel.message {
+            var style = ToastStyle()
+            style.messageFont = Font.medium14
+            self.view.makeToast(message, duration: 1, position: .top, style: style)
+            return
+        }
         let vc = LessonInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
         studentInfoViewModel.storeData()
@@ -73,12 +81,15 @@ final class StudentInfoViewController: BaseViewController {
         }
         studentInfoViewModel.name.bind { [weak self] value in
             self?.studentInfoView.studentNameView.textfieldView.textField.text = value
+            self?.studentInfoViewModel.checkValidation()
         }
         studentInfoViewModel.studentPhoneNumber.bind { [weak self] value in
             self?.studentInfoView.studentPhoneNumberView.textfieldView.textField.text = value
+            self?.studentInfoViewModel.checkValidation()
         }
         studentInfoViewModel.parentPhoneNumber.bind { [weak self] value in
             self?.studentInfoView.parentPhoneNumberView.textfieldView.textField.text = value
+            self?.studentInfoViewModel.checkValidation()
         }
         studentInfoViewModel.studentIcon.bind { value in
             self.studentInfoView.studentIconView.iconStackView.studentIconButtonList.forEach({

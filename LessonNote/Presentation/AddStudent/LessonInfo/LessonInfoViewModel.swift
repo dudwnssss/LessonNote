@@ -11,7 +11,9 @@ final class LessonInfoViewModel{
     
     var lessonTimeList: Observable<[LessonTime]> = Observable([])
     var isChecked: Observable<Bool> = Observable(false)
-    var weekCount: Observable<Int> = Observable(2)
+    var weekCount: Observable<Int> = Observable(1)
+    var isValid: Observable<Bool> = Observable(false)
+    var message: String?
 }
 
 extension LessonInfoViewModel{
@@ -32,6 +34,16 @@ extension LessonInfoViewModel{
                 lhs.weekday.rawValue < rhs.weekday.rawValue
             }
         }
+    }
+    
+    func checkValidation(){
+        if lessonTimeList.value.isEmpty {
+            isValid.value = false
+            message = "최소 한 개 이상의 수업을 등록해주세요"
+            return
+        }
+        message = nil
+        isValid.value = true
     }
 
 }

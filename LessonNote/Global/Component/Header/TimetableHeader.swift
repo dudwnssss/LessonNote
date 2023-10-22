@@ -25,15 +25,16 @@ final class TimetableHeader: UIView{
             $0.textColor = Color.gray5
         }
         todayButton.do {
-            $0.backgroundColor = .black
+            $0.backgroundColor = Color.black
             $0.layer.cornerRadius = 5
             $0.setTitle("오늘", for: .normal)
-            $0.titleLabel?.font = .systemFont(ofSize: 12)
+            $0.titleLabel?.font = Font.medium12
             $0.setTitleColor(.white, for: .normal)
         }
         backgroundView.do {
-            $0.backgroundColor = .white
+            $0.backgroundColor = Color.white
             $0.layer.cornerRadius = 15
+            $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         }
     }
     
@@ -44,13 +45,13 @@ final class TimetableHeader: UIView{
         }
         backgroundView.addSubview(dateLabel)
         dateLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(15)
+            $0.top.equalToSuperview().offset(16)
             $0.centerX.equalToSuperview()
         }
         backgroundView.addSubview(todayButton)
         todayButton.snp.makeConstraints {
             $0.centerY.equalTo(dateLabel)
-            $0.trailing.equalToSuperview().offset(-16)
+            $0.trailing.equalToSuperview().offset(-12)
             $0.width.equalTo(36)
             $0.height.equalTo(22)
         }

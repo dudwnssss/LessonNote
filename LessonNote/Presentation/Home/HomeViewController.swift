@@ -21,8 +21,6 @@ class HomeViewController: BaseViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationController?.navigationBar.standardAppearance.backgroundEffect = UIBlurEffect(style: .light)
-        let date = DateManager.shared.buildTimeRangeString(startDate: Date(), endDate: Date())
-        print(date)
     }
     
     override func setNavigationBar() {

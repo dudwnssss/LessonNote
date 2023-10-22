@@ -42,10 +42,10 @@ enum SettingType: Int, CaseIterable{
 class SettingViewController: BaseViewController {
     
     override func setProperties() {
-        setNavigationBar()
+//        view.backgroundColor = Color.gray1
     }
     
-    private lazy var tableView = UITableView().then{
+    private lazy var tableView = UITableView( ).then{
         $0.separatorColor = Color.gray2
         $0.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         $0.delegate = self
@@ -76,7 +76,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = UITableViewCell()
-        cell.backgroundColor = .clear
+        cell.backgroundColor = Color.white
         cell.selectionStyle = .none
         
         let accessoryImageView = UIImageView().then{

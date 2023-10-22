@@ -23,7 +23,7 @@ final class ScheduleViewModel{
 
     init(){
         studentResults = repository.fetch()
-        for i in 0...9 {
+        for i in 0...7 {
             setCourseItems(week: i)
         }
         notificationToken = studentResults.observe { [weak self] (changes: RealmCollectionChange) in
@@ -32,7 +32,7 @@ final class ScheduleViewModel{
                 break
             case .update(_, _, _, _):
                 self?.weekSchedules.value.removeAll()
-                for i in 0...9 {
+                for i in 0...7 {
                     self?.setCourseItems(week: i)
                 }
                 break
@@ -57,7 +57,6 @@ final class ScheduleViewModel{
     
     func setCourseItems(week: Int){
         var weekSchedule: [ElliottEvent] = []
-//        weekSchedules.value.removeAll()
         studentResults.forEach { student in
             let yearlyLessonSchedule = createYearlyLessonSchedule(student: student)
             let yearlyLessonExists = DateManager.shared.generateWeeksArray(from: yearlyLessonSchedule)

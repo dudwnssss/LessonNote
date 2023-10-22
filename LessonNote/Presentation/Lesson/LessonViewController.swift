@@ -55,6 +55,9 @@ final class LessonViewController: BaseViewController {
 
             }
         }
+        lessonViewModel.isValid.bind { [weak self] value in
+            self?.lessonView.completeButton.configureButton(isValid: value)
+        }
     }
     
     @objc func lessonStateButtonDidTap(sender: CustomButton){

@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import Toast
 
 final class StartDateInfoViewController: BaseViewController{
     
@@ -45,6 +46,10 @@ final class StartDateInfoViewController: BaseViewController{
                 button.configureButton(activate: button.tag == weekday.rawValue)
             }
         }
+        startDateInfoViewModel.date.bind { [weak self] value in
+            self?.startDateInfoViewModel.checkValidation()
+        }
+        
     }
     
     @objc func weekdayButtonDidTap(sender: CustomButton) {
@@ -52,6 +57,12 @@ final class StartDateInfoViewController: BaseViewController{
     }
     
     @objc func nextButtonDidTap(){
+        if let message = startDateInfoViewModel.message {
+            var style = ToastStyle()
+            style.messageFont = Font.medium14
+            self.view.makeToast(message, duration: 1, position: .top, style: style)
+            return
+        }
         startDateInfoViewModel.storeData()
         let vc = CheckInfoViewController() 
         navigationController?.pushViewController(vc, animated: true)
@@ -63,24 +74,6 @@ extension StartDateInfoViewController: FSCalendarDelegate, FSCalendarDataSource{
     func minimumDate(for calendar: FSCalendar) -> Date {
         return Date()
     }
-//    func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
-//        let calendar = Calendar.current
-//        let weekday = calendar.component(.weekday, from: date)
-//        if weekday == 2 || weekday == 4 || weekday == 6 {
-//            return true
-//        }
-//        return false
-//    }
-//    
-//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
-//        let calendar = Calendar.current
-//        let weekday = calendar.component(.weekday, from: date)
-//        if weekday == 2 || weekday == 4 || weekday == 6 {
-//            return nil
-//        }
-//        return .gray
-//    }
-    
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         startDateInfoViewModel.date.value = date

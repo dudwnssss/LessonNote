@@ -10,28 +10,48 @@ import Foundation
 final class StudentInfoViewModel{
     
     var isValid: Observable<Bool> = Observable(false)
-    var name: Observable<String?> = Observable(nil)
+    var name: Observable<String> = Observable("")
     var studentIcon: Observable<StudentIcon?> = Observable(.pink)
     var studentPhoneNumber: Observable<String?>  = Observable(nil)
     var parentPhoneNumber: Observable<String?>  = Observable(nil)
+    var message: String?
   
     
     func checkValidation(){
-        guard let name = name.value else {
-            print("이름 공백")
+        
+        if name.value.isEmpty {
             isValid.value = false
+            message = "학생 이름을 입력해주세요"
             return
         }
-        guard let studentPhoneNumber = studentPhoneNumber.value else {
-            print("학생 전화번호 공백")
-            isValid.value = false
-            return
+        if studentPhoneNumber.value == nil || studentPhoneNumber.value == ""{
+            isValid.value = true
+        } else {
+            guard let phoneNumber = studentPhoneNumber.value else {return}
+            switch phoneNumber.validatePhone() {
+            case true:
+                isValid.value = true
+            case false:
+                isValid.value = false
+                message = "전화번호 형식이 올바르지 않습니다"
+                return
+            }
         }
-        guard let parentPhoneNumber = parentPhoneNumber.value else {
-            print("학부모 전화번호 공백")
-            isValid.value = false
-            return
+        
+        if parentPhoneNumber.value == nil || parentPhoneNumber.value == ""{
+            isValid.value = true
+        } else {
+            guard let phoneNumber = parentPhoneNumber.value else {return}
+            switch phoneNumber.validatePhone() {
+            case true:
+                isValid.value = true
+            case false:
+                isValid.value = false
+                message = "전화번호 형식이 올바르지 않습니다"
+                return
+            }
         }
+        message = nil
         isValid.value = true
     }
     

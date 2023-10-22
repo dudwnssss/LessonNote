@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Toast
 
 final class StudentEditViewController: BaseViewController {
     
@@ -31,12 +31,10 @@ final class StudentEditViewController: BaseViewController {
         studentEditView.parentPhoneNumberView.textfieldView.textField.addTarget(self, action: #selector(parentNumberTextFieldDidChange), for: .editingChanged)
         
         studentEditView.weekCountView.weekCountView.checkboxButton.addTarget(self, action: #selector(checkboxButtonDidTap), for: .touchUpInside)
-        
         studentEditView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
             button.addTarget(self, action: #selector(weekdayButtonDidTap(sender:)), for: .touchUpInside)
         }
         studentEditView.completeButton.addTarget(self, action: #selector(completeButtonDidTap), for: .touchUpInside)
-        
         studentEditView.weekCountView.weekCountView.numberPickerView.didSelectNumber = {
             number in
             self.viewModel.weekCount.value = number
@@ -55,9 +53,6 @@ final class StudentEditViewController: BaseViewController {
     }
     
     override func bind() {
-        viewModel.student.bind {[weak self] _ in
-            self?.viewModel.setStudent()
-        }
         viewModel.name.bind {[weak self] name in
             self?.studentEditView.studentNameView.textfieldView.textField.text = name
             self?.viewModel.checkValidation()
@@ -69,9 +64,11 @@ final class StudentEditViewController: BaseViewController {
         }
         viewModel.studentPhoneNumber.bind { [weak self] value in
             self?.studentEditView.studentPhoneNumberView.textfieldView.textField.text = value
+            self?.viewModel.checkValidation()
         }
         viewModel.parentPhoneNumber.bind { [weak self] value in
             self?.studentEditView.parentPhoneNumberView.textfieldView.textField.text = value
+            self?.viewModel.checkValidation()
         }
         viewModel.isChecked.bind {[weak self] value in
             self?.studentEditView.weekCountView.weekCountView.checkboxButton.configureCheckbox(check: value)
@@ -84,7 +81,9 @@ final class StudentEditViewController: BaseViewController {
             self?.setSnapshot()
             self?.studentEditView.startWeekdayView.weekdayStackView.configureStackView(weekdays: lessons.map{$0.weekday}, hide: false)
             self?.viewModel.setInitialWeekdays()
+            self?.viewModel.checkValidation()
         }
+        
         viewModel.startDate.bind {[weak self] date in
             self?.studentEditView.startDateTextField.text = DateManager.shared.formatFullDateToString(date: date)
             self?.studentEditView.datePickerView.date = date
@@ -97,6 +96,9 @@ final class StudentEditViewController: BaseViewController {
         }
         viewModel.isValid.bind { [weak self] value in
             self?.studentEditView.completeButton.configureButton(isValid: value)
+        }
+        viewModel.student.bind {[weak self] _ in
+            self?.viewModel.setStudent()
         }
     }
     
@@ -143,6 +145,12 @@ final class StudentEditViewController: BaseViewController {
     }
     
     @objc func completeButtonDidTap(){
+        if let message = viewModel.message {
+            var style = ToastStyle()
+            style.messageFont = Font.medium14
+            self.view.makeToast(message, duration: 1, position: .top, style: style)
+            return
+        }
         viewModel.update()
         delegate?.passData()
         navigationController?.popViewController(animated: true)

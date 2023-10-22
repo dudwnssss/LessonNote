@@ -12,6 +12,7 @@ final class StartDateInfoViewModel{
     var weekday: Observable<Weekday> = Observable(.monday)
     var isValid: Observable<Bool> = Observable(false)
     var weekdays: [Weekday] = []
+    var message: String?
     
     init(){
         setInitialWeekdays()
@@ -28,6 +29,16 @@ extension StartDateInfoViewModel {
             weekdays.append(lesson.weekday)
         })
         weekday.value = weekdays.first ?? .monday
+    }
+    
+    func checkValidation(){
+        guard let date = date.value else {
+            message = "수업 시작일을 선택해주세요"
+            isValid.value = false
+            return
+        }
+        message = nil
+        isValid.value = true
     }
 }
     

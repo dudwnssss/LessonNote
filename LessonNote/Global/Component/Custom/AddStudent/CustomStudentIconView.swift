@@ -9,7 +9,7 @@ import UIKit
 
 final class CustomStudentIconView: BaseView{
     
-    private let title = CustomTitleLabel(title: "아이콘 *")
+    private let title = CustomTitleLabel(title: "아이콘")
     let iconStackView = StudentIconStackView()
     
     override func setLayouts() {

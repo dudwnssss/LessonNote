@@ -72,11 +72,13 @@ final class StudentViewController: BaseViewController {
         switch type {
         case .student:
             guard let studentPhoneNumber = studentViewModel.student.value?.studentPhoneNumber else {return}
+            if studentPhoneNumber == "" {return}
             let studentButton = studentView.customStudentView.studentPhoneNumberButton
             phoneNumber = studentPhoneNumber
             button = studentButton
         case .parent:
             guard let parentPhoneNumber = studentViewModel.student.value?.parentPhoneNumber else {return}
+            if parentPhoneNumber == "" {return}
             let parentButton = studentView.customStudentView.parentPhoneNumberButton
             phoneNumber = parentPhoneNumber
             button = parentButton
