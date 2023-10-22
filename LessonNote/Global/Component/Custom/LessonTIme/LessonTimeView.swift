@@ -43,7 +43,7 @@ final class LessonTimeView: BaseView{
         
         separatorView.snp.makeConstraints {
             $0.bottom.equalToSuperview()
-            $0.width.equalTo(190.adjusted)
+            $0.width.equalTo(200)
         }
         
         snp.makeConstraints {

@@ -17,7 +17,6 @@ final class StudentViewModel {
 extension StudentViewModel{
     
     func setSchedule(student: Student){
-        print(#fileID, #function, #line, "- ")
         let weekdays = student.lessonSchedules.map { $0.weekday }
         let weekCount = student.weekCount
         let startWeekday = student.startWeekday

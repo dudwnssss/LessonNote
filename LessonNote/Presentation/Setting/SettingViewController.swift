@@ -94,12 +94,8 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            let appURL = URL(string: "instagram://user?username=lessonnote.official")
-            guard let appURL else { return }
-            if UIApplication.shared.canOpenURL(appURL) {
-                UIApplication.shared.open(appURL)
-            }
+        if indexPath.row == 1, let appURL = URL(string: "instagram://user?username=lessonnote.official"), UIApplication.shared.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL)
         } else {
             let vc = WebViewController()
             vc.settingType = SettingType(rawValue: indexPath.row)

@@ -64,7 +64,13 @@ class DateManager{
         
         let currentWeekday = calendar.component(.weekday, from: currentDate)
         
-        let daysToSubtract = currentWeekday - 2 // 월요일은 2
+        let daysToSubtract: Int
+        if currentWeekday == 1 { // 일요일
+            daysToSubtract = 6
+        } else {
+            daysToSubtract = currentWeekday - 2
+        }
+        
         let startDate = calendar.date(byAdding: .day, value: -daysToSubtract, to: currentDate)!
         
         let startDateOfNthWeek = calendar.date(byAdding: .weekOfYear, value: numberOfWeeksFromThisWeek, to: startDate)!
@@ -243,21 +249,14 @@ class DateManager{
 
         // 오늘이 포함된 이번 주의 시작 날짜 계산
         let currentDate = Date()
-        var startDate = Date()
-        var interval: TimeInterval = 0
-
-        calendar.dateInterval(of: .weekOfYear, start: &startDate, interval: &interval, for: currentDate)
-        
+        var startDate = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate))!
         var currentIndex = 0
 
         while startDate <= dates.last! {
-            let date = startDate
-            let weekStartDate = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: date))!
-            let firstDayOfWeek = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: weekStartDate)!
             var weekArray = Array(repeating: false, count: 7)
 
             for i in 0..<7 {
-                let day = calendar.date(byAdding: .day, value: i, to: firstDayOfWeek)!
+                let day = calendar.date(byAdding: .day, value: i, to: startDate)!
                 if dates.contains(where: { calendar.isDate($0, inSameDayAs: day) }) {
                     weekArray[i] = true
                 }
@@ -266,7 +265,7 @@ class DateManager{
             weeksArray.append(weekArray)
 
             // 다음 주로 이동
-            startDate = calendar.date(byAdding: .weekOfYear, value: 1, to: date)!
+            startDate = calendar.date(byAdding: .weekOfYear, value: 1, to: startDate)!
             currentIndex += 1
         }
 
@@ -278,4 +277,58 @@ class DateManager{
 
         return weeksArray
     }
+    
+    func getWeekArray(from dates: [Date], forWeek weekIndex: Int) -> [Bool] {
+        var calendar = Calendar(identifier: .iso8601)
+        calendar.firstWeekday = 2 // 월요일을 첫 번째 요일로 설정
+        var weeksArray: [[Bool]] = []
+
+        // 오늘이 포함된 이번 주의 시작 날짜 계산
+        let currentDate = Date()
+        var startDate = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate))!
+        var currentIndex = 0
+
+        while startDate <= dates.last! {
+            var weekArray = Array(repeating: false, count: 7)
+
+            for i in 0..<7 {
+                let day = calendar.date(byAdding: .day, value: i, to: startDate)!
+                if dates.contains(where: { calendar.isDate($0, inSameDayAs: day) }) {
+                    weekArray[i] = true
+                }
+            }
+
+            weeksArray.append(weekArray)
+
+            // 다음 주로 이동
+            startDate = calendar.date(byAdding: .weekOfYear, value: 1, to: startDate)!
+            currentIndex += 1
+        }
+
+        // 빈 주차 처리: 빈 주차에 해당하는 배열을 추가
+        while currentIndex < dates.count {
+            weeksArray.append(Array(repeating: false, count: 7))
+            currentIndex += 1
+        }
+
+        // 주차 인덱스가 범위 내에 있는지 확인
+        if weekIndex >= 0 && weekIndex < weeksArray.count {
+            return weeksArray[weekIndex]
+        } else {
+            return [] // 범위를 벗어나면 빈 배열 반환
+        }
+    }
+    
+    func oneYearFromToday() -> Date {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = 1
+        
+        let oneYearFromNow = calendar.date(byAdding: dateComponents, to: currentDate)
+        
+        return oneYearFromNow!
+    }
+
 }

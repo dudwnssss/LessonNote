@@ -1,10 +1,3 @@
-//
-//  ScheduleViewModel.swift
-//  LessonNote
-//
-//  Created by 임영준 on 2023/10/09.
-//
-
 import Foundation
 import RealmSwift
 
@@ -20,21 +13,18 @@ final class ScheduleViewModel{
     
     //헤더에 표시용
     var dateRangeOfWeek = DateManager.shared.getDateRange(numberOfWeeksFromThisWeek: 0)
+    private var yearlyLessonSchedules: [Student: [[Bool]]] = [:]
 
     init(){
         studentResults = repository.fetch()
-        for i in 0...7 {
-            setCourseItems(week: i)
-        }
+        setSchedule(weeks: 8)
         notificationToken = studentResults.observe { [weak self] (changes: RealmCollectionChange) in
             switch changes {
             case .initial:
                 break
             case .update(_, _, _, _):
-                self?.weekSchedules.value.removeAll()
-                for i in 0...7 {
-                    self?.setCourseItems(week: i)
-                }
+                                self?.weekSchedules.value.removeAll()
+                self?.setSchedule(weeks: 8)
                 break
             case .error(let error):
                 print(error)
@@ -53,21 +43,31 @@ final class ScheduleViewModel{
         return dates
     }
     
-    
-    
-    func setCourseItems(week: Int){
-        var weekSchedule: [ElliottEvent] = []
+    func setCourseItems() -> [Student: [[Bool]]] {
+        var resultsDict: [Student: [[Bool]]] = [:]
         studentResults.forEach { student in
             let yearlyLessonSchedule = createYearlyLessonSchedule(student: student)
             let yearlyLessonExists = DateManager.shared.generateWeeksArray(from: yearlyLessonSchedule)
-            student.toElliotEvent(visibiliyList: yearlyLessonExists[week]).forEach { event in
-                weekSchedule.append(event)
-            }
+            resultsDict[student] = yearlyLessonExists
         }
-        weekSchedules.value.append(weekSchedule)
+        return resultsDict
+    }
+    
+    func setSchedule(weeks: Int){
+        var weekSchedule: [ElliottEvent] = []
+        let LessonExists: [Student: [[Bool]]] = setCourseItems()
+        for i in 0 ..< weeks {
+            LessonExists.forEach { key, value in
+                key.toElliotEvent(visibiliyList: value[i]).forEach { event in
+                    weekSchedule.append(event)
+                }
+            }
+            weekSchedules.value.append(weekSchedule)
+        }
     }
     
     deinit {
            notificationToken?.invalidate()
        }
+    
 }

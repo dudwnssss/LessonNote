@@ -207,7 +207,6 @@ extension ElliotableController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected : \(indexPath)")
     }
     
 }

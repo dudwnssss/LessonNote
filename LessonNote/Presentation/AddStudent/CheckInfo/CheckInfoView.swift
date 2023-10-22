@@ -9,6 +9,10 @@ import UIKit
 
 final class CheckInfoView: BaseView {
     
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+
     let titleLabel = UILabel()
     let customInfoView = CustomCheckInfoView()
     let completeButton = CompleteButton(title: "학생 추가 완료")
@@ -30,17 +34,37 @@ final class CheckInfoView: BaseView {
     }
     
     override func setLayouts() {
-        addSubviews(titleLabel, customInfoView, completeButton)
+        
+        addSubviews(scrollView, blurView, completeButton)
+
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        scrollView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.centerX.top.bottom.equalToSuperview()
+        }
+        
+        contentView.addSubviews(titleLabel, customInfoView)
                 
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(25)
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            $0.top.equalToSuperview().offset(20)
         }
         
         customInfoView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.top.equalTo(titleLabel.snp.bottom).offset(36)
             $0.height.greaterThanOrEqualTo(400)
+            $0.bottom.equalToSuperview().offset(-140)
+        }
+        
+        blurView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(completeButton.snp.centerY)
         }
 
         completeButton.snp.makeConstraints {

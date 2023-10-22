@@ -47,9 +47,8 @@ final class StudentInfoView: BaseView {
         
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints {
-            $0.edges.equalTo(scrollView.contentLayoutGuide)
             $0.width.equalToSuperview()
-            $0.height.equalTo(712.adjusted)
+            $0.centerX.top.bottom.equalToSuperview()
         }
         
         contentView.addSubviews(titleLabel, descriptionLabel, studentNameView, studentIconView, studentPhoneNumberView, parentPhoneNumberView)
@@ -79,6 +78,7 @@ final class StudentInfoView: BaseView {
         parentPhoneNumberView.snp.makeConstraints {
             $0.leading.equalTo(studentNameView)
             $0.top.equalTo(studentPhoneNumberView.snp.bottom).offset(36)
+            $0.bottom.equalToSuperview().offset(-141)
         }
         blurView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()

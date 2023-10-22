@@ -14,7 +14,6 @@ final class CheckBoxButton: UIButton {
     }
     
     func configureCheckbox(check: Bool){
-        print(#fileID, #function, #line, "- ")
         switch check{
         case true:
             setImage(Image.checkboxFill, for: .normal)

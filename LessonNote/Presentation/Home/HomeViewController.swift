@@ -38,11 +38,9 @@ class HomeViewController: BaseViewController{
     }
     
     override func bind() {
-        homeViewModel.studentList.bind {
-//            self.setDataSource()
-            print("***", $0)
-            self.setSnapshot()
-            self.setEmptyView()
+        homeViewModel.studentList.bind { [weak self] _ in
+            self?.setSnapshot()
+            self?.setEmptyView()
         }
     }
     

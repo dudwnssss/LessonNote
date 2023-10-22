@@ -23,6 +23,10 @@ class MessagePreviewView: BaseView {
     
     
     override func setProperties() {
+        sendButton.do {
+            $0.configureButton(isValid: true)
+        }
+
         verticalStackView.do {
             $0.backgroundColor = Color.gray0
             $0.cornerRadius = 15

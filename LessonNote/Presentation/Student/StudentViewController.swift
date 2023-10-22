@@ -127,6 +127,10 @@ final class StudentViewController: BaseViewController {
 
 extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
     
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return studentViewModel.scheduledLessonDates.value.last ?? DateManager.shared.oneYearFromToday()
+    }
+    
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         calendar.snp.updateConstraints { (make) in
             make.height.equalTo(bounds.height)
@@ -160,10 +164,24 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         
+        //시작날짜 이전 없애기
         guard let startDate = studentViewModel.student.value?.lessonStartDate else {return 0}
-        
         if date < startDate {
             return 0
+        }
+        
+        //수업 없음 적용하기
+        guard let lessons = studentViewModel.student.value?.lessons else { return 0 }
+        for item in lessons {
+            if date == item.date{
+                guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return 1}
+                switch state {
+                case .none:
+                    return 0
+                default:
+                    return 1
+                }
+            }
         }
         
         if studentViewModel.scheduledLessonDates.value.contains(where: { DateManager.shared.areDatesEqualIgnoringTime(date1: $0, date2: date) }) {

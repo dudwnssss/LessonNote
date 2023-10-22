@@ -33,7 +33,7 @@ final class ScheduleViewController: BaseViewController{
             self.scheduleView.collectionView.reloadData()
         }
         scheduleView.timetableHeader.do {
-            $0.dateLabel.text = scheduleViewModel.dateRangeOfWeek
+            $0.dateLabel.text = DateManager.shared.getDateRange(numberOfWeeksFromThisWeek: 0)
             $0.todayButton.addTarget(self, action: #selector(todayButtonDidTap), for: .touchUpInside)
         }
 

@@ -30,7 +30,7 @@ final class LessonViewController: BaseViewController {
         lessonView.assignmentStateButtons.forEach { button in
             button.addTarget(self, action: #selector(assignmentStateButtonDidtap(sender:)), for: .touchUpInside)
         }
-        lessonView.completeButton.addTarget(self, action: #selector(compeleteButtonDidTap), for: .touchUpInside)
+        lessonView.completeButton.addTarget(self, action: #selector(completeButtonDidTap), for: .touchUpInside)
     }
     
 
@@ -77,11 +77,15 @@ final class LessonViewController: BaseViewController {
     }
 
     
-    @objc func compeleteButtonDidTap(){
-        navigationController?.popViewController(animated: true)
-        lessonViewModel.feedback.value =  lessonView.feedbackTextView.textView.text
+    @objc func completeButtonDidTap(){
+        if lessonView.feedbackTextView.textView.text == lessonView.feedbackTextView.placeholder {
+            lessonViewModel.feedback.value = nil
+        } else {
+            lessonViewModel.feedback.value =  lessonView.feedbackTextView.textView.text
+        }
         lessonViewModel.upsertLesson()
         delegate?.passData()
+        navigationController?.popViewController(animated: true)
     }
 
 }

@@ -10,6 +10,10 @@ import FSCalendar
 
 final class StartDateInfoView: BaseView {
     
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
+    let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     let calendar = CalendarView()
@@ -39,11 +43,24 @@ final class StartDateInfoView: BaseView {
     }
     
     override func setLayouts() {
-        addSubviews(titleLabel, descriptionLabel, calendar, startWeekdayView, nextButton)
+        
+        addSubviews(scrollView, blurView, nextButton)
+
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        scrollView.addSubview(contentView)
+        
+        contentView.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.centerX.top.bottom.equalToSuperview()
+        }
+        
+        contentView.addSubviews(titleLabel, descriptionLabel, calendar, startWeekdayView)
         
         titleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(25)
-            $0.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            $0.top.equalToSuperview().offset(20)
         }
         descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(4)
@@ -60,6 +77,13 @@ final class StartDateInfoView: BaseView {
             $0.top.equalTo(calendar.snp.bottom).offset(36)
             $0.horizontalEdges.equalToSuperview().inset(25)
             $0.height.equalTo(80)
+            $0.bottom.equalToSuperview().offset(-140)
+        }
+        
+        blurView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(nextButton.snp.centerY)
         }
         
         nextButton.snp.makeConstraints {
