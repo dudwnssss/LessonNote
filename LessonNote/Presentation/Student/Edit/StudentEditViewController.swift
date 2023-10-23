@@ -42,6 +42,8 @@ final class StudentEditViewController: BaseViewController {
         studentEditView.deleteStudentButton.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
         studentEditView.datePickerView.minimumDate = viewModel.startDate.value
         studentEditView.datePickerView.addTarget(self, action: #selector(datePickerDidChange), for: .valueChanged)
+        
+        studentEditView.startDateTextField.delegate = self
         studentEditView.lessonTimeView.textfield.delegate = self
         studentEditView.collectionView.delegate = self
         setDataSource()
@@ -184,11 +186,14 @@ extension StudentEditViewController: UICollectionViewDelegate{
 
 extension StudentEditViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        let vc = LessonBottomSheetViewController()
-        vc.delegate = self
-        vc.lessonBottomSheetViewModel.existWeekdays.append(contentsOf: viewModel.weekdays.value)
-        let bottomVC = BottomSheetViewController(contentViewController: vc)
-        present(bottomVC, animated: true)
+        if textField == studentEditView.lessonTimeView.textfield {
+            let vc = LessonBottomSheetViewController()
+            vc.delegate = self
+            vc.lessonBottomSheetViewModel.existWeekdays.append(contentsOf: viewModel.weekdays.value)
+            let bottomVC = BottomSheetViewController(contentViewController: vc)
+            present(bottomVC, animated: true)
+            return false
+        }
         return false
     }
 }

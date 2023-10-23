@@ -23,7 +23,7 @@ enum PersonType {
 }
 
 final class StudentViewController: BaseViewController {
-        
+    
     private let studentView = StudentView()
     var studentViewModel = StudentViewModel()
     
@@ -51,7 +51,7 @@ final class StudentViewController: BaseViewController {
         setupMenu(type: .student)
         setupMenu(type: .parent)
         studentViewModel.setSchedule(student: student)
-        }
+    }
     
     override func bind() {
         studentViewModel.student.bind { [weak self] student in
@@ -147,19 +147,19 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
         let currentDate = Calendar.current.startOfDay(for: Date())
-           if date < currentDate {
-               return [Color.gray3]
-           } else {
-               return nil
-           }
+        if date < currentDate {
+            return [Color.gray3]
+        } else {
+            return nil
+        }
     }
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventSelectionColorsFor date: Date) -> [UIColor]? {
         let currentDate = Calendar.current.startOfDay(for: Date())
-           if date < currentDate {
-               return [Color.gray3]
-           } else {
-               return nil
-           }
+        if date < currentDate {
+            return [Color.gray3]
+        } else {
+            return nil
+        }
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
@@ -174,23 +174,21 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
         guard let lessons = studentViewModel.student.value?.lessons else { return 0 }
         for item in lessons {
             if date == item.date{
-                guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return 1}
-                switch state {
-                case .none:
-                    return 0
-                default:
-                    return 1
+                if let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) {
+                    if state == .none {
+                        return 0
+                    }
                 }
             }
         }
         
         if studentViewModel.scheduledLessonDates.value.contains(where: { DateManager.shared.areDatesEqualIgnoringTime(date1: $0, date2: date) }) {
-               return 1
-           } else {
-               return 0
-           }
+            return 1
+        } else {
+            return 0
+        }
     }
-        
+    
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
         guard let lessons = studentViewModel.student.value?.lessons else { return nil }
         for item in lessons {
@@ -216,7 +214,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
                 case .canceled, .none:
                     return Color.gray4
                 }
-                }
+            }
         }
         return nil
     }
@@ -234,7 +232,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
                 case .canceled, .none:
                     return Color.gray4
                 }
-                }
+            }
         }
         return nil
     }

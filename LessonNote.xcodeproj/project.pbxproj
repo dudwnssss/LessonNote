@@ -399,7 +399,6 @@
 		1010CC1F2AD2670500B40498 /* EllioTable */ = {
 			isa = PBXGroup;
 			children = (
-				1010CC202AD2670500B40498 /* ElliotableCell.swift */,
 				1010CC212AD2670500B40498 /* ElliotableError.swift */,
 				1010CC222AD2670500B40498 /* ElliottEvent.swift */,
 				1010CC232AD2670500B40498 /* Elliotable.swift */,
@@ -611,6 +610,7 @@
 		1016FB1D2AC96868003E7612 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				1010CC202AD2670500B40498 /* ElliotableCell.swift */,
 				1010CC2D2AD2673000B40498 /* TimetableCell.swift */,
 				1016FB282AC97C2C003E7612 /* StudentCollectionViewCell.swift */,
 				1010CBC02ACE774500B40498 /* LessonTimeCell.swift */,
@@ -1114,7 +1114,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1147,7 +1147,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

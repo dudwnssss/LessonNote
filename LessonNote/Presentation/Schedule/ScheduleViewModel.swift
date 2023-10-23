@@ -8,13 +8,11 @@ final class ScheduleViewModel{
     private var notificationToken: NotificationToken?
     
     var daysOfWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: 0)
-        
+    
     var weekSchedules: Observable<[[ElliottEvent]]> = Observable([])
     
-    //헤더에 표시용
-    var dateRangeOfWeek = DateManager.shared.getDateRange(numberOfWeeksFromThisWeek: 0)
     private var yearlyLessonSchedules: [Student: [[Bool]]] = [:]
-
+    
     init(){
         studentResults = repository.fetch()
         setSchedule(weeks: 8)
@@ -23,7 +21,7 @@ final class ScheduleViewModel{
             case .initial:
                 break
             case .update(_, _, _, _):
-                                self?.weekSchedules.value.removeAll()
+                self?.weekSchedules.value.removeAll()
                 self?.setSchedule(weeks: 8)
                 break
             case .error(let error):
@@ -43,31 +41,30 @@ final class ScheduleViewModel{
         return dates
     }
     
-    func setCourseItems() -> [Student: [[Bool]]] {
+    func setCourseItems(weeks: Int) -> [Student: [[Bool]]] {
         var resultsDict: [Student: [[Bool]]] = [:]
         studentResults.forEach { student in
-            let yearlyLessonSchedule = createYearlyLessonSchedule(student: student)
-            let yearlyLessonExists = DateManager.shared.generateWeeksArray(from: yearlyLessonSchedule)
+            var yearlyLessonSchedule = createYearlyLessonSchedule(student: student)
+            yearlyLessonSchedule.sort()
+            let yearlyLessonExists = DateManager.shared.generateWeeksArray(from: yearlyLessonSchedule, numberOfWeeks: weeks)
             resultsDict[student] = yearlyLessonExists
         }
         return resultsDict
     }
     
     func setSchedule(weeks: Int){
-        var weekSchedule: [ElliottEvent] = []
-        let LessonExists: [Student: [[Bool]]] = setCourseItems()
+        let LessonExists: [Student: [[Bool]]] = setCourseItems(weeks: weeks)
         for i in 0 ..< weeks {
+            var weekSchedule: [ElliottEvent] = []
             LessonExists.forEach { key, value in
-                key.toElliotEvent(visibiliyList: value[i]).forEach { event in
-                    weekSchedule.append(event)
-                }
+                weekSchedule.append(contentsOf: key.toElliotEvent(visibiliyList: value[i]))
             }
             weekSchedules.value.append(weekSchedule)
         }
     }
     
     deinit {
-           notificationToken?.invalidate()
-       }
+        notificationToken?.invalidate()
+    }
     
 }
