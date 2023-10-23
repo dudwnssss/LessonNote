@@ -31,8 +31,5 @@ extension StudentViewModel{
         student.value = repository.fetchStudentById(studentId)
     }
     
-
-
-    
 }
 

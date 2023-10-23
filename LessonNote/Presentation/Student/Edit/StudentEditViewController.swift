@@ -194,7 +194,7 @@ extension StudentEditViewController: UITextFieldDelegate {
             present(bottomVC, animated: true)
             return false
         }
-        return false
+        return true
     }
 }
 

@@ -31,6 +31,7 @@ enum Image {
     static let studentEmpty = UIImage(named: "student.empty")!
 
     static let notePunched = UIImage(named: "note.punched")!
+    static let notePunchedSmall = UIImage(named: "note.punched.small")!
     static let checkbox = UIImage(named: "checkbox")!
     static let checkboxFill = UIImage(named: "checkbox.fill")!
     static let arrowDown = UIImage(named: "arrow.down")!
@@ -40,6 +41,8 @@ enum Image {
     static let assignmentBad = UIImage(named: "assignment.bad")!
     static let calendarLeft = UIImage(named: "calendar.left")!
     static let calendarRight = UIImage(named: "calendar.right")!
+    static let arrowRight = UIImage(named: "arrow.right")!
+
     static let privacy = UIImage(named: "privacy")!
     static let inquiry = UIImage(named: "instagram")!
     

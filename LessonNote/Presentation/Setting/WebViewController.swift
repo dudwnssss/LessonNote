@@ -8,10 +8,10 @@
 import UIKit
 import WebKit
 
-class WebViewController: BaseViewController {
+final class WebViewController: BaseViewController {
     
     var webView = WKWebView()
-    var settingType: SettingType?
+    var settingType: Setting?
     
     override func viewDidLoad() {
         super.viewDidLoad()

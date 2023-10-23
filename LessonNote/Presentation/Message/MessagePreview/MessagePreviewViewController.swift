@@ -149,13 +149,28 @@ extension MessagePreviewViewController: MFMessageComposeViewControllerDelegate {
                 messageComposer.addAttachmentData(imageData, typeIdentifier: "lesson.data", filename: "attachment.png")
             }
             
-            self.present(messageComposer, animated: true, completion: nil)
+            self.present(messageComposer, animated: true)
+            
+            
         } else {
             print("메시지를 보낼 수 없습니다.")
         }
     }
-    
+        
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
         dismiss(animated: true)
+        switch result {
+        case .cancelled:
+            print("전송 취소")
+        case .sent:
+            if let viewControllers = navigationController?.viewControllers {
+                    if viewControllers.count >= 3 {
+                        guard let targetViewController = viewControllers[viewControllers.count - 3] as? StudentViewController else {return}
+                        navigationController?.popToViewController(targetViewController, animated: true)
+                        targetViewController.showToggle(text: "메시지가 전송되었습니다")
+                    }
+                }        case .failed:
+            print("메시지 전송 실패")
+        }
     }
 }

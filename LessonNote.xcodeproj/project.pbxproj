@@ -79,6 +79,10 @@
 		1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB302AC9CA50003E7612 /* HomeViewModel.swift */; };
 		1016FB372ACA90D1003E7612 /* StudentIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1016FB362ACA90D1003E7612 /* StudentIconButton.swift */; };
 		101E39342AE4F2B1001F4534 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 101E39332AE4F2B1001F4534 /* Toast */; };
+		101E393C2AE63C51001F4534 /* MemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E393B2AE63C51001F4534 /* MemoViewController.swift */; };
+		101E393E2AE63C58001F4534 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E393D2AE63C58001F4534 /* MemoView.swift */; };
+		101E39402AE63C5E001F4534 /* MemoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E393F2AE63C5E001F4534 /* MemoViewModel.swift */; };
+		101E39422AE64127001F4534 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E39412AE64127001F4534 /* Setting.swift */; };
 		1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9382ACA931C00A56C76 /* StudentInfoView.swift */; };
 		1048F93B2ACA932400A56C76 /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */; };
 		1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */; };
@@ -197,6 +201,10 @@
 		1016FB2E2AC9C892003E7612 /* StudentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIcon.swift; sourceTree = "<group>"; };
 		1016FB302AC9CA50003E7612 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		1016FB362ACA90D1003E7612 /* StudentIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentIconButton.swift; sourceTree = "<group>"; };
+		101E393B2AE63C51001F4534 /* MemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewController.swift; sourceTree = "<group>"; };
+		101E393D2AE63C58001F4534 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
+		101E393F2AE63C5E001F4534 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
+		101E39412AE64127001F4534 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		1048F9382ACA931C00A56C76 /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoView.swift; sourceTree = "<group>"; };
 		1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
 		1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoViewController.swift; sourceTree = "<group>"; };
@@ -630,8 +638,8 @@
 			isa = PBXGroup;
 			children = (
 				1016FB2C2AC9C6FA003E7612 /* Student.swift */,
-				1010CBC42ACE788500B40498 /* LessonTime.swift */,
 				1010CBD62ACEC30700B40498 /* TempStudent.swift */,
+				1010CBC42ACE788500B40498 /* LessonTime.swift */,
 				10EB68E42ADD547200EB108B /* LessonMessage.swift */,
 			);
 			path = Model;
@@ -678,6 +686,16 @@
 			path = CheckInfo;
 			sourceTree = "<group>";
 		};
+		101E393A2AE63C30001F4534 /* Memo */ = {
+			isa = PBXGroup;
+			children = (
+				101E393B2AE63C51001F4534 /* MemoViewController.swift */,
+				101E393D2AE63C58001F4534 /* MemoView.swift */,
+				101E393F2AE63C5E001F4534 /* MemoViewModel.swift */,
+			);
+			path = Memo;
+			sourceTree = "<group>";
+		};
 		1048F94D2ACAB54B00A56C76 /* StudentIcon */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +711,7 @@
 				1016FB2E2AC9C892003E7612 /* StudentIcon.swift */,
 				1048F9512ACC02E100A56C76 /* Weekday.swift */,
 				10A86DC42AD69E8D00817092 /* LessonState.swift */,
+				101E39412AE64127001F4534 /* Setting.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -700,6 +719,7 @@
 		104C88392AD5133D00EC283C /* Student */ = {
 			isa = PBXGroup;
 			children = (
+				101E393A2AE63C30001F4534 /* Memo */,
 				100209412ADE54C600571959 /* Edit */,
 				104C883A2AD5135000EC283C /* StudentViewController.swift */,
 				104C883C2AD5135600EC283C /* StudentView.swift */,
@@ -848,6 +868,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1016FAE92AC94A0C003E7612 /* BaseViewController.swift in Sources */,
+				101E393E2AE63C58001F4534 /* MemoView.swift in Sources */,
 				1010CC292AD2670500B40498 /* Elliotable.swift in Sources */,
 				1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */,
 				1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */,
@@ -927,6 +948,8 @@
 				1016FB312AC9CA50003E7612 /* HomeViewModel.swift in Sources */,
 				1048F9542ACC0DD700A56C76 /* StudentRepository.swift in Sources */,
 				1002094B2ADE78F600571959 /* CustomStartWeekdayView.swift in Sources */,
+				101E393C2AE63C51001F4534 /* MemoViewController.swift in Sources */,
+				101E39402AE63C5E001F4534 /* MemoViewModel.swift in Sources */,
 				10A86DBA2AD6661500817092 /* LessonVIew.swift in Sources */,
 				104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */,
 				10CE4FDB2ADB8DF900FF3E3F /* MessageView.swift in Sources */,
@@ -951,6 +974,7 @@
 				1016FB292AC97C2C003E7612 /* StudentCollectionViewCell.swift in Sources */,
 				1048F9452ACA96C500A56C76 /* CompleteButton.swift in Sources */,
 				1010CBEA2ACFB3EF00B40498 /* CustomParentPhoneNumberView.swift in Sources */,
+				101E39422AE64127001F4534 /* Setting.swift in Sources */,
 				1048F9AE2ACD599900A56C76 /* WeekCountView.swift in Sources */,
 				1016FB152AC96252003E7612 /* ScheduleView.swift in Sources */,
 				104C883F2AD5135C00EC283C /* StudentViewModel.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import Toast
 
 enum PersonType {
     case student
@@ -33,7 +34,9 @@ final class StudentViewController: BaseViewController {
     
     override func setNavigationBar() {
         navigationItem.title = "학생 정보"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(settingButtonDidTap))
+        //        let memo = UIBarButtonItem(image: Image.memo, style: .plain, target: self, action: nil)
+        let setting = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(settingButtonDidTap))
+        navigationItem.rightBarButtonItems = [setting]
     }
     
     override func setProperties() {
@@ -123,6 +126,16 @@ final class StudentViewController: BaseViewController {
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func showToggle(text: String){
+        var style = ToastStyle()
+        style.messageFont = Font.medium14
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.view.makeToast(text, duration: 1.5, position: .top, style: style)
+        }
+        return
+    }
+    
 }
 
 extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {

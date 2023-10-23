@@ -7,43 +7,8 @@
 
 import UIKit
 
-enum SettingType: Int, CaseIterable{
-    case privacy
-    case inquiry
-    
-    var settingTitle: String {
-        switch self {
-        case .privacy:
-            return "개인정보 처리방침"
-        case .inquiry:
-            return "문의 및 피드백"
-        }
-    }
-    
-    var settingImage: UIImage {
-        switch self {
-        case .privacy:
-            return Image.privacy
-        case .inquiry:
-            return Image.inquiry
-        }
-    }
-    
-    var path: String {
-        switch self {
-        case .privacy:
-            return "https://atom-technician-7aa.notion.site/LessonNote-6bdb51a4f7a74fa4a44c478cc50b21b7?pvs=4"
-        case .inquiry:
-            return "https://instagram.com/lessonnote.official?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
-        }
-    }
-}
 
-class SettingViewController: BaseViewController {
-    
-    override func setProperties() {
-//        view.backgroundColor = Color.gray1
-    }
+final class SettingViewController: BaseViewController {
     
     private lazy var tableView = UITableView().then{
         $0.separatorColor = Color.gray2
@@ -53,7 +18,7 @@ class SettingViewController: BaseViewController {
         $0.backgroundColor = .clear
         $0.rowHeight = 55
     }
-    let settingType = SettingType.allCases
+    let settingType = Setting.allCases
     
     override func setLayouts() {
         view.addSubview(tableView)
@@ -80,7 +45,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
         cell.selectionStyle = .none
         
         let accessoryImageView = UIImageView().then{
-            $0.image = Image.calendarRight
+            $0.image = Image.arrowRight
         }
 
         accessoryImageView.sizeToFit()
@@ -98,7 +63,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate{
             UIApplication.shared.open(appURL)
         } else {
             let vc = WebViewController()
-            vc.settingType = SettingType(rawValue: indexPath.row)
+            vc.settingType = Setting(rawValue: indexPath.row)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
