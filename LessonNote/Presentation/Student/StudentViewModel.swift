@@ -10,11 +10,11 @@ import Foundation
 final class StudentViewModel {
     
     private let repository = StudentRepository()
-    var scheduledLessonDates: Observable<[Date]> = Observable([]) //event 사용
-    var student: Observable<Student?> = Observable(nil)
+    var scheduledLessonDates: CustomObservable<[Date]> = CustomObservable([]) //event 사용
+    var student: CustomObservable<Student?> = CustomObservable(nil)
 }
 
-extension StudentViewModel{
+extension StudentViewModel {
     
     func setSchedule(student: Student){
         let weekdays = student.lessonSchedules.map { $0.weekday }

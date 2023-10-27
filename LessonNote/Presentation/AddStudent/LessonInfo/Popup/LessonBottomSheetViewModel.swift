@@ -10,7 +10,7 @@ import Foundation
 final class LessonBottomSheetViewModel {
     
     var existWeekdays: [Weekday] = []
-    var weekDays: Observable<[Weekday]> = Observable([])
+    var weekDays: CustomObservable<[Weekday]> = CustomObservable([])
 
 }
 

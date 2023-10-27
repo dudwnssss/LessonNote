@@ -24,7 +24,7 @@ final class LessonView: BaseView {
     private let lessonStackView = UIStackView()
     private let assignmentStackView = UIStackView()
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-    let completeButton = CompleteButton(title: "작성완료")
+    let completeButton = CompleteButton(title: "저장하기")
     let feedbackTextView = CustomTextView(placeholder: "오늘 수업은 어떠셨나요?\n자유롭게 수업에 대한 기록을 남길 수 있어요.", limitCount: 500)
     
     override func setProperties() {

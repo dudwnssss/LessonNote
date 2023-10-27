@@ -9,10 +9,10 @@ import Foundation
 
 final class LessonInfoViewModel{
     
-    var lessonTimeList: Observable<[LessonTime]> = Observable([])
-    var isChecked: Observable<Bool> = Observable(false)
-    var weekCount: Observable<Int> = Observable(1)
-    var isValid: Observable<Bool> = Observable(false)
+    var lessonTimeList: CustomObservable<[LessonTime]> = CustomObservable([])
+    var isChecked: CustomObservable<Bool> = CustomObservable(false)
+    var weekCount: CustomObservable<Int> = CustomObservable(1)
+    var isValid: CustomObservable<Bool> = CustomObservable(false)
     var message: String?
 }
 

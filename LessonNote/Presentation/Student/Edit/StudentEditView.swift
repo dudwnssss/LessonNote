@@ -55,8 +55,6 @@ final class StudentEditView: BaseView {
             $0.font = Font.medium14
             $0.inputView = datePickerView
         }
-
-
     }
     
     override func setLayouts() {

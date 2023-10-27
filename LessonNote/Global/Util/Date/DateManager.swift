@@ -242,6 +242,14 @@ class DateManager{
         return components1 == components2
     }
     
+    func isDate(_ date: Date, before startDate: Date) -> Bool {
+        let calendar = Calendar.current
+        let normalizedStartDate = calendar.startOfDay(for: startDate)
+        let normalizedDate = calendar.startOfDay(for: date)
+        return normalizedDate < normalizedStartDate
+    }
+
+        
     func generateWeeksArray(from dates: [Date], numberOfWeeks: Int) -> [[Bool]] {
         var calendar = Calendar(identifier: .iso8601)
         calendar.firstWeekday = 2 // 월요일을 첫 번째 요일로 설정
@@ -273,12 +281,12 @@ class DateManager{
     }
     
     
-    func oneYearFromToday() -> Date {
+    func hundredYearFromToday() -> Date {
         let currentDate = Date()
         let calendar = Calendar.current
         
         var dateComponents = DateComponents()
-        dateComponents.year = 1
+        dateComponents.year = 100
         
         let oneYearFromNow = calendar.date(byAdding: dateComponents, to: currentDate)
         

@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 
+
 final class StudentInfoView: BaseView {
     
     private let scrollView = UIScrollView()

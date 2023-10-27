@@ -8,9 +8,9 @@
 import Foundation
 
 final class StartDateInfoViewModel{
-    var date: Observable<Date?> = Observable(nil)
-    var weekday: Observable<Weekday> = Observable(.monday)
-    var isValid: Observable<Bool> = Observable(false)
+    var date: CustomObservable<Date?> = CustomObservable(nil)
+    var weekday: CustomObservable<Weekday> = CustomObservable(.monday)
+    var isValid: CustomObservable<Bool> = CustomObservable(false)
     var weekdays: [Weekday] = []
     var message: String?
     

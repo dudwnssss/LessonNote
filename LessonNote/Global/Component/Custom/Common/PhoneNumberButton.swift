@@ -22,7 +22,7 @@ final class PhoneNumberButton: UIButton {
         setTitle(buttonTitle, for: .normal)
         setImage(Image.phoneWhite, for: .normal)
         setImage(Image.phoneWhite, for: .highlighted)
-        titleLabel?.font = Font.medium12
+        titleLabel?.font = Font.bold12
         titleLabel?.textColor = Color.white
         titleLabel?.numberOfLines = 1
         imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)

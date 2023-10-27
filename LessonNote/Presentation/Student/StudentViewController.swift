@@ -9,6 +9,8 @@ import UIKit
 import FSCalendar
 import Toast
 
+
+
 enum PersonType {
     case student
     case parent
@@ -141,7 +143,7 @@ final class StudentViewController: BaseViewController {
 extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return studentViewModel.scheduledLessonDates.value.last ?? DateManager.shared.oneYearFromToday()
+        return studentViewModel.scheduledLessonDates.value.last ?? DateManager.shared.hundredYearFromToday()
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -179,7 +181,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
         
         //시작날짜 이전 없애기
         guard let startDate = studentViewModel.student.value?.lessonStartDate else {return 0}
-        if date < startDate {
+        if DateManager.shared.isDate(date, before: startDate) {
             return 0
         }
         
@@ -203,6 +205,10 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
+        guard let startDate = studentViewModel.student.value?.lessonStartDate else {return nil}
+        if DateManager.shared.isDate(date, before: startDate) {
+            return nil
+        }
         guard let lessons = studentViewModel.student.value?.lessons else { return nil }
         for item in lessons {
             if date == item.date{

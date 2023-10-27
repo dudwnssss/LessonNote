@@ -22,15 +22,18 @@ final class CalendarView: FSCalendar {
     private func setProperties() {
         leftButton.do {
             $0.setImage(Image.calendarLeft, for: .normal)
+            $0.addTarget(self, action: #selector(tapBeforeMonth), for: .touchUpInside)
         }
         rightButton.do {
             $0.setImage(Image.calendarRight, for: .normal)
+            $0.addTarget(self, action: #selector(tapNextMonth), for: .touchUpInside)
         }
         cornerRadius = 20
         backgroundColor = Color.white
         locale = Locale(identifier: "ko_KR")
         headerHeight = 60
         firstWeekday = 1
+        placeholderType = .none
         appearance.do {
             $0.headerMinimumDissolvedAlpha = 0.0
             $0.headerDateFormat = "YYYY년 M월"
@@ -46,9 +49,6 @@ final class CalendarView: FSCalendar {
             $0.subtitleOffset = CGPoint(x: 0, y: 2)
             $0.eventOffset = CGPoint(x: 0, y: -2)
         }
-        leftButton.addTarget(self, action: #selector(tapBeforeMonth), for: .touchUpInside)
-        rightButton.addTarget(self, action: #selector(tapNextMonth), for: .touchUpInside)
-        
     }
     
     private func setLayouts(){
@@ -98,8 +98,8 @@ final class CalendarView: FSCalendar {
     
     func configureStudentCalendar(studentIcon: StudentIcon){
         today = nil
-        appearance.eventDefaultColor = studentIcon.color
-        appearance.eventSelectionColor = studentIcon.color
+        appearance.eventDefaultColor = studentIcon.textColor
+        appearance.eventSelectionColor = studentIcon.textColor
         appearance.selectionColor = .clear
         appearance.titleSelectionColor = Color.black
         appearance.subtitleSelectionColor = Color.gray4

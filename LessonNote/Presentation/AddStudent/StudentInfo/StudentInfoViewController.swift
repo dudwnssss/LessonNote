@@ -7,12 +7,15 @@
 
 import UIKit
 import Toast
+import RxSwift
+import RxCocoa
 
 
 final class StudentInfoViewController: BaseViewController {
     
     private let studentInfoView = StudentInfoView()
     private let studentInfoViewModel = StudentInfoViewModel()
+    var disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = studentInfoView
@@ -58,20 +61,17 @@ final class StudentInfoViewController: BaseViewController {
     @objc func nameTextFieldDidChange(){
         if let text = studentInfoView.studentNameView.textfieldView.textField.text {
             studentInfoViewModel.name.value = text
-            studentInfoViewModel.checkValidation()
         }
     }
     
     @objc func studentNumberTextFieldDidChange(){
         if let text = studentInfoView.studentPhoneNumberView.textfieldView.textField.text {
             studentInfoViewModel.studentPhoneNumber.value = text
-            studentInfoViewModel.checkValidation()
         }
     }
     @objc func parentNumberTextFieldDidChange(){
         if let text = studentInfoView.parentPhoneNumberView.textfieldView.textField.text {
             studentInfoViewModel.parentPhoneNumber.value = text
-            studentInfoViewModel.checkValidation()
         }
     }
     
@@ -79,14 +79,17 @@ final class StudentInfoViewController: BaseViewController {
         studentInfoViewModel.isValid.bind {[weak self] value in
             self?.studentInfoView.nextButton.configureButton(isValid: value)
         }
-        studentInfoViewModel.name.bind { [weak self] value in
-            self?.studentInfoView.studentNameView.textfieldView.textField.text = value
+        
+        studentInfoView.studentNameView.textfieldView.textField.rx.text.bind { [weak self] _ in
             self?.studentInfoViewModel.checkValidation()
         }
+        .disposed(by: disposeBag)
+        
         studentInfoViewModel.studentPhoneNumber.bind { [weak self] value in
             self?.studentInfoView.studentPhoneNumberView.textfieldView.textField.text = value
             self?.studentInfoViewModel.checkValidation()
         }
+        
         studentInfoViewModel.parentPhoneNumber.bind { [weak self] value in
             self?.studentInfoView.parentPhoneNumberView.textfieldView.textField.text = value
             self?.studentInfoViewModel.checkValidation()

@@ -13,10 +13,10 @@ final class LessonViewModel {
     var date = Date()
     var student: Student?
     
-    var lessonState: Observable<LessonState?> = Observable(nil)
-    var assignmentState: Observable<AssignmentState?> = Observable(nil)
-    var feedback: Observable<String?> = Observable(nil)
-    var isValid: Observable<Bool> = Observable(true)
+    var lessonState: CustomObservable<LessonState?> = CustomObservable(nil)
+    var assignmentState: CustomObservable<AssignmentState?> = CustomObservable(nil)
+    var feedback: CustomObservable<String?> = CustomObservable(nil)
+    var isValid: CustomObservable<Bool> = CustomObservable(true)
     
 }
 

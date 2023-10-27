@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 protocol PassLessonTimes {
     func passLessonTimes(lessons: [LessonTime])
 }
@@ -28,6 +29,8 @@ final class LessonBottomSheetViewController: BaseViewController {
             $0.addTarget(self, action: #selector(weekdayButtonDidTap(sender:)), for: .touchUpInside)
         }
         lessonBottomSheetView.startTimePickerView.addTarget(self, action: #selector(startTimeDidChange(sender:)), for: .valueChanged)
+        lessonBottomSheetView.endTimePickerView.addTarget(self, action: #selector(endTimeDidChange(sender:)), for: .valueChanged)
+
     }
     
     override func bind() {
@@ -53,6 +56,15 @@ final class LessonBottomSheetViewController: BaseViewController {
     @objc func startTimeDidChange(sender: UIDatePicker) {
             let startTime = sender.date
             let endTime = lessonBottomSheetView.endTimePickerView.date
+            lessonBottomSheetView.endTimePickerView.minimumDate = startTime
+            if endTime < startTime {
+                lessonBottomSheetView.endTimePickerView.date = startTime
+            }
+        }
+    
+    @objc func endTimeDidChange(sender: UIDatePicker) {
+            let endTime = sender.date
+            let startTime = lessonBottomSheetView.startTimePickerView.date
             lessonBottomSheetView.endTimePickerView.minimumDate = startTime
             if endTime < startTime {
                 lessonBottomSheetView.endTimePickerView.date = startTime

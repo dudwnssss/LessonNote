@@ -6,14 +6,21 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 final class StudentInfoViewModel{
     
-    var isValid: Observable<Bool> = Observable(false)
-    var name: Observable<String> = Observable("")
-    var studentIcon: Observable<StudentIcon?> = Observable(.pink)
-    var studentPhoneNumber: Observable<String?>  = Observable(nil)
-    var parentPhoneNumber: Observable<String?>  = Observable(nil)
+    var isValid: CustomObservable<Bool> = CustomObservable(false)
+    
+    
+    var name: CustomObservable<String> = CustomObservable("")
+    
+    
+    
+    var studentIcon: CustomObservable<StudentIcon?> = CustomObservable(.pink)
+    var studentPhoneNumber: CustomObservable<String?>  = CustomObservable(nil)
+    var parentPhoneNumber: CustomObservable<String?>  = CustomObservable(nil)
     var message: String?
   
     

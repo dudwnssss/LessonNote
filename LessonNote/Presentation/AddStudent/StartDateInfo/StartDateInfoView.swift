@@ -31,13 +31,14 @@ final class StartDateInfoView: BaseView {
             $0.attributedText = attrString
         }
         descriptionLabel.do {
-            $0.text = "나중에 자유롭게 변경할 수 있어요"
+            $0.text = "선택한 날짜로부터 일정표와 캘린더에 일정이 반영됩니다"
             $0.font = Font.medium12
             $0.textColor = Color.gray4
         }
         calendar.do {
             $0.borderWidth = 5
             $0.borderColor = Color.gray1
+            $0.today = nil
         }
       
     }
@@ -90,5 +91,7 @@ final class StartDateInfoView: BaseView {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-48.adjusted)
         }
+        
+        
     }
 }

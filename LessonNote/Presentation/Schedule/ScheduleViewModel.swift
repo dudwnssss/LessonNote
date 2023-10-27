@@ -9,7 +9,7 @@ final class ScheduleViewModel{
     
     var daysOfWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: 0)
     
-    var weekSchedules: Observable<[[ElliottEvent]]> = Observable([])
+    var weekSchedules: CustomObservable<[[ElliottEvent]]> = CustomObservable([])
     
     private var yearlyLessonSchedules: [Student: [[Bool]]] = [:]
     

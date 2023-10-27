@@ -43,7 +43,6 @@ final class StudentEditViewController: BaseViewController {
         studentEditView.datePickerView.minimumDate = viewModel.startDate.value
         studentEditView.datePickerView.addTarget(self, action: #selector(datePickerDidChange), for: .valueChanged)
         
-        studentEditView.startDateTextField.delegate = self
         studentEditView.lessonTimeView.textfield.delegate = self
         studentEditView.collectionView.delegate = self
         setDataSource()

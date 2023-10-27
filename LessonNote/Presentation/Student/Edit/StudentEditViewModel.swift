@@ -10,24 +10,24 @@ import Foundation
 final class StudentEditViewModel {
     
     var repository = StudentRepository()
-    var student: Observable<Student?> = Observable(nil)
+    var student: CustomObservable<Student?> = CustomObservable(nil)
     
     //studentInfo
-    var name: Observable<String> = Observable("")
-    var studentIcon: Observable<StudentIcon> = Observable(.pink)
-    var studentPhoneNumber: Observable<String?>  = Observable(nil)
-    var parentPhoneNumber: Observable<String?>  = Observable(nil)
+    var name: CustomObservable<String> = CustomObservable("")
+    var studentIcon: CustomObservable<StudentIcon> = CustomObservable(.pink)
+    var studentPhoneNumber: CustomObservable<String?>  = CustomObservable(nil)
+    var parentPhoneNumber: CustomObservable<String?>  = CustomObservable(nil)
     
     //lessonInfo
-    var lessonTimeList: Observable<[LessonTime]> = Observable([])
-    var isChecked: Observable<Bool> = Observable(false)
-    var weekCount: Observable<Int> = Observable(2)
+    var lessonTimeList: CustomObservable<[LessonTime]> = CustomObservable([])
+    var isChecked: CustomObservable<Bool> = CustomObservable(false)
+    var weekCount: CustomObservable<Int> = CustomObservable(2)
     
     //startDate
-    var startDate: Observable<Date> = Observable(Date())
-    var weekday: Observable<Weekday> = Observable(.monday)
-    var weekdays: Observable<[Weekday]> = Observable([])
-    var isValid: Observable<Bool> = Observable(false)
+    var startDate: CustomObservable<Date> = CustomObservable(Date())
+    var weekday: CustomObservable<Weekday> = CustomObservable(.monday)
+    var weekdays: CustomObservable<[Weekday]> = CustomObservable([])
+    var isValid: CustomObservable<Bool> = CustomObservable(false)
     var message: String?
 }
 

@@ -108,6 +108,7 @@ final class CustomCheckInfoView: BaseView {
         nameLabel.snp.makeConstraints {
             $0.leading.equalTo(iconImageView)
             $0.top.equalTo(iconImageView.snp.bottom).offset(16)
+            $0.trailing.lessThanOrEqualToSuperview().offset(-20)
         }
         studentPhoneNumberLabel.snp.makeConstraints {
             $0.leading.equalTo(iconImageView)

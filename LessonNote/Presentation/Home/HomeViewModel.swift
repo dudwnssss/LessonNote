@@ -13,7 +13,7 @@ final class HomeViewModel{
     private let repository = StudentRepository()
     private var studentResults: Results<Student>! // realm기반, 변경 시 list에 값 전달
     private var notificationToken: NotificationToken?
-    lazy var studentList: Observable<[Student]> = Observable([])
+    lazy var studentList: CustomObservable<[Student]> = CustomObservable([])
     
     init(){
         studentResults = repository.fetch()

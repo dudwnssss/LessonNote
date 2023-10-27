@@ -104,6 +104,7 @@ class CustomStudentView: BaseView{
     func configureView(student: Student){
         nameLabel.text = student.studentName
         guard let color = StudentIcon(rawValue: student.studentIcon)?.textColor else { return }
+        guard let bgColor = StudentIcon(rawValue: student.studentIcon)?.color else { return }
         weekCountLabel.textColor = color
         if student.weekCount == 1 {
             weekCountLabel.text = "매주"
@@ -111,7 +112,8 @@ class CustomStudentView: BaseView{
             weekCountLabel.text = "\(student.weekCount)주 마다"
         }
         iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.selectedImage
-        
+        studentPhoneNumberButton.backgroundColor = bgColor
+        parentPhoneNumberButton.backgroundColor = bgColor
         lessonTimeStackView.subviews.forEach { $0.removeFromSuperview() }
         
         student.lessonSchedules.forEach {

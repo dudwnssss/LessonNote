@@ -55,6 +55,8 @@ class MessagePreviewView: BaseView {
             $0.allowsMultipleSelection = true
             $0.today = nil
             $0.appearance.selectionColor = Color.black
+            $0.leftButton.isHidden = true
+            $0.rightButton.isHidden = true
         }
         
         logoImageView.do {

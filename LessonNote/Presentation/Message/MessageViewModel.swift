@@ -10,12 +10,12 @@ import Foundation
 class MessageViewModel {
     var personType: PersonType = .student
     var student: Student?
-    var selectedDates: Observable<[Date]> = Observable([])
-    var showAssignment: Observable<Bool> = Observable(false)
-    var title: Observable<String> = Observable("")
+    var selectedDates: CustomObservable<[Date]> = CustomObservable([])
+    var showAssignment: CustomObservable<Bool> = CustomObservable(false)
+    var title: CustomObservable<String> = CustomObservable("")
     var comment: String? = nil
     var message: String?
-    var isValid: Observable<Bool> = Observable(false)
+    var isValid: CustomObservable<Bool> = CustomObservable(false)
 }
 
 extension MessageViewModel {

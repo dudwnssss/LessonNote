@@ -40,7 +40,7 @@ final class StartDateInfoViewController: BaseViewController{
             self?.startDateInfoView.nextButton.configureButton(isValid: value)
         }
         startDateInfoViewModel.weekday.bind {[weak self] weekday in
-            self?.startDateInfoView.startWeekdayView.descriptionLabel.text = weekday.title+"요일을 기준으로 주차가 반복됩니다."
+            self?.startDateInfoView.startWeekdayView.descriptionLabel.text = weekday.title+"요일을 기준으로 주차가 반복됩니다"
             self?.startDateInfoView.startWeekdayView.weekdayStackView.weekdayButtons.forEach { button in
                 print(button)
                 button.configureButton(activate: button.tag == weekday.rawValue)
@@ -78,5 +78,15 @@ extension StartDateInfoViewController: FSCalendarDelegate, FSCalendarDataSource{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         startDateInfoViewModel.date.value = date
         startDateInfoViewModel.isValid.value = true
+    }
+    
+    func calendar(_ calendar: FSCalendar, titleFor date: Date) -> String? {
+        let calendarDate = DateManager.shared.formatFullDateToString(date: date)
+        let todayDate = DateManager.shared.formatFullDateToString(date: Date())
+        if calendarDate == todayDate{
+            return "오늘"
+        } else {
+            return nil
+        }
     }
 }
