@@ -7,11 +7,12 @@
 
 import UIKit
 
-protocol PassStudent {
+protocol PassStudent: AnyObject {
     func passStudent(student: Student)
 }
 
 final class TimetableCell: UICollectionViewCell{
+    weak var delegate: PassStudent?
     
     let timetable = Elliotable()
     var courseItems: [ElliottEvent] = []{
@@ -20,7 +21,6 @@ final class TimetableCell: UICollectionViewCell{
         }
     }
     
-    var delegate: PassStudent?
     var daySymbol : [String] = [""]
     
     override init(frame: CGRect) {

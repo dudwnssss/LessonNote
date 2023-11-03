@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol PassData{
+protocol PassData: AnyObject {
     func passData()
 }
 
 final class LessonViewController: BaseViewController {
     
+    weak var delegate: PassData?
     private let lessonView = LessonView()
     let lessonViewModel = LessonViewModel()
     
-    var delegate: PassData?
     
     override func loadView() {
         self.view = lessonView
@@ -32,8 +32,6 @@ final class LessonViewController: BaseViewController {
         }
         lessonView.completeButton.addTarget(self, action: #selector(completeButtonDidTap), for: .touchUpInside)
     }
-    
-
     
     override func bind() {
         lessonViewModel.lessonState.bind { state in
@@ -52,7 +50,6 @@ final class LessonViewController: BaseViewController {
                     $0.text = text
                     $0.textColor = Color.gray6
                 }
-
             }
         }
         lessonViewModel.isValid.bind { [weak self] value in
@@ -75,7 +72,6 @@ final class LessonViewController: BaseViewController {
             lessonViewModel.assignmentState.value = AssignmentState(rawValue: sender.tag)
         }
     }
-
     
     @objc func completeButtonDidTap(){
         if lessonView.feedbackTextView.textView.text == lessonView.feedbackTextView.placeholder {

@@ -10,14 +10,13 @@ import Toast
 
 final class StudentEditViewController: BaseViewController {
     
+    weak var delegate: PassData?
     private let studentEditView = StudentEditView()
     let viewModel = StudentEditViewModel()
     
     override func loadView() {
         self.view = studentEditView
     }
-    
-    var delegate: PassData?
     
     private var dataSource: UICollectionViewDiffableDataSource<Int, LessonTime>!
 
@@ -160,14 +159,12 @@ final class StudentEditViewController: BaseViewController {
 }
 
 extension StudentEditViewController: UICollectionViewDelegate{
-    
     private func setSnapshot(){
         var snapshot = NSDiffableDataSourceSnapshot<Int, LessonTime>()
         snapshot.appendSections([0])
         snapshot.appendItems(viewModel.lessonTimeList.value)
         dataSource.apply(snapshot)
     }
-    
     private func setDataSource(){
         let cellRegistration = UICollectionView.CellRegistration<LessonTimeCell, LessonTime> { cell, indexPath, itemIdentifier in
         }
@@ -177,7 +174,6 @@ extension StudentEditViewController: UICollectionViewDelegate{
             return cell
         })
     }
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.lessonTimeList.value.remove(at: indexPath.item)
     }

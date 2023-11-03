@@ -8,15 +8,15 @@
 import UIKit
 
 
-protocol PassLessonTimes {
+protocol PassLessonTimes: AnyObject {
     func passLessonTimes(lessons: [LessonTime])
 }
 
 final class LessonBottomSheetViewController: BaseViewController {
     
+    weak var delegate: PassLessonTimes?
     private let lessonBottomSheetView = LessonBottomSheetView()
     let lessonBottomSheetViewModel = LessonBottomSheetViewModel()
-    var delegate: PassLessonTimes?
     
     override func loadView() {
         self.view = lessonBottomSheetView

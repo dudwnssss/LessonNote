@@ -112,6 +112,7 @@
 		104C883F2AD5135C00EC283C /* StudentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C883E2AD5135C00EC283C /* StudentViewModel.swift */; };
 		104C88422AD513FA00EC283C /* CustomStudentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88412AD513FA00EC283C /* CustomStudentView.swift */; };
 		104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104C88432AD5151C00EC283C /* PhoneNumberButton.swift */; };
+		107415C52AF4ECC5003820BE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 107415C42AF4ECC5003820BE /* README.md */; };
 		10A86DB82AD6660E00817092 /* LessonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DB72AD6660E00817092 /* LessonViewController.swift */; };
 		10A86DBA2AD6661500817092 /* LessonVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DB92AD6661500817092 /* LessonVIew.swift */; };
 		10A86DBC2AD6661A00817092 /* LessonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A86DBB2AD6661A00817092 /* LessonViewModel.swift */; };
@@ -234,6 +235,7 @@
 		104C883E2AD5135C00EC283C /* StudentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewModel.swift; sourceTree = "<group>"; };
 		104C88412AD513FA00EC283C /* CustomStudentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStudentView.swift; sourceTree = "<group>"; };
 		104C88432AD5151C00EC283C /* PhoneNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberButton.swift; sourceTree = "<group>"; };
+		107415C42AF4ECC5003820BE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10A86DB72AD6660E00817092 /* LessonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewController.swift; sourceTree = "<group>"; };
 		10A86DB92AD6661500817092 /* LessonVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonVIew.swift; sourceTree = "<group>"; };
 		10A86DBB2AD6661A00817092 /* LessonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonViewModel.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 		1016FAB62AC93F45003E7612 = {
 			isa = PBXGroup;
 			children = (
+				107415C42AF4ECC5003820BE /* README.md */,
 				1016FB222AC96D18003E7612 /* .gitignore */,
 				1016FAC12AC93F45003E7612 /* LessonNote */,
 				1016FAC02AC93F45003E7612 /* Products */,
@@ -863,6 +866,7 @@
 			files = (
 				1016FACF2AC93F47003E7612 /* LaunchScreen.storyboard in Resources */,
 				1016FB232AC96D18003E7612 /* .gitignore in Resources */,
+				107415C52AF4ECC5003820BE /* README.md in Resources */,
 				1016FACC2AC93F47003E7612 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1137,7 +1141,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.LessonNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1170,7 +1174,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.01;
+				MARKETING_VERSION = 1.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sesac.LessonNote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
