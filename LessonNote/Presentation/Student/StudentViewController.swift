@@ -284,6 +284,5 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
 extension StudentViewController: PassData {
     func passData() {
         studentViewModel.updateStudent()
-        print(#fileID, #function, #line, "- ")
     }
 }
