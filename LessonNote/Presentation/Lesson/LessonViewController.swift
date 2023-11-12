@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 protocol PassData: AnyObject {
     func passData()
@@ -15,7 +17,7 @@ final class LessonViewController: BaseViewController {
     
     weak var delegate: PassData?
     private let lessonView = LessonView()
-    let lessonViewModel = LessonViewModel()
+    let viewModel = LessonViewModel()
     
     
     override func loadView() {
@@ -23,28 +25,38 @@ final class LessonViewController: BaseViewController {
     }
     
     override func setProperties() {
-        lessonViewModel.loadState()
+        viewModel.loadState()
+        
         lessonView.lessonStateButtons.forEach { button in
             button.addTarget(self, action: #selector(lessonStateButtonDidTap(sender:)), for: .touchUpInside)
         }
         lessonView.assignmentStateButtons.forEach { button in
             button.addTarget(self, action: #selector(assignmentStateButtonDidtap(sender:)), for: .touchUpInside)
         }
+        
         lessonView.completeButton.addTarget(self, action: #selector(completeButtonDidTap), for: .touchUpInside)
     }
     
     override func bind() {
-        lessonViewModel.lessonState.bind { state in
+        
+//        viewModel.assignmentState.value
+//        
+//        Observable.combineLatest(lessonView.lessonStateButtons.map{ $0.rawvalue })
+//        
+//        let input = LessonViewModel.Input(lessonState: <#T##ControlProperty<LessonState>#>, assignmentState: <#T##ControlProperty<AssignmentState>#>, feedback: <#T##ControlProperty<String>#>, tapCompleteButton: <#T##ControlEvent<Void>#>)
+        
+        
+        viewModel.lessonState.bind { state in
             self.lessonView.lessonStateButtons.forEach { button in
                 button.configureButton(activate: state?.rawValue == button.tag)
             }
         }
-        lessonViewModel.assignmentState.bind { state in
+        viewModel.assignmentState.bind { state in
             self.lessonView.assignmentStateButtons.forEach { button in
                 button.configureButton(activate: state?.rawValue == button.tag)
             }
         }
-        lessonViewModel.feedback.bind { text in
+        viewModel.feedback.bind { text in
             if let text {
                 self.lessonView.feedbackTextView.textView.do {
                     $0.text = text
@@ -52,34 +64,34 @@ final class LessonViewController: BaseViewController {
                 }
             }
         }
-        lessonViewModel.isValid.bind { [weak self] value in
+        viewModel.isValid.bind { [weak self] value in
             self?.lessonView.completeButton.configureButton(isValid: value)
         }
     }
     
     @objc func lessonStateButtonDidTap(sender: CustomButton){
-        if lessonViewModel.lessonState.value?.rawValue == sender.tag {
-            lessonViewModel.lessonState.value = nil
+        if viewModel.lessonState.value?.rawValue == sender.tag {
+            viewModel.lessonState.value = nil
         } else {
-            lessonViewModel.lessonState.value = LessonState(rawValue: sender.tag)
+            viewModel.lessonState.value = LessonState(rawValue: sender.tag)
         }
     }
     
     @objc func assignmentStateButtonDidtap(sender: CustomButton){
-        if lessonViewModel.assignmentState.value?.rawValue == sender.tag {
-            lessonViewModel.assignmentState.value = nil
+        if viewModel.assignmentState.value?.rawValue == sender.tag {
+            viewModel.assignmentState.value = nil
         } else {
-            lessonViewModel.assignmentState.value = AssignmentState(rawValue: sender.tag)
+            viewModel.assignmentState.value = AssignmentState(rawValue: sender.tag)
         }
     }
     
     @objc func completeButtonDidTap(){
         if lessonView.feedbackTextView.textView.text == lessonView.feedbackTextView.placeholder {
-            lessonViewModel.feedback.value = nil
+            viewModel.feedback.value = nil
         } else {
-            lessonViewModel.feedback.value =  lessonView.feedbackTextView.textView.text
+            viewModel.feedback.value =  lessonView.feedbackTextView.textView.text
         }
-        lessonViewModel.upsertLesson()
+        viewModel.upsertLesson()
         delegate?.passData()
         navigationController?.popViewController(animated: true)
     }

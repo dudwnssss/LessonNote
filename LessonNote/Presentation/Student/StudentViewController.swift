@@ -263,8 +263,8 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
         dateFormatter.dateFormat = "M월 d일 E요일"
         let formattedDate = dateFormatter.string(from: date)
         
-        vc.lessonViewModel.student = studentViewModel.student.value
-        vc.lessonViewModel.date = date
+        vc.viewModel.student = studentViewModel.student.value
+        vc.viewModel.date = date
         vc.navigationItem.title = formattedDate + " 수업"
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
