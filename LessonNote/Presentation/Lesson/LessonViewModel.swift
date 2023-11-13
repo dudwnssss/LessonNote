@@ -12,26 +12,37 @@ import RxSwift
 final class LessonViewModel: ViewModel {
     
     struct Input {
-        
-        let lessonState: ControlProperty<LessonState>
-        let assignmentState: ControlProperty<AssignmentState>
-        let feedback: ControlProperty<String>
+        let lessonState: BehaviorRelay<Int?>
+        let assignmentState: BehaviorRelay<Int?>
+        let feedback: ControlProperty<String?>
         let tapCompleteButton: ControlEvent<Void>
     }
+    
     var date = Date()
     var student: Student?
 
     struct Output {
-        let lessonState: ControlProperty<LessonState>
-        let assignmentState: ControlProperty<AssignmentState>
-        let feedback: ControlProperty<String>
+        let lessonState: BehaviorRelay<Int?>
+        let assignmentState: BehaviorRelay<Int?>
+        let feedback: ControlProperty<String?>
         let validation: Observable<Bool>
         let upsert: PublishRelay<Void>
     }
     
     var disposeBag = DisposeBag()
     
+    // Middle
+    private let oldTag = BehaviorRelay<Int?>(value: nil)
+
     func transform(input: Input) -> Output {
+        
+//        input.assignmentState.bind(with: self) { owner, value in
+//            owner.oldTag.accept(value)
+//        }
+//        .disposed(by: disposeBag)
+        
+ 
+                
         return Output(lessonState: input.lessonState, assignmentState: input.assignmentState, feedback: input.feedback, validation: Observable.just(false), upsert: PublishRelay())
     }
     
@@ -46,17 +57,18 @@ final class LessonViewModel: ViewModel {
 
 extension LessonViewModel{
     
-    func loadState(){
+    func loadState(lessonState: BehaviorRelay<Int?>, assignmentState: BehaviorRelay<Int?>, feedback: ControlProperty<String?>){
+        
         if let student {
             for item in student.lessons{
                 if date == item.date{
                     if let state = item.lessonState {
-                        lessonState.value = LessonState(rawValue: state)
+                        lessonState.accept(state)
                     }
                     if let state = item.assignmentState{
-                        assignmentState.value = AssignmentState(rawValue: state)
+                        assignmentState.accept(state)
                     }
-                    feedback.value = item.feedback
+//                    feedback = ControlProperty<String?>.just("")
                 }
             }
         }

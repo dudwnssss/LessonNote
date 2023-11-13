@@ -19,54 +19,78 @@ final class LessonViewController: BaseViewController {
     private let lessonView = LessonView()
     let viewModel = LessonViewModel()
     
+    let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = lessonView
     }
     
     override func setProperties() {
-        viewModel.loadState()
-        
-        lessonView.lessonStateButtons.forEach { button in
-            button.addTarget(self, action: #selector(lessonStateButtonDidTap(sender:)), for: .touchUpInside)
-        }
-        lessonView.assignmentStateButtons.forEach { button in
-            button.addTarget(self, action: #selector(assignmentStateButtonDidtap(sender:)), for: .touchUpInside)
-        }
-        
-        lessonView.completeButton.addTarget(self, action: #selector(completeButtonDidTap), for: .touchUpInside)
+//        viewModel.loadState(lessonState: <#BehaviorRelay<Int?>#>, assignmentState: <#BehaviorRelay<Int?>#>, feedback: <#ControlProperty<String?>#>)
     }
     
     override func bind() {
         
-//        viewModel.assignmentState.value
-//        
-//        Observable.combineLatest(lessonView.lessonStateButtons.map{ $0.rawvalue })
-//        
-//        let input = LessonViewModel.Input(lessonState: <#T##ControlProperty<LessonState>#>, assignmentState: <#T##ControlProperty<AssignmentState>#>, feedback: <#T##ControlProperty<String>#>, tapCompleteButton: <#T##ControlEvent<Void>#>)
-        
-        
-        viewModel.lessonState.bind { state in
-            self.lessonView.lessonStateButtons.forEach { button in
-                button.configureButton(activate: state?.rawValue == button.tag)
-            }
+        let lessonInput = BehaviorRelay<Int?>(value: nil)
+        lessonView.lessonStateButtons.forEach { button in
+            button.rx.tap
+                .bind(with: self) { owner, _ in
+                    if lessonInput.value == button.tag {
+                        lessonInput.accept(nil)
+                    } else {
+                        lessonInput.accept(button.tag)
+                    }
+                }
+                .disposed(by: disposeBag)
         }
-        viewModel.assignmentState.bind { state in
-            self.lessonView.assignmentStateButtons.forEach { button in
-                button.configureButton(activate: state?.rawValue == button.tag)
-            }
+        
+        let assignmentInput = BehaviorRelay<Int?>(value: nil)
+        lessonView.assignmentStateButtons.forEach { button in
+            button.rx.tap
+                .bind(with: self) { owner, _ in
+                    if assignmentInput.value == button.tag {
+                        assignmentInput.accept(nil)
+                    } else {
+                        assignmentInput.accept(button.tag)
+                    }
+                }
+                .disposed(by: disposeBag)
         }
-        viewModel.feedback.bind { text in
+        
+        let output = viewModel.transform(input: LessonViewModel.Input(lessonState: lessonInput, assignmentState: assignmentInput, feedback: lessonView.feedbackTextView.textView.rx.text, tapCompleteButton: lessonView.completeButton.rx.tap))
+
+        output.lessonState
+            .bind(with: self) { owner, value in
+                owner.lessonView.lessonStateButtons.forEach { button in
+                    button.configureButton(activate: value == button.tag)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.assignmentState
+            .bind(with: self) { owner, value in
+                owner.lessonView.assignmentStateButtons.forEach { button in
+                    button.configureButton(activate: value == button.tag)
+                }
+            }.disposed(by: disposeBag)
+        
+        output.validation
+            .bind(with: self) { owner, value in
+                owner.lessonView.completeButton.configureButton(isValid: value)
+            }
+            .disposed(by: disposeBag)
+        
+        output.feedback.bind(with: self) { owner, text in
             if let text {
-                self.lessonView.feedbackTextView.textView.do {
+                owner.lessonView.feedbackTextView.textView.do {
                     $0.text = text
                     $0.textColor = Color.gray6
                 }
+
             }
         }
-        viewModel.isValid.bind { [weak self] value in
-            self?.lessonView.completeButton.configureButton(isValid: value)
-        }
+        .disposed(by: disposeBag)
+        
     }
     
     @objc func lessonStateButtonDidTap(sender: CustomButton){
