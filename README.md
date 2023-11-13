@@ -1,5 +1,5 @@
 ## LessonNote
-![Untitled](https://github.com/dudwnssss/LessonNote/assets/76581866/eb22be3a-c4a8-45b6-8c4e-a98c49aff2b4)
+![image](https://github.com/dudwnssss/LessonNote/assets/76581866/269ba525-70d8-4c7f-84db-16b95f9d914c)
 
 ## Topic
 - **[레슨노트 - 과외 선생님을 위한 학생 관리 서비스]**
@@ -43,9 +43,9 @@ FSCalendar의 확장함수들은 Date 배열 형식으로만, event나 subtitle�
 EllioTable의 Model은 요일과, 시작시간, 종료시간 정보만을 포함하고 있어, 날짜 개념이 존재하지 않는 문제가 있었습니다. 격주 수업일정을 반영하기 위해서는, 특정주차의 요일에 수업유무를 판단할 수 있는 로직이 필요했고, 8주치의 수업날짜를 계산, 주차정보와 요일별 수업유무를 나타내는 이중배열로 변환하여 요일에 수업이 false일 경우 hidden하는 방식으로 구현했습니다.
 
 ## ScreenShots
-![image](https://github.com/dudwnssss/LessonNote/assets/76581866/986e6977-9264-469c-afeb-97e2d7b215c4)
-![image](https://github.com/dudwnssss/LessonNote/assets/76581866/6dfff9e1-d313-4da6-9cbd-13b95d557172)
-![image](https://github.com/dudwnssss/LessonNote/assets/76581866/7895f74b-4a81-405d-83ec-d20b1daab55b)
+![image](https://github.com/dudwnssss/LessonNote/assets/76581866/e070706c-6e3b-414f-81d5-d3ef54b13b93)
+![image](https://github.com/dudwnssss/LessonNote/assets/76581866/321e352f-49ef-4898-bc08-4e4ddf5deb62)
+![image](https://github.com/dudwnssss/LessonNote/assets/76581866/2fdfde14-8071-456e-b828-8583ad143e8c)
 
 
 ## Post Mortem

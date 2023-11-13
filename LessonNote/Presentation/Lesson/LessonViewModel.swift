@@ -12,6 +12,7 @@ import RxSwift
 final class LessonViewModel: ViewModel {
     
     struct Input {
+        
         let lessonState: ControlProperty<LessonState>
         let assignmentState: ControlProperty<AssignmentState>
         let feedback: ControlProperty<String>
@@ -31,7 +32,7 @@ final class LessonViewModel: ViewModel {
     var disposeBag = DisposeBag()
     
     func transform(input: Input) -> Output {
-        return Output(lessonState: input.lessonState, assignm/Users/youngjun/LessonNoteentState: input.assignmentState, feedback: input.feedback, validation: Observable.just(false), upsert: PublishRelay())
+        return Output(lessonState: input.lessonState, assignmentState: input.assignmentState, feedback: input.feedback, validation: Observable.just(false), upsert: PublishRelay())
     }
     
     
