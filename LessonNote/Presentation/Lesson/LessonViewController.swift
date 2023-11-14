@@ -25,10 +25,6 @@ final class LessonViewController: BaseViewController {
         self.view = lessonView
     }
     
-    override func setProperties() {
-//        viewModel.loadState(lessonState: <#BehaviorRelay<Int?>#>, assignmentState: <#BehaviorRelay<Int?>#>, feedback: <#ControlProperty<String?>#>)
-    }
-    
     override func bind() {
         
         let lessonInput = BehaviorRelay<Int?>(value: nil)
@@ -57,10 +53,16 @@ final class LessonViewController: BaseViewController {
                 .disposed(by: disposeBag)
         }
         
-        let output = viewModel.transform(input: LessonViewModel.Input(lessonState: lessonInput, assignmentState: assignmentInput, feedback: lessonView.feedbackTextView.textView.rx.text, tapCompleteButton: lessonView.completeButton.rx.tap))
+        let textInput = BehaviorRelay<String?>(value: nil)
+        lessonView.feedbackTextView.textView.rx.text
+            .bind(to: textInput)
+            .disposed(by: disposeBag)
+        
+        
+        let output = viewModel.transform(input: LessonViewModel.Input(lessonState: lessonInput, assignmentState: assignmentInput, feedback: textInput, tapCompleteButton: lessonView.completeButton.rx.tap))
 
         output.lessonState
-            .bind(with: self) { owner, value in
+            .drive(with: self) { owner, value in
                 owner.lessonView.lessonStateButtons.forEach { button in
                     button.configureButton(activate: value == button.tag)
                 }
@@ -68,7 +70,7 @@ final class LessonViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.assignmentState
-            .bind(with: self) { owner, value in
+            .drive(with: self) { owner, value in
                 owner.lessonView.assignmentStateButtons.forEach { button in
                     button.configureButton(activate: value == button.tag)
                 }
@@ -80,44 +82,18 @@ final class LessonViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.feedback.bind(with: self) { owner, text in
-            if let text {
-                owner.lessonView.feedbackTextView.textView.do {
-                    $0.text = text
-                    $0.textColor = Color.gray6
-                }
-
-            }
+        output.feedback
+            .drive(with: self, onNext: { owner, value in
+                owner.lessonView.feedbackTextView.textView.text = value
+                owner.lessonView.feedbackTextView.setPlaceholderColor()
+            })
+            .disposed(by: disposeBag)
+        
+        output.upsert.bind(with: self) { owner, _ in
+            owner.delegate?.passData()
+            owner.navigationController?.popViewController(animated: true)
         }
         .disposed(by: disposeBag)
         
     }
-    
-    @objc func lessonStateButtonDidTap(sender: CustomButton){
-        if viewModel.lessonState.value?.rawValue == sender.tag {
-            viewModel.lessonState.value = nil
-        } else {
-            viewModel.lessonState.value = LessonState(rawValue: sender.tag)
-        }
-    }
-    
-    @objc func assignmentStateButtonDidtap(sender: CustomButton){
-        if viewModel.assignmentState.value?.rawValue == sender.tag {
-            viewModel.assignmentState.value = nil
-        } else {
-            viewModel.assignmentState.value = AssignmentState(rawValue: sender.tag)
-        }
-    }
-    
-    @objc func completeButtonDidTap(){
-        if lessonView.feedbackTextView.textView.text == lessonView.feedbackTextView.placeholder {
-            viewModel.feedback.value = nil
-        } else {
-            viewModel.feedback.value =  lessonView.feedbackTextView.textView.text
-        }
-        viewModel.upsertLesson()
-        delegate?.passData()
-        navigationController?.popViewController(animated: true)
-    }
-
 }

@@ -10,12 +10,7 @@ import SnapKit
 
 class CustomTextView: BaseView {
     
-    var placeholder: String? {
-        didSet {
-            setPlaceholder()
-        }
-    }
-    
+    var placeholder: String?
     var limitCount: Int = 0 {
         didSet {
             updateCountLabel()
@@ -50,14 +45,22 @@ class CustomTextView: BaseView {
             $0.textAlignment = .right
             $0.font = Font.medium14
         }
-        setPlaceholder()
         backgroundColor = Color.gray1
         cornerRadius = 20
+        setPlaceholder()
     }
     
-    private func setPlaceholder() {
-        if let placeholderText = placeholder {
-            textView.text = placeholderText
+    func setPlaceholder() {
+        if textView.text.isEmpty {
+            if let placeholderText = placeholder {
+                textView.text = placeholderText
+                textView.textColor = Color.gray4
+            }
+        }
+    }
+    
+    func setPlaceholderColor() {
+        if textView.text == placeholder {
             textView.textColor = Color.gray4
         }
     }
@@ -84,11 +87,6 @@ class CustomTextView: BaseView {
 
 extension CustomTextView: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        if textView.text == placeholder {
-            textView.text = ""
-            textView.textColor = Color.gray6
-        }
-        
         if let text = textView.text, text.count > limitCount {
             let index = text.index(text.startIndex, offsetBy: limitCount)
             textView.text = String(text.prefix(upTo: index))
@@ -97,8 +95,8 @@ extension CustomTextView: UITextViewDelegate {
     }
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        if textView.text == placeholder {
-            textView.text = ""
+        if textView.textColor == Color.gray4 {
+            textView.text = nil
             textView.textColor = Color.gray6
         }
         return true

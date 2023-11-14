@@ -6,19 +6,50 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-class MessageViewModel {
+class MessageViewModel: ViewModel {
+    
     var personType: PersonType = .student
     var student: Student?
+    var selectedDates: [Date]?
+    let disposeBag = DisposeBag()
+    
+    struct Input {
+        let messageTitle: ControlProperty<String?>
+        let messageComment: ControlProperty<String?>
+        let assginmentButtonTap: ControlEvent<Void>
+        let selectedDates: Observable<[Date]>
+        let nextButtonTap: ControlEvent<Void>
+    }
+    
+    struct Output {
+        let messageTitle: Driver<String?>
+        let messageComment: Driver<String?>
+        let isValid: Driver<Bool>
+        let showAssignment: Driver<Bool>
+    }
+    
+    func transform(input: Input) -> Output {
+    
+            
+       
+    }
+    
+
+    
     var selectedDates: CustomObservable<[Date]> = CustomObservable([])
     var showAssignment: CustomObservable<Bool> = CustomObservable(false)
     var title: CustomObservable<String> = CustomObservable("")
-    var comment: String? = nil
+    
+    let comment = BehaviorRelay<String?>(value: nil)
     var message: String?
     var isValid: CustomObservable<Bool> = CustomObservable(false)
 }
 
 extension MessageViewModel {
+    
     func createLessonMessage() -> LessonMessage{
         let message = LessonMessage(title: title.value,
                                     dates: selectedDates.value,
@@ -28,7 +59,7 @@ extension MessageViewModel {
     }
     
     func checkValidation(){
-        if title.value.isEmpty && selectedDates.value.isEmpty && ( comment == nil || comment == "") {
+        if title.value.isEmpty && selectedDates.value.isEmpty && ( comment == nil || comment.value == "") {
             message = "추가된 내용이 없습니다"
             isValid.value = false
         }

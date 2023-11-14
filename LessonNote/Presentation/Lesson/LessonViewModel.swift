@@ -11,73 +11,71 @@ import RxSwift
 
 final class LessonViewModel: ViewModel {
     
+    var date = Date()
+    var student: Student?
+    private let repository = StudentRepository()
+    var disposeBag = DisposeBag()
+
+
     struct Input {
         let lessonState: BehaviorRelay<Int?>
         let assignmentState: BehaviorRelay<Int?>
-        let feedback: ControlProperty<String?>
+        let feedback: BehaviorRelay<String?>
         let tapCompleteButton: ControlEvent<Void>
     }
-    
-    var date = Date()
-    var student: Student?
 
     struct Output {
-        let lessonState: BehaviorRelay<Int?>
-        let assignmentState: BehaviorRelay<Int?>
-        let feedback: ControlProperty<String?>
+        let lessonState: Driver<Int?>
+        let assignmentState: Driver<Int?>
+        let feedback: Driver<String?>
         let validation: Observable<Bool>
         let upsert: PublishRelay<Void>
     }
     
-    var disposeBag = DisposeBag()
+    let upsert = PublishRelay<Void>()
     
-    // Middle
-    private let oldTag = BehaviorRelay<Int?>(value: nil)
-
     func transform(input: Input) -> Output {
-        
-//        input.assignmentState.bind(with: self) { owner, value in
-//            owner.oldTag.accept(value)
-//        }
-//        .disposed(by: disposeBag)
-        
- 
-                
-        return Output(lessonState: input.lessonState, assignmentState: input.assignmentState, feedback: input.feedback, validation: Observable.just(false), upsert: PublishRelay())
-    }
-    
-    
-    private let repository = StudentRepository()
-    var lessonState: CustomObservable<LessonState?> = CustomObservable(nil)
-    var assignmentState: CustomObservable<AssignmentState?> = CustomObservable(nil)
-    var feedback: CustomObservable<String?> = CustomObservable(nil)
-    var isValid: CustomObservable<Bool> = CustomObservable(true)
-    
-}
-
-extension LessonViewModel{
-    
-    func loadState(lessonState: BehaviorRelay<Int?>, assignmentState: BehaviorRelay<Int?>, feedback: ControlProperty<String?>){
         
         if let student {
             for item in student.lessons{
                 if date == item.date{
                     if let state = item.lessonState {
-                        lessonState.accept(state)
+                        input.lessonState.accept(state)
                     }
-                    if let state = item.assignmentState{
-                        assignmentState.accept(state)
+                    if let state = item.assignmentState {
+                        input.assignmentState.accept(state)
                     }
-//                    feedback = ControlProperty<String?>.just("")
+                    if let text = item.feedback {
+                        input.feedback.accept(text)
+                    }
                 }
             }
         }
+        
+        let validation = input.lessonState.map { $0 != nil }
+        input.tapCompleteButton
+            .withLatestFrom(input.feedback)
+            .bind(with: self) { owner, feedback in
+                owner.upsertLesson(lessonState: input.lessonState.value,
+                                   assignmentState: input.assignmentState.value,
+                                   feedback: feedback)
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(lessonState: input.lessonState.asDriver(),
+                      assignmentState: input.assignmentState.asDriver(), feedback: input.feedback.asDriver(),
+                      validation: validation,
+                      upsert: upsert)
     }
+}
+
+extension LessonViewModel{
     
-    func upsertLesson(){
-        let lesson = Lesson(date: date, lessonState: lessonState.value?.rawValue, assignmentState: assignmentState.value?.rawValue, feedback: feedback.value)
+    func upsertLesson(lessonState: Int?, assignmentState: Int?, feedback: String?){
+        let lesson = Lesson(date: date, lessonState: lessonState, assignmentState: assignmentState, feedback: feedback)
         if let student{
             repository.upsertLesson(student: student, lesson: lesson)
+            upsert.accept(())
         }
     }
 }

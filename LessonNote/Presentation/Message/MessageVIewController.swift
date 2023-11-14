@@ -7,18 +7,23 @@
 
 import UIKit
 import FSCalendar
+import RxSwift
+import RxCocoa
 import Toast
+
 
 class MessageViewController: BaseViewController {
     
     private let messageView = MessageView()
     let messageViewModel = MessageViewModel()
+    var selectedDates = BehaviorRelay<[Date]>(value: [])
+    
     override func loadView() {
         self.view = messageView
     }
     override func setProperties() {
         guard let student = messageViewModel.student else {return}
-       
+        
         messageView.do {
             $0.configureView(student: student, type: messageViewModel.personType)
             $0.calendarView.delegate = self
@@ -34,6 +39,14 @@ class MessageViewController: BaseViewController {
     }
     
     override func bind() {
+        
+        let output = messageViewModel.transform(input: MessageViewModel.Input(messageTitle: messageView.messageTitleTextField.textField.rx.text,
+                                                                              messageComment: messageView.commentTextView.textView.rx.text,
+                                                                              assginmentButtonTap: messageView.assignmentButton.rx.tap, selectedDates: selectedDates.asObservable(),
+                                                                              nextButtonTap: messageView.nextButton.rx.tap))
+        
+        
+        
         messageViewModel.showAssignment.bind { value in
             self.messageView.configureButton(isSelected: value)
             self.messageView.calendarView.reloadData()
@@ -45,6 +58,7 @@ class MessageViewController: BaseViewController {
         messageViewModel.isValid.bind { [weak self] value in
             self?.messageView.nextButton.configureButton(isValid: value)
         }
+        
     }
     
     @objc func assignmentButtonDidTap(){
@@ -71,6 +85,17 @@ class MessageViewController: BaseViewController {
 }
 
 extension MessageViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let dates = messageView.calendarView.selectedDates
+        selectedDates.accept(dates)
+    }
+    
+    func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let dates = messageView.calendarView.selectedDates
+        selectedDates.accept(dates)
+    }
+    
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         calendar.snp.updateConstraints { (make) in
             make.height.equalTo(bounds.height)
