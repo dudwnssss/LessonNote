@@ -21,7 +21,7 @@ final class MessageView: BaseView {
     let calendarView = CalendarView()
     let assignmentButton = UIButton()
     private let commentLabel = CustomTitleLabel(title: "추가 코멘트")
-    let commentTextView = CustomTextView(placeholder: "추가로 남길 코멘트가 있으시다면\n자유롭게 남겨주세요.", limitCount: 300)
+    let commentTextView = CustomTextView(placeholder: Const.commentPlaceholder, limitCount: 300)
     let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
     let nextButton = CompleteButton(title: "다음으로")

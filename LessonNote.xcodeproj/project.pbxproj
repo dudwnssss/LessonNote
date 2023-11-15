@@ -133,6 +133,7 @@
 		10CE4FE42ADBF92000FF3E3F /* MessagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE4FE32ADBF92000FF3E3F /* MessagePreviewViewController.swift */; };
 		10DB31522AD5354800ADC8BA /* UIScrollView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DB31512AD5354800ADC8BA /* UIScrollView+.swift */; };
 		10EB68E52ADD547200EB108B /* LessonMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EB68E42ADD547200EB108B /* LessonMessage.swift */; };
+		10FBEAFF2B0496A1001DA3A5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FBEAFE2B0496A1001DA3A5 /* Const.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,6 +256,7 @@
 		10CE4FE32ADBF92000FF3E3F /* MessagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePreviewViewController.swift; sourceTree = "<group>"; };
 		10DB31512AD5354800ADC8BA /* UIScrollView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+.swift"; sourceTree = "<group>"; };
 		10EB68E42ADD547200EB108B /* LessonMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonMessage.swift; sourceTree = "<group>"; };
+		10FBEAFE2B0496A1001DA3A5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -556,6 +558,7 @@
 				1016FAF62AC957C6003E7612 /* Image.swift */,
 				1016FAF82AC959C4003E7612 /* Font.swift */,
 				1016FAFA2AC95AFB003E7612 /* Color.swift */,
+				10FBEAFE2B0496A1001DA3A5 /* Const.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -973,6 +976,7 @@
 				1002094B2ADE78F600571959 /* CustomStartWeekdayView.swift in Sources */,
 				101E393C2AE63C51001F4534 /* MemoViewController.swift in Sources */,
 				101E39402AE63C5E001F4534 /* MemoViewModel.swift in Sources */,
+				10FBEAFF2B0496A1001DA3A5 /* Const.swift in Sources */,
 				10A86DBA2AD6661500817092 /* LessonVIew.swift in Sources */,
 				104C88442AD5151C00EC283C /* PhoneNumberButton.swift in Sources */,
 				10CE4FDB2ADB8DF900FF3E3F /* MessageView.swift in Sources */,

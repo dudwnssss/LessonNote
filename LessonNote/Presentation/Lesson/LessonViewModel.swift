@@ -14,8 +14,6 @@ final class LessonViewModel: ViewModel {
     var date = Date()
     var student: Student?
     private let repository = StudentRepository()
-    var disposeBag = DisposeBag()
-
 
     struct Input {
         let lessonState: BehaviorRelay<Int?>
@@ -34,7 +32,7 @@ final class LessonViewModel: ViewModel {
     
     let upsert = PublishRelay<Void>()
     
-    func transform(input: Input) -> Output {
+    func transform(input: Input, disposeBag: DisposeBag) -> Output {
         
         if let student {
             for item in student.lessons{

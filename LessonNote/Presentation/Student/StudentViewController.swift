@@ -111,8 +111,8 @@ final class StudentViewController: BaseViewController {
         }
         let message = UIAction(title: "피드백 문자 보내기", image: Image.messageLong) { _ in
             let vc = MessageViewController()
-            vc.messageViewModel.personType = type
-            vc.messageViewModel.student = self.studentViewModel.student.value
+            vc.viewModel.personType = type
+            vc.viewModel.student = self.studentViewModel.student.value
             self.navigationController?.pushViewController(vc, animated: true)
         }
         let menuItems = [call, message]

@@ -13,8 +13,6 @@ class MessageViewModel: ViewModel {
     
     var personType: PersonType = .student
     var student: Student?
-    var selectedDates: [Date]?
-    let disposeBag = DisposeBag()
     
     struct Input {
         let messageTitle: ControlProperty<String?>
@@ -25,45 +23,41 @@ class MessageViewModel: ViewModel {
     }
     
     struct Output {
-        let messageTitle: Driver<String?>
-        let messageComment: Driver<String?>
-        let isValid: Driver<Bool>
-        let showAssignment: Driver<Bool>
+        let messageTitle = PublishRelay<String?>()
+        let messageComment = PublishRelay<String?>()
+        let isValid = PublishRelay<Bool>()
+        let showAssignment = BehaviorRelay<Bool>(value: false)
+        let navToNext = PublishRelay<LessonMessage>()
     }
     
-    func transform(input: Input) -> Output {
-    
-            
-       
-    }
-    
-
-    
-    var selectedDates: CustomObservable<[Date]> = CustomObservable([])
-    var showAssignment: CustomObservable<Bool> = CustomObservable(false)
-    var title: CustomObservable<String> = CustomObservable("")
-    
-    let comment = BehaviorRelay<String?>(value: nil)
-    var message: String?
-    var isValid: CustomObservable<Bool> = CustomObservable(false)
-}
-
-extension MessageViewModel {
-    
-    func createLessonMessage() -> LessonMessage{
-        let message = LessonMessage(title: title.value,
-                                    dates: selectedDates.value,
-                                    comment: comment,
-                                    assignment: showAssignment.value, personType: personType)
-        return message
-    }
-    
-    func checkValidation(){
-        if title.value.isEmpty && selectedDates.value.isEmpty && ( comment == nil || comment.value == "") {
-            message = "추가된 내용이 없습니다"
-            isValid.value = false
-        }
-        message = nil
-        isValid.value = true
+    func transform(input: Input, disposeBag: DisposeBag) -> Output {
+        let output = Output()
+        
+        let validation = Observable.combineLatest(input.messageTitle.asObservable(), input.messageComment.asObservable(), input.selectedDates)
+            .map { title, comment, dates in
+                !(title == "" && dates.isEmpty && comment == Const.commentPlaceholder)
+            }
+            .debug()
+        
+        let messageObservable = Observable.combineLatest(input.messageTitle.asObservable(), input.messageComment.asObservable(), input.selectedDates)
+        
+        
+        input.nextButtonTap
+            .withLatestFrom(validation)
+            .bind(with: self) { owner, value in
+                if value {
+                    output.navToNext.accept(<#T##event: LessonMessage##LessonMessage#>)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        input.assginmentButtonTap
+            .bind(with: self) { owner, _ in
+                let value = !output.showAssignment.value
+                output.showAssignment.accept(value)
+            }
+            .disposed(by: disposeBag)
+        
+        return output
     }
 }

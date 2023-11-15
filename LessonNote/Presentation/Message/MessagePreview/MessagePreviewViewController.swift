@@ -13,15 +13,20 @@ import MessageUI
 class MessagePreviewViewController: BaseViewController {
     
     private let messagePreviewView = MessagePreviewView()
-    let messagePreviewViewModel = MessagePreviewViewModel()
+    private let viewModel: MessagePreviewViewModel
+    
+    init(viewModel: MessagePreviewViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
     
     override func setProperties() {
-        messagePreviewViewModel.lessonMessage.dates.forEach { date in
+        viewModel.lessonMessage.dates.forEach { date in
             messagePreviewView.calendarView.select(date)
         }
         messagePreviewView.do {
-            $0.messageTitleLabel.text = messagePreviewViewModel.lessonMessage.title
-            $0.commentLabel.text = messagePreviewViewModel.lessonMessage.comment
+            $0.messageTitleLabel.text = viewModel.lessonMessage.title
+            $0.commentLabel.text = viewModel.lessonMessage.comment
             $0.calendarView.dataSource = self
             $0.calendarView.delegate = self
             $0.sendButton.addTarget(self, action: #selector(sendButtonDidTap), for: .touchUpInside)
@@ -49,12 +54,17 @@ class MessagePreviewViewController: BaseViewController {
     
     override func setLayouts() {
         messagePreviewView.calendarView.snp.makeConstraints {
-            $0.height.equalTo(300 * DateManager.shared.countUniqueMonths(dates: messagePreviewViewModel.lessonMessage.dates))
+            $0.height.equalTo(300 * DateManager.shared.countUniqueMonths(dates: viewModel.lessonMessage.dates))
         }
     }
     
     @objc func sendButtonDidTap(){
         sendMessage()
+    }
+    
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -66,14 +76,14 @@ extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegate
         self.view.layoutIfNeeded()
     }
     func minimumDate(for calendar: FSCalendar) -> Date {
-        if let minDate = messagePreviewViewModel.lessonMessage.dates.min() {
+        if let minDate = viewModel.lessonMessage.dates.min() {
             return minDate
         } else {
             return Date()
         }
     }
     func maximumDate(for calendar: FSCalendar) -> Date {
-        if let maxDate = messagePreviewViewModel.lessonMessage.dates.max() {
+        if let maxDate = viewModel.lessonMessage.dates.max() {
             return maxDate
         } else {
             return Date()
@@ -81,7 +91,7 @@ extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegate
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
-        guard let lessons = messagePreviewViewModel.student?.lessons else { return nil }
+        guard let lessons = viewModel.student?.lessons else { return nil }
         for item in lessons {
             if date == item.date{
                 guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
@@ -98,9 +108,9 @@ extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegate
     
     
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        guard let lessons = messagePreviewViewModel.student?.lessons else { return nil }
+        guard let lessons = viewModel.student?.lessons else { return nil }
         for item in lessons {
-            if date == item.date && messagePreviewViewModel.lessonMessage.dates.contains(date) {
+            if date == item.date && viewModel.lessonMessage.dates.contains(date) {
                 guard let state = item.lessonState,
                       let stateString = LessonState(rawValue: state)?.calendarTitle else { return nil}
                 return stateString
@@ -110,10 +120,10 @@ extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegate
     }
     
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
-        if messagePreviewViewModel.lessonMessage.assignment {
-            guard let lessons = messagePreviewViewModel.student?.lessons else { return nil }
+        if viewModel.lessonMessage.assignment {
+            guard let lessons = viewModel.student?.lessons else { return nil }
             for item in lessons {
-                if date == item.date && messagePreviewViewModel.lessonMessage.dates.contains(date) {
+                if date == item.date && viewModel.lessonMessage.dates.contains(date) {
                     guard let stateRawValue = item.assignmentState, let state = AssignmentState(rawValue: stateRawValue) else {return nil}
                     return state.image
                 }
@@ -133,8 +143,8 @@ extension MessagePreviewViewController: MFMessageComposeViewControllerDelegate {
             messageComposer.messageComposeDelegate = self
             
             var phoneNumber = ""
-            guard let student = messagePreviewViewModel.student else { return }
-            switch messagePreviewViewModel.lessonMessage.personType {
+            guard let student = viewModel.student else { return }
+            switch viewModel.lessonMessage.personType {
             case .student:
                 guard let studentPhoneNumber = student.studentPhoneNumber else { return }
                 phoneNumber = studentPhoneNumber
