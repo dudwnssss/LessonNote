@@ -15,16 +15,16 @@ class MessageViewModel: ViewModel {
     var student: Student?
     
     struct Input {
-        let messageTitle: ControlProperty<String?>
-        let messageComment: ControlProperty<String?>
-        let assginmentButtonTap: ControlEvent<Void>
+        let messageTitle: Observable<String?>
+        let messageComment: Observable<String?>
+        let assginmentButtonTap: Observable<Void>
         let selectedDates: Observable<[Date]>
-        let nextButtonTap: ControlEvent<Void>
+        let nextButtonTap: Observable<Void>
     }
     
     struct Output {
         let messageTitle = PublishRelay<String?>()
-        let messageComment = PublishRelay<String?>()
+        let messageComment = BehaviorRelay<String?>(value: nil)
         let isValid = PublishRelay<Bool>()
         let showAssignment = BehaviorRelay<Bool>(value: false)
         let navToNext = PublishRelay<LessonMessage>()
@@ -33,22 +33,21 @@ class MessageViewModel: ViewModel {
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
         
+        input.messageTitle
+            .bind(to: output.messageTitle)
+            .disposed(by: disposeBag)
+        
+        input.messageComment
+            .bind(to: output.messageComment)
+            .disposed(by: disposeBag)
+        
         let validation = Observable.combineLatest(input.messageTitle.asObservable(), input.messageComment.asObservable(), input.selectedDates)
             .map { title, comment, dates in
                 !(title == "" && dates.isEmpty && comment == Const.commentPlaceholder)
             }
-            .debug()
         
-        let messageObservable = Observable.combineLatest(input.messageTitle.asObservable(), input.messageComment.asObservable(), input.selectedDates)
-        
-        
-        input.nextButtonTap
-            .withLatestFrom(validation)
-            .bind(with: self) { owner, value in
-                if value {
-                    output.navToNext.accept(<#T##event: LessonMessage##LessonMessage#>)
-                }
-            }
+        validation
+            .bind(to: output.isValid)
             .disposed(by: disposeBag)
         
         input.assginmentButtonTap
@@ -57,7 +56,24 @@ class MessageViewModel: ViewModel {
                 output.showAssignment.accept(value)
             }
             .disposed(by: disposeBag)
+                
+        input.nextButtonTap
+            .withLatestFrom(validation)
+            .filter { $0 }
+            .withLatestFrom(Observable.combineLatest(input.messageTitle, input.messageComment, input.selectedDates))
+               .map { title, comment, dates in
+                   return LessonMessage(
+                       title: title,
+                       dates: dates,
+                       comment: comment,
+                       assignment: output.showAssignment.value,
+                       personType: self.personType
+                   )
+               }
+               .bind(to: output.navToNext)
+               .disposed(by: disposeBag)
         
         return output
     }
 }
+

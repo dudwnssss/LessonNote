@@ -8,7 +8,7 @@
 import Foundation
 
 struct LessonMessage {
-    let title: String
+    let title: String?
     let dates: [Date]
     let comment: String?
     let assignment: Bool
