@@ -25,7 +25,7 @@ class HomeViewController: BaseViewController{
     
     override func setNavigationBar() {
         navigationItem.title = "홈"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(editButtonDidTap))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(settingButtonDidTap))
     }
     
     override func setProperties() {
