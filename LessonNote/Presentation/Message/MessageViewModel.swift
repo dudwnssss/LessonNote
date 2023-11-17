@@ -11,8 +11,13 @@ import RxCocoa
 
 class MessageViewModel: ViewModel {
     
-    var personType: PersonType = .student
-    var student: Student?
+    let personType: PersonType
+    let student: Student
+    
+    init(personType: PersonType, student: Student) {
+        self.personType = personType
+        self.student = student
+    }
     
     struct Input {
         let messageTitle: Observable<String?>
@@ -23,7 +28,6 @@ class MessageViewModel: ViewModel {
     }
     
     struct Output {
-        let messageTitle = PublishRelay<String?>()
         let messageComment = BehaviorRelay<String?>(value: nil)
         let isValid = PublishRelay<Bool>()
         let showAssignment = BehaviorRelay<Bool>(value: false)
@@ -32,10 +36,6 @@ class MessageViewModel: ViewModel {
     
     func transform(input: Input, disposeBag: DisposeBag) -> Output {
         let output = Output()
-        
-        input.messageTitle
-            .bind(to: output.messageTitle)
-            .disposed(by: disposeBag)
         
         input.messageComment
             .bind(to: output.messageComment)
@@ -65,7 +65,7 @@ class MessageViewModel: ViewModel {
                    return LessonMessage(
                        title: title,
                        dates: dates,
-                       comment: comment,
+                       comment: comment == Const.commentPlaceholder ? nil : comment,
                        assignment: output.showAssignment.value,
                        personType: self.personType
                    )

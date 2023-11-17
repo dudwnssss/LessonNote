@@ -85,6 +85,7 @@
 		101E39422AE64127001F4534 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E39412AE64127001F4534 /* Setting.swift */; };
 		101E39592AE7C780001F4534 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 101E39582AE7C780001F4534 /* RxCocoa */; };
 		101E395B2AE7C780001F4534 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 101E395A2AE7C780001F4534 /* RxSwift */; };
+		101E72F22B07501C00A860B0 /* PersonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E72F12B07501C00A860B0 /* PersonType.swift */; };
 		103B9BDF2B01098100F84940 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9BDE2B01098100F84940 /* ViewModel.swift */; };
 		1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9382ACA931C00A56C76 /* StudentInfoView.swift */; };
 		1048F93B2ACA932400A56C76 /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */; };
@@ -210,6 +211,7 @@
 		101E393D2AE63C58001F4534 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		101E393F2AE63C5E001F4534 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		101E39412AE64127001F4534 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		101E72F12B07501C00A860B0 /* PersonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonType.swift; sourceTree = "<group>"; };
 		103B9BDE2B01098100F84940 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		1048F9382ACA931C00A56C76 /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoView.swift; sourceTree = "<group>"; };
 		1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
@@ -733,6 +735,7 @@
 				1048F9512ACC02E100A56C76 /* Weekday.swift */,
 				10A86DC42AD69E8D00817092 /* LessonState.swift */,
 				101E39412AE64127001F4534 /* Setting.swift */,
+				101E72F12B07501C00A860B0 /* PersonType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -950,6 +953,7 @@
 				1010CBE62ACFA45500B40498 /* CustomStudentNameView.swift in Sources */,
 				100209472ADE54E900571959 /* StudentEditViewModel.swift in Sources */,
 				1010CBD92ACEC5FE00B40498 /* StudentInfoViewModel.swift in Sources */,
+				101E72F22B07501C00A860B0 /* PersonType.swift in Sources */,
 				1010CC2B2AD2670500B40498 /* ElliotDayOption.swift in Sources */,
 				1010CC262AD2670500B40498 /* ElliotableCell.swift in Sources */,
 				104C883B2AD5135000EC283C /* StudentViewController.swift in Sources */,

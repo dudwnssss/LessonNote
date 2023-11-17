@@ -9,22 +9,6 @@ import UIKit
 import FSCalendar
 import Toast
 
-
-
-enum PersonType {
-    case student
-    case parent
-    
-    var title: String {
-        switch self {
-        case .student:
-            return "학생"
-        case .parent:
-            return "학부모"
-        }
-    }
-}
-
 final class StudentViewController: BaseViewController {
     
     private let studentView = StudentView()
@@ -36,8 +20,7 @@ final class StudentViewController: BaseViewController {
     
     override func setNavigationBar() {
         navigationItem.title = "학생 정보"
-        //        let memo = UIBarButtonItem(image: Image.memo, style: .plain, target: self, action: nil)
-        let setting = UIBarButtonItem(image: Image.setting, style: .plain, target: self, action: #selector(settingButtonDidTap))
+        let setting = UIBarButtonItem(image: Image.edit, style: .plain, target: self, action: #selector(editButtonDidTap))
         navigationItem.rightBarButtonItems = [setting]
     }
     
@@ -109,11 +92,10 @@ final class StudentViewController: BaseViewController {
                 UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
             }
         }
-        let message = UIAction(title: "피드백 문자 보내기", image: Image.messageLong) { _ in
-            let vc = MessageViewController()
-            vc.viewModel.personType = type
-            vc.viewModel.student = self.studentViewModel.student.value
-            self.navigationController?.pushViewController(vc, animated: true)
+        let message = UIAction(title: "피드백 문자 보내기", image: Image.messageLong) { [weak self] _ in
+            let vm = MessageViewModel(personType: type, student: (self?.studentViewModel.student.value)!)
+            let vc = MessageViewController(viewModel: vm)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
         let menuItems = [call, message]
         let menu = UIMenu(title: phoneNumber.withHypen, children: menuItems)
@@ -122,7 +104,7 @@ final class StudentViewController: BaseViewController {
         button.showsMenuAsPrimaryAction = true
     }
     
-    @objc func settingButtonDidTap(){
+    @objc func editButtonDidTap(){
         let vc = StudentEditViewController()
         vc.viewModel.student.value = studentViewModel.student.value
         vc.delegate = self

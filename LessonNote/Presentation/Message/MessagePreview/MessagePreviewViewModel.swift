@@ -8,6 +8,11 @@
 import Foundation
 
 class MessagePreviewViewModel {
-    var student: Student?
-    var lessonMessage: LessonMessage!
+    let student: Student
+    let lessonMessage: LessonMessage
+    
+    init(student: Student, lessonMessage: LessonMessage) {
+        self.student = student
+        self.lessonMessage = lessonMessage
+    }
 }

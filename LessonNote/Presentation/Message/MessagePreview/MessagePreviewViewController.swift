@@ -91,7 +91,7 @@ extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegate
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
-        guard let lessons = viewModel.student?.lessons else { return nil }
+        let lessons = viewModel.student.lessons
         for item in lessons {
             if date == item.date{
                 guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
@@ -108,7 +108,7 @@ extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegate
     
     
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        guard let lessons = viewModel.student?.lessons else { return nil }
+        let lessons = viewModel.student.lessons
         for item in lessons {
             if date == item.date && viewModel.lessonMessage.dates.contains(date) {
                 guard let state = item.lessonState,
@@ -121,7 +121,7 @@ extension MessagePreviewViewController: FSCalendarDataSource, FSCalendarDelegate
     
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         if viewModel.lessonMessage.assignment {
-            guard let lessons = viewModel.student?.lessons else { return nil }
+            let lessons = viewModel.student.lessons
             for item in lessons {
                 if date == item.date && viewModel.lessonMessage.dates.contains(date) {
                     guard let stateRawValue = item.assignmentState, let state = AssignmentState(rawValue: stateRawValue) else {return nil}
@@ -143,7 +143,7 @@ extension MessagePreviewViewController: MFMessageComposeViewControllerDelegate {
             messageComposer.messageComposeDelegate = self
             
             var phoneNumber = ""
-            guard let student = viewModel.student else { return }
+            let student = viewModel.student
             switch viewModel.lessonMessage.personType {
             case .student:
                 guard let studentPhoneNumber = student.studentPhoneNumber else { return }

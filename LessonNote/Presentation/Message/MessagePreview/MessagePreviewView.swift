@@ -50,7 +50,6 @@ class MessagePreviewView: BaseView {
         }
         calendarView.do {
             $0.pagingEnabled = false
-            $0.headerHeight = 30
             $0.isUserInteractionEnabled = false
             $0.allowsMultipleSelection = true
             $0.today = nil

@@ -15,19 +15,22 @@ import Toast
 class MessageViewController: BaseViewController {
     
     private let messageView = MessageView()
-    let viewModel = MessageViewModel()
-    let selectedDates = BehaviorRelay<[Date]>(value: [])
-    let showAssignment = BehaviorRelay<Bool>(value: false)
-    let disposeBag = DisposeBag()
+    private let selectedDates = BehaviorRelay<[Date]>(value: [])
+    private let showAssignment = BehaviorRelay<Bool>(value: false)
+    private let disposeBag = DisposeBag()
+    private let viewModel: MessageViewModel
     
+    init(viewModel: MessageViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
     override func loadView() {
         self.view = messageView
     }
     override func setProperties() {
-        guard let student = viewModel.student else {return}
-        
         messageView.do {
-            $0.configureView(student: student, type: viewModel.personType)
+            $0.configureView(student: viewModel.student, type: viewModel.personType)
             $0.calendarView.delegate = self
             $0.calendarView.dataSource = self
         }
@@ -67,6 +70,11 @@ class MessageViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
     }
+    
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension MessageViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
@@ -89,20 +97,19 @@ extension MessageViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillSelectionColorFor date: Date) -> UIColor? {
-        guard let icon = viewModel.student?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else { return nil }
+        let icon = viewModel.student.studentIcon
+        let color = StudentIcon(rawValue: icon)?.textColor
         return color
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        guard let student = viewModel.student, let startDate = student.lessonStartDate else {
-            return Date()
-        }
-        return startDate
+        let startDate = viewModel.student.lessonStartDate
+        return startDate ?? Date()
     }
     
     func calendar(_ calendar: FSCalendar, imageFor date: Date) -> UIImage? {
         if showAssignment.value {
-            guard let lessons = viewModel.student?.lessons else { return nil }
+            let lessons = viewModel.student.lessons
             for item in lessons {
                 if date == item.date{
                     guard let stateRawValue = item.assignmentState, let state = AssignmentState(rawValue: stateRawValue) else {return nil}
@@ -118,7 +125,7 @@ extension MessageViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
 
 
 func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-    guard let lessons = viewModel.student?.lessons else { return nil }
+    let lessons = viewModel.student.lessons
     for item in lessons {
         if date == item.date{
             guard let state = item.lessonState,
@@ -130,13 +137,14 @@ func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
 }
 
 func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleDefaultColorFor date: Date) -> UIColor? {
-    guard let lessons = viewModel.student?.lessons else { return nil }
+    let lessons = viewModel.student.lessons
     for item in lessons {
         if date == item.date{
             guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
             switch state {
             case .completed, .supplemented:
-                guard let icon = viewModel.student?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
+               let icon = viewModel.student.studentIcon
+                let color = StudentIcon(rawValue: icon)?.textColor
                 return color
                 
             case .canceled, .none:
@@ -148,7 +156,7 @@ func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitle
 }
 
 func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleSelectionColorFor date: Date) -> UIColor? {
-    guard let lessons = viewModel.student?.lessons else { return nil }
+    let lessons = viewModel.student.lessons
     for item in lessons {
         if date == item.date{
             guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
@@ -168,9 +176,7 @@ func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitle
 
 extension MessageViewController {
     private func pushToMessagePreviewVC(message: LessonMessage){
-        let vm = MessagePreviewViewModel()
-        vm.student = viewModel.student
-        vm.lessonMessage = message
+        let vm = MessagePreviewViewModel(student: viewModel.student, lessonMessage: message)
         let vc = MessagePreviewViewController(viewModel: vm)
         navigationController?.pushViewController(vc, animated: true)
     }
