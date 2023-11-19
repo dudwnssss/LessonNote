@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class LessonViewModel: ViewModel {
+final class LessonViewModel: ViewModelType {
     
     var date = Date()
     var student: Student?

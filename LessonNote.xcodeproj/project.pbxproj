@@ -86,7 +86,7 @@
 		101E39592AE7C780001F4534 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 101E39582AE7C780001F4534 /* RxCocoa */; };
 		101E395B2AE7C780001F4534 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 101E395A2AE7C780001F4534 /* RxSwift */; };
 		101E72F22B07501C00A860B0 /* PersonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101E72F12B07501C00A860B0 /* PersonType.swift */; };
-		103B9BDF2B01098100F84940 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9BDE2B01098100F84940 /* ViewModel.swift */; };
+		103B9BDF2B01098100F84940 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103B9BDE2B01098100F84940 /* ViewModelType.swift */; };
 		1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F9382ACA931C00A56C76 /* StudentInfoView.swift */; };
 		1048F93B2ACA932400A56C76 /* StudentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */; };
 		1048F93D2ACA935700A56C76 /* LessonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */; };
@@ -212,7 +212,7 @@
 		101E393F2AE63C5E001F4534 /* MemoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoViewModel.swift; sourceTree = "<group>"; };
 		101E39412AE64127001F4534 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		101E72F12B07501C00A860B0 /* PersonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonType.swift; sourceTree = "<group>"; };
-		103B9BDE2B01098100F84940 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		103B9BDE2B01098100F84940 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		1048F9382ACA931C00A56C76 /* StudentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoView.swift; sourceTree = "<group>"; };
 		1048F93A2ACA932400A56C76 /* StudentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInfoViewController.swift; sourceTree = "<group>"; };
 		1048F93C2ACA935700A56C76 /* LessonInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonInfoViewController.swift; sourceTree = "<group>"; };
@@ -714,7 +714,7 @@
 		103B9BDB2B01096700F84940 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				103B9BDE2B01098100F84940 /* ViewModel.swift */,
+				103B9BDE2B01098100F84940 /* ViewModelType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -901,7 +901,7 @@
 				1048F9B22ACD6B6E00A56C76 /* CheckBoxButton.swift in Sources */,
 				1048F9392ACA931C00A56C76 /* StudentInfoView.swift in Sources */,
 				1016FAFF2AC95DC2003E7612 /* UICollectionView+ReusableView.swift in Sources */,
-				103B9BDF2B01098100F84940 /* ViewModel.swift in Sources */,
+				103B9BDF2B01098100F84940 /* ViewModelType.swift in Sources */,
 				1048F9A62ACD210200A56C76 /* WeekdayStackView.swift in Sources */,
 				1010CC2E2AD2673100B40498 /* TimetableCell.swift in Sources */,
 				1010CBF02ACFB4E100B40498 /* CustomLessonTimeView.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class MessageViewModel: ViewModel {
+class MessageViewModel: ViewModelType {
     
     let personType: PersonType
     let student: Student
