@@ -23,7 +23,7 @@ final class StudentCollectionViewCell: UICollectionViewCell {
         setProperties()
         setLayouts()
     }
-    
+    //test
     override func prepareForReuse() {
         super.prepareForReuse()
         print("prepare reuse")
