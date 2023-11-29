@@ -39,7 +39,7 @@ enum LessonState: Int, CaseIterable {
         }
     }
 }
-
+//state
 enum AssignmentState: Int, CaseIterable {
     case good
     case soso
