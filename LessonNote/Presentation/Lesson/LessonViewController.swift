@@ -14,12 +14,10 @@ protocol PassData: AnyObject {
 }
 
 final class LessonViewController: BaseViewController {
-    
     weak var delegate: PassData?
     private let lessonView = LessonView()
     let viewModel = LessonViewModel()
-    
-    let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     override func loadView() {
         self.view = lessonView

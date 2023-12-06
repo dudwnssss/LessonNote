@@ -8,7 +8,6 @@
 import UIKit
 
 final class StudentCollectionViewCell: UICollectionViewCell {
-        
     let iconImageView = UIImageView()
     let nameLabel = UILabel()
     let studentLabel = UILabel()
@@ -26,13 +25,35 @@ final class StudentCollectionViewCell: UICollectionViewCell {
     //test
     override func prepareForReuse() {
         super.prepareForReuse()
-        print("prepare reuse")
         for arrangedSubview in lessonTimeStackView.arrangedSubviews {
               lessonTimeStackView.removeArrangedSubview(arrangedSubview)
               arrangedSubview.removeFromSuperview()
           }
     }
     
+    func configureCell(student: Student){
+        nameLabel.text = student.studentName
+        guard let color = StudentIcon(rawValue: student.studentIcon)?.textColor else { return }
+        weekCountLabel.textColor = color
+        if student.weekCount == 1 {
+            weekCountLabel.text = "매주"
+        } else {
+            weekCountLabel.text = "\(student.weekCount)주 마다"
+        }
+        iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.image
+        student.lessonSchedules.forEach {
+            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: color)
+            lessonTimeStackView.addArrangedSubview(lessonTimeView)
+        }
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension StudentCollectionViewCell {
     private func setProperties() {
         punchImageView.do {
             $0.image = Image.notePunched
@@ -62,8 +83,6 @@ final class StudentCollectionViewCell: UICollectionViewCell {
             $0.axis = .vertical
             $0.alignment = .leading
         }
-
-
     }
     
     private func setLayouts() {
@@ -106,29 +125,5 @@ final class StudentCollectionViewCell: UICollectionViewCell {
             $0.bottom.equalToSuperview().offset(-25)
             $0.horizontalEdges.equalTo(separatorView)
         }
-    }
-    
-    func configureCell(student: Student){
-        nameLabel.text = student.studentName
-        guard let color = StudentIcon(rawValue: student.studentIcon)?.textColor else { return }
-        weekCountLabel.textColor = color
-        if student.weekCount == 1 {
-            weekCountLabel.text = "매주"
-        } else {
-            weekCountLabel.text = "\(student.weekCount)주 마다"
-        }
-        iconImageView.image = StudentIcon(rawValue: student.studentIcon)?.image
-        student.lessonSchedules.forEach {
-            let lessonTimeView = LessonTimeView(lessonSchedule: $0, color: color)
-            lessonTimeStackView.addArrangedSubview(lessonTimeView)
-        }
-    }
-    
-
-
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

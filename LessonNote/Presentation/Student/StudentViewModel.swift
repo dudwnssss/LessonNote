@@ -8,7 +8,6 @@
 import Foundation
 
 final class StudentViewModel {
-    
     private let repository = StudentRepository()
     var scheduledLessonDates: CustomObservable<[Date]> = CustomObservable([]) //event 사용
     var student: CustomObservable<Student?> = CustomObservable(nil)

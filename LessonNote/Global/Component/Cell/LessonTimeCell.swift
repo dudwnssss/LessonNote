@@ -8,7 +8,6 @@
 import UIKit
 
 final class LessonTimeCell: UICollectionViewCell{
-    
     let scheduleLabel = UILabel()
     private let deleteButton = UIButton()
     
@@ -17,8 +16,19 @@ final class LessonTimeCell: UICollectionViewCell{
         setProperties()
         setLayouts()
     }
+
+    func configureCell(lessonTime: LessonTime){
+        scheduleLabel.text = lessonTime.weekday.title + " " +  DateManager.shared.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
+    }
     
-    func setProperties() {
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension LessonTimeCell {
+    private func setProperties() {
         scheduleLabel.do {
             $0.text = "화 10:00 - 12:00"
             $0.font = Font.medium12
@@ -31,7 +41,7 @@ final class LessonTimeCell: UICollectionViewCell{
         cornerRadius = 15
     }
     
-    func setLayouts() {
+    private func setLayouts() {
         addSubviews(scheduleLabel, deleteButton)
         scheduleLabel.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(10)
@@ -41,14 +51,5 @@ final class LessonTimeCell: UICollectionViewCell{
             $0.trailing.equalToSuperview().offset(-10)
             $0.centerY.equalTo(scheduleLabel)
         }
-    }
-    
-    func configureCell(lessonTime: LessonTime){
-        scheduleLabel.text = lessonTime.weekday.title + " " +  DateManager.shared.buildTimeRangeString(startDate: lessonTime.startTime, endDate: lessonTime.endTime)
-    }
-    
-    @available(*, unavailable)
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

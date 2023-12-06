@@ -515,7 +515,6 @@
 		1016FADC2AC94974003E7612 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				103B9BDB2B01096700F84940 /* Protocol */,
 				1010CBFA2AD12C0100B40498 /* Date */,
 				1048F9502ACC014000A56C76 /* Enum */,
 				1010CBDA2ACEC64700B40498 /* Observable */,
@@ -568,6 +567,7 @@
 		1016FAE02AC949BB003E7612 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				103B9BDE2B01098100F84940 /* ViewModelType.swift */,
 				1016FAE82AC94A0C003E7612 /* BaseViewController.swift */,
 				1016FAEA2AC94A12003E7612 /* BaseView.swift */,
 			);
@@ -709,14 +709,6 @@
 				101E393F2AE63C5E001F4534 /* MemoViewModel.swift */,
 			);
 			path = Memo;
-			sourceTree = "<group>";
-		};
-		103B9BDB2B01096700F84940 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				103B9BDE2B01098100F84940 /* ViewModelType.swift */,
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		1048F94D2ACAB54B00A56C76 /* StudentIcon */ = {

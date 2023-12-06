@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
  class ElliotableCell: UICollectionViewCell {
-    
     let textLabel = PaddingLabel()
     var borderLayer = CALayer()
     

@@ -13,7 +13,6 @@ protocol PassStudent: AnyObject {
 
 final class TimetableCell: UICollectionViewCell{
     weak var delegate: PassStudent?
-    
     let timetable = Elliotable()
     var courseItems: [ElliottEvent] = []{
         didSet{
@@ -28,8 +27,22 @@ final class TimetableCell: UICollectionViewCell{
         setProperties()
         setLayouts()
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        courseItems = []
+        timetable.collectionView.setContentOffset(.zero, animated: false)
+    }
     
-    func setProperties(){
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension TimetableCell {
+    
+    private func setProperties(){
         timetable.do {
             $0.delegate = self
             $0.dataSource = self
@@ -44,26 +57,12 @@ final class TimetableCell: UICollectionViewCell{
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        courseItems = []
-        timetable.collectionView.setContentOffset(.zero, animated: false)
-    }
-    
-    
-    func setLayouts(){
+    private func setLayouts(){
         contentView.addSubview(timetable)
         timetable.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
-    
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
 }
 
 extension TimetableCell: ElliotableDelegate, ElliotableDataSource{
