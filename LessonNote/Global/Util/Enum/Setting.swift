@@ -32,9 +32,9 @@ enum Setting: Int, CaseIterable{
     var path: String {
         switch self {
         case .privacy:
-            return "https://atom-technician-7aa.notion.site/LessonNote-6bdb51a4f7a74fa4a44c478cc50b21b7?pvs=4"
+            return Const.privacy
         case .inquiry:
-            return "https://instagram.com/lessonnote.official?igshid=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr"
+            return Const.inquiry
         }
     }
 }
