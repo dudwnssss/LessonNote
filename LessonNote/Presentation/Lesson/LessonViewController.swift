@@ -9,12 +9,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol PassData: AnyObject {
-    func passData()
+protocol UpdateStudentDelegate: AnyObject {
+    func updateStudent()
 }
 
 final class LessonViewController: BaseViewController {
-    weak var delegate: PassData?
+    weak var delegate: UpdateStudentDelegate?
     private let lessonView = LessonView()
     let viewModel = LessonViewModel()
     private let disposeBag = DisposeBag()
@@ -88,7 +88,7 @@ final class LessonViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.upsert.bind(with: self) { owner, _ in
-            owner.delegate?.passData()
+            owner.delegate?.updateStudent()
             owner.navigationController?.popViewController(animated: true)
         }
         .disposed(by: disposeBag)

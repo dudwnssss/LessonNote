@@ -6,13 +6,23 @@
 //
 
 import UIKit
+
 import FSCalendar
+import RxCocoa
+import RxSwift
 import Toast
 
 final class StudentViewController: BaseViewController {
     
     private let studentView = StudentView()
-    var studentViewModel = StudentViewModel()
+    let studentViewModel: StudentViewModel
+    private let UpdateStudentTrigger = PublishSubject<Void>()
+    private let disposeBag = DisposeBag()
+    
+    init(studentViewModel: StudentViewModel) {
+        self.studentViewModel = studentViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
     
     override func loadView() {
         self.view = studentView
@@ -26,31 +36,37 @@ final class StudentViewController: BaseViewController {
     
     override func setProperties() {
         view.backgroundColor = Color.gray1
-        guard let student = studentViewModel.student.value else { return }
+        let student = studentViewModel.student
         studentView.customStudentView.configureView(student: student)
         studentView.calendarView.do {
             $0.delegate = self
             $0.dataSource = self
             $0.configureStudentCalendar(studentIcon: StudentIcon(rawValue: student.studentIcon)!)
         }
-        studentViewModel.scheduledLessonDates.bind { lessons in
-            self.studentView.calendarView.reloadData()
-        }
         setupMenu(type: .student)
         setupMenu(type: .parent)
-        studentViewModel.setSchedule(student: student)
     }
     
     override func bind() {
-        studentViewModel.student.bind { [weak self] student in
-            guard let student, let icon = StudentIcon(rawValue: student.studentIcon) else {return}
-            self?.setupMenu(type: .student)
-            self?.setupMenu(type: .parent)
-            self?.studentView.configureStudentView(student: student)
-            self?.studentViewModel.setSchedule(student: student)
-            self?.studentView.calendarView.configureStudentCalendar(studentIcon: icon)
-            self?.studentView.calendarView.reloadData()
+        
+        let input = StudentViewModel.Input(updateStudent: UpdateStudentTrigger.asObservable())
+        let output = studentViewModel.transform(input: input)
+        
+        output.configureStudent.bind(with: self) { owner, student in
+            guard let icon = StudentIcon(rawValue: student.studentIcon) else { return }
+            owner.setupMenu(type: .student)
+            owner.setupMenu(type: .parent)
+            owner.studentView.configureStudentView(student: student)
+            owner.studentView.calendarView.configureStudentCalendar(studentIcon: icon)
+            owner.studentView.calendarView.reloadData()
+            }
+        .disposed(by: disposeBag)
+        
+        output.setCalendarSchedule.bind(with: self) { owner, _ in
+            owner.studentView.calendarView.reloadData()
         }
+        .disposed(by: disposeBag)
+    
     }
     
     @objc func presentAlert(){
@@ -67,7 +83,7 @@ final class StudentViewController: BaseViewController {
         switch type {
         case .student:
             let studentButton = studentView.customStudentView.studentPhoneNumberButton
-            guard let studentPhoneNumber = studentViewModel.student.value?.studentPhoneNumber else { studentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
+            guard let studentPhoneNumber = studentViewModel.student.studentPhoneNumber else { studentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
                 return}
             if studentPhoneNumber == "" {
                 studentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
@@ -76,7 +92,7 @@ final class StudentViewController: BaseViewController {
             button = studentButton
         case .parent:
             let parentButton = studentView.customStudentView.parentPhoneNumberButton
-            guard let parentPhoneNumber = studentViewModel.student.value?.parentPhoneNumber else {
+            guard let parentPhoneNumber = studentViewModel.student.parentPhoneNumber else {
                 parentButton.addTarget(self, action: #selector(presentAlert), for: .touchUpInside)
                 return}
             if parentPhoneNumber == "" {
@@ -93,7 +109,7 @@ final class StudentViewController: BaseViewController {
             }
         }
         let message = UIAction(title: "피드백 문자 보내기", image: Image.messageLong) { [weak self] _ in
-            let vm = MessageViewModel(personType: type, student: (self?.studentViewModel.student.value)!)
+            let vm = MessageViewModel(personType: type, student: (self?.studentViewModel.student)!)
             let vc = MessageViewController(viewModel: vm)
             self?.navigationController?.pushViewController(vc, animated: true)
         }
@@ -106,7 +122,7 @@ final class StudentViewController: BaseViewController {
     
     @objc func editButtonDidTap(){
         let vc = StudentEditViewController()
-        vc.viewModel.student.value = studentViewModel.student.value
+        vc.viewModel.student.value = studentViewModel.student
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -120,12 +136,16 @@ final class StudentViewController: BaseViewController {
         return
     }
     
+    @available(*, unavailable)
+    required init(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     func maximumDate(for calendar: FSCalendar) -> Date {
-        return studentViewModel.scheduledLessonDates.value.last ?? DateManager.shared.hundredYearFromToday()
+        return studentViewModel.scheduledLessonDates.last ?? DateManager.shared.hundredYearFromToday()
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -136,7 +156,8 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        guard let student = studentViewModel.student.value, let startDate = student.lessonStartDate else {
+        let student = studentViewModel.student
+        guard let startDate = student.lessonStartDate else {
             return Date()
         }
         return startDate
@@ -161,12 +182,12 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         //시작날짜 이전 없애기
-        guard let startDate = studentViewModel.student.value?.lessonStartDate else { return 0 }
+        let startDate = studentViewModel.student.lessonStartDate ?? Date()
         if DateManager.shared.isDate(date, before: startDate) {
             return 0
         }
         //수업 없음 적용하기
-        guard let lessons = studentViewModel.student.value?.lessons else { return 0 }
+        let lessons = studentViewModel.student.lessons
         for item in lessons {
             if date == item.date{
                 if let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) {
@@ -177,7 +198,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
             }
         }
         
-        if studentViewModel.scheduledLessonDates.value.contains(where: { DateManager.shared.areDatesEqualIgnoringTime(date1: $0, date2: date) }) {
+        if studentViewModel.scheduledLessonDates.contains(where: { DateManager.shared.areDatesEqualIgnoringTime(date1: $0, date2: date) }) {
             return 1
         } else {
             return 0
@@ -185,11 +206,11 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        guard let startDate = studentViewModel.student.value?.lessonStartDate else {return nil}
+        guard let startDate = studentViewModel.student.lessonStartDate else {return nil}
         if DateManager.shared.isDate(date, before: startDate) {
             return nil
         }
-        guard let lessons = studentViewModel.student.value?.lessons else { return nil }
+        let lessons = studentViewModel.student.lessons
         for item in lessons {
             if date == item.date{
                 guard let state = item.lessonState,
@@ -201,13 +222,14 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleDefaultColorFor date: Date) -> UIColor? {
-        guard let lessons = studentViewModel.student.value?.lessons else { return nil }
+        let lessons = studentViewModel.student.lessons
         for item in lessons {
             if date == item.date{
                 guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
                 switch state {
                 case .completed, .supplemented:
-                    guard let icon = studentViewModel.student.value?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
+                     let icon = studentViewModel.student.studentIcon
+                    guard let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
                     return color
                     
                 case .canceled, .none:
@@ -219,13 +241,14 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, subtitleSelectionColorFor date: Date) -> UIColor? {
-        guard let lessons = studentViewModel.student.value?.lessons else { return nil }
+        let lessons = studentViewModel.student.lessons
         for item in lessons {
             if date == item.date{
                 guard let stateRawValue = item.lessonState, let state = LessonState(rawValue: stateRawValue) else {return nil}
                 switch state {
                 case .completed, .supplemented:
-                    guard let icon = studentViewModel.student.value?.studentIcon, let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
+                    let icon = studentViewModel.student.studentIcon
+                    guard let color = StudentIcon(rawValue: icon)?.textColor else {return nil}
                     return color
                     
                 case .canceled, .none:
@@ -243,7 +266,7 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
         dateFormatter.dateFormat = "M월 d일 E요일"
         let formattedDate = dateFormatter.string(from: date)
         
-        vc.viewModel.student = studentViewModel.student.value
+        vc.viewModel.student = studentViewModel.student
         vc.viewModel.date = date
         vc.navigationItem.title = formattedDate + " 수업"
         vc.delegate = self
@@ -261,8 +284,8 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
 }
 
-extension StudentViewController: PassData {
-    func passData() {
-        studentViewModel.updateStudent()
+extension StudentViewController: UpdateStudentDelegate {
+    func updateStudent() {
+        UpdateStudentTrigger.onNext(())
     }
 }

@@ -9,8 +9,7 @@ import UIKit
 import Toast
 
 final class StudentEditViewController: BaseViewController {
-    
-    weak var delegate: PassData?
+    weak var delegate: UpdateStudentDelegate?
     private let studentEditView = StudentEditView()
     let viewModel = StudentEditViewModel()
     
@@ -153,7 +152,7 @@ final class StudentEditViewController: BaseViewController {
             return
         }
         viewModel.update()
-        delegate?.passData()
+        delegate?.updateStudent()
         navigationController?.popViewController(animated: true)
     }
     

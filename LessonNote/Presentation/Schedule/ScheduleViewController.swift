@@ -83,8 +83,8 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
                                                   
 extension ScheduleViewController: PassStudent {
     func passStudent(student: Student) {
-        let vc = StudentViewController()
-        vc.studentViewModel.student.value = student
+        let vm = StudentViewModel(student: student)
+        let vc = StudentViewController(studentViewModel: vm)
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

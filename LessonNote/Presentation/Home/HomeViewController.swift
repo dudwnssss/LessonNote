@@ -76,9 +76,10 @@ class HomeViewController: BaseViewController{
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = StudentViewController()
+        let student = homeViewModel.studentList.value[indexPath.item]
+        let vm = StudentViewModel(student: student)
+        let vc = StudentViewController(studentViewModel: vm)
         vc.hidesBottomBarWhenPushed = true
-        vc.studentViewModel.student.value = homeViewModel.studentList.value[indexPath.item]
         navigationController?.pushViewController(vc, animated: true)
     }
     
