@@ -160,13 +160,11 @@ extension StudentViewController: FSCalendarDataSource, FSCalendarDelegateAppeara
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        
         //시작날짜 이전 없애기
-        guard let startDate = studentViewModel.student.value?.lessonStartDate else {return 0}
+        guard let startDate = studentViewModel.student.value?.lessonStartDate else { return 0 }
         if DateManager.shared.isDate(date, before: startDate) {
             return 0
         }
-        
         //수업 없음 적용하기
         guard let lessons = studentViewModel.student.value?.lessons else { return 0 }
         for item in lessons {

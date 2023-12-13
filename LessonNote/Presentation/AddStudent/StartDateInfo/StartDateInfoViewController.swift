@@ -72,7 +72,11 @@ final class StartDateInfoViewController: BaseViewController{
 extension StartDateInfoViewController: FSCalendarDelegate, FSCalendarDataSource{
     
     func minimumDate(for calendar: FSCalendar) -> Date {
-        return Date()
+        return DateManager.shared.getYearAgoDate()
+    }
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return DateManager.shared.getYearLaterDate()
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {

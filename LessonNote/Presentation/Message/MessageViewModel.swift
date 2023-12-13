@@ -10,9 +10,9 @@ import RxSwift
 import RxCocoa
 
 class MessageViewModel: ViewModelType {
-    
     let personType: PersonType
     let student: Student
+    private let disposeBag = DisposeBag()
     
     init(personType: PersonType, student: Student) {
         self.personType = personType
@@ -34,7 +34,7 @@ class MessageViewModel: ViewModelType {
         let navToNext = PublishRelay<LessonMessage>()
     }
     
-    func transform(input: Input, disposeBag: DisposeBag) -> Output {
+    func transform(input: Input) -> Output {
         let output = Output()
         
         input.messageComment

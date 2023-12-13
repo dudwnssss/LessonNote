@@ -57,7 +57,7 @@ final class LessonViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         
-        let output = viewModel.transform(input: LessonViewModel.Input(lessonState: lessonInput, assignmentState: assignmentInput, feedback: textInput, tapCompleteButton: lessonView.completeButton.rx.tap), disposeBag: disposeBag)
+        let output = viewModel.transform(input: LessonViewModel.Input(lessonState: lessonInput, assignmentState: assignmentInput, feedback: textInput, tapCompleteButton: lessonView.completeButton.rx.tap))
 
         output.lessonState
             .drive(with: self) { owner, value in

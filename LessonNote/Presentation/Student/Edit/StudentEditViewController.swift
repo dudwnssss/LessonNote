@@ -40,6 +40,7 @@ final class StudentEditViewController: BaseViewController {
         }
         studentEditView.deleteStudentButton.addTarget(self, action: #selector(deleteButtonDidTap), for: .touchUpInside)
         studentEditView.datePickerView.minimumDate = viewModel.startDate.value
+        studentEditView.datePickerView.maximumDate = DateManager.shared.getYearLaterDate()
         studentEditView.datePickerView.addTarget(self, action: #selector(datePickerDidChange), for: .valueChanged)
         
         studentEditView.lessonTimeView.textfield.delegate = self

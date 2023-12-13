@@ -126,3 +126,9 @@ class CustomStudentView: BaseView{
     }
     
 }
+
+@available(iOS 17.0, *)
+#Preview {
+    CustomStudentView()
+}
+

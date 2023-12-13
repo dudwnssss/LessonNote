@@ -24,7 +24,7 @@ final class StudentEditViewModel {
     var weekCount: CustomObservable<Int> = CustomObservable(2)
     
     //startDate
-    var startDate: CustomObservable<Date> = CustomObservable(Date())
+    var startDate: CustomObservable<Date> = CustomObservable(DateManager.shared.getYearAgoDate())
     var weekday: CustomObservable<Weekday> = CustomObservable(.monday)
     var weekdays: CustomObservable<[Weekday]> = CustomObservable([])
     var isValid: CustomObservable<Bool> = CustomObservable(false)
@@ -32,6 +32,7 @@ final class StudentEditViewModel {
 }
 
 extension StudentEditViewModel {
+    
     func setStudent(){
         guard let student = student.value,
               let studentIcon = StudentIcon(rawValue: student.studentIcon),
@@ -65,7 +66,7 @@ extension StudentEditViewModel {
     }
     
     func setInitialWeekdays(){
-        weekdays.value = lessonTimeList.value.map{$0.weekday}
+        weekdays.value = lessonTimeList.value.map{ $0.weekday }
         if weekdays.value.contains(weekday.value) { return }
         weekday.value = weekdays.value.first ?? .monday
     }

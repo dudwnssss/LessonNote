@@ -7,9 +7,25 @@
 
 import Foundation
 
-final class StudentViewModel {
+final class StudentViewModel: ViewModelType {
+    
+    struct Input {
+        
+    }
+    
+    struct Output {
+        
+    }
+    
+    func transform(input: Input) -> Output {
+        let output = Output()
+        
+        return output
+    }
+    
+    
     private let repository = StudentRepository()
-    var scheduledLessonDates: CustomObservable<[Date]> = CustomObservable([]) //event 사용
+    var scheduledLessonDates: CustomObservable<[Date]> = CustomObservable([])
     var student: CustomObservable<Student?> = CustomObservable(nil)
 }
 

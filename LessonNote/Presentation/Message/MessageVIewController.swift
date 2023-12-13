@@ -43,7 +43,7 @@ class MessageViewController: BaseViewController {
     override func bind() {
         let input = MessageViewModel.Input(messageTitle: messageView.messageTitleTextField.textField.rx.text.asObservable(), messageComment: messageView.commentTextView.textView.rx.text.asObservable(), assginmentButtonTap: messageView.assignmentButton.rx.tap.asObservable(), selectedDates: selectedDates.asObservable(), nextButtonTap: messageView.nextButton.rx.tap.asObservable())
         
-        let output = viewModel.transform(input: input, disposeBag: disposeBag)
+        let output = viewModel.transform(input: input)
         
         output.isValid
             .asDriver(onErrorJustReturn: false)

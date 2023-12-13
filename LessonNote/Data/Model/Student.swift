@@ -40,8 +40,8 @@ final class Student: Object {
                                      courseName: studentName,
                                      roomName: "",
                                      courseDay: ElliotDay(rawValue: item.weekday)!,
-                                     startTime: DateManager.shared.formatTime(from: item.startTime),
-                                     endTime: DateManager.shared.formatTime(from: item.endTime),
+                                     startTime: DateManager.shared.formatTimeMinute(from: item.startTime),
+                                     endTime: DateManager.shared.formatTimeMinute(from: item.endTime),
                                      backgroundColor: StudentIcon(rawValue: studentIcon)!.color,
                                      isVisible: visibiliyList[item.weekday-1],
             student: self)

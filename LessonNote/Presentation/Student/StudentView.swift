@@ -51,3 +51,9 @@ class StudentView: BaseView {
         customStudentView.configureView(student: student)
     }
 }
+
+@available(iOS 17.0, *)
+#Preview {
+    StudentView()
+}
+

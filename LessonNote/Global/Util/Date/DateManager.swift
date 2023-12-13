@@ -16,18 +16,17 @@ class DateManager{
         $0.locale = Locale(identifier: "ko_KR")
     }
 
-
     func formatFullDateToString(date: Date) -> String {
         dateFormatter.dateFormat = "yyyy년 M월 d일 (E)"
         return dateFormatter.string(from: date)
     }
     
-    func formatTime(from date: Date) -> String {
+    func formatTimeMinute(from date: Date) -> String {
         dateFormatter.dateFormat = "HH:mm"
         return dateFormatter.string(from: date)
     }
     
-    func formatDatesToENd(dates: [Date]) -> [String] {
+    func formatDatesToEnd(dates: [Date]) -> [String] {
         dateFormatter.dateFormat = "E\nd"
         
         let formattedDates = dates.map { date in
@@ -36,6 +35,19 @@ class DateManager{
         
         return formattedDates
     }
+    
+    func getYearAgoDate() -> Date {
+        let calendar = Calendar.current
+        let dateYearAgo = calendar.date(byAdding: .year, value: -1, to: Date())
+        return dateYearAgo ?? Date()
+    }
+    
+    func getYearLaterDate() -> Date {
+        let calendar = Calendar.current
+        let date = calendar.date(byAdding: .year, value: 1, to: Date())
+        return date ?? Date()
+    }
+    
 
     func getDateRange(numberOfWeeksFromThisWeek: Int) -> String {
         let calendar = Calendar.current
@@ -61,10 +73,9 @@ class DateManager{
     func getDatesForWeek(numberOfWeeksFromThisWeek: Int) -> [Date] {
         let calendar = Calendar.current
         let currentDate = Date()
-        
-        let currentWeekday = calendar.component(.weekday, from: currentDate)
-        
+        let currentWeekday = calendar.component(.weekday, from: Date())
         let daysToSubtract: Int
+        
         if currentWeekday == 1 { // 일요일
             daysToSubtract = 6
         } else {
@@ -72,12 +83,12 @@ class DateManager{
         }
         
         let startDate = calendar.date(byAdding: .day, value: -daysToSubtract, to: currentDate)!
-        
         let startDateOfNthWeek = calendar.date(byAdding: .weekOfYear, value: numberOfWeeksFromThisWeek, to: startDate)!
         let endDateOfNthWeek = calendar.date(byAdding: .day, value: 6, to: startDateOfNthWeek)!
         
         var datesForWeek: [Date] = []
         var currentDateInWeek = startDateOfNthWeek
+        
         while currentDateInWeek <= endDateOfNthWeek {
             datesForWeek.append(currentDateInWeek)
             currentDateInWeek = calendar.date(byAdding: .day, value: 1, to: currentDateInWeek)!
@@ -86,31 +97,12 @@ class DateManager{
         return datesForWeek
     }
     
-    func formatCurrentDate() -> String {
+    func formatCurrentWeekday() -> String {
         dateFormatter.dateFormat = "E\nd"
         let currentDate = Date()
         let formattedDate = dateFormatter.string(from: currentDate)
         return formattedDate
     }
-    
-
-    func getSundayDate(forWeekOffset offset: Int) -> Date? {
-        var calendar = Calendar.current
-        calendar.locale = Locale.current
-
-        calendar.firstWeekday = 2
-
-        let currentDate = Date()
-
-        if let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate)),
-            let sundayDate = calendar.date(byAdding: .weekOfYear, value: offset, to: startOfWeek),
-            let nextSunday = calendar.date(byAdding: .day, value: 6, to: sundayDate) {
-            return nextSunday
-        }
-
-        return nil
-    }
-    
     
      func buildTimeRangeString(startDate: Date, endDate: Date) -> String {
         
@@ -121,40 +113,13 @@ class DateManager{
         
     }
     
-    func weekdayFromDate(_ date: Date) -> Weekday? {
-        let calendar = Calendar.current
-        let weekdayNumber = calendar.component(.weekday, from: date)
-
-        switch weekdayNumber {
-        case 1:
-            return .sunday
-        case 2:
-            return .monday
-        case 3:
-            return .tuesday
-        case 4:
-            return .wednesday
-        case 5:
-            return .thursday
-        case 6:
-            return .friday
-        case 7:
-            return .saturday
-        default:
-            return nil
-        }
-    }
-    
     func generateYearlyLessonSchedule(weekday: [Weekday.RawValue], weekCount: Int, startWeekday: Weekday.RawValue, startDate: Date) -> [Date] {
         var lessonDates: [Date] = []
-        
         let calendar = Calendar.current
         
-        // 현재 날짜를 가져옵니다.
         var currentDate = startDate
        
         //월1, 화2, 수3, 목4, 금5, 토6, 일7
-        //ravalue기반으로 수업요일 중 기준요일보다 앞선 요일이 있으면 + 7
         var newWeekday: [Int] = []
         weekday.forEach { value in
             if value < startWeekday {
@@ -182,12 +147,12 @@ class DateManager{
         var yearlyDates: [Date] = []
         
         let calendar = Calendar.current
-        let oneYearInSeconds: TimeInterval = 31536000 // 초 단위로 1년을 나타냅니다
+        let oneYearInSeconds: TimeInterval = 31536000 * 3 
 
         for date in dates {
             var currentDate = date
 
-            for _ in 1...52 {
+            for _ in 1...52 * 3 {
 
                 yearlyDates.append(currentDate)
 

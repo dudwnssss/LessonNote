@@ -66,7 +66,7 @@ extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollecti
         cell.delegate = self
         cell.courseItems = scheduleViewModel.weekSchedules.value[indexPath.row]
         let daysofWeek = DateManager.shared.getDatesForWeek(numberOfWeeksFromThisWeek: indexPath.item)
-        cell.daySymbol = DateManager.shared.formatDatesToENd(dates: daysofWeek)
+        cell.daySymbol = DateManager.shared.formatDatesToEnd(dates: daysofWeek)
         return cell
     }
     

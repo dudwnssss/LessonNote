@@ -118,7 +118,7 @@ extension ElliotableController: UICollectionViewDataSource {
             } else if elliotable.daySymbols[indexPath.row - 1].contains("일"){
                 backgroundView.backgroundColor = Color.lightRed
             }
-            if elliotable.daySymbols[indexPath.row - 1].contains(DateManager.shared.formatCurrentDate()){
+            if elliotable.daySymbols[indexPath.row - 1].contains(DateManager.shared.formatCurrentWeekday()){
                 backgroundView.backgroundColor = Color.gray5
                 titleLabel.textColor = Color.white
             }
