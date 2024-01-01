@@ -14,9 +14,9 @@ class CustomTextView: BaseView {
     var limitCount: Int = 0 {
         didSet {
             updateCountLabel()
+            print("happy new year")
         }
     }
-    
     let textView = UITextView()
     let textCountLabel = UILabel()
     
@@ -56,12 +56,6 @@ class CustomTextView: BaseView {
                 textView.text = placeholderText
                 textView.textColor = Color.gray4
             }
-        }
-    }
-    
-    func setPlaceholderColor() {
-        if textView.text == placeholder {
-            textView.textColor = Color.gray4
         }
     }
     

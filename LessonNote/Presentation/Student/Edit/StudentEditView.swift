@@ -81,7 +81,6 @@ final class StudentEditView: BaseView {
             $0.leading.equalTo(studentNameView)
             $0.top.equalTo(studentNameView.snp.bottom).offset(36)
         }
-        
         studentPhoneNumberView.snp.makeConstraints {
             $0.leading.equalTo(studentNameView)
             $0.top.equalTo(studentIconView.snp.bottom).offset(36)
@@ -128,13 +127,11 @@ final class StudentEditView: BaseView {
             $0.top.equalTo(startWeekdayView.snp.bottom).offset(36)
             $0.bottom.equalToSuperview().offset(-150)
         }
-        
         blurView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
             $0.top.equalTo(completeButton.snp.centerY)
         }
-        
         completeButton.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalToSuperview().offset(-48)
